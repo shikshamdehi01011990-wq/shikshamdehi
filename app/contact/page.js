@@ -38,10 +38,46 @@ const interests = [
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
 
-  function handleSubmit(e) {
-    e.preventDefault();
+  async function handleSubmit(e) {
+  e.preventDefault();
+
+  const form = e.currentTarget;
+
+  const formData = new FormData(form);
+
+  const data = {
+    name: formData.get('name'),
+    phone: formData.get('phone'),
+    email: formData.get('email'),
+    institution: formData.get('institution'),
+    interest: formData.get('interest'),
+    message: formData.get('message'),
+  };
+
+  try {
+    await fetch(
+      'https://script.google.com/macros/s/AKfycbzgYWv8POVg2dC25ptIrzCrDl_QhLMOgJdP7-LSWfXZHSETMlBvNEd3BDuMTXxOymgC/exec',
+      {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: {
+          'Content-Type': 'text/plain;charset=utf-8',
+        },
+        body: JSON.stringify(data),
+      }
+    );
+
+    form.reset();
     setSubmitted(true);
+
+  } catch (error) {
+    console.error('Form submission error:', error);
+
+    alert(
+      'Unable to send your enquiry. Please try again or contact us directly.'
+    );
   }
+}
 
   return (
     <main className={styles.page}>
