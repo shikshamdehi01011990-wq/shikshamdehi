@@ -6,12 +6,9 @@ import {
   Box,
   Check,
   Cpu,
-  GraduationCap,
   Lightbulb,
   Printer,
-  School,
   Sparkles,
-  Wrench,
   Zap,
 } from 'lucide-react';
 
@@ -72,10 +69,11 @@ export default function AboutPage() {
   return (
     <main className={styles.page}>
 
-      {/* NAV */}
+      {/* NAVIGATION */}
       <header className={styles.nav}>
         <Link className={styles.brand} href="/">
           <span className={styles.mark}>SD</span>
+
           <span>
             Shiksham<span>Dehi</span>
           </span>
@@ -87,8 +85,10 @@ export default function AboutPage() {
         </Link>
       </header>
 
+
       {/* HERO */}
       <section className={styles.hero}>
+
         <div className={styles.heroGlow} />
 
         <div className={styles.eyebrow}>
@@ -110,6 +110,7 @@ export default function AboutPage() {
         </p>
 
         <div className={styles.heroActions}>
+
           <Link className={styles.primary} href="/programs">
             Explore Programs
             <ArrowRight size={17} />
@@ -118,11 +119,15 @@ export default function AboutPage() {
           <Link className={styles.secondary} href="/contact">
             Talk to Us
           </Link>
+
         </div>
+
       </section>
+
 
       {/* EXPERIENCE */}
       <section className={styles.experienceBand}>
+
         <div className={styles.experienceGrid}>
 
           <div className={styles.experienceNumber}>
@@ -150,10 +155,13 @@ export default function AboutPage() {
           </p>
 
         </div>
+
       </section>
+
 
       {/* WHO WE ARE */}
       <section className={styles.section}>
+
         <div className={styles.twoCol}>
 
           <div>
@@ -170,6 +178,7 @@ export default function AboutPage() {
           </div>
 
           <div className={styles.copy}>
+
             <p>
               ShikshamDehi is focused on practical, project-based technology
               learning. We create programs that help learners understand
@@ -185,15 +194,19 @@ export default function AboutPage() {
               The objective is simple: move learners from being technology
               consumers to becoming confident creators and problem solvers.
             </p>
+
           </div>
 
         </div>
+
       </section>
 
-      {/* CAPABILITIES */}
+
+      {/* WHAT WE DO */}
       <section className={`${styles.section} ${styles.capabilitySection}`}>
 
         <div className={styles.sectionHead}>
+
           <div>
             <div className={styles.eyebrow}>
               <span />
@@ -212,11 +225,19 @@ export default function AboutPage() {
             institution and learning objectives—from foundational making to
             advanced technical projects.
           </p>
+
         </div>
 
+
         <div className={styles.capabilityGrid}>
+
           {capabilities.map(({ icon: Icon, title, text }) => (
-            <article className={styles.capability} key={title}>
+
+            <article
+              className={styles.capability}
+              key={title}
+            >
+
               <div className={styles.icon}>
                 <Icon size={23} />
               </div>
@@ -224,19 +245,25 @@ export default function AboutPage() {
               <h3>{title}</h3>
 
               <p>{text}</p>
+
             </article>
+
           ))}
+
         </div>
 
       </section>
 
-      {/* AUDIENCE */}
+
+      {/* WHO WE WORK WITH */}
       <section className={styles.audienceBand}>
+
         <div className={styles.section}>
 
           <div className={styles.twoCol}>
 
             <div>
+
               <div className={styles.eyebrow}>
                 <span />
                 WHO WE WORK WITH
@@ -252,27 +279,40 @@ export default function AboutPage() {
                 From school students to technical education learners,
                 programs can be adapted to the needs of the institution.
               </p>
+
             </div>
 
+
             <div className={styles.audienceGrid}>
+
               {audiences.map((item) => (
-                <div className={styles.audienceItem} key={item}>
+
+                <div
+                  className={styles.audienceItem}
+                  key={item}
+                >
                   <Check size={16} />
                   <span>{item}</span>
                 </div>
+
               ))}
+
             </div>
 
           </div>
 
         </div>
+
       </section>
 
-      {/* APPROACH */}
+
+      {/* OUR APPROACH */}
       <section className={styles.section}>
 
         <div className={styles.sectionHead}>
+
           <div>
+
             <div className={styles.eyebrow}>
               <span />
               OUR APPROACH
@@ -283,17 +323,26 @@ export default function AboutPage() {
               <br />
               <em>lead to making.</em>
             </h2>
+
           </div>
 
           <p>
             Every project follows a simple maker cycle. Students learn to
             think through a problem instead of simply following instructions.
           </p>
+
         </div>
 
+
         <div className={styles.approachGrid}>
+
           {approach.map((item, index) => (
-            <article className={styles.approach} key={item}>
+
+            <article
+              className={styles.approach}
+              key={item}
+            >
+
               <span>
                 {String(index + 1).padStart(2, '0')}
               </span>
@@ -301,16 +350,24 @@ export default function AboutPage() {
               <h3>{item}</h3>
 
               {index !== approach.length - 1 && (
-                <ArrowRight className={styles.approachArrow} size={18} />
+                <ArrowRight
+                  className={styles.approachArrow}
+                  size={18}
+                />
               )}
+
             </article>
+
           ))}
+
         </div>
 
       </section>
 
+
       {/* MISSION */}
       <section className={styles.mission}>
+
         <div className={styles.missionInner}>
 
           <div className={styles.missionIcon}>
@@ -333,23 +390,34 @@ export default function AboutPage() {
             experiment with ideas and build solutions to real-world problems.
           </p>
 
-          <Link className={styles.primary} href="/contact">
+          <Link
+            className={styles.primary}
+            href="/contact"
+          >
             Start a Conversation
             <ArrowRight size={17} />
           </Link>
 
         </div>
+
       </section>
+
 
       {/* FOOTER */}
       <footer className={styles.footer}>
+
         <Link href="/">
           Shiksham<span>Dehi</span>
         </Link>
 
-        <span>Future skills. Real projects.</span>
+        <span>
+          Future skills. Real projects.
+        </span>
 
-        <small>© 2026 ShikshamDehi</small>
+        <small>
+          © 2026 ShikshamDehi
+        </small>
+
       </footer>
 
     </main>
