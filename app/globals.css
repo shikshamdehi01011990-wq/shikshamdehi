@@ -68,10 +68,6 @@ main {
   letter-spacing: -0.02em;
 }
 
-.brand > span:last-child > span {
-  color: var(--lime);
-}
-
 .brandMark {
   width: 38px;
   height: 38px;
@@ -86,6 +82,10 @@ main {
 
   font-size: 12px;
   font-weight: 900;
+}
+
+.brand > span:last-child > span {
+  color: var(--lime);
 }
 
 .nav nav {
@@ -142,6 +142,8 @@ main {
   color: var(--white);
 
   cursor: pointer;
+
+  font-size: 22px;
 }
 
 /* =========================================================
@@ -355,7 +357,9 @@ main {
 }
 
 /* =========================================================
-   HERO IMAGE — FIXED
+   HERO IMAGE
+   IMPORTANT:
+   IMAGE IS A REAL <img> IN page.js
    ========================================================= */
 
 .heroVisual {
@@ -370,14 +374,11 @@ main {
   overflow: visible;
 }
 
-/* Glow behind image */
-.heroVisual::after {
-  content: "";
-
+.heroImageGlow {
   position: absolute;
 
-  width: 500px;
-  height: 500px;
+  width: 480px;
+  height: 480px;
 
   left: 50%;
   top: 50%;
@@ -386,50 +387,31 @@ main {
 
   border-radius: 50%;
 
-  background: rgba(199, 255, 61, 0.08);
+  background: rgba(199, 255, 61, 0.07);
 
-  filter: blur(100px);
+  filter: blur(95px);
 
   pointer-events: none;
 
   z-index: 0;
 }
 
-/*
-   IMPORTANT:
-   The image is loaded through <img src="/home-hero.png">
-   in page.js.
-
-   Therefore no CSS background-image is used here.
-*/
-
-.heroVisual::before {
-  display: none !important;
-}
-
-/* Actual image */
-.heroVisual .heroImage {
+.heroImage {
   position: relative;
-
-  z-index: 5;
+  z-index: 3;
 
   display: block;
 
   width: 100%;
   max-width: 560px;
-
   height: auto;
 
   object-fit: contain;
 
-  opacity: 1;
-  visibility: visible;
-
-  border: 0;
-  outline: 0;
+  border-radius: 20px;
 
   filter:
-    drop-shadow(0 30px 60px rgba(0, 0, 0, 0.45))
+    drop-shadow(0 30px 55px rgba(0, 0, 0, 0.45))
     drop-shadow(0 0 45px rgba(199, 255, 61, 0.08));
 
   animation: heroImageFloat 6s ease-in-out infinite;
@@ -439,7 +421,7 @@ main {
     filter 0.4s ease;
 }
 
-.heroVisual .heroImage:hover {
+.heroImage:hover {
   transform: translateY(-6px);
 
   filter:
@@ -456,13 +438,6 @@ main {
   50% {
     transform: translateY(-8px);
   }
-}
-
-/* Remove old generated visuals */
-.heroVisual .orb,
-.heroVisual .heroCore,
-.heroVisual .floating {
-  display: none !important;
 }
 
 /* =========================================================
@@ -514,7 +489,7 @@ main {
 }
 
 /* =========================================================
-   MODULE CARDS
+   MODULES
    ========================================================= */
 
 .modulesSection {
@@ -524,9 +499,7 @@ main {
 
 .moduleGrid {
   display: grid;
-
   grid-template-columns: repeat(4, minmax(0, 1fr));
-
   gap: 14px;
 }
 
@@ -641,7 +614,7 @@ main {
 
   color: var(--lime);
 
-  font-size: 12px;
+  font-size: 9px;
   font-weight: 900;
 }
 
@@ -729,6 +702,8 @@ main {
   font-weight: 900;
 
   letter-spacing: 0.05em;
+
+  transition: color 0.2s ease;
 }
 
 .moduleCard:hover .moduleLink {
@@ -736,7 +711,7 @@ main {
 }
 
 /* =========================================================
-   LEARNING JOURNEY
+   JOURNEY
    ========================================================= */
 
 .journeyBand {
@@ -797,9 +772,7 @@ main {
 
 .audienceGrid {
   display: grid;
-
   grid-template-columns: repeat(4, 1fr);
-
   gap: 14px;
 }
 
@@ -1253,6 +1226,10 @@ main {
   line-height: 1.7;
 }
 
+.light {
+  border-color: #36434c;
+}
+
 .ctaTags {
   display: flex;
 
@@ -1370,15 +1347,12 @@ footer small {
     min-height: 520px;
   }
 
-  .heroVisual .heroImage {
+  .heroImage {
     width: min(560px, 90vw);
-
-    max-width: 560px;
   }
 
-  .heroVisual::after {
+  .heroImageGlow {
     width: 390px;
-
     height: 390px;
   }
 
@@ -1511,18 +1485,18 @@ footer small {
   }
 
   .heroVisual {
-    min-height: 420px;
+    min-height: 410px;
 
     margin-top: 10px;
   }
 
-  .heroVisual .heroImage {
-    width: min(100%, 390px);
+  .heroImage {
+    width: min(100%, 430px);
 
-    max-width: 390px;
+    max-width: 430px;
   }
 
-  .heroVisual::after {
+  .heroImageGlow {
     width: 290px;
 
     height: 290px;
@@ -1699,16 +1673,16 @@ footer small {
   }
 
   .heroVisual {
-    min-height: 350px;
+    min-height: 340px;
   }
 
-  .heroVisual .heroImage {
-    width: min(100%, 340px);
+  .heroImage {
+    width: min(100%, 360px);
 
-    max-width: 340px;
+    max-width: 360px;
   }
 
-  .heroVisual::after {
+  .heroImageGlow {
     width: 230px;
 
     height: 230px;
@@ -1732,7 +1706,11 @@ footer small {
    ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
-  .heroVisual .heroImage {
+  .heroImage {
     animation: none;
+  }
+
+  html {
+    scroll-behavior: auto;
   }
 }
