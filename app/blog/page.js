@@ -1,3 +1,4 @@
+```jsx
 'use client';
 
 import Link from 'next/link';
@@ -9,6 +10,7 @@ import {
   Lightbulb,
   Printer,
   Sparkles,
+  Clock3,
 } from 'lucide-react';
 
 import styles from './blog.module.css';
@@ -22,15 +24,17 @@ const articles = [
       'Understand how 3D modelling and CAD help students develop design thinking, problem-solving and product development skills.',
     date: 'August 2026',
     read: '5 min read',
+    slug: '3d-design-future-skill',
   },
   {
     icon: Printer,
     category: '3D PRINTING',
     title: 'From Digital Model to Physical Prototype',
     excerpt:
-      'Explore the complete 3D printing workflow—from CAD and STL files to slicing, printing, testing and improving a prototype.',
+      'Explore the complete workflow from CAD and STL files to slicing, printing, testing and improving a real prototype.',
     date: 'August 2026',
     read: '6 min read',
+    slug: 'digital-model-to-physical-prototype',
   },
   {
     icon: Bot,
@@ -40,6 +44,7 @@ const articles = [
       'A practical introduction to motors, sensors, controllers, Arduino and project-based robotics learning.',
     date: 'August 2026',
     read: '7 min read',
+    slug: 'students-learning-robotics',
   },
   {
     icon: Cpu,
@@ -49,6 +54,7 @@ const articles = [
       'Learn how Arduino, sensors and connected devices can turn classroom concepts into practical technology projects.',
     date: 'August 2026',
     read: '6 min read',
+    slug: 'arduino-iot-project-learning',
   },
   {
     icon: Lightbulb,
@@ -58,6 +64,7 @@ const articles = [
       'Technology becomes easier to understand when students design, build, test and improve real projects.',
     date: 'August 2026',
     read: '5 min read',
+    slug: 'hands-on-technology-learning',
   },
   {
     icon: Sparkles,
@@ -67,6 +74,7 @@ const articles = [
       'Discover how project-based learning can encourage curiosity, creativity, experimentation and innovation.',
     date: 'August 2026',
     read: '5 min read',
+    slug: 'building-maker-mindset',
   },
 ];
 
@@ -85,9 +93,10 @@ const topics = [
 export default function BlogPage() {
   return (
     <main className={styles.page}>
-      {/* NAVBAR */}
+      {/* ================= NAVBAR ================= */}
+
       <header className={styles.nav}>
-        <Link href="/" className={styles.brand}>
+        <Link href="/" className={styles.brand} aria-label="ShikshamDehi Home">
           <span className={styles.brandMark}>SD</span>
 
           <span>
@@ -95,9 +104,10 @@ export default function BlogPage() {
           </span>
         </Link>
 
-        <nav className={styles.navLinks}>
+        <nav className={styles.navLinks} aria-label="Main navigation">
           <Link href="/">Home</Link>
           <Link href="/programs">Programs</Link>
+          <Link href="/projects">Projects</Link>
           <Link href="/about">About</Link>
           <Link href="/faq">FAQ</Link>
           <Link href="/contact">Contact</Link>
@@ -108,7 +118,8 @@ export default function BlogPage() {
         </Link>
       </header>
 
-      {/* HERO */}
+      {/* ================= HERO ================= */}
+
       <section className={styles.hero}>
         <div className={styles.heroGlow} />
 
@@ -124,14 +135,25 @@ export default function BlogPage() {
         </h1>
 
         <p>
-          Explore practical insights about 3D design, 3D printing,
-          robotics, Arduino, IoT, AI, maker education and future skills.
+          Practical insights about 3D design, 3D printing, robotics,
+          Arduino, IoT, AI, STEM education and the future of learning.
         </p>
+
+        <div className={styles.heroTopics}>
+          <span>3D</span>
+          <span>ROBOTICS</span>
+          <span>IoT</span>
+          <span>AI</span>
+          <span>STEM</span>
+        </div>
       </section>
 
-      {/* FEATURED ARTICLE */}
+      {/* ================= FEATURED ARTICLE ================= */}
+
       <section className={styles.featuredSection}>
-        <div className={styles.sectionLabel}>FEATURED ARTICLE</div>
+        <div className={styles.sectionLabel}>
+          FEATURED ARTICLE
+        </div>
 
         <article className={styles.featured}>
           <div className={styles.featuredVisual}>
@@ -143,6 +165,8 @@ export default function BlogPage() {
               <span />
             </div>
 
+            <div className={styles.visualRing} />
+
             <div className={styles.visualTag}>
               3D DESIGN → PROTOTYPE
             </div>
@@ -153,6 +177,8 @@ export default function BlogPage() {
               <span>3D DESIGN</span>
               <i>•</i>
               <span>August 2026</span>
+              <i>•</i>
+              <span>6 min read</span>
             </div>
 
             <h2>
@@ -163,19 +189,23 @@ export default function BlogPage() {
 
             <p>
               The future of education is not only about understanding
-              technology. It is about giving learners the confidence
-              and practical skills to create with it.
+              technology. It is about giving learners the confidence,
+              curiosity and practical skills to create with it.
             </p>
 
-            <Link href="/contact" className={styles.textLink}>
-              Start a Learning Journey
+            <Link
+              href="/blog/3d-design-future-skill"
+              className={styles.textLink}
+            >
+              Read Featured Article
               <ArrowRight size={16} />
             </Link>
           </div>
         </article>
       </section>
 
-      {/* ARTICLES */}
+      {/* ================= LATEST ARTICLES ================= */}
+
       <section className={styles.articlesSection}>
         <div className={styles.sectionHead}>
           <div>
@@ -204,10 +234,18 @@ export default function BlogPage() {
             return (
               <article
                 className={styles.articleCard}
-                key={article.title}
+                key={article.slug}
               >
-                <div className={styles.articleIcon}>
-                  <Icon size={22} />
+                <div className={styles.articleTop}>
+                  <div className={styles.articleIcon}>
+                    <Icon size={22} />
+                  </div>
+
+                  <span className={styles.articleNumber}>
+                    {String(
+                      articles.indexOf(article) + 1
+                    ).padStart(2, '0')}
+                  </span>
                 </div>
 
                 <div className={styles.articleCategory}>
@@ -219,14 +257,21 @@ export default function BlogPage() {
                 <p>{article.excerpt}</p>
 
                 <div className={styles.articleBottom}>
-                  <span>
-                    {article.date}
+                  <span className={styles.articleInfo}>
+                    <span>{article.date}</span>
                     <b>•</b>
-                    {article.read}
+                    <span className={styles.readTime}>
+                      <Clock3 size={12} />
+                      {article.read}
+                    </span>
                   </span>
 
-                  <Link href="/contact">
-                    Discuss This Topic
+                  <Link
+                    href={`/blog/${article.slug}`}
+                    className={styles.articleLink}
+                    aria-label={`Read ${article.title}`}
+                  >
+                    Read
                     <ArrowRight size={14} />
                   </Link>
                 </div>
@@ -236,10 +281,11 @@ export default function BlogPage() {
         </div>
       </section>
 
-      {/* TOPICS */}
+      {/* ================= TOPICS ================= */}
+
       <section className={styles.topics}>
         <div className={styles.topicsInner}>
-          <div>
+          <div className={styles.topicsCopy}>
             <div className={styles.eyebrow}>
               <span />
               EXPLORE TOPICS
@@ -250,17 +296,28 @@ export default function BlogPage() {
               <br />
               <em>without the complexity.</em>
             </h2>
+
+            <p>
+              Start with a topic, understand the fundamentals and
+              gradually move towards building real projects.
+            </p>
           </div>
 
           <div className={styles.topicList}>
-            {topics.map((topic) => (
-              <span key={topic}>{topic}</span>
+            {topics.map((topic, index) => (
+              <span key={topic}>
+                <small>
+                  {String(index + 1).padStart(2, '0')}
+                </small>
+                {topic}
+              </span>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA */}
+      {/* ================= CTA ================= */}
+
       <section className={styles.cta}>
         <div className={styles.ctaGlow} />
 
@@ -276,8 +333,8 @@ export default function BlogPage() {
         </h2>
 
         <p>
-          Talk to ShikshamDehi about workshops, institutional programs,
-          project mentoring or technology training.
+          Talk to ShikshamDehi about workshops, institutional
+          programs, project mentoring or technology training.
         </p>
 
         <div className={styles.ctaActions}>
@@ -292,7 +349,8 @@ export default function BlogPage() {
         </div>
       </section>
 
-      {/* FOOTER */}
+      {/* ================= FOOTER ================= */}
+
       <footer className={styles.footer}>
         <Link href="/" className={styles.footerBrand}>
           <span className={styles.brandMark}>SD</span>
@@ -306,8 +364,11 @@ export default function BlogPage() {
           STEM Education • Digital Manufacturing • Future Skills
         </p>
 
-        <small>© 2026 ShikshamDehi. All rights reserved.</small>
+        <small>
+          © 2026 ShikshamDehi. All rights reserved.
+        </small>
       </footer>
     </main>
   );
 }
+```
