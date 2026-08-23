@@ -1662,3 +1662,81 @@ footer small {
     animation: none;
   }
 }
+/* ================= HERO IMAGE ================= */
+
+.heroImage {
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+
+  display: block;
+
+  object-fit: contain;
+
+  border-radius: 20px;
+
+  filter:
+    drop-shadow(0 30px 60px rgba(0, 0, 0, 0.45))
+    drop-shadow(0 0 45px rgba(199, 255, 61, 0.08));
+
+  transition:
+    transform 0.4s ease,
+    filter 0.4s ease;
+}
+
+.heroImage:hover {
+  transform: translateY(-6px);
+
+  filter:
+    drop-shadow(0 38px 70px rgba(0, 0, 0, 0.5))
+    drop-shadow(0 0 55px rgba(199, 255, 61, 0.12));
+}
+
+/* Hero visual container */
+
+.heroVisual {
+  min-height: 560px;
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Remove old CSS visual if image is being used */
+
+.heroVisual .heroImage {
+  position: relative;
+  z-index: 3;
+}
+
+/* Mobile */
+
+@media (max-width: 1000px) {
+  .heroImage {
+    max-width: 500px;
+  }
+}
+
+@media (max-width: 700px) {
+  .heroVisual {
+    min-height: 420px;
+  }
+
+  .heroImage {
+    width: min(100%, 390px);
+    max-width: 390px;
+  }
+}
+
+@media (max-width: 420px) {
+  .heroVisual {
+    min-height: 350px;
+  }
+
+  .heroImage {
+    width: 100%;
+    max-width: 340px;
+  }
+}
