@@ -1,18 +1,22 @@
+'use client';
+
 import Link from 'next/link';
 import {
-  ArrowLeft,
   ArrowRight,
+  Box,
   Bot,
-  Check,
-  CircuitBoard,
   Cpu,
-  GraduationCap,
-  Printer,
-  Settings,
-  Sparkles,
-  Wrench,
   Cuboid,
+  GraduationCap,
+  Lightbulb,
+  Menu,
+  Printer,
+  Settings2,
+  Wrench,
+  X,
+  Zap,
 } from 'lucide-react';
+import { useState } from 'react';
 
 import styles from './iti-polytechnic.module.css';
 
@@ -28,174 +32,254 @@ const trainingAreas = [
     text: 'Understand slicing, printer operation, materials, print settings, troubleshooting and rapid prototyping.',
   },
   {
-    icon: CircuitBoard,
+    icon: Cpu,
     title: 'Electronics',
     text: 'Hands-on training with electronic components, circuits, sensors, breadboards and practical applications.',
   },
   {
-    icon: Cpu,
-    title: 'Arduino & Embedded Systems',
-    text: 'Learn microcontroller fundamentals, programming, sensors, inputs, outputs and practical automation.',
-  },
-  {
     icon: Bot,
-    title: 'Robotics & Automation',
-    text: 'Build practical robotic systems using motors, controllers, sensors and mechanical components.',
+    title: 'Robotics',
+    text: 'Build practical robots using motors, sensors, controllers, Arduino and automation concepts.',
   },
   {
-    icon: Settings,
-    title: 'Product Prototyping',
-    text: 'Convert an idea into a functional prototype through design, fabrication, testing and improvement.',
+    icon: Settings2,
+    title: 'Prototyping',
+    text: 'Convert engineering ideas into physical prototypes through design, fabrication, testing and iteration.',
+  },
+  {
+    icon: Zap,
+    title: 'STEM Technology',
+    text: 'Connect engineering concepts with modern technology through practical, project-based learning.',
   },
 ];
 
-const programs = [
-  {
-    number: '01',
-    title: 'Short-Term Workshops',
-    text: 'Focused hands-on workshops for introducing students to 3D design, printing, electronics and emerging technologies.',
-  },
-  {
-    number: '02',
-    title: 'Skill Development Programs',
-    text: 'Structured programs designed to build practical technical skills over multiple sessions.',
-  },
-  {
-    number: '03',
-    title: 'Project-Based Training',
-    text: 'Students work on practical projects from concept and design to prototype and final demonstration.',
-  },
-  {
-    number: '04',
-    title: 'Faculty Training',
-    text: 'Hands-on enablement for teachers, trainers and faculty members to confidently conduct technology-based learning.',
-  },
+const benefits = [
+  'Industry-oriented practical skills',
+  '3D CAD and digital design',
+  '3D printing and prototyping',
+  'Electronics and Arduino',
+  'Robotics and automation',
+  'Project-based learning',
+  'Workshop and bootcamp training',
+  'Faculty development programs',
 ];
 
 const workflow = [
-  'Understand the problem',
-  'Create the design',
-  'Build the prototype',
-  'Test the solution',
-  'Improve the design',
-  'Present the project',
+  'UNDERSTAND',
+  'DESIGN',
+  'MODEL',
+  'BUILD',
+  'TEST',
+  'IMPROVE',
 ];
 
 export default function ITIPolytechnicPage() {
+  const [open, setOpen] = useState(false);
+
+  const closeMenu = () => setOpen(false);
+
   return (
     <main className={styles.page}>
+      {/* ================= NAVBAR ================= */}
 
-      {/* NAV */}
       <header className={styles.nav}>
-        <Link className={styles.brand} href="/">
-          <span className={styles.mark}>SD</span>
+        <Link href="/" className={styles.brand} onClick={closeMenu}>
+          <span className={styles.brandMark}>SD</span>
+
           <span>
             Shiksham<span>Dehi</span>
           </span>
         </Link>
 
-        <Link className={styles.back} href="/">
-          <ArrowLeft size={16} />
-          Home
-        </Link>
-      </header>
-
-
-      {/* HERO */}
-      <section className={styles.hero}>
-
-        <div className={styles.heroGlow} />
-
-        <div className={styles.eyebrow}>
-          <span />
-          FOR ITIs & POLYTECHNIC INSTITUTIONS
-        </div>
-
-        <h1>
-          Turn technical
-          <br />
-          education into
-          <br />
-          <em>real-world skills.</em>
-        </h1>
-
-        <p>
-          Practical training in 3D Design, CAD, 3D Printing, Electronics,
-          Arduino, Robotics, Automation and Product Prototyping for ITI and
-          Polytechnic students.
-        </p>
-
-        <div className={styles.heroActions}>
-          <Link className={styles.primary} href="/contact">
-            Discuss Your Institution
-            <ArrowRight size={17} />
+        <nav
+          className={`${styles.navLinks} ${
+            open ? styles.mobileOpen : ''
+          }`}
+        >
+          <Link href="/programs" onClick={closeMenu}>
+            Programs
           </Link>
 
-          <a className={styles.secondary} href="#training">
-            Explore Training
-          </a>
-        </div>
+          <Link href="/iti-polytechnic" onClick={closeMenu}>
+            ITI / Polytechnic
+          </Link>
 
-        <div className={styles.heroMeta}>
-          <div>
-            <strong>3D</strong>
-            <span>Design & Printing</span>
-          </div>
+          <Link href="/blog" onClick={closeMenu}>
+            Blog
+          </Link>
 
-          <i />
+          <Link href="/faq" onClick={closeMenu}>
+            FAQ
+          </Link>
 
-          <div>
-            <strong>CAD</strong>
-            <span>Design & Prototyping</span>
-          </div>
+          <Link href="/contact" onClick={closeMenu}>
+            Contact
+          </Link>
+        </nav>
 
-          <i />
+        <Link href="/contact" className={styles.navCta}>
+          Discuss Your Institution
+          <ArrowRight size={16} />
+        </Link>
 
-          <div>
-            <strong>STEM</strong>
-            <span>Technology Training</span>
-          </div>
-        </div>
+        <button
+          type="button"
+          className={styles.menu}
+          onClick={() => setOpen(!open)}
+          aria-label="Toggle navigation"
+          aria-expanded={open}
+        >
+          {open ? <X size={22} /> : <Menu size={22} />}
+        </button>
+      </header>
 
-      </section>
+      {/* ================= HERO ================= */}
 
+      <section className={styles.hero}>
+        <div className={styles.heroGlow} />
 
-      {/* INTRO */}
-      <section className={styles.introBand}>
-
-        <div className={styles.introInner}>
-
+        <div className={styles.heroContent}>
           <div className={styles.eyebrow}>
             <span />
-            WHY TECHNICAL INSTITUTIONS
+            ITI • POLYTECHNIC • TECHNICAL EDUCATION
           </div>
 
-          <h2>
-            Give students skills
+          <h1>
+            Technical skills.
             <br />
-            they can <em>actually use.</em>
-          </h2>
+            <em>Built for the real world.</em>
+          </h1>
 
-          <p>
-            Technical education becomes more valuable when students get the
-            opportunity to design, fabricate, test and improve real products.
-            ShikshamDehi complements classroom learning with practical,
-            project-driven technology training.
+          <p className={styles.heroText}>
+            Practical technology training for ITI and Polytechnic
+            students covering 3D design, CAD, 3D printing,
+            electronics, robotics, prototyping and STEM technologies.
           </p>
 
+          <div className={styles.heroActions}>
+            <Link href="/contact" className={styles.primary}>
+              Discuss Your Institution
+              <ArrowRight size={18} />
+            </Link>
+
+            <Link href="/programs" className={styles.secondary}>
+              Explore Training
+            </Link>
+          </div>
+
+          <div className={styles.heroTags}>
+            <span>3D Design & Printing</span>
+            <span>CAD</span>
+            <span>Design & Prototyping</span>
+            <span>STEM Technology</span>
+          </div>
         </div>
 
+        {/* HERO VISUAL */}
+
+        <div className={styles.heroVisual}>
+          <div className={styles.visualGrid} />
+
+          <div className={styles.techCard}>
+            <div className={styles.techCardTop}>
+              <span className={styles.liveDot} />
+              SHIKSHAMDEHI / TECHNICAL LAB
+            </div>
+
+            <div className={styles.techDiagram}>
+              <div className={styles.diagramCircle}>
+                <Cuboid size={48} strokeWidth={1.2} />
+              </div>
+
+              <div className={styles.diagramLine} />
+
+              <div className={styles.diagramNodes}>
+                <span>CAD</span>
+                <span>PRINT</span>
+                <span>BUILD</span>
+              </div>
+            </div>
+
+            <div className={styles.techBottom}>
+              <div>
+                <small>FOCUS</small>
+                <b>SKILL + PROJECT</b>
+              </div>
+
+              <div>
+                <small>MODE</small>
+                <b className={styles.green}>HANDS-ON</b>
+              </div>
+            </div>
+          </div>
+
+          <div className={`${styles.floating} ${styles.floatingOne}`}>
+            <Cuboid size={18} />
+            <span>3D CAD</span>
+          </div>
+
+          <div className={`${styles.floating} ${styles.floatingTwo}`}>
+            <Bot size={18} />
+            <span>Robotics</span>
+          </div>
+
+          <div className={`${styles.floating} ${styles.floatingThree}`}>
+            <Printer size={18} />
+            <span>3D Print</span>
+          </div>
+        </div>
       </section>
 
+      {/* ================= STATEMENT ================= */}
 
-      {/* TRAINING AREAS */}
-      <section
-        className={styles.section}
-        id="training"
-      >
+      <section className={styles.statement}>
+        <span>LEARN</span>
+        <i>→</i>
+        <span>DESIGN</span>
+        <i>→</i>
+        <span>BUILD</span>
+        <i>→</i>
+        <span>TEST</span>
+        <i>→</i>
+        <span>IMPROVE</span>
+      </section>
 
+      {/* ================= WHY TECHNICAL INSTITUTIONS ================= */}
+
+      <section className={styles.section}>
+        <div className={styles.twoColumn}>
+          <div>
+            <div className={styles.eyebrow}>
+              <span />
+              WHY TECHNICAL INSTITUTIONS
+            </div>
+
+            <h2>
+              Give students skills
+              <br />
+              they can <em>actually use.</em>
+            </h2>
+          </div>
+
+          <div className={styles.sectionText}>
+            <p>
+              Technical education becomes more valuable when
+              students get the opportunity to design, fabricate,
+              test and improve real products.
+            </p>
+
+            <p>
+              ShikshamDehi complements classroom learning with
+              practical, project-driven technology training.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= TRAINING AREAS ================= */}
+
+      <section className={styles.section} id="training">
         <div className={styles.sectionHead}>
-
           <div>
             <div className={styles.eyebrow}>
               <span />
@@ -211,189 +295,72 @@ export default function ITIPolytechnicPage() {
 
           <p>
             Training can be customized according to the department,
-            student level, available lab infrastructure and institutional
-            objectives.
+            student level, available lab infrastructure and
+            institutional objectives.
           </p>
-
         </div>
 
-
         <div className={styles.trainingGrid}>
-
           {trainingAreas.map(
             ({ icon: Icon, title, text }) => (
-
               <article
                 className={styles.trainingCard}
                 key={title}
               >
-
-                <div className={styles.icon}>
-                  <Icon size={24} />
+                <div className={styles.cardIcon}>
+                  <Icon size={26} />
                 </div>
 
                 <h3>{title}</h3>
 
                 <p>{text}</p>
 
-                <span className={styles.cardLine} />
-
+                <Link href="/contact">
+                  Discuss This Area
+                  <ArrowRight size={15} />
+                </Link>
               </article>
-
             )
           )}
-
         </div>
-
       </section>
 
+      {/* ================= PRACTICAL LEARNING ================= */}
 
-      {/* PROGRAM TYPES */}
-      <section className={styles.programBand}>
-
+      <section className={styles.darkBand}>
         <div className={styles.section}>
-
-          <div className={styles.sectionHead}>
-
+          <div className={styles.twoColumn}>
             <div>
               <div className={styles.eyebrow}>
                 <span />
-                PROGRAM FORMATS
+                PRACTICAL LEARNING
               </div>
 
               <h2>
-                From workshops
+                From classroom
                 <br />
-                to <em>complete programs.</em>
+                <em>to working prototype.</em>
               </h2>
             </div>
 
-            <p>
-              Choose a format based on your institution's requirements,
-              academic calendar and student skill level.
-            </p>
+            <div className={styles.sectionText}>
+              <p>
+                Students learn by creating. Every training program
+                can connect theory with practical activities,
+                experiments and real project development.
+              </p>
 
-          </div>
-
-
-          <div className={styles.programGrid}>
-
-            {programs.map((program) => (
-
-              <article
-                className={styles.programCard}
-                key={program.number}
-              >
-
-                <span className={styles.programNo}>
-                  {program.number}
-                </span>
-
-                <h3>{program.title}</h3>
-
-                <p>{program.text}</p>
-
-              </article>
-
-            ))}
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      {/* STUDENT OUTCOMES */}
-      <section className={styles.section}>
-
-        <div className={styles.outcomeGrid}>
-
-          <div>
-
-            <div className={styles.eyebrow}>
-              <span />
-              STUDENT OUTCOMES
+              <p>
+                The objective is simple: students should leave with
+                skills they can demonstrate, not just concepts they
+                can describe.
+              </p>
             </div>
-
-            <h2>
-              More than
-              <br />
-              <em>just certificates.</em>
-            </h2>
-
-            <p className={styles.lead}>
-              The focus is on practical capability—students should be able
-              to understand a problem, create a solution and demonstrate
-              what they have built.
-            </p>
-
           </div>
-
-
-          <div className={styles.outcomes}>
-
-            {[
-              'Create 3D models using CAD tools',
-              'Prepare designs for 3D printing',
-              'Operate and understand basic 3D printers',
-              'Build electronic circuits',
-              'Program Arduino-based systems',
-              'Work with sensors and automation',
-              'Build basic robotic prototypes',
-              'Document and present technical projects',
-            ].map((item) => (
-
-              <div
-                className={styles.outcome}
-                key={item}
-              >
-
-                <Check size={17} />
-
-                <span>{item}</span>
-
-              </div>
-
-            ))}
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      {/* PROJECT WORKFLOW */}
-      <section className={styles.workflowBand}>
-
-        <div className={styles.section}>
-
-          <div className={styles.workflowHead}>
-
-            <div className={styles.eyebrow}>
-              <span />
-              PROJECT-BASED LEARNING
-            </div>
-
-            <h2>
-              Idea to
-              <br />
-              <em>working prototype.</em>
-            </h2>
-
-          </div>
-
 
           <div className={styles.workflow}>
-
             {workflow.map((item, index) => (
-
-              <div
-                className={styles.workflowItem}
-                key={item}
-              >
-
+              <div className={styles.workflowItem} key={item}>
                 <span>
                   {String(index + 1).padStart(2, '0')}
                 </span>
@@ -401,129 +368,228 @@ export default function ITIPolytechnicPage() {
                 <b>{item}</b>
 
                 {index < workflow.length - 1 && (
-                  <ArrowRight size={16} />
+                  <i>→</i>
                 )}
-
               </div>
-
             ))}
-
           </div>
-
         </div>
-
       </section>
 
+      {/* ================= BENEFITS ================= */}
 
-      {/* INSTITUTION SUPPORT */}
       <section className={styles.section}>
-
-        <div className={styles.supportGrid}>
-
+        <div className={styles.twoColumn}>
           <div>
-
             <div className={styles.eyebrow}>
               <span />
-              INSTITUTION SUPPORT
+              WHAT STUDENTS CAN LEARN
             </div>
 
             <h2>
-              Build a stronger
+              Skills that
               <br />
-              <em>technical learning ecosystem.</em>
+              <em>create opportunities.</em>
             </h2>
-
           </div>
 
-
-          <div className={styles.supportList}>
-
-            {[
-              'Curriculum-aligned practical sessions',
-              'Hands-on student workshops',
-              'Lab-based training',
-              'Faculty & trainer enablement',
-              'Project and prototype support',
-              'Innovation challenges',
-              'Exhibition and demonstration support',
-              'Customized institutional programs',
-            ].map((item) => (
-
+          <div className={styles.benefitGrid}>
+            {benefits.map((benefit) => (
               <div
-                className={styles.supportItem}
-                key={item}
+                className={styles.benefit}
+                key={benefit}
               >
+                <span>✓</span>
+                <p>{benefit}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-                <Check size={16} />
+      {/* ================= INSTITUTION PROGRAM ================= */}
 
-                <span>{item}</span>
-
+      <section className={styles.institutionBand}>
+        <div className={styles.section}>
+          <div className={styles.institutionGrid}>
+            <div>
+              <div className={styles.eyebrow}>
+                <span />
+                INSTITUTIONAL PROGRAMS
               </div>
 
-            ))}
+              <h2>
+                Training designed
+                <br />
+                <em>for your institution.</em>
+              </h2>
 
+              <p className={styles.institutionText}>
+                We can design short-term workshops, semester-based
+                programs, bootcamps, lab activation programs and
+                project mentoring according to your requirements.
+              </p>
+
+              <div className={styles.institutionActions}>
+                <Link href="/contact" className={styles.primary}>
+                  Request a Program
+                  <ArrowRight size={18} />
+                </Link>
+
+                <Link
+                  href="/programs"
+                  className={styles.secondary}
+                >
+                  View Programs
+                </Link>
+              </div>
+            </div>
+
+            <div className={styles.programCard}>
+              <div className={styles.programLabel}>
+                POSSIBLE FORMAT
+              </div>
+
+              <h3>Flexible Learning Models</h3>
+
+              <div className={styles.programList}>
+                <div>
+                  <strong>01</strong>
+                  <span>1–2 Day Workshop</span>
+                </div>
+
+                <div>
+                  <strong>02</strong>
+                  <span>Technology Bootcamp</span>
+                </div>
+
+                <div>
+                  <strong>03</strong>
+                  <span>Semester Program</span>
+                </div>
+
+                <div>
+                  <strong>04</strong>
+                  <span>Project Mentoring</span>
+                </div>
+
+                <div>
+                  <strong>05</strong>
+                  <span>Faculty Development</span>
+                </div>
+              </div>
+            </div>
           </div>
-
         </div>
-
       </section>
 
+      {/* ================= ABOUT SHIKSHAMDEHI ================= */}
 
-      {/* CTA */}
+      <section className={styles.section}>
+        <div className={styles.twoColumn}>
+          <div>
+            <div className={styles.eyebrow}>
+              <span />
+              WHY SHIKSHAMDEHI
+            </div>
+
+            <h2>
+              Experience
+              <br />
+              meets <em>education.</em>
+            </h2>
+          </div>
+
+          <div className={styles.sectionText}>
+            <p>
+              ShikshamDehi brings practical experience in 3D design,
+              3D printing, digital fabrication and emerging
+              technologies into technical education.
+            </p>
+
+            <p>
+              Our approach combines{' '}
+              <strong>
+                design + electronics + coding + fabrication +
+                robotics
+              </strong>{' '}
+              into practical learning experiences.
+            </p>
+
+            <div className={styles.quote}>
+              “Don&apos;t just learn technology.
+              <br />
+              <strong>Learn to build with it.</strong>”
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= CTA ================= */}
+
       <section className={styles.cta}>
+        <div className={styles.ctaGlow} />
 
-        <div className={styles.ctaInner}>
+        <div className={styles.eyebrow}>
+          <span />
+          PARTNER WITH SHIKSHAMDEHI
+        </div>
 
-          <div className={styles.ctaIcon}>
-            <GraduationCap size={28} />
-          </div>
+        <h2>
+          Ready to build
+          <br />
+          <em>better technical skills?</em>
+        </h2>
 
-          <div className={styles.eyebrow}>
-            <span />
-            FOR ITIs & POLYTECHNICS
-          </div>
+        <p>
+          Tell us about your ITI, Polytechnic, department,
+          students and training requirements.
+        </p>
 
-          <h2>
-            Ready to build
-            <br />
-            <em>industry-ready skills?</em>
-          </h2>
-
-          <p>
-            Tell us about your institution, students and training
-            requirements. We can design a practical program around them.
-          </p>
-
-          <Link
-            className={styles.primary}
-            href="/contact"
-          >
-            Discuss Your Training Program
-            <ArrowRight size={17} />
+        <div className={styles.ctaActions}>
+          <Link href="/contact" className={styles.primary}>
+            Contact ShikshamDehi
+            <ArrowRight size={18} />
           </Link>
 
+          <a
+            href="https://wa.me/919999999999"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.secondary}
+          >
+            WhatsApp Us
+          </a>
         </div>
 
+        <div className={styles.ctaTags}>
+          <span>ITI</span>
+          <span>Polytechnic</span>
+          <span>Engineering</span>
+          <span>Technical Institutes</span>
+          <span>Skill Development</span>
+        </div>
       </section>
 
+      {/* ================= FOOTER ================= */}
 
-      {/* FOOTER */}
       <footer className={styles.footer}>
+        <Link href="/" className={styles.brand}>
+          <span className={styles.brandMark}>SD</span>
 
-        <Link href="/">
-          Shiksham<span>Dehi</span>
+          <span>
+            Shiksham<span>Dehi</span>
+          </span>
         </Link>
 
-        <span>
-          Future skills. Real projects.
-        </span>
+        <p>
+          STEM Education • Digital Manufacturing • Future Skills
+        </p>
 
         <small>
-          © 2026 ShikshamDehi
+          © 2026 ShikshamDehi. All rights reserved.
         </small>
-
       </footer>
-
     </main>
   );
 }
