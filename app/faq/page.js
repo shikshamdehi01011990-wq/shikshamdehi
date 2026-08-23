@@ -2,10 +2,8 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import {
-  ArrowRight,
-  ChevronDown,
-} from 'lucide-react';
+import { ArrowRight, ChevronDown } from 'lucide-react';
+import styles from './faq.module.css';
 
 const faqs = [
   {
@@ -74,29 +72,31 @@ export default function FAQPage() {
   const [active, setActive] = useState(null);
 
   const toggle = (index) => {
-    setActive(active === index ? null : index);
+    setActive((current) => (current === index ? null : index));
   };
 
   return (
-    <main className="faqPage">
+    <main className={styles.faqPage}>
+      {/* ================= NAVBAR ================= */}
 
-      <header className="faqNav">
-        <Link href="/" className="brand">
-          <span className="brandMark">SD</span>
+      <header className={styles.faqNav}>
+        <Link href="/" className={styles.brand}>
+          <span className={styles.brandMark}>SD</span>
 
           <span>
             Shiksham<span>Dehi</span>
           </span>
         </Link>
 
-        <Link href="/" className="back">
+        <Link href="/" className={styles.back}>
           ← Back to Home
         </Link>
       </header>
 
-      <section className="faqHero">
+      {/* ================= HERO ================= */}
 
-        <div className="eyebrow">
+      <section className={styles.faqHero}>
+        <div className={styles.eyebrow}>
           <span />
           FREQUENTLY ASKED QUESTIONS
         </div>
@@ -108,56 +108,61 @@ export default function FAQPage() {
         </h1>
 
         <p>
-          Find answers about our technology training,
-          institutional programs, workshops and project-based learning.
+          Find answers about our technology training, institutional
+          programs, workshops and project-based learning.
         </p>
-
       </section>
 
-      <section className="faqList">
+      {/* ================= FAQ LIST ================= */}
 
-        {faqs.map((faq, index) => (
-          <div
-            className={`faqItem ${
-              active === index ? 'active' : ''
-            }`}
-            key={faq.question}
-          >
+      <section className={styles.faqList}>
+        {faqs.map((faq, index) => {
+          const isActive = active === index;
 
-            <button
-              className="faqQuestion"
-              onClick={() => toggle(index)}
-              aria-expanded={active === index}
+          return (
+            <div
+              className={`${styles.faqItem} ${
+                isActive ? styles.active : ''
+              }`}
+              key={faq.question}
             >
+              <button
+                type="button"
+                className={styles.faqQuestion}
+                onClick={() => toggle(index)}
+                aria-expanded={isActive}
+                aria-controls={`faq-answer-${index}`}
+              >
+                <div>
+                  <span className={styles.faqCategory}>
+                    {faq.category}
+                  </span>
 
-              <div>
-                <span className="faqCategory">
-                  {faq.category}
+                  <h2>{faq.question}</h2>
+                </div>
+
+                <span className={styles.faqArrow}>
+                  <ChevronDown size={20} />
                 </span>
+              </button>
 
-                <h2>{faq.question}</h2>
-              </div>
-
-              <span className="faqArrow">
-                <ChevronDown size={20} />
-              </span>
-
-            </button>
-
-            {active === index && (
-              <div className="faqAnswer">
-                <p>{faq.answer}</p>
-              </div>
-            )}
-
-          </div>
-        ))}
-
+              {isActive && (
+                <div
+                  id={`faq-answer-${index}`}
+                  className={styles.faqAnswer}
+                >
+                  <p>{faq.answer}</p>
+                </div>
+              )}
+            </div>
+          );
+        })}
       </section>
 
-      <section className="faqCTA">
+      {/* ================= CTA ================= */}
 
-        <div className="eyebrow">
+      <section className={styles.faqCTA}>
+        <div className={styles.eyebrow}>
           <span />
           STILL HAVE QUESTIONS?
         </div>
@@ -172,21 +177,21 @@ export default function FAQPage() {
           Tell us what you want to build, teach or learn.
         </p>
 
-        <Link href="/contact" className="primary">
+        <Link href="/contact" className={styles.primary}>
           Contact ShikshamDehi
           <ArrowRight size={18} />
         </Link>
-
       </section>
 
-      <footer className="faqFooter">
+      {/* ================= FOOTER ================= */}
+
+      <footer className={styles.faqFooter}>
         <span>ShikshamDehi</span>
 
         <small>
           STEM Education • Digital Manufacturing • Future Skills
         </small>
       </footer>
-
     </main>
   );
 }
