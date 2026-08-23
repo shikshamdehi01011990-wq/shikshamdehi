@@ -3,39 +3,65 @@
   --card: #0e131a;
   --card2: #0b1016;
   --line: #1c2630;
+  --lineHover: #3b4a55;
   --text: #f4f7f8;
   --muted: #9da8af;
   --lime: #c7ff3d;
 
   min-height: 100vh;
-  background: var(--bg);
+
+  background:
+    radial-gradient(
+      circle at 85% 8%,
+      rgba(199, 255, 61, 0.045),
+      transparent 28%
+    ),
+    var(--bg);
+
   color: var(--text);
-  font-family: Arial, Helvetica, sans-serif;
+
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+  overflow-x: hidden;
 }
 
-/* NAV */
+/* =========================================================
+   NAVBAR
+========================================================= */
 
 .nav {
   width: min(1120px, calc(100% - 40px));
+
   margin: 0 auto;
+
   padding: 25px 0;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
+
   gap: 25px;
+
+  position: relative;
+  z-index: 20;
 }
 
 .brand {
   display: flex;
   align-items: center;
+
   gap: 11px;
 
   color: var(--text);
+
   text-decoration: none;
 
   font-size: 20px;
   font-weight: 800;
+
   white-space: nowrap;
 }
 
@@ -53,61 +79,85 @@
   border-radius: 10px;
 
   background: var(--lime);
+
   color: #080b10;
 
   font-size: 12px;
   font-weight: 900;
+
+  flex-shrink: 0;
 }
 
 .navLinks {
   display: flex;
   align-items: center;
-  gap: 24px;
+
+  gap: 22px;
 }
 
 .navLinks a {
   color: var(--muted);
+
   text-decoration: none;
 
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
 
-  transition: color 0.2s ease;
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .navLinks a:hover {
   color: var(--text);
+
+  transform: translateY(-1px);
 }
 
 .navCta {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+
   gap: 8px;
 
   padding: 11px 15px;
 
   border: 1px solid var(--line);
+
   border-radius: 9px;
 
   color: var(--text);
+
   text-decoration: none;
 
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 800;
 
   white-space: nowrap;
+
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .navCta:hover {
   border-color: var(--lime);
+
   color: var(--lime);
+
+  transform: translateY(-1px);
 }
 
-/* COMMON */
+/* =========================================================
+   COMMON
+========================================================= */
 
 .eyebrow {
   display: flex;
   align-items: center;
+
   gap: 9px;
 
   color: var(--lime);
@@ -116,6 +166,8 @@
   font-weight: 800;
 
   letter-spacing: 0.15em;
+
+  line-height: 1.4;
 }
 
 .eyebrow > span {
@@ -125,19 +177,28 @@
   border-radius: 50%;
 
   background: var(--lime);
+
+  box-shadow:
+    0 0 0 4px rgba(199, 255, 61, 0.06);
+
+  flex-shrink: 0;
 }
 
 .section {
   width: min(1120px, calc(100% - 40px));
+
   margin: 0 auto;
 
   padding: 100px 0;
 }
 
-/* HERO */
+/* =========================================================
+   HERO
+========================================================= */
 
 .hero {
   width: min(1120px, calc(100% - 40px));
+
   min-height: 650px;
 
   margin: 0 auto;
@@ -147,66 +208,76 @@
   justify-content: center;
 
   position: relative;
+
   overflow: hidden;
 }
 
 .heroGlow {
   position: absolute;
 
-  width: 550px;
-  height: 550px;
+  width: 580px;
+  height: 580px;
 
-  right: -180px;
+  right: -210px;
   top: 20px;
 
   border-radius: 50%;
 
-  background: rgba(199, 255, 61, 0.08);
+  background:
+    radial-gradient(
+      circle,
+      rgba(199, 255, 61, 0.11),
+      rgba(199, 255, 61, 0.03) 45%,
+      transparent 70%
+    );
 
-  filter: blur(90px);
+  filter: blur(35px);
 
   pointer-events: none;
 }
 
 .hero h1 {
+  max-width: 900px;
+
   margin: 22px 0;
 
-  max-width: 850px;
+  position: relative;
 
   font-size: clamp(60px, 9vw, 108px);
 
   line-height: 0.88;
 
   letter-spacing: -0.07em;
-
-  position: relative;
 }
 
-.hero h1 em,
-.section h2 em,
-.workflowIntro h2 em,
-.skillsBlock h2 em,
-.institutionGrid h2 em,
-.cta h2 em {
+.hero h1 em {
   color: var(--lime);
+
   font-style: normal;
 }
 
 .hero > p {
   max-width: 720px;
 
+  margin: 0;
+
   color: var(--muted);
 
   font-size: 18px;
+
   line-height: 1.75;
 }
 
 .heroActions {
   display: flex;
   align-items: center;
+
   gap: 12px;
 
   margin-top: 30px;
+
+  position: relative;
+  z-index: 2;
 }
 
 .primary,
@@ -214,6 +285,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+
   gap: 9px;
 
   padding: 14px 19px;
@@ -224,33 +296,50 @@
 
   font-size: 13px;
   font-weight: 800;
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease;
 }
 
 .primary {
   background: var(--lime);
+
   color: #080b10;
+
+  border: 1px solid var(--lime);
 }
 
 .primary:hover {
   transform: translateY(-2px);
+
+  box-shadow:
+    0 10px 30px rgba(199, 255, 61, 0.12);
 }
 
 .secondary {
   border: 1px solid var(--line);
 
-  color: var(--text);
-
   background: transparent;
+
+  color: var(--text);
 }
 
 .secondary:hover {
   border-color: var(--lime);
+
   color: var(--lime);
+
+  transform: translateY(-2px);
 }
+
+/* HERO STATS */
 
 .heroStats {
   display: flex;
   align-items: center;
+
   gap: 25px;
 
   margin-top: 55px;
@@ -259,6 +348,7 @@
 .heroStats div {
   display: flex;
   align-items: center;
+
   gap: 10px;
 }
 
@@ -266,12 +356,15 @@
   color: var(--lime);
 
   font-size: 21px;
+
+  letter-spacing: -0.03em;
 }
 
 .heroStats span {
   color: var(--muted);
 
-  font-size: 11px;
+  font-size: 10px;
+
   line-height: 1.4;
 }
 
@@ -282,10 +375,13 @@
   background: var(--line);
 }
 
-/* SECTION HEAD */
+/* =========================================================
+   SECTION HEAD
+========================================================= */
 
 .sectionHead {
   display: grid;
+
   grid-template-columns: 1fr 0.8fr;
 
   gap: 80px;
@@ -308,6 +404,15 @@
   letter-spacing: -0.055em;
 }
 
+.sectionHead h2 em,
+.workflowIntro h2 em,
+.skillsBlock h2 em,
+.institutionGrid h2 em {
+  color: var(--lime);
+
+  font-style: normal;
+}
+
 .sectionHead > p,
 .workflowIntro > p,
 .skillsBlock p,
@@ -316,11 +421,14 @@
 
   color: var(--muted);
 
-  font-size: 16px;
+  font-size: 15px;
+
   line-height: 1.75;
 }
 
-/* PROJECT GRID */
+/* =========================================================
+   PROJECT GRID
+========================================================= */
 
 .projectGrid {
   display: grid;
@@ -331,22 +439,35 @@
 }
 
 .projectCard {
+  min-width: 0;
+
   padding: 28px;
 
   border: 1px solid var(--line);
 
   border-radius: 18px;
 
-  background: var(--card);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.015),
+      transparent 45%
+    ),
+    var(--card);
 
   transition:
-    transform 0.2s ease,
-    border-color 0.2s ease;
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .projectCard:hover {
-  transform: translateY(-4px);
-  border-color: #40505d;
+  transform: translateY(-5px);
+
+  border-color: var(--lineHover);
+
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.2);
 }
 
 .projectTop {
@@ -362,6 +483,8 @@
 
   font-size: 11px;
   font-weight: 800;
+
+  letter-spacing: 0.08em;
 }
 
 .projectIcon {
@@ -376,6 +499,16 @@
   background: rgba(199, 255, 61, 0.08);
 
   color: var(--lime);
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.projectCard:hover .projectIcon {
+  background: rgba(199, 255, 61, 0.13);
+
+  transform: rotate(-3deg);
 }
 
 .projectCategory {
@@ -390,12 +523,18 @@
 .projectCard h3 {
   margin: 10px 0;
 
+  color: var(--text);
+
   font-size: 22px;
 
-  letter-spacing: -0.02em;
+  line-height: 1.2;
+
+  letter-spacing: -0.025em;
 }
 
 .projectCard > p {
+  min-height: 66px;
+
   margin: 0 0 22px;
 
   color: var(--muted);
@@ -404,6 +543,8 @@
 
   line-height: 1.7;
 }
+
+/* SKILLS TAGS */
 
 .skills {
   display: flex;
@@ -419,15 +560,25 @@
 
   border-radius: 6px;
 
+  background: rgba(255, 255, 255, 0.01);
+
   color: #89959d;
 
   font-size: 10px;
+
+  line-height: 1;
+
+  white-space: nowrap;
 }
+
+/* PROJECT BOTTOM */
 
 .projectBottom {
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  gap: 15px;
 
   margin-top: 25px;
 
@@ -448,6 +599,7 @@
 .projectBottom a {
   display: inline-flex;
   align-items: center;
+
   gap: 6px;
 
   color: var(--lime);
@@ -456,19 +608,39 @@
 
   font-size: 11px;
   font-weight: 800;
+
+  white-space: nowrap;
+
+  transition:
+    gap 0.2s ease,
+    color 0.2s ease;
 }
 
-/* WORKFLOW */
+.projectBottom a:hover {
+  gap: 9px;
+}
+
+/* =========================================================
+   WORKFLOW
+========================================================= */
 
 .workflowSection {
-  background: var(--card2);
+  background:
+    radial-gradient(
+      circle at 75% 50%,
+      rgba(199, 255, 61, 0.035),
+      transparent 35%
+    ),
+    var(--card2);
 
   border-top: 1px solid var(--line);
+
   border-bottom: 1px solid var(--line);
 }
 
 .workflowIntro {
   display: grid;
+
   grid-template-columns: 0.8fr 1fr;
 
   gap: 100px;
@@ -496,12 +668,23 @@
   border-radius: 14px;
 
   background: var(--card);
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.step:hover {
+  transform: translateY(-3px);
+
+  border-color: var(--lineHover);
 }
 
 .step > span {
   color: var(--lime);
 
   font-size: 11px;
+
   font-weight: 800;
 }
 
@@ -509,6 +692,8 @@
   margin: 55px 0 8px;
 
   font-size: 17px;
+
+  letter-spacing: -0.02em;
 }
 
 .step p {
@@ -521,7 +706,9 @@
   line-height: 1.6;
 }
 
-/* SKILLS */
+/* =========================================================
+   SKILLS
+========================================================= */
 
 .skillsBlock {
   display: grid;
@@ -550,7 +737,10 @@
 .skillList div {
   display: flex;
   align-items: center;
+
   gap: 12px;
+
+  min-width: 0;
 
   padding: 17px;
 
@@ -559,24 +749,49 @@
   border-radius: 10px;
 
   background: var(--card);
+
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.skillList div:hover {
+  border-color: var(--lineHover);
+
+  transform: translateY(-2px);
 }
 
 .skillList strong {
   color: var(--lime);
 
   font-size: 10px;
+
+  flex-shrink: 0;
 }
 
 .skillList span {
+  color: var(--text);
+
   font-size: 12px;
+
+  line-height: 1.4;
 }
 
-/* INSTITUTIONS */
+/* =========================================================
+   INSTITUTIONS
+========================================================= */
 
 .institutionSection {
-  background: #0b1016;
+  background:
+    radial-gradient(
+      circle at 15% 50%,
+      rgba(199, 255, 61, 0.035),
+      transparent 35%
+    ),
+    #0b1016;
 
   border-top: 1px solid var(--line);
+
   border-bottom: 1px solid var(--line);
 }
 
@@ -603,13 +818,23 @@
 
   border-radius: 18px;
 
-  background: var(--card);
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.015),
+      transparent 50%
+    ),
+    var(--card);
+
+  box-shadow:
+    0 25px 70px rgba(0, 0, 0, 0.2);
 }
 
 .suitableCard > span {
   color: var(--lime);
 
   font-size: 9px;
+
   font-weight: 800;
 
   letter-spacing: 0.15em;
@@ -618,6 +843,7 @@
 .suitableCard > div {
   display: flex;
   align-items: center;
+
   gap: 15px;
 
   padding: 17px 0;
@@ -633,13 +859,21 @@
   color: #56636c;
 
   font-size: 10px;
+
+  flex-shrink: 0;
 }
 
 .suitableCard b {
+  color: var(--text);
+
   font-size: 13px;
+
+  font-weight: 700;
 }
 
-/* CTA */
+/* =========================================================
+   CTA
+========================================================= */
 
 .cta {
   padding: 120px 20px;
@@ -647,6 +881,7 @@
   text-align: center;
 
   position: relative;
+
   overflow: hidden;
 
   border-top: 1px solid var(--line);
@@ -655,8 +890,8 @@
 .ctaGlow {
   position: absolute;
 
-  width: 500px;
-  height: 500px;
+  width: 520px;
+  height: 520px;
 
   left: 50%;
   top: 50%;
@@ -665,25 +900,46 @@
 
   border-radius: 50%;
 
-  background: rgba(199, 255, 61, 0.08);
+  background:
+    radial-gradient(
+      circle,
+      rgba(199, 255, 61, 0.1),
+      transparent 65%
+    );
 
-  filter: blur(100px);
+  filter: blur(50px);
 
   pointer-events: none;
 }
 
+.cta .eyebrow {
+  justify-content: center;
+
+  position: relative;
+  z-index: 1;
+}
+
 .cta h2 {
+  max-width: 800px;
+
   margin: 20px auto;
 
-  max-width: 800px;
+  position: relative;
+  z-index: 1;
+
+  color: var(--text);
 
   font-size: clamp(44px, 6vw, 78px);
 
   line-height: 0.95;
 
   letter-spacing: -0.055em;
+}
 
-  position: relative;
+.cta h2 em {
+  color: var(--lime);
+
+  font-style: normal;
 }
 
 .cta > p {
@@ -691,22 +947,26 @@
 
   margin: 0 auto;
 
+  position: relative;
+  z-index: 1;
+
   color: var(--muted);
 
   font-size: 15px;
 
   line-height: 1.7;
-
-  position: relative;
 }
 
 .cta .heroActions {
   justify-content: center;
 
   position: relative;
+  z-index: 1;
 }
 
-/* FOOTER */
+/* =========================================================
+   FOOTER
+========================================================= */
 
 .footer {
   width: min(1120px, calc(100% - 40px));
@@ -729,12 +989,16 @@
 .footerBrand {
   display: flex;
   align-items: center;
+
   gap: 10px;
 
   color: var(--text);
 
   font-size: 17px;
+
   font-weight: 800;
+
+  white-space: nowrap;
 }
 
 .footerBrand > span:last-child > span {
@@ -745,17 +1009,43 @@
   margin: 0;
 
   font-size: 11px;
+
+  text-align: center;
 }
 
 .footer small {
   color: #56636c;
 
   font-size: 10px;
+
+  white-space: nowrap;
 }
 
-/* TABLET */
+/* =========================================================
+   TABLET
+========================================================= */
 
-@media (max-width: 950px) {
+@media (max-width: 1050px) {
+  .navLinks {
+    gap: 14px;
+  }
+
+  .navLinks a {
+    font-size: 10px;
+  }
+
+  .sectionHead,
+  .workflowIntro {
+    gap: 50px;
+  }
+
+  .skillsBlock,
+  .institutionGrid {
+    gap: 60px;
+  }
+}
+
+@media (max-width: 900px) {
   .navLinks {
     display: none;
   }
@@ -774,11 +1064,15 @@
   }
 }
 
-/* MOBILE */
+/* =========================================================
+   MOBILE
+========================================================= */
 
 @media (max-width: 650px) {
   .nav {
     width: min(100% - 28px, 1120px);
+
+    padding: 18px 0;
   }
 
   .navCta {
@@ -797,19 +1091,27 @@
 
   .hero h1 {
     font-size: 56px;
+
+    line-height: 0.9;
   }
 
   .hero > p {
     font-size: 15px;
+
+    line-height: 1.7;
   }
 
   .heroActions {
     align-items: stretch;
+
     flex-direction: column;
+
+    gap: 10px;
   }
 
   .heroActions a {
     width: 100%;
+
     box-sizing: border-box;
   }
 
@@ -831,31 +1133,72 @@
     padding: 70px 0;
   }
 
+  .sectionHead {
+    margin-bottom: 40px;
+  }
+
   .sectionHead h2,
   .workflowIntro h2,
   .skillsBlock h2,
   .institutionGrid h2 {
     font-size: 45px;
+
+    line-height: 0.95;
+  }
+
+  .sectionHead > p,
+  .workflowIntro > p,
+  .skillsBlock p,
+  .institutionGrid p {
+    font-size: 14px;
   }
 
   .projectGrid {
     grid-template-columns: 1fr;
   }
 
+  .projectCard {
+    padding: 22px;
+  }
+
+  .projectCard > p {
+    min-height: auto;
+  }
+
+  .projectBottom {
+    align-items: flex-start;
+  }
+
   .steps {
     grid-template-columns: 1fr;
+
+    gap: 10px;
   }
 
   .step {
     min-height: auto;
+
+    padding: 20px;
   }
 
   .step h3 {
     margin-top: 30px;
   }
 
+  .skillsBlock {
+    gap: 45px;
+  }
+
   .skillList {
     grid-template-columns: 1fr;
+  }
+
+  .suitableCard {
+    padding: 20px;
+  }
+
+  .suitableCard > div {
+    padding: 15px 0;
   }
 
   .cta {
@@ -866,8 +1209,57 @@
     font-size: 46px;
   }
 
+  .cta > p {
+    font-size: 14px;
+  }
+
   .footer {
     align-items: flex-start;
+
     flex-direction: column;
+
+    padding: 30px 0;
+  }
+
+  .footer p {
+    text-align: left;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 400px) {
+  .brand {
+    font-size: 18px;
+  }
+
+  .brandMark {
+    width: 35px;
+    height: 35px;
+  }
+
+  .hero h1 {
+    font-size: 50px;
+  }
+
+  .sectionHead h2,
+  .workflowIntro h2,
+  .skillsBlock h2,
+  .institutionGrid h2 {
+    font-size: 40px;
+  }
+
+  .projectCard {
+    padding: 20px;
+  }
+
+  .projectCard h3 {
+    font-size: 20px;
+  }
+
+  .cta h2 {
+    font-size: 40px;
   }
 }
