@@ -185,7 +185,7 @@ export default function ProjectsPage() {
         <h1>
           Learn by
           <br />
-          <em>building.</em>
+          <em>building real projects.</em>
         </h1>
 
         <p>
