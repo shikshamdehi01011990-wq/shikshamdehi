@@ -1,11 +1,11 @@
 export default function robots() {
+  const baseUrl = 'https://shikshamdehi-cyan.vercel.app';
+
   return {
-    rules: [
-      {
-        userAgent: '*',
-        allow: '/',
-      },
-    ],
-    sitemap: 'https://shikshamdehi-cyan.vercel.app/sitemap.xml',
+    rules: {
+      userAgent: '*',
+      allow: '/',
+    },
+    sitemap: `${baseUrl}/sitemap.xml`,
   };
 }
