@@ -4,130 +4,119 @@ import {
   ArrowRight,
   Bot,
   Box,
+  Building2,
   Check,
   CircuitBoard,
+  GraduationCap,
   Lightbulb,
   Printer,
-  Radar,
-  ShieldCheck,
+  School,
   Sparkles,
   Wrench,
-  Zap,
+  Factory,
+  Users,
 } from 'lucide-react';
 
 import styles from './programs.module.css';
 
-const modules = [
+const programs = [
   {
     n: '01',
-    icon: CircuitBoard,
-    title: 'Basic Electronics',
-    text: 'Components, circuits, breadboards and safe low-voltage making.',
-    active: true,
+    icon: School,
+    title: 'School STEM Programs',
+    text: 'Hands-on technology programs designed for school students, from foundational making to advanced project development.',
+    items: [
+      'Classes 6–8 Maker Foundation',
+      'Classes 9–10 STEM & Robotics',
+      'Classes 11–12 Advanced Projects',
+      '3D Design & 3D Printing',
+      'Arduino & Electronics',
+      'Robotics & Innovation',
+    ],
   },
   {
     n: '02',
-    icon: Zap,
-    title: 'Arduino Fundamentals',
-    text: 'Inputs, outputs, coding and interactive electronics.',
+    icon: Lightbulb,
+    title: 'ATL & Maker Lab Programs',
+    text: 'Structured programs that help schools turn their labs into active learning and innovation spaces.',
+    items: [
+      'ATL Lab Sessions',
+      'Maker Lab Activities',
+      'Project-Based Learning',
+      'Teacher Training',
+      'Innovation Challenges',
+      'Exhibition & Project Support',
+    ],
   },
   {
     n: '03',
-    icon: Radar,
-    title: 'Sensors & Automation',
-    text: 'Sense the environment and turn data into action.',
+    icon: Factory,
+    title: 'ITI & Polytechnic Training',
+    text: 'Practical technical training focused on 3D design, additive manufacturing and industry-relevant prototyping skills.',
+    items: [
+      '3D CAD Design',
+      '3D Printing',
+      'Product Design',
+      'Rapid Prototyping',
+      'Design for Manufacturing',
+      'Hands-on Technical Projects',
+    ],
   },
   {
     n: '04',
+    icon: GraduationCap,
+    title: 'College & University Programs',
+    text: 'Advanced training for students and faculty who want to develop practical digital manufacturing and prototyping skills.',
+    items: [
+      'Advanced 3D Design',
+      'Additive Manufacturing',
+      '3D Printing Applications',
+      'Robotics Projects',
+      'Product Prototyping',
+      'Faculty Training',
+    ],
+  },
+];
+
+const technologyPrograms = [
+  {
     icon: Box,
-    title: '3D Design',
-    text: 'Measure, model and convert ideas into digital objects.',
+    title: '3D Design & CAD',
+    text: 'Learn how to transform ideas into accurate digital 3D models ready for prototyping and manufacturing.',
   },
   {
-    n: '05',
     icon: Printer,
     title: '3D Printing',
-    text: 'Slice, print, test and troubleshoot physical prototypes.',
+    text: 'Understand the complete workflow from digital model and slicing to printing, testing and finishing.',
   },
   {
-    n: '06',
+    icon: CircuitBoard,
+    title: 'Arduino & Electronics',
+    text: 'Build practical electronic systems using Arduino, sensors, inputs, outputs and basic programming.',
+  },
+  {
     icon: Bot,
-    title: 'Simple Robotics',
-    text: 'Motors, drivers, chassis and Arduino-controlled robots.',
-  },
-  {
-    n: '07',
-    icon: Wrench,
-    title: 'Integrated Projects',
-    text: 'Combine electronics, sensors, 3D printing and robotics.',
-  },
-  {
-    n: '08',
-    icon: Sparkles,
-    title: 'Innovation Challenge',
-    text: 'Identify a real problem and build a working prototype.',
+    title: 'Robotics & Automation',
+    text: 'Design and build robots using motors, sensors, controllers and mechanical components.',
   },
 ];
 
-const sessions = [
-  [
-    '01',
-    'Electricity & Safety',
-    'Voltage/current ka basic idea, power source, open vs closed circuit aur safe low-voltage practices.',
-    'Battery + LED observation',
-  ],
-  [
-    '02',
-    'Know Your Components',
-    'LED, resistor, push button, switch, battery, jumper wire, breadboard aur buzzer ko identify karna.',
-    'Component identification challenge',
-  ],
-  [
-    '03',
-    'Breadboard Mastery',
-    'Breadboard ke rows, power rails, component placement aur jumper connections samajhna.',
-    'LED ON/OFF circuit',
-  ],
-  [
-    '04',
-    'Switch & Control',
-    'Input aur output ka concept: button press karne par circuit ka response.',
-    'Push Button LED',
-  ],
-  [
-    '05',
-    'Buzzer & Mini Alarm',
-    'Simple warning system design aur circuit testing.',
-    'Mini Door Alarm',
-  ],
-  [
-    '06',
-    'Electronics Challenge',
-    'Problem → circuit diagram → build → test → improve → explain.',
-    'School Warning System',
-  ],
+const formats = [
+  'Regular Weekly Programs',
+  'One-Day Workshops',
+  'Multi-Day Bootcamps',
+  'Summer & Holiday Programs',
+  'Teacher & Faculty Training',
+  'Project-Based Training',
 ];
 
-const kit = [
-  'Breadboard',
-  'LEDs',
-  'Resistors – multiple values',
-  'Push buttons & switches',
-  'Jumper wires',
-  'Buzzer',
-  'Battery holder / low-voltage DC supply',
-  'Batteries',
-  'Shared multimeter',
-  'Component storage box',
-];
-
-const outcomes = [
-  'Basic components identify karna',
-  'Breadboard par simple circuit banana',
-  'LED, switch aur buzzer use karna',
-  'Input → Output ka basic concept samajhna',
-  'Circuit ko test aur troubleshoot karna',
-  'Apne prototype ko explain karna',
+const reasons = [
+  '16+ years of hands-on 3D Design & 3D Printing experience',
+  'Project-based and practical learning approach',
+  'Programs adaptable to different age groups and institutions',
+  'Focus on real-world skills instead of theory alone',
+  'Support for school projects, exhibitions and innovation challenges',
+  'Training designed for both beginners and advanced learners',
 ];
 
 export default function ProgramsPage() {
@@ -154,7 +143,7 @@ export default function ProgramsPage() {
 
         <div className={styles.eyebrow}>
           <span />
-          CLASS 6–8 • 1-YEAR MAKER PROGRAM
+          TECHNOLOGY EDUCATION • TRAINING • INNOVATION
         </div>
 
         <h1>
@@ -164,192 +153,299 @@ export default function ProgramsPage() {
         </h1>
 
         <p>
-          ShikshamDehi Young Maker Program students ko electronics, Arduino,
-          sensors, 3D design, 3D printing aur robotics ke through real-world
-          making skills develop karata hai.
+          Practical technology education and training in 3D Design, 3D
+          Printing, Arduino, Electronics, Robotics, IoT and emerging
+          technologies — from school students to technical institutions.
         </p>
 
         <div className={styles.heroMeta}>
           <span>
-            <strong>40–48</strong> Sessions
+            <strong>16+</strong> Years 3D Design Experience
           </span>
 
           <i />
 
           <span>
-            <strong>60–90</strong> Min / Session
+            <strong>100%</strong> Project-Based Learning
           </span>
 
           <i />
 
           <span>
-            <strong>70%</strong> Hands-on
+            <strong>4+</strong> Institution Categories
           </span>
         </div>
       </section>
 
-      {/* MODULES */}
+      {/* PROGRAM CATEGORIES */}
       <section className={styles.section}>
         <div className={styles.sectionHead}>
           <div>
-            <div className={styles.eyebrow}>THE LEARNING JOURNEY</div>
+            <div className={styles.eyebrow}>WHO WE TRAIN</div>
 
             <h2>
-              8 modules.
+              Programs for
               <br />
-              <em>One maker mindset.</em>
+              <em>every learner.</em>
             </h2>
           </div>
 
           <p>
-            Concepts ko isolated subjects ki tarah nahi, balki ek connected
-            journey ki tarah sikhaya jata hai: electronics se Arduino, sensors
-            se automation, aur 3D design se robotics tak.
+            From young makers in schools to technical students in ITIs,
+            polytechnics and colleges, our programs are designed around
+            practical skills, real projects and measurable outcomes.
           </p>
         </div>
 
         <div className={styles.moduleGrid}>
-          {modules.map(({ n, icon: Icon, title, text, active }) => (
-            <article
-              className={`${styles.module} ${
-                active ? styles.active : ''
-              }`}
-              key={n}
-            >
-              <div className={styles.moduleTop}>
-                <span>{n}</span>
-                <Icon size={21} />
-              </div>
+          {programs.map(
+            ({ n, icon: Icon, title, text, items }) => (
+              <article className={styles.module} key={n}>
+                <div className={styles.moduleTop}>
+                  <span>{n}</span>
+                  <Icon size={22} />
+                </div>
 
-              <h3>{title}</h3>
-              <p>{text}</p>
-            </article>
-          ))}
+                <h3>{title}</h3>
+
+                <p>{text}</p>
+
+                <div
+                  style={{
+                    marginTop: '22px',
+                    display: 'grid',
+                    gap: '9px',
+                  }}
+                >
+                  {items.map((item) => (
+                    <div
+                      key={item}
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '8px',
+                        color: 'var(--muted)',
+                        fontSize: '12px',
+                      }}
+                    >
+                      <Check
+                        size={14}
+                        style={{
+                          color: 'var(--lime)',
+                          flexShrink: 0,
+                        }}
+                      />
+                      {item}
+                    </div>
+                  ))}
+                </div>
+              </article>
+            )
+          )}
         </div>
       </section>
 
-      {/* MODULE 01 */}
+      {/* TECHNOLOGY PROGRAMS */}
       <section className={styles.band}>
         <div className={styles.section}>
           <div className={styles.sectionHead}>
             <div>
               <div className={styles.eyebrow}>
-                MODULE 01 • BASIC ELECTRONICS
+                CORE TECHNOLOGY PROGRAMS
               </div>
 
               <h2>
-                Electricity se
+                From digital
                 <br />
-                <em>smart circuit tak.</em>
+                <em>idea to prototype.</em>
               </h2>
             </div>
 
             <p>
-              First module ka goal students ko real components ke saath
-              comfortable banana hai. Har concept immediately practical
-              activity se connect hota hai.
+              Students learn technology by creating. Every subject connects
+              concepts with tools, experiments, prototypes and real-world
+              projects.
             </p>
           </div>
 
           <div className={styles.sessionGrid}>
-            {sessions.map(([n, title, text, project]) => (
-              <article className={styles.session} key={n}>
-                <div className={styles.sessionNo}>{n}</div>
-
-                <div>
-                  <h3>{title}</h3>
-
-                  <p>{text}</p>
-
-                  <div className={styles.project}>
-                    <Lightbulb size={15} />
-                    <span>{project}</span>
+            {technologyPrograms.map(
+              ({ icon: Icon, title, text }) => (
+                <article className={styles.session} key={title}>
+                  <div className={styles.sessionNo}>
+                    <Icon size={23} />
                   </div>
-                </div>
-              </article>
-            ))}
+
+                  <div>
+                    <h3>{title}</h3>
+
+                    <p>{text}</p>
+
+                    <div className={styles.project}>
+                      <Sparkles size={15} />
+                      <span>Hands-on project learning</span>
+                    </div>
+                  </div>
+                </article>
+              )
+            )}
           </div>
         </div>
       </section>
 
-      {/* OUTCOMES */}
+      {/* INSTITUTION SUPPORT */}
       <section className={styles.section}>
         <div className={styles.twoCol}>
           <div>
-            <div className={styles.eyebrow}>MODULE OUTCOME</div>
+            <div className={styles.eyebrow}>
+              INSTITUTIONAL TRAINING
+            </div>
 
             <h2>
-              Student kya
+              More than
               <br />
-              <em>kar payega?</em>
+              <em>just training.</em>
             </h2>
 
             <p className={styles.lead}>
-              Module complete hone ke baad student basic electronic
-              components identify karke breadboard par simple circuit bana,
-              test aur explain kar payega.
+              ShikshamDehi works with institutions to create structured,
+              practical learning experiences — from individual workshops to
+              complete annual technology programs.
             </p>
           </div>
 
           <div className={styles.outcomes}>
-            {outcomes.map((item) => (
-              <div key={item}>
-                <Check size={17} />
-                <span>{item}</span>
+            {[
+              [
+                School,
+                'School STEM & Maker Programs',
+              ],
+              [
+                Lightbulb,
+                'ATL & Innovation Lab Support',
+              ],
+              [
+                Factory,
+                'ITI & Polytechnic Skill Training',
+              ],
+              [
+                GraduationCap,
+                'College & Faculty Programs',
+              ],
+              [
+                Wrench,
+                'Project & Exhibition Support',
+              ],
+              [
+                Users,
+                'Teacher & Faculty Enablement',
+              ],
+            ].map(([Icon, text]) => (
+              <div key={text}>
+                <Icon size={17} />
+                <span>{text}</span>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* TRAINER KIT */}
-      <section className={`${styles.section} ${styles.kitSection}`}>
+      {/* TRAINING FORMATS */}
+      <section className={styles.section}>
         <div className={styles.sectionHead}>
           <div>
-            <div className={styles.eyebrow}>TRAINER KIT</div>
+            <div className={styles.eyebrow}>
+              TRAINING FORMATS
+            </div>
 
             <h2>
-              Simple tools.
+              Choose the
               <br />
-              <em>Real making.</em>
+              <em>right format.</em>
             </h2>
           </div>
 
           <p>
-            School lab ke liye low-voltage, reusable components ka basic kit.
-            Mains electricity students ke practicals se completely separate
-            rahegi.
+            Programs can be customised according to your institution's
+            schedule, student level, available lab facilities and learning
+            objectives.
           </p>
         </div>
 
         <div className={styles.kitGrid}>
-          {kit.map((item, index) => (
-            <div className={styles.kitItem} key={item}>
-              <span>{String(index + 1).padStart(2, '0')}</span>
-              <ShieldCheck size={15} />
-              <b>{item}</b>
+          {formats.map((format, index) => (
+            <div className={styles.kitItem} key={format}>
+              <span>
+                {String(index + 1).padStart(2, '0')}
+              </span>
+
+              <Sparkles size={17} />
+
+              <b>{format}</b>
             </div>
           ))}
         </div>
       </section>
 
-      {/* FINAL CHALLENGE */}
+      {/* WHY SHIKSHAMDEHI */}
+      <section className={styles.band}>
+        <div className={styles.section}>
+          <div className={styles.twoCol}>
+            <div>
+              <div className={styles.eyebrow}>
+                WHY SHIKSHAMDEHI
+              </div>
+
+              <h2>
+                Experience that
+                <br />
+                <em>builds makers.</em>
+              </h2>
+
+              <p className={styles.lead}>
+                With more than 16 years of hands-on experience in 3D Design
+                and 3D Printing, we bring practical maker and prototyping
+                knowledge into education.
+              </p>
+            </div>
+
+            <div className={styles.outcomes}>
+              {reasons.map((reason) => (
+                <div key={reason}>
+                  <Check size={17} />
+                  <span>{reason}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
       <section className={styles.challenge}>
         <div className={styles.challengeInner}>
-          <div className={styles.eyebrow}>FINAL CHALLENGE</div>
+          <div className={styles.eyebrow}>
+            LET'S BUILD TOGETHER
+          </div>
 
           <h2>
-            Design a warning system
+            Bring practical
             <br />
-            <em>for your school.</em>
+            <em>technology learning</em>
+            <br />
+            to your institution.
           </h2>
 
           <p>
-            Idea → Circuit Diagram → Build → Test → Improve → Present
+            Tell us about your school, ATL lab, ITI, polytechnic or college
+            and we will help you design the right training program.
           </p>
 
-          <Link className={styles.primary} href="/#contact">
-            Discuss School Program
+          <Link
+            className={styles.primary}
+            href="/#contact"
+          >
+            Request a Training Program
             <ArrowRight size={17} />
           </Link>
         </div>
@@ -361,9 +457,13 @@ export default function ProgramsPage() {
           Shiksham<span>Dehi</span>
         </Link>
 
-        <span>Future skills. Real projects.</span>
+        <span>
+          Future skills. Real projects.
+        </span>
 
-        <small>© 2026 ShikshamDehi</small>
+        <small>
+          © 2026 ShikshamDehi. All rights reserved.
+        </small>
       </footer>
     </main>
   );
