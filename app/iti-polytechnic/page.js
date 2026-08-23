@@ -2,161 +2,83 @@ import Link from 'next/link';
 import {
   ArrowLeft,
   ArrowRight,
-  Box,
+  Bot,
   Check,
   CircuitBoard,
-  Cuboid,
+  Cpu,
   GraduationCap,
   Printer,
-  School,
   Settings,
   Sparkles,
   Wrench,
-  Zap,
+  Cuboid,
 } from 'lucide-react';
 
 import styles from './iti-polytechnic.module.css';
 
 const trainingAreas = [
   {
-    n: '01',
     icon: Cuboid,
-    title: '3D Design',
-    text: 'Learn professional 3D modelling, CAD thinking, dimensions, assemblies and design for manufacturing.',
+    title: '3D Design & CAD',
+    text: 'Learn practical 3D modelling, CAD fundamentals, design thinking and preparation of models for manufacturing.',
   },
   {
-    n: '02',
     icon: Printer,
     title: '3D Printing',
-    text: 'Understand slicing, print settings, materials, machine operation, troubleshooting and post-processing.',
+    text: 'Understand slicing, printer operation, materials, print settings, troubleshooting and rapid prototyping.',
   },
   {
-    n: '03',
     icon: CircuitBoard,
     title: 'Electronics',
-    text: 'Build a strong foundation in components, circuits, sensors, power and practical electronics.',
+    text: 'Hands-on training with electronic components, circuits, sensors, breadboards and practical applications.',
   },
   {
-    n: '04',
-    icon: Wrench,
-    title: 'Prototyping',
-    text: 'Turn digital designs into functional prototypes using 3D printing and workshop practices.',
+    icon: Cpu,
+    title: 'Arduino & Embedded Systems',
+    text: 'Learn microcontroller fundamentals, programming, sensors, inputs, outputs and practical automation.',
   },
   {
-    n: '05',
+    icon: Bot,
+    title: 'Robotics & Automation',
+    text: 'Build practical robotic systems using motors, controllers, sensors and mechanical components.',
+  },
+  {
     icon: Settings,
-    title: 'Machine & Workshop',
-    text: 'Learn safe machine operation, maintenance basics, calibration and production-oriented workflows.',
-  },
-  {
-    n: '06',
-    icon: Sparkles,
-    title: 'Innovation Projects',
-    text: 'Work on practical projects that combine design, printing, electronics and problem solving.',
+    title: 'Product Prototyping',
+    text: 'Convert an idea into a functional prototype through design, fabrication, testing and improvement.',
   },
 ];
 
-const levels = [
+const programs = [
   {
-    tag: 'LEVEL 01',
-    title: 'Foundation',
-    text: 'For students who are new to 3D design and digital fabrication.',
-    items: [
-      '3D design fundamentals',
-      'Basic CAD modelling',
-      'Measurements & dimensions',
-      '3D printer introduction',
-    ],
+    number: '01',
+    title: 'Short-Term Workshops',
+    text: 'Focused hands-on workshops for introducing students to 3D design, printing, electronics and emerging technologies.',
   },
   {
-    tag: 'LEVEL 02',
-    title: 'Intermediate',
-    text: 'Build confidence through practical modelling and printing projects.',
-    items: [
-      'Advanced modelling',
-      'Design optimisation',
-      'Slicing & print settings',
-      'Troubleshooting & iteration',
-    ],
+    number: '02',
+    title: 'Skill Development Programs',
+    text: 'Structured programs designed to build practical technical skills over multiple sessions.',
   },
   {
-    tag: 'LEVEL 03',
-    title: 'Industry Ready',
-    text: 'Move towards real-world design, prototyping and production workflows.',
-    items: [
-      'Product design projects',
-      'Functional prototypes',
-      'Design for manufacturing',
-      'Portfolio development',
-    ],
+    number: '03',
+    title: 'Project-Based Training',
+    text: 'Students work on practical projects from concept and design to prototype and final demonstration.',
+  },
+  {
+    number: '04',
+    title: 'Faculty Training',
+    text: 'Hands-on enablement for teachers, trainers and faculty members to confidently conduct technology-based learning.',
   },
 ];
 
-const process = [
-  {
-    n: '01',
-    title: 'Learn',
-    text: 'Understand the design concept, tools, machines and workflow.',
-  },
-  {
-    n: '02',
-    title: 'Design',
-    text: 'Create a digital model based on dimensions and real requirements.',
-  },
-  {
-    n: '03',
-    title: 'Prepare',
-    text: 'Convert the model into a printable file and optimise settings.',
-  },
-  {
-    n: '04',
-    title: 'Print',
-    text: 'Operate the 3D printer and produce the physical prototype.',
-  },
-  {
-    n: '05',
-    title: 'Test',
-    text: 'Inspect the result, identify problems and improve the design.',
-  },
-  {
-    n: '06',
-    title: 'Build Portfolio',
-    text: 'Document projects and develop industry-relevant practical skills.',
-  },
-];
-
-const benefits = [
-  'Hands-on 3D design training',
-  'Real 3D printing experience',
-  'Industry-oriented projects',
-  'CAD and digital fabrication skills',
-  'Machine operation & troubleshooting',
-  'Portfolio-ready student projects',
-  'Trainer-led practical sessions',
-  'Workshop and lab support',
-];
-
-const delivery = [
-  {
-    icon: School,
-    title: 'College Training',
-    text: 'Structured training programs for ITI and Polytechnic students.',
-  },
-  {
-    icon: GraduationCap,
-    title: 'Student Workshops',
-    text: 'Short-term intensive workshops focused on practical skills.',
-  },
-  {
-    icon: Printer,
-    title: '3D Printing Lab',
-    text: 'Support for setting up and running educational 3D printing labs.',
-  },
-  {
-    icon: Box,
-    title: 'Project Support',
-    text: 'Help students develop prototypes, models and final-year projects.',
-  },
+const workflow = [
+  'Understand the problem',
+  'Create the design',
+  'Build the prototype',
+  'Test the solution',
+  'Improve the design',
+  'Present the project',
 ];
 
 export default function ITIPolytechnicPage() {
@@ -167,7 +89,6 @@ export default function ITIPolytechnicPage() {
       <header className={styles.nav}>
         <Link className={styles.brand} href="/">
           <span className={styles.mark}>SD</span>
-
           <span>
             Shiksham<span>Dehi</span>
           </span>
@@ -187,66 +108,80 @@ export default function ITIPolytechnicPage() {
 
         <div className={styles.eyebrow}>
           <span />
-          ITI • POLYTECHNIC • SKILL DEVELOPMENT
+          FOR ITIs & POLYTECHNIC INSTITUTIONS
         </div>
 
         <h1>
-          Build skills that
+          Turn technical
           <br />
-          <em>build the future.</em>
+          education into
+          <br />
+          <em>real-world skills.</em>
         </h1>
 
         <p>
-          Industry-oriented training in 3D Design, 3D Printing,
-          CAD, Prototyping and Digital Fabrication for ITI and
+          Practical training in 3D Design, CAD, 3D Printing, Electronics,
+          Arduino, Robotics, Automation and Product Prototyping for ITI and
           Polytechnic students.
         </p>
 
         <div className={styles.heroActions}>
-
-          <Link className={styles.primary} href="/#contact">
-            Discuss Training
+          <Link className={styles.primary} href="/contact">
+            Discuss Your Institution
             <ArrowRight size={17} />
           </Link>
 
-          <Link className={styles.secondary} href="#programs">
-            Explore Programs
-          </Link>
-
+          <a className={styles.secondary} href="#training">
+            Explore Training
+          </a>
         </div>
 
-        <div className={styles.heroStats}>
-
-          <div>
-            <strong>16+</strong>
-            <span>
-              Years of 3D Design
-              <br />
-              Experience
-            </span>
-          </div>
-
-          <i />
-
-          <div>
-            <strong>100%</strong>
-            <span>
-              Practical & Project
-              <br />
-              Based Learning
-            </span>
-          </div>
-
-          <i />
-
+        <div className={styles.heroMeta}>
           <div>
             <strong>3D</strong>
-            <span>
-              Design → Print
-              <br />
-              → Prototype
-            </span>
+            <span>Design & Printing</span>
           </div>
+
+          <i />
+
+          <div>
+            <strong>CAD</strong>
+            <span>Design & Prototyping</span>
+          </div>
+
+          <i />
+
+          <div>
+            <strong>STEM</strong>
+            <span>Technology Training</span>
+          </div>
+        </div>
+
+      </section>
+
+
+      {/* INTRO */}
+      <section className={styles.introBand}>
+
+        <div className={styles.introInner}>
+
+          <div className={styles.eyebrow}>
+            <span />
+            WHY TECHNICAL INSTITUTIONS
+          </div>
+
+          <h2>
+            Give students skills
+            <br />
+            they can <em>actually use.</em>
+          </h2>
+
+          <p>
+            Technical education becomes more valuable when students get the
+            opportunity to design, fabricate, test and improve real products.
+            ShikshamDehi complements classroom learning with practical,
+            project-driven technology training.
+          </p>
 
         </div>
 
@@ -254,26 +189,30 @@ export default function ITIPolytechnicPage() {
 
 
       {/* TRAINING AREAS */}
-      <section className={styles.section} id="programs">
+      <section
+        className={styles.section}
+        id="training"
+      >
 
         <div className={styles.sectionHead}>
 
           <div>
             <div className={styles.eyebrow}>
-              WHAT WE TEACH
+              <span />
+              TRAINING AREAS
             </div>
 
             <h2>
-              Practical skills.
+              Learn technology.
               <br />
-              <em>Real machines.</em>
+              <em>Build with it.</em>
             </h2>
           </div>
 
           <p>
-            Our programs are designed for ITI and Polytechnic
-            students who want practical exposure to modern
-            design, manufacturing and prototyping technologies.
+            Training can be customized according to the department,
+            student level, available lab infrastructure and institutional
+            objectives.
           </p>
 
         </div>
@@ -282,23 +221,22 @@ export default function ITIPolytechnicPage() {
         <div className={styles.trainingGrid}>
 
           {trainingAreas.map(
-            ({ n, icon: Icon, title, text }) => (
+            ({ icon: Icon, title, text }) => (
 
               <article
                 className={styles.trainingCard}
-                key={n}
+                key={title}
               >
 
-                <div className={styles.cardTop}>
-                  <span>{n}</span>
-                  <Icon size={22} />
+                <div className={styles.icon}>
+                  <Icon size={24} />
                 </div>
 
                 <h3>{title}</h3>
 
                 <p>{text}</p>
 
-                <div className={styles.cardLine} />
+                <span className={styles.cardLine} />
 
               </article>
 
@@ -310,143 +248,8 @@ export default function ITIPolytechnicPage() {
       </section>
 
 
-      {/* 3D DESIGN FEATURE */}
-      <section className={styles.featureBand}>
-
-        <div className={styles.featureInner}>
-
-          <div className={styles.featureVisual}>
-
-            <span className={styles.visualLabel}>
-              DIGITAL FABRICATION
-            </span>
-
-            <div className={styles.cube}>
-
-              <div className={styles.cubeTop} />
-              <div className={styles.cubeFront} />
-              <div className={styles.cubeSide} />
-
-            </div>
-
-            <div className={styles.printLines}>
-              <span />
-              <span />
-              <span />
-              <span />
-              <span />
-            </div>
-
-          </div>
-
-
-          <div className={styles.featureCopy}>
-
-            <div className={styles.eyebrow}>
-              3D DESIGN + 3D PRINTING
-            </div>
-
-            <h2>
-              From digital idea
-              <br />
-              to <em>physical product.</em>
-            </h2>
-
-            <p>
-              Students learn the complete workflow used in
-              modern prototyping: understanding an idea,
-              creating a 3D model, preparing the print,
-              producing the part and improving the final result.
-            </p>
-
-            <div className={styles.workflow}>
-              <span>IDEA</span>
-              <ArrowRight size={13} />
-              <span>CAD</span>
-              <ArrowRight size={13} />
-              <span>SLICE</span>
-              <ArrowRight size={13} />
-              <span>PRINT</span>
-              <ArrowRight size={13} />
-              <span>TEST</span>
-              <ArrowRight size={13} />
-              <span>IMPROVE</span>
-            </div>
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      {/* LEVELS */}
-      <section className={styles.section}>
-
-        <div className={styles.sectionHead}>
-
-          <div>
-            <div className={styles.eyebrow}>
-              TRAINING LEVELS
-            </div>
-
-            <h2>
-              Start anywhere.
-              <br />
-              <em>Grow with projects.</em>
-            </h2>
-          </div>
-
-          <p>
-            Training can be customised according to the
-            existing skill level, branch, available lab
-            equipment and duration of the institution program.
-          </p>
-
-        </div>
-
-
-        <div className={styles.levelGrid}>
-
-          {levels.map((level) => (
-
-            <article
-              className={styles.levelCard}
-              key={level.title}
-            >
-
-              <div className={styles.levelTag}>
-                {level.tag}
-              </div>
-
-              <h3>{level.title}</h3>
-
-              <p>{level.text}</p>
-
-              <div className={styles.levelItems}>
-
-                {level.items.map((item) => (
-
-                  <div key={item}>
-                    <Check size={15} />
-                    <span>{item}</span>
-                  </div>
-
-                ))}
-
-              </div>
-
-            </article>
-
-          ))}
-
-        </div>
-
-      </section>
-
-
-      {/* PROCESS */}
-      <section className={styles.processBand}>
+      {/* PROGRAM TYPES */}
+      <section className={styles.programBand}>
 
         <div className={styles.section}>
 
@@ -454,40 +257,41 @@ export default function ITIPolytechnicPage() {
 
             <div>
               <div className={styles.eyebrow}>
-                LEARNING PROCESS
+                <span />
+                PROGRAM FORMATS
               </div>
 
               <h2>
-                Learn by
+                From workshops
                 <br />
-                <em>making.</em>
+                to <em>complete programs.</em>
               </h2>
             </div>
 
             <p>
-              Every training program follows a practical
-              workflow so students understand not only
-              what a tool does, but how it is used to solve
-              real problems.
+              Choose a format based on your institution's requirements,
+              academic calendar and student skill level.
             </p>
 
           </div>
 
 
-          <div className={styles.processGrid}>
+          <div className={styles.programGrid}>
 
-            {process.map((item) => (
+            {programs.map((program) => (
 
               <article
-                className={styles.processCard}
-                key={item.n}
+                className={styles.programCard}
+                key={program.number}
               >
 
-                <span>{item.n}</span>
+                <span className={styles.programNo}>
+                  {program.number}
+                </span>
 
-                <h3>{item.title}</h3>
+                <h3>{program.title}</h3>
 
-                <p>{item.text}</p>
+                <p>{program.text}</p>
 
               </article>
 
@@ -500,48 +304,55 @@ export default function ITIPolytechnicPage() {
       </section>
 
 
-      {/* BENEFITS */}
+      {/* STUDENT OUTCOMES */}
       <section className={styles.section}>
 
-        <div className={styles.twoCol}>
+        <div className={styles.outcomeGrid}>
 
           <div>
 
             <div className={styles.eyebrow}>
+              <span />
               STUDENT OUTCOMES
             </div>
 
             <h2>
-              Skills students
+              More than
               <br />
-              can <em>use.</em>
+              <em>just certificates.</em>
             </h2>
 
             <p className={styles.lead}>
-              The objective is not simply to teach software
-              or operate a printer. Students should develop
-              the confidence to design, make, test and improve
-              their own ideas.
+              The focus is on practical capability—students should be able
+              to understand a problem, create a solution and demonstrate
+              what they have built.
             </p>
-
-            <Link
-              className={styles.primary}
-              href="/#contact"
-            >
-              Plan a Training Program
-              <ArrowRight size={17} />
-            </Link>
 
           </div>
 
 
-          <div className={styles.benefits}>
+          <div className={styles.outcomes}>
 
-            {benefits.map((item) => (
+            {[
+              'Create 3D models using CAD tools',
+              'Prepare designs for 3D printing',
+              'Operate and understand basic 3D printers',
+              'Build electronic circuits',
+              'Program Arduino-based systems',
+              'Work with sensors and automation',
+              'Build basic robotic prototypes',
+              'Document and present technical projects',
+            ].map((item) => (
 
-              <div key={item}>
+              <div
+                className={styles.outcome}
+                key={item}
+              >
+
                 <Check size={17} />
+
                 <span>{item}</span>
+
               </div>
 
             ))}
@@ -553,50 +364,103 @@ export default function ITIPolytechnicPage() {
       </section>
 
 
-      {/* FOR INSTITUTES */}
-      <section className={styles.instituteBand}>
+      {/* PROJECT WORKFLOW */}
+      <section className={styles.workflowBand}>
 
-        <div className={styles.instituteInner}>
+        <div className={styles.section}>
 
-          <div>
+          <div className={styles.workflowHead}>
 
             <div className={styles.eyebrow}>
-              FOR ITI & POLYTECHNIC INSTITUTES
+              <span />
+              PROJECT-BASED LEARNING
             </div>
 
             <h2>
-              Training that fits
+              Idea to
               <br />
-              your <em>institution.</em>
+              <em>working prototype.</em>
             </h2>
-
-            <p>
-              ShikshamDehi can work with institutes for
-              workshops, semester programs, lab training,
-              project mentoring and structured skill
-              development programs.
-            </p>
 
           </div>
 
 
-          <div className={styles.deliveryGrid}>
+          <div className={styles.workflow}>
 
-            {delivery.map(
-              ({ icon: Icon, title, text }) => (
+            {workflow.map((item, index) => (
 
-                <div key={title}>
+              <div
+                className={styles.workflowItem}
+                key={item}
+              >
 
-                  <Icon size={22} />
+                <span>
+                  {String(index + 1).padStart(2, '0')}
+                </span>
 
-                  <b>{title}</b>
+                <b>{item}</b>
 
-                  <span>{text}</span>
+                {index < workflow.length - 1 && (
+                  <ArrowRight size={16} />
+                )}
 
-                </div>
+              </div>
 
-              )
-            )}
+            ))}
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      {/* INSTITUTION SUPPORT */}
+      <section className={styles.section}>
+
+        <div className={styles.supportGrid}>
+
+          <div>
+
+            <div className={styles.eyebrow}>
+              <span />
+              INSTITUTION SUPPORT
+            </div>
+
+            <h2>
+              Build a stronger
+              <br />
+              <em>technical learning ecosystem.</em>
+            </h2>
+
+          </div>
+
+
+          <div className={styles.supportList}>
+
+            {[
+              'Curriculum-aligned practical sessions',
+              'Hands-on student workshops',
+              'Lab-based training',
+              'Faculty & trainer enablement',
+              'Project and prototype support',
+              'Innovation challenges',
+              'Exhibition and demonstration support',
+              'Customized institutional programs',
+            ].map((item) => (
+
+              <div
+                className={styles.supportItem}
+                key={item}
+              >
+
+                <Check size={16} />
+
+                <span>{item}</span>
+
+              </div>
+
+            ))}
 
           </div>
 
@@ -606,31 +470,35 @@ export default function ITIPolytechnicPage() {
 
 
       {/* CTA */}
-      <section className={styles.challenge}>
+      <section className={styles.cta}>
 
-        <div className={styles.challengeInner}>
+        <div className={styles.ctaInner}>
+
+          <div className={styles.ctaIcon}>
+            <GraduationCap size={28} />
+          </div>
 
           <div className={styles.eyebrow}>
-            LET'S BUILD SKILLS
+            <span />
+            FOR ITIs & POLYTECHNICS
           </div>
 
           <h2>
-            Ready to bring
+            Ready to build
             <br />
-            <em>3D making</em> to your institute?
+            <em>industry-ready skills?</em>
           </h2>
 
           <p>
-            Talk to us about student training, workshops,
-            3D printing labs, project support or a customised
-            institutional program.
+            Tell us about your institution, students and training
+            requirements. We can design a practical program around them.
           </p>
 
           <Link
             className={styles.primary}
-            href="/#contact"
+            href="/contact"
           >
-            Discuss Your Requirement
+            Discuss Your Training Program
             <ArrowRight size={17} />
           </Link>
 
