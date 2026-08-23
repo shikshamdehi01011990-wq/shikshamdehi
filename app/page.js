@@ -1,183 +1,56 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
-import "./globals.css";
-
-const modules = [
-  {
-    no: "01",
-    category: "AI & INTELLIGENCE",
-    icon: "AI",
-    title: "Artificial Intelligence",
-    text: "Understand AI through practical experiments, intelligent systems and real-world problem solving.",
-    skills: ["AI", "ML", "Prompting"],
-  },
-  {
-    no: "02",
-    category: "ROBOTICS",
-    icon: "RB",
-    title: "Robotics",
-    text: "Build and program robots while learning sensors, motors, automation and control systems.",
-    skills: ["Robotics", "Sensors", "Motors"],
-  },
-  {
-    no: "03",
-    category: "ELECTRONICS",
-    icon: "EL",
-    title: "Arduino & Electronics",
-    text: "Learn electronics by creating interactive circuits, embedded systems and smart prototypes.",
-    skills: ["Arduino", "Circuits", "Embedded"],
-  },
-  {
-    no: "04",
-    category: "CONNECTED TECH",
-    icon: "IoT",
-    title: "IoT & Smart Systems",
-    text: "Connect devices, collect data and create smart systems using Internet of Things technology.",
-    skills: ["IoT", "Wi-Fi", "Cloud"],
-  },
-  {
-    no: "05",
-    category: "DIGITAL DESIGN",
-    icon: "3D",
-    title: "3D Design & CAD",
-    text: "Transform ideas into accurate digital models using modern 3D design and CAD workflows.",
-    skills: ["CAD", "3D Design", "Modeling"],
-  },
-  {
-    no: "06",
-    category: "FABRICATION",
-    icon: "3DP",
-    title: "3D Printing",
-    text: "Turn digital designs into physical prototypes and understand the complete 3D printing workflow.",
-    skills: ["3D Print", "Prototype", "Fabrication"],
-  },
-  {
-    no: "07",
-    category: "CREATIVE TECHNOLOGY",
-    icon: "CR",
-    title: "Creative Technology",
-    text: "Combine creativity and technology to develop interactive, innovative and meaningful projects.",
-    skills: ["Creative", "Design", "Innovation"],
-  },
-  {
-    no: "08",
-    category: "PROJECT LEARNING",
-    icon: "PR",
-    title: "School Projects",
-    text: "Build competition-ready school projects with structured guidance, prototyping and documentation.",
-    skills: ["Projects", "Models", "Exhibitions"],
-  },
-  {
-    no: "09",
-    category: "ATL LAB",
-    icon: "ATL",
-    title: "ATL Lab Programs",
-    text: "Bring structured innovation and technology learning to Atal Tinkering Labs and schools.",
-    skills: ["ATL", "STEM", "Innovation"],
-  },
-  {
-    no: "10",
-    category: "TRAINING",
-    icon: "TR",
-    title: "Teacher Training",
-    text: "Empower educators with practical technology skills for modern classrooms and innovation labs.",
-    skills: ["Teachers", "Training", "STEM"],
-  },
-  {
-    no: "11",
-    category: "INTENSIVE LEARNING",
-    icon: "BC",
-    title: "Boot Camps",
-    text: "Fast-paced hands-on learning experiences designed around building, experimentation and teamwork.",
-    skills: ["Bootcamp", "Hands-on", "Teamwork"],
-  },
-  {
-    no: "12",
-    category: "FUTURE SKILLS",
-    icon: "FS",
-    title: "Future Skills",
-    text: "Develop the technical thinking, creativity and problem-solving skills needed for tomorrow.",
-    skills: ["Future", "Skills", "STEM"],
-  },
-];
-
-const audiences = [
-  {
-    icon: "01",
-    title: "Students",
-    text: "Learn by building real technology projects instead of only studying theory.",
-  },
-  {
-    icon: "02",
-    title: "Schools",
-    text: "Bring structured STEM, robotics, AI and innovation programs into your campus.",
-  },
-  {
-    icon: "03",
-    title: "Teachers",
-    text: "Upgrade classroom technology skills and confidently mentor student projects.",
-  },
-  {
-    icon: "04",
-    title: "ATL Labs",
-    text: "Get practical support, training and project-based learning for innovation labs.",
-  },
-];
 
 export default function Home() {
-  const [mobileOpen, setMobileOpen] = useState(false);
-
-  const closeMenu = () => setMobileOpen(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <main>
-      {/* =====================================================
+      {/* =========================================================
           NAVBAR
-          ===================================================== */}
-      <header>
-        <div className="nav">
-          <a className="brand" href="/" onClick={closeMenu}>
-            <span className="brandMark">SD</span>
-            <span>
-              Shiksham<span>Dehi</span>
-            </span>
-          </a>
+      ========================================================= */}
+      <header className="nav">
+        <Link href="/" className="brand">
+          <span className="brandMark">SD</span>
+          <span>
+            Shiksham<span>Dehi</span>
+          </span>
+        </Link>
 
-          <nav className={mobileOpen ? "mobileOpen" : ""}>
-            <a href="#programs" onClick={closeMenu}>
-              Programs
-            </a>
-            <a href="#journey" onClick={closeMenu}>
-              Learning
-            </a>
-            <a href="#schools" onClick={closeMenu}>
-              Schools
-            </a>
-            <a href="#about" onClick={closeMenu}>
-              About
-            </a>
-          </nav>
+        <nav className={menuOpen ? "mobileOpen" : ""}>
+          <Link href="#programs" onClick={() => setMenuOpen(false)}>
+            Programs
+          </Link>
+          <Link href="#journey" onClick={() => setMenuOpen(false)}>
+            Learning Journey
+          </Link>
+          <Link href="#schools" onClick={() => setMenuOpen(false)}>
+            For Schools
+          </Link>
+          <Link href="#about" onClick={() => setMenuOpen(false)}>
+            About
+          </Link>
+        </nav>
 
-          <a className="navCta" href="#contact">
-            Start Learning <span>→</span>
-          </a>
+        <Link href="/contact" className="navCta">
+          Talk to us <span>↗</span>
+        </Link>
 
-          <button
-            className="menu"
-            type="button"
-            aria-label="Toggle menu"
-            aria-expanded={mobileOpen}
-            onClick={() => setMobileOpen((value) => !value)}
-          >
-            {mobileOpen ? "✕" : "☰"}
-          </button>
-        </div>
+        <button
+          className="menu"
+          type="button"
+          aria-label="Open menu"
+          onClick={() => setMenuOpen(!menuOpen)}
+        >
+          ☰
+        </button>
       </header>
 
-      {/* =====================================================
+      {/* =========================================================
           HERO
-          ===================================================== */}
+      ========================================================= */}
       <section className="hero">
         <div className="gridGlow" />
 
@@ -192,14 +65,13 @@ export default function Home() {
             <br />
             Build.
             <br />
-            <em>Invent.</em>
+            <em>Create.</em>
           </h1>
 
           <p className="heroText">
-            ShikshamDehi helps students and educators turn curiosity into
-            <strong> real technology skills</strong> through AI, robotics,
-            electronics, IoT, 3D design, 3D printing and project-based
-            learning.
+            Practical technology education for the next generation —
+            <strong> AI, Robotics, IoT, Arduino, 3D Design, 3D Printing</strong>
+            and real-world projects.
           </p>
 
           <div className="heroAudience">
@@ -207,40 +79,41 @@ export default function Home() {
             <i>•</i>
             <span>Schools</span>
             <i>•</i>
-            <span>Teachers</span>
-            <i>•</i>
             <span>ATL Labs</span>
+            <i>•</i>
+            <span>Educators</span>
           </div>
 
           <div className="heroActions">
-            <a className="primary" href="#programs">
-              Explore Programs <span>→</span>
-            </a>
+            <Link href="/programs" className="primary">
+              Explore Programs <span>↗</span>
+            </Link>
 
-            <a className="secondary" href="#about">
-              Discover ShikshamDehi
-            </a>
+            <Link href="/projects" className="secondary">
+              See Student Projects <span>→</span>
+            </Link>
           </div>
         </div>
 
-        {/* =================================================
-            IMPORTANT:
-            REAL IMAGE ELEMENT — NOT CSS ::before
-            ================================================= */}
+        {/* =====================================================
+            HERO IMAGE
+            IMPORTANT: direct image from /public/home-hero.png
+        ===================================================== */}
         <div className="heroVisual">
-          <div className="heroImageGlow" />
-
           <img
-            className="heroImage"
             src="/home-hero.png"
-            alt="ShikshamDehi future technology learning"
+            alt="ShikshamDehi future technology education"
+            className="heroImage"
+            draggable="false"
           />
+
+          <div className="heroImageGlow" />
         </div>
       </section>
 
-      {/* =====================================================
+      {/* =========================================================
           MODULE INTRO
-          ===================================================== */}
+      ========================================================= */}
       <section className="moduleIntro" id="programs">
         <div className="section">
           <div className="eyebrow">
@@ -249,21 +122,21 @@ export default function Home() {
           </div>
 
           <h2>
-            Technology skills for the{" "}
-            <em>real world.</em>
+            Technology that
+            <br />
+            students can <em>build.</em>
           </h2>
 
           <p>
-            From the first idea to a working prototype, students learn
-            technology through experimentation, design, building and
-            problem-solving.
+            From first experiments to advanced prototypes, students learn by
+            creating real things — not just watching tutorials.
           </p>
         </div>
       </section>
 
-      {/* =====================================================
+      {/* =========================================================
           MODULES
-          ===================================================== */}
+      ========================================================= */}
       <section className="section modulesSection">
         <div className="sectionHead">
           <div>
@@ -273,32 +146,115 @@ export default function Home() {
             </div>
 
             <h2>
-              Build your
+              Explore the
               <br />
-              <em>skill stack.</em>
+              <em>future.</em>
             </h2>
           </div>
 
           <p>
-            A practical learning ecosystem covering emerging technology,
-            digital design, electronics, robotics and innovation.
+            Structured programs designed around creativity, engineering,
+            technology and hands-on problem solving.
           </p>
         </div>
 
         <div className="moduleGrid">
-          {modules.map((module, index) => (
-            <a
-              href="#contact"
+          {[
+            {
+              number: "01",
+              category: "ARTIFICIAL INTELLIGENCE",
+              title: "AI & Machine Learning",
+              text: "Understand AI concepts and build intelligent applications.",
+              skills: ["AI", "ML", "Computer Vision"],
+            },
+            {
+              number: "02",
+              category: "ROBOTICS",
+              title: "Robotics",
+              text: "Design, build and program robots through hands-on challenges.",
+              skills: ["Robots", "Sensors", "Automation"],
+            },
+            {
+              number: "03",
+              category: "ELECTRONICS",
+              title: "Arduino & Electronics",
+              text: "Turn ideas into working electronic prototypes.",
+              skills: ["Arduino", "Circuits", "Sensors"],
+            },
+            {
+              number: "04",
+              category: "CONNECTED TECHNOLOGY",
+              title: "IoT",
+              text: "Build connected devices and smart technology solutions.",
+              skills: ["IoT", "WiFi", "Cloud"],
+            },
+            {
+              number: "05",
+              category: "3D DESIGN",
+              title: "3D Design & CAD",
+              text: "Create digital models and engineering-ready designs.",
+              skills: ["CAD", "3D Modeling", "Design"],
+            },
+            {
+              number: "06",
+              category: "DIGITAL FABRICATION",
+              title: "3D Printing",
+              text: "Transform digital designs into physical prototypes.",
+              skills: ["Printing", "Prototyping", "Fabrication"],
+            },
+            {
+              number: "07",
+              category: "CREATIVITY",
+              title: "Creative Technology",
+              text: "Combine design, technology and imagination to create.",
+              skills: ["Design", "Ideas", "Innovation"],
+            },
+            {
+              number: "08",
+              category: "PROJECTS",
+              title: "School Projects",
+              text: "Build meaningful projects around real-world problems.",
+              skills: ["Projects", "Research", "Build"],
+            },
+            {
+              number: "09",
+              category: "ATL LABS",
+              title: "ATL Lab Programs",
+              text: "Hands-on innovation programs for Atal Tinkering Labs.",
+              skills: ["ATL", "Innovation", "STEM"],
+            },
+            {
+              number: "10",
+              category: "TRAINING",
+              title: "Workshops",
+              text: "Focused technology workshops for students and educators.",
+              skills: ["Training", "Workshop", "STEM"],
+            },
+            {
+              number: "11",
+              category: "BOOTCAMP",
+              title: "Technology Bootcamps",
+              text: "Intensive learning experiences built around projects.",
+              skills: ["Bootcamp", "Build", "Learn"],
+            },
+            {
+              number: "12",
+              category: "FUTURE SKILLS",
+              title: "Future Technology",
+              text: "Prepare students for the technologies shaping tomorrow.",
+              skills: ["Future", "Technology", "Skills"],
+            },
+          ].map((module) => (
+            <Link
+              href="/programs"
               className={`moduleCard ${
-                index === 0 || index === 4 || index === 8
-                  ? "moduleFeatured"
-                  : ""
+                module.number === "01" ? "moduleFeatured" : ""
               }`}
-              key={module.no}
+              key={module.number}
             >
               <div className="moduleTop">
-                <div className="moduleIcon">{module.icon}</div>
-                <div className="moduleNumber">{module.no}</div>
+                <div className="moduleIcon">✦</div>
+                <span className="moduleNumber">{module.number}</span>
               </div>
 
               <div className="moduleCategory">{module.category}</div>
@@ -314,17 +270,17 @@ export default function Home() {
               </div>
 
               <div className="moduleLink">
-                <span>EXPLORE MODULE</span>
+                <span>EXPLORE</span>
                 <span>↗</span>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </section>
 
-      {/* =====================================================
+      {/* =========================================================
           LEARNING JOURNEY
-          ===================================================== */}
+      ========================================================= */}
       <section className="journeyBand" id="journey">
         <div className="section">
           <div className="sectionHead">
@@ -337,59 +293,39 @@ export default function Home() {
               <h2>
                 From idea
                 <br />
-                to <em>impact.</em>
+                to <em>innovation.</em>
               </h2>
             </div>
 
             <p>
-              Our approach is simple: understand the problem, imagine the
-              solution, build it, test it and improve it.
+              A simple progression that turns curiosity into confidence,
+              technical skills and real projects.
             </p>
           </div>
 
           <div className="workflow">
-            <div className="workflowItem">
-              <span>01</span>
-              Discover
-              <i>→</i>
-            </div>
-
-            <div className="workflowItem">
-              <span>02</span>
-              Imagine
-              <i>→</i>
-            </div>
-
-            <div className="workflowItem">
-              <span>03</span>
-              Design
-              <i>→</i>
-            </div>
-
-            <div className="workflowItem">
-              <span>04</span>
-              Build
-              <i>→</i>
-            </div>
-
-            <div className="workflowItem">
-              <span>05</span>
-              Test
-              <i>→</i>
-            </div>
-
-            <div className="workflowItem">
-              <span>06</span>
-              Improve
-            </div>
+            {[
+              "Discover",
+              "Learn",
+              "Experiment",
+              "Build",
+              "Prototype",
+              "Present",
+            ].map((item, index) => (
+              <div className="workflowItem" key={item}>
+                <span>0{index + 1}</span>
+                {item}
+                {index < 5 && <i>→</i>}
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* =====================================================
+      {/* =========================================================
           AUDIENCE
-          ===================================================== */}
-      <section className="section">
+      ========================================================= */}
+      <section className="section" id="schools">
         <div className="sectionHead">
           <div>
             <div className="eyebrow">
@@ -400,43 +336,48 @@ export default function Home() {
             <h2>
               Built for
               <br />
-              <em>curious minds.</em>
+              <em>learners.</em>
             </h2>
           </div>
 
           <p>
-            Whether you are learning, teaching or building an innovation
-            ecosystem, ShikshamDehi is designed around practical outcomes.
+            Programs that can be adapted for students, schools, educators and
+            innovation labs.
           </p>
         </div>
 
         <div className="audienceGrid">
-          {audiences.map((item) => (
-            <a className="audienceCard" href="#contact" key={item.title}>
-              <div className="moduleIcon icon">{item.icon}</div>
+          {[
+            ["01", "Students", "Hands-on technology learning and project building."],
+            ["02", "Schools", "Technology programs integrated into school learning."],
+            ["03", "ATL Labs", "Innovation-focused activities for ATL ecosystems."],
+            ["04", "Educators", "Practical training to teach future technologies."],
+          ].map(([num, title, text]) => (
+            <Link href="/programs" className="audienceCard" key={num}>
+              <div className="icon moduleIcon">{num}</div>
 
               <div>
-                <h3>{item.title}</h3>
+                <h3>{title}</h3>
 
-                <p>{item.text}</p>
+                <p>{text}</p>
 
                 <span>
-                  Learn more <b>→</b>
+                  Explore <b>→</b>
                 </span>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </section>
 
-      {/* =====================================================
+      {/* =========================================================
           PROJECT BANNER
-          ===================================================== */}
+      ========================================================= */}
       <section className="projectBanner">
         <div>
           <div className="eyebrow">
             <span />
-            PROJECT-BASED LEARNING
+            REAL PROJECTS
           </div>
 
           <h2>
@@ -448,97 +389,80 @@ export default function Home() {
           </h2>
 
           <p>
-            Students learn faster when they create something real. We turn
-            concepts into prototypes, experiments and working projects.
+            Students turn concepts into working prototypes, experiments and
+            technology projects.
           </p>
         </div>
 
-        <a className="largeArrow" href="#contact">
-          Start a Project
+        <Link href="/projects" className="largeArrow">
+          VIEW PROJECTS
           <span>↗</span>
-        </a>
+        </Link>
       </section>
 
-      {/* =====================================================
-          SCHOOLS
-          ===================================================== */}
-      <section className="schoolBand" id="schools">
+      {/* =========================================================
+          SCHOOL
+      ========================================================= */}
+      <section className="schoolBand">
         <div className="section">
           <div className="schoolInner">
             <div className="schoolCopy">
               <div className="eyebrow">
                 <span />
-                FOR SCHOOLS & INSTITUTIONS
+                FOR SCHOOLS
               </div>
 
               <h2>
-                Build a stronger
+                Build a
                 <br />
-                <em>innovation culture.</em>
+                <em>future-ready</em>
+                <br />
+                campus.
               </h2>
 
               <p>
-                From ATL Lab support to structured STEM programs, teacher
-                training and student boot camps, ShikshamDehi helps schools
-                create meaningful technology learning experiences.
+                Bring practical technology education directly into your school
+                through structured programs, workshops, ATL support and
+                project-based learning.
               </p>
 
               <div className="checkGrid">
                 <span>✓ STEM Programs</span>
-                <span>✓ ATL Lab Support</span>
+                <span>✓ ATL Support</span>
                 <span>✓ Teacher Training</span>
-                <span>✓ Student Workshops</span>
-                <span>✓ Project Mentoring</span>
-                <span>✓ Technology Boot Camps</span>
+                <span>✓ Student Projects</span>
               </div>
 
-              <a className="primary" href="#contact">
-                Partner With Us <span>→</span>
-              </a>
+              <Link href="/contact" className="primary">
+                Partner With Us <span>↗</span>
+              </Link>
             </div>
 
             <div className="schoolCard">
-              <div className="cardLabel">LEARNING PATH</div>
+              <div className="cardLabel">IMPLEMENTATION MODEL</div>
 
-              <h3>Build → Test → Learn → Repeat</h3>
+              <h3>Learn → Build → Showcase</h3>
 
-              <div className="journey">
-                <span>01</span>
-                <b>Explore</b>
-                <i />
-              </div>
-
-              <div className="journey">
-                <span>02</span>
-                <b>Experiment</b>
-                <i />
-              </div>
-
-              <div className="journey">
-                <span>03</span>
-                <b>Prototype</b>
-                <i />
-              </div>
-
-              <div className="journey">
-                <span>04</span>
-                <b>Build</b>
-                <i />
-              </div>
-
-              <div className="journey">
-                <span>05</span>
-                <b>Present</b>
-                <i />
-              </div>
+              {[
+                ["01", "Learn", "Foundation"],
+                ["02", "Build", "Hands-on"],
+                ["03", "Prototype", "Innovation"],
+                ["04", "Showcase", "Confidence"],
+              ].map(([num, title, subtitle]) => (
+                <div className="journey" key={num}>
+                  <span>{num}</span>
+                  <b>{title}</b>
+                  <i title={subtitle} />
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      {/* =====================================================
+      {/* =========================================================
           ABOUT
-          ===================================================== */}
+      ========================================================= */}
       <section className="section" id="about">
         <div className="about">
           <div>
@@ -550,98 +474,91 @@ export default function Home() {
             <h2>
               Education
               <br />
-              beyond
+              beyond the
               <br />
-              <em>the classroom.</em>
+              <em>classroom.</em>
             </h2>
           </div>
 
           <div className="aboutText">
             <p>
-              <strong>ShikshamDehi</strong> is an education and technology
-              initiative focused on making emerging technology practical,
-              accessible and exciting for learners.
+              <strong>ShikshamDehi</strong> is built around a simple idea:
+              students should not only consume technology — they should learn
+              how to create with it.
             </p>
 
             <p>
-              We bring together AI, robotics, Arduino, IoT, 3D design, 3D
-              printing, creative technology and project-based learning to help
-              students become creators rather than passive consumers of
-              technology.
-            </p>
-
-            <p>
-              Our goal is to create a generation that can look at a problem,
-              imagine a solution and actually build it.
+              Through AI, robotics, electronics, IoT, 3D design, 3D printing
+              and project-based learning, we help learners move from curiosity
+              to creation.
             </p>
 
             <div className="quote">
-              <b>Our philosophy:</b> Learning becomes powerful when ideas turn
-              into something you can see, touch, test and improve.
+              <b>Learn by making.</b>
+              <br />
+              Because the future belongs to people who can build it.
             </div>
           </div>
         </div>
       </section>
 
-      {/* =====================================================
+      {/* =========================================================
           CTA
-          ===================================================== */}
-      <section className="cta" id="contact">
+      ========================================================= */}
+      <section className="cta">
         <div className="ctaGlow" />
 
         <div className="eyebrow">
           <span />
-          LET'S BUILD THE FUTURE
+          START BUILDING
         </div>
 
         <h2>
           Ready to
           <br />
-          <em>start building?</em>
+          <em>create?</em>
         </h2>
 
         <p>
-          Bring future-ready technology learning to your students, school or
-          innovation lab.
+          Let's bring future-ready technology learning to your students,
+          classroom or innovation lab.
         </p>
 
         <div className="heroActions">
-          <a className="primary" href="mailto:hello@shikshamdehi.com">
-            Get in Touch <span>→</span>
-          </a>
+          <Link href="/contact" className="primary">
+            Get Started <span>↗</span>
+          </Link>
 
-          <a className="secondary light" href="#programs">
-            Explore Programs
-          </a>
+          <Link href="/programs" className="secondary light">
+            Explore Programs <span>→</span>
+          </Link>
         </div>
 
         <div className="ctaTags">
           <span>AI</span>
           <span>Robotics</span>
-          <span>Arduino</span>
           <span>IoT</span>
-          <span>3D Design</span>
-          <span>3D Printing</span>
-          <span>STEM</span>
+          <span>Arduino</span>
+          <span>3D</span>
+          <span>Innovation</span>
         </div>
       </section>
 
-      {/* =====================================================
+      {/* =========================================================
           FOOTER
-          ===================================================== */}
+      ========================================================= */}
       <footer>
-        <a className="brand" href="/">
+        <Link href="/" className="brand">
           <span className="brandMark">SD</span>
           <span>
             Shiksham<span>Dehi</span>
           </span>
-        </a>
+        </Link>
 
         <div className="footerLinks">
-          <a href="#programs">Programs</a>
-          <a href="#schools">Schools</a>
-          <a href="#about">About</a>
-          <a href="#contact">Contact</a>
+          <Link href="/programs">Programs</Link>
+          <Link href="/projects">Projects</Link>
+          <Link href="/contact">Contact</Link>
         </div>
 
         <small>© 2026 ShikshamDehi</small>
@@ -649,3 +566,4 @@ export default function Home() {
     </main>
   );
 }
+
