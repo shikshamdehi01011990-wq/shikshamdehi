@@ -13,6 +13,8 @@ import {
   Zap,
 } from 'lucide-react';
 
+import styles from './projects.module.css';
+
 const projects = [
   {
     icon: Bot,
@@ -31,7 +33,12 @@ const projects = [
     title: 'Smart Dustbin',
     description:
       'Create an automatic dustbin using an ultrasonic sensor, servo motor and Arduino.',
-    skills: ['Arduino', 'Ultrasonic Sensor', 'Servo', 'Automation'],
+    skills: [
+      'Arduino',
+      'Ultrasonic Sensor',
+      'Servo',
+      'Automation',
+    ],
     level: 'BEGINNER',
   },
   {
@@ -136,7 +143,7 @@ const suitableFor = [
 export default function ProjectsPage() {
   return (
     <main className={styles.projectsPage}>
-      {/* NAVBAR */}
+      {/* ================= NAVBAR ================= */}
 
       <header className={styles.nav}>
         <Link href="/" className={styles.brand}>
@@ -149,7 +156,10 @@ export default function ProjectsPage() {
 
         <nav className={styles.navLinks}>
           <Link href="/programs">Programs</Link>
-          <Link href="/iti-polytechnic">ITI & Polytechnic</Link>
+          <Link href="/projects">Projects</Link>
+          <Link href="/iti-polytechnic">
+            ITI & Polytechnic
+          </Link>
           <Link href="/about">About</Link>
           <Link href="/blog">Journal</Link>
           <Link href="/faq">FAQ</Link>
@@ -162,7 +172,7 @@ export default function ProjectsPage() {
         </Link>
       </header>
 
-      {/* HERO */}
+      {/* ================= HERO ================= */}
 
       <section className={styles.hero}>
         <div className={styles.heroGlow} />
@@ -179,18 +189,24 @@ export default function ProjectsPage() {
         </h1>
 
         <p>
-          Real projects turn technology concepts into practical skills.
-          Students learn to design, build, test and improve working
-          prototypes using modern technologies.
+          Real projects turn technology concepts into practical
+          skills. Students learn to design, build, test and improve
+          working prototypes using modern technologies.
         </p>
 
         <div className={styles.heroActions}>
-          <Link href="#projects" className={styles.primary}>
+          <Link
+            href="#projects"
+            className={styles.primary}
+          >
             Explore Projects
             <ArrowRight size={18} />
           </Link>
 
-          <Link href="/contact" className={styles.secondary}>
+          <Link
+            href="/contact"
+            className={styles.secondary}
+          >
             Build a Custom Project
           </Link>
         </div>
@@ -198,35 +214,54 @@ export default function ProjectsPage() {
         <div className={styles.heroStats}>
           <div>
             <strong>3D</strong>
-            <span>Design & Printing</span>
+            <span>
+              Design &
+              <br />
+              Printing
+            </span>
           </div>
 
           <i />
 
           <div>
             <strong>IoT</strong>
-            <span>Smart Devices</span>
+            <span>
+              Smart
+              <br />
+              Devices
+            </span>
           </div>
 
           <i />
 
           <div>
             <strong>AI</strong>
-            <span>Smart Hardware</span>
+            <span>
+              Smart
+              <br />
+              Hardware
+            </span>
           </div>
 
           <i />
 
           <div>
             <strong>Robotics</strong>
-            <span>Automation</span>
+            <span>
+              Automation
+              <br />
+              Systems
+            </span>
           </div>
         </div>
       </section>
 
-      {/* PROJECTS */}
+      {/* ================= PROJECTS ================= */}
 
-      <section className={styles.section} id="projects">
+      <section
+        className={styles.section}
+        id="projects"
+      >
         <div className={styles.sectionHead}>
           <div>
             <div className={styles.eyebrow}>
@@ -242,9 +277,9 @@ export default function ProjectsPage() {
           </div>
 
           <p>
-            Projects can be adapted according to student age, technical
-            level, curriculum, available equipment and institutional
-            objectives.
+            Projects can be adapted according to student age,
+            technical level, curriculum, available equipment and
+            institutional objectives.
           </p>
         </div>
 
@@ -295,7 +330,7 @@ export default function ProjectsPage() {
         </div>
       </section>
 
-      {/* WORKFLOW */}
+      {/* ================= WORKFLOW ================= */}
 
       <section className={styles.workflowSection}>
         <div className={styles.section}>
@@ -314,15 +349,18 @@ export default function ProjectsPage() {
             </div>
 
             <p>
-              Every project follows a practical learning cycle. Students
-              are encouraged to experiment, make mistakes, test their
-              ideas and improve their prototypes.
+              Every project follows a practical learning cycle.
+              Students are encouraged to experiment, make mistakes,
+              test their ideas and improve their prototypes.
             </p>
           </div>
 
           <div className={styles.steps}>
             {learningSteps.map((step) => (
-              <div className={styles.step} key={step.number}>
+              <div
+                className={styles.step}
+                key={step.number}
+              >
                 <span>{step.number}</span>
 
                 <div>
@@ -335,7 +373,7 @@ export default function ProjectsPage() {
         </div>
       </section>
 
-      {/* SKILLS */}
+      {/* ================= SKILLS ================= */}
 
       <section className={styles.section}>
         <div className={styles.skillsBlock}>
@@ -352,9 +390,10 @@ export default function ProjectsPage() {
             </h2>
 
             <p>
-              Project-based learning helps students connect multiple
-              technology domains while developing creativity, logical
-              thinking and practical problem-solving ability.
+              Project-based learning helps students connect
+              multiple technology domains while developing
+              creativity, logical thinking and practical
+              problem-solving ability.
             </p>
           </div>
 
@@ -392,7 +431,7 @@ export default function ProjectsPage() {
         </div>
       </section>
 
-      {/* INSTITUTIONS */}
+      {/* ================= INSTITUTIONS ================= */}
 
       <section className={styles.institutionSection}>
         <div className={styles.section}>
@@ -410,11 +449,15 @@ export default function ProjectsPage() {
               </h2>
 
               <p>
-                We can customise projects according to your students,
-                curriculum, lab infrastructure and learning objectives.
+                We can customise projects according to your
+                students, curriculum, lab infrastructure and
+                learning objectives.
               </p>
 
-              <Link href="/contact" className={styles.primary}>
+              <Link
+                href="/contact"
+                className={styles.primary}
+              >
                 Discuss Your Project
                 <ArrowRight size={18} />
               </Link>
@@ -437,7 +480,7 @@ export default function ProjectsPage() {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* ================= CTA ================= */}
 
       <section className={styles.cta}>
         <div className={styles.ctaGlow} />
@@ -455,22 +498,29 @@ export default function ProjectsPage() {
 
         <p>
           Tell us what you want your students to build and we can
-          design a practical project-based learning program around it.
+          design a practical project-based learning program around
+          it.
         </p>
 
         <div className={styles.heroActions}>
-          <Link href="/contact" className={styles.primary}>
+          <Link
+            href="/contact"
+            className={styles.primary}
+          >
             Start a Project
             <ArrowRight size={18} />
           </Link>
 
-          <Link href="/programs" className={styles.secondary}>
+          <Link
+            href="/programs"
+            className={styles.secondary}
+          >
             Explore Programs
           </Link>
         </div>
       </section>
 
-      {/* FOOTER */}
+      {/* ================= FOOTER ================= */}
 
       <footer className={styles.footer}>
         <div className={styles.footerBrand}>
@@ -485,7 +535,9 @@ export default function ProjectsPage() {
           STEM Education • Digital Manufacturing • Future Skills
         </p>
 
-        <small>© 2026 ShikshamDehi. All rights reserved.</small>
+        <small>
+          © 2026 ShikshamDehi. All rights reserved.
+        </small>
       </footer>
     </main>
   );
