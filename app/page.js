@@ -6,8 +6,9 @@ import { useState } from 'react';
 import {
   ArrowRight,
   Bot,
+  Boxes,
   Building2,
-  Check,
+  CircuitBoard,
   Cpu,
   Cuboid,
   GraduationCap,
@@ -15,93 +16,172 @@ import {
   Lightbulb,
   Menu,
   Printer,
+  School,
   Settings2,
-  Sparkles,
   Wrench,
   X,
   Zap,
 } from 'lucide-react';
 
-const services = [
+const modules = [
   {
-    icon: Cuboid,
-    title: '3D Design & CAD',
-    short: 'Design',
-    text: 'Learn 3D modelling, CAD and product design by creating real digital models.',
-    href: '/programs',
+    number: '01',
+    icon: Wrench,
+    category: 'TECHNICAL TRAINING',
+    title: 'ITI',
+    description:
+      'Technical training focused on CAD, 3D printing, prototyping, digital manufacturing and practical industry skills.',
+    skills: ['CAD', '3D Printing', 'Prototyping'],
+    href: '/iti-polytechnic',
   },
   {
-    icon: Printer,
-    title: '3D Printing',
-    short: 'Make',
-    text: 'Turn digital designs into physical prototypes using 3D printing.',
-    href: '/programs',
+    number: '02',
+    icon: GraduationCap,
+    category: 'ENGINEERING EDUCATION',
+    title: 'Polytechnic',
+    description:
+      'Practical engineering learning through CAD, 3D modelling, rapid prototyping, robotics and technical projects.',
+    skills: ['CAD', 'Design', 'Projects'],
+    href: '/iti-polytechnic',
   },
   {
+    number: '03',
     icon: Bot,
+    category: 'AUTOMATION',
     title: 'Robotics',
-    short: 'Build',
-    text: 'Build robots using motors, sensors, controllers and programming.',
-    href: '/projects',
+    description:
+      'Build robots and understand motors, sensors, controllers, programming and automation systems.',
+    skills: ['Sensors', 'Motors', 'Automation'],
+    href: '/programs',
   },
   {
+    number: '04',
     icon: Cpu,
-    title: 'Arduino & IoT',
-    short: 'Connect',
-    text: 'Create smart electronics projects using Arduino, sensors and IoT.',
+    category: 'MICROCONTROLLERS',
+    title: 'Arduino',
+    description:
+      'Learn Arduino programming and create practical electronics, automation and robotics projects.',
+    skills: ['Arduino', 'Coding', 'Sensors'],
     href: '/programs',
   },
   {
-    icon: Sparkles,
-    title: 'AI + Hardware',
-    short: 'Innovate',
-    text: 'Explore AI, automation and intelligent hardware-based projects.',
+    number: '05',
+    icon: Cuboid,
+    category: 'DIGITAL DESIGN',
+    title: '3D Design',
+    description:
+      'Learn CAD and 3D modelling to design products, mechanical parts and functional prototypes.',
+    skills: ['CAD', '3D Modelling', 'Product Design'],
     href: '/programs',
   },
   {
+    number: '06',
+    icon: Printer,
+    category: 'DIGITAL FABRICATION',
+    title: '3D Printing',
+    description:
+      'Convert digital models into physical objects through slicing, printing, testing and improvement.',
+    skills: ['STL', 'Slicing', 'Prototyping'],
+    href: '/programs',
+  },
+  {
+    number: '07',
+    icon: Settings2,
+    category: 'ENGINEERING DESIGN',
+    title: 'Reverse Engineering',
+    description:
+      'Understand existing components and recreate their dimensions and geometry as accurate CAD models.',
+    skills: ['Measurement', 'CAD', 'Product Analysis'],
+    href: '/programs',
+  },
+  {
+    number: '08',
+    icon: Zap,
+    category: 'CONNECTED TECHNOLOGY',
+    title: 'IoT',
+    description:
+      'Create connected devices using sensors, controllers and communication technologies for smart systems.',
+    skills: ['Sensors', 'Smart Devices', 'Automation'],
+    href: '/programs',
+  },
+  {
+    number: '09',
+    icon: CircuitBoard,
+    category: 'ELECTRONICS',
+    title: 'Electronics',
+    description:
+      'Understand circuits, components, sensors and electronic systems through practical hands-on learning.',
+    skills: ['Circuits', 'Components', 'Sensors'],
+    href: '/programs',
+  },
+  {
+    number: '10',
     icon: Lightbulb,
-    title: 'Project Development',
-    short: 'Create',
-    text: 'Convert ideas into working prototypes for exhibitions and projects.',
+    category: 'MAKER EDUCATION',
+    title: 'STEM Projects',
+    description:
+      'Explore science, technology, engineering and mathematics through creative hands-on projects.',
+    skills: ['STEM', 'Innovation', 'Making'],
     href: '/projects',
+  },
+  {
+    number: '11',
+    icon: School,
+    category: 'SCHOOL EDUCATION',
+    title: 'School Projects',
+    description:
+      'Build age-appropriate working models and technology projects for classes 6–12, exhibitions and competitions.',
+    skills: ['Models', 'Experiments', 'Innovation'],
+    href: '/projects',
+  },
+  {
+    number: '12',
+    icon: Boxes,
+    category: 'PROJECT SUPPORT',
+    title: 'Get Materials',
+    description:
+      'Find project components and materials such as Arduino boards, sensors, motors, electronics and 3D printing supplies.',
+    skills: ['Components', 'Project Kits', 'Materials'],
+    href: '/contact',
+    featured: true,
   },
 ];
 
 const audiences = [
   {
-    icon: Layers3,
+    icon: School,
     title: 'Schools',
-    text: 'STEM, maker education & project-based learning.',
+    text: 'STEM, maker education and project-based learning.',
     href: '/programs',
   },
   {
-    icon: Lightbulb,
+    icon: Layers3,
     title: 'ATL Labs',
-    text: 'Lab activation, mentoring & innovation projects.',
+    text: 'Lab activation, mentoring and innovation projects.',
     href: '/programs',
   },
   {
     icon: Wrench,
     title: 'ITI',
-    text: 'CAD, 3D printing, prototyping & technical skills.',
-    href: '/iti-polytechnic',
-  },
-  {
-    icon: Settings2,
-    title: 'Polytechnic',
-    text: 'Engineering design, CAD & digital manufacturing.',
+    text: 'CAD, 3D printing, prototyping and technical skills.',
     href: '/iti-polytechnic',
   },
   {
     icon: GraduationCap,
-    title: 'Colleges',
-    text: 'Engineering projects, IoT, robotics & prototypes.',
-    href: '/projects',
+    title: 'Polytechnic',
+    text: 'Engineering design and digital manufacturing.',
+    href: '/iti-polytechnic',
   },
   {
     icon: Building2,
+    title: 'Colleges',
+    text: 'Engineering projects, IoT, robotics and prototypes.',
+    href: '/projects',
+  },
+  {
+    icon: Lightbulb,
     title: 'Educators',
-    text: 'Faculty development & technology training.',
+    text: 'Faculty development and practical technology training.',
     href: '/contact',
   },
 ];
@@ -128,6 +208,7 @@ export default function Home() {
       ===================================================== */}
 
       <header className="nav">
+
         <Link
           href="/"
           className="brand"
@@ -146,6 +227,10 @@ export default function Home() {
           className={open ? 'mobileOpen' : ''}
           aria-label="Main navigation"
         >
+          <Link href="/" onClick={closeMenu}>
+            Home
+          </Link>
+
           <Link href="/programs" onClick={closeMenu}>
             Programs
           </Link>
@@ -156,10 +241,6 @@ export default function Home() {
 
           <Link href="/iti-polytechnic" onClick={closeMenu}>
             ITI & Polytechnic
-          </Link>
-
-          <Link href="/about" onClick={closeMenu}>
-            About
           </Link>
 
           <Link href="/blog" onClick={closeMenu}>
@@ -186,14 +267,16 @@ export default function Home() {
         >
           {open ? <X /> : <Menu />}
         </button>
+
       </header>
 
 
       {/* =====================================================
-          HERO — FIRST IMPRESSION
+          HERO
       ===================================================== */}
 
-      <section className="hero" id="top">
+      <section className="hero">
+
         <div className="gridGlow" aria-hidden="true" />
 
         <div className="heroCopy">
@@ -212,25 +295,23 @@ export default function Home() {
           </h1>
 
           <p className="heroText">
-            ShikshamDehi helps students and institutions learn
-            <strong> 3D Design, 3D Printing, Robotics, Arduino,
-            IoT and AI</strong> through hands-on projects.
+            Practical technology education in{' '}
+            <strong>
+              3D Design, 3D Printing, Robotics, Arduino, IoT,
+              Electronics and AI
+            </strong>{' '}
+            for students, educators and institutions.
           </p>
-
-          <div className="heroMessage">
-            <span>NOT JUST THEORY.</span>
-            <b>REAL SKILLS. REAL PROJECTS.</b>
-          </div>
 
           <div className="heroActions">
 
-            <Link href="/programs" className="primary">
-              Explore Programs
+            <a href="#modules" className="primary">
+              Explore All Modules
               <ArrowRight size={18} />
-            </Link>
+            </a>
 
-            <Link href="/projects" className="secondary">
-              See Student Projects
+            <Link href="/contact" className="secondary">
+              Partner With Us
             </Link>
 
           </div>
@@ -271,11 +352,12 @@ export default function Home() {
 
             <div className="coreText">
               <b>IDEA → PROTOTYPE</b>
-              <small>LEARN • BUILD • INNOVATE</small>
+              <small>
+                LEARN • BUILD • INNOVATE
+              </small>
             </div>
 
           </div>
-
 
           <div className="floating f1">
             <Cuboid size={18} />
@@ -303,103 +385,28 @@ export default function Home() {
 
 
       {/* =====================================================
-          QUICK VALUE STRIP
+          MODULE INTRO
       ===================================================== */}
 
-      <section className="valueStrip">
+      <section className="moduleIntro">
 
-        <div>
-          <strong>3D</strong>
-          <span>Design & Printing</span>
-        </div>
-
-        <i />
-
-        <div>
-          <strong>ROBOTICS</strong>
-          <span>Build Autonomous Systems</span>
-        </div>
-
-        <i />
-
-        <div>
-          <strong>IoT</strong>
-          <span>Create Smart Devices</span>
-        </div>
-
-        <i />
-
-        <div>
-          <strong>AI</strong>
-          <span>Explore Future Technology</span>
-        </div>
-
-      </section>
-
-
-      {/* =====================================================
-          WHAT IS SHIKSHAMDEHI
-      ===================================================== */}
-
-      <section className="section introduction">
-
-        <div className="introVisual">
+        <div className="section">
 
           <div className="eyebrow">
             <span />
-            WHAT IS SHIKSHAMDEHI?
+            EXPLORE SHIKSHAMDEHI
           </div>
-
-          <div className="bigNumber">
-            <span>01</span>
-            <b>LEARN<br />BY<br />MAKING.</b>
-          </div>
-
-        </div>
-
-        <div className="introContent">
 
           <h2>
-            Technology is not
+            Everything you need
             <br />
-            something to just
-            <br />
-            <em>study.</em>
+            to <em>learn and build.</em>
           </h2>
 
           <p>
-            It is something you can design, build, test and improve.
+            Choose a technology, training area or project service
+            and explore what ShikshamDehi can help you build.
           </p>
-
-          <p>
-            ShikshamDehi creates practical learning experiences where
-            students work with real technologies and turn ideas into
-            working projects.
-          </p>
-
-          <div className="introPoints">
-
-            <div>
-              <Check size={16} />
-              Hands-on learning
-            </div>
-
-            <div>
-              <Check size={16} />
-              Real technology
-            </div>
-
-            <div>
-              <Check size={16} />
-              Project-based skills
-            </div>
-
-            <div>
-              <Check size={16} />
-              Future-ready thinking
-            </div>
-
-          </div>
 
         </div>
 
@@ -407,61 +414,74 @@ export default function Home() {
 
 
       {/* =====================================================
-          TECHNOLOGY DOMAINS
+          12 MODULES
       ===================================================== */}
 
-      <section className="section" id="services">
+      <section
+        className="section modulesSection"
+        id="modules"
+      >
 
-        <div className="sectionHead">
+        <div className="moduleGrid">
 
-          <div>
+          {modules.map(
+            ({
+              number,
+              icon: Icon,
+              category,
+              title,
+              description,
+              skills,
+              href,
+              featured,
+            }) => (
 
-            <div className="eyebrow">
-              <span />
-              WHAT WE TEACH
-            </div>
+              <Link
+                href={href}
+                className={`moduleCard ${
+                  featured ? 'moduleFeatured' : ''
+                }`}
+                key={title}
+              >
 
-            <h2>
-              One place to learn
-              <br />
-              <em>future technologies.</em>
-            </h2>
+                <div className="moduleTop">
 
-          </div>
+                  <div className="moduleIcon">
+                    <Icon size={24} />
+                  </div>
 
-          <p>
-            Start with one skill or combine multiple technologies
-            into a complete project-based learning journey.
-          </p>
+                  <span className="moduleNumber">
+                    {number}
+                  </span>
 
-        </div>
-
-
-        <div className="programGrid">
-
-          {services.map(
-            ({ icon: Icon, title, short, text, href }) => (
-
-              <article className="program" key={title}>
-
-                <div className="programNumber">
-                  {short}
                 </div>
 
-                <div className="icon" aria-hidden="true">
-                  <Icon size={24} />
+                <div className="moduleCategory">
+                  {category}
                 </div>
 
                 <h3>{title}</h3>
 
-                <p>{text}</p>
+                <p>{description}</p>
 
-                <Link href={href}>
-                  Explore
+                <div className="moduleSkills">
+
+                  {skills.map((skill) => (
+                    <span key={skill}>
+                      {skill}
+                    </span>
+                  ))}
+
+                </div>
+
+                <div className="moduleLink">
+                  {featured
+                    ? 'Get Project Materials'
+                    : `Explore ${title}`}
                   <ArrowRight size={16} />
-                </Link>
+                </div>
 
-              </article>
+              </Link>
 
             )
           )}
@@ -472,7 +492,7 @@ export default function Home() {
 
 
       {/* =====================================================
-          THE JOURNEY
+          LEARNING WORKFLOW
       ===================================================== */}
 
       <section className="journeyBand">
@@ -485,7 +505,7 @@ export default function Home() {
 
               <div className="eyebrow">
                 <span />
-                HOW LEARNING WORKS
+                HOW WE LEARN
               </div>
 
               <h2>
@@ -497,12 +517,12 @@ export default function Home() {
             </div>
 
             <p>
-              Students don't just follow instructions. They move
-              through a practical maker workflow and learn by doing.
+              Our approach connects learning with making.
+              Students understand a concept and then use it to
+              create something real.
             </p>
 
           </div>
-
 
           <div className="workflow">
 
@@ -535,7 +555,7 @@ export default function Home() {
 
 
       {/* =====================================================
-          WHO IS IT FOR
+          WHO WE SERVE
       ===================================================== */}
 
       <section
@@ -561,9 +581,8 @@ export default function Home() {
           </div>
 
           <p>
-            Whether you are a school, ATL Lab, ITI, Polytechnic,
-            college or educator, programs can be adapted to your
-            learning goals.
+            Programs can be adapted according to age, curriculum,
+            technical level, lab infrastructure and institutional goals.
           </p>
 
         </div>
@@ -608,74 +627,6 @@ export default function Home() {
 
 
       {/* =====================================================
-          3D MANUFACTURING FEATURE
-      ===================================================== */}
-
-      <section className="manufacturingBand">
-
-        <div className="section manufacturing">
-
-          <div>
-
-            <div className="eyebrow">
-              <span />
-              DIGITAL MANUFACTURING
-            </div>
-
-            <h2>
-              From CAD
-              <br />
-              <em>to something real.</em>
-            </h2>
-
-            <p>
-              Learn the complete journey of designing a digital
-              model and turning it into a physical prototype.
-            </p>
-
-            <Link
-              href="/iti-polytechnic"
-              className="primary"
-            >
-              Explore Technical Training
-              <ArrowRight size={18} />
-            </Link>
-
-          </div>
-
-
-          <div className="manufacturingSteps">
-
-            <div className="manufacturingCard active">
-              <span>01</span>
-              <b>DESIGN</b>
-              <small>CAD MODEL</small>
-            </div>
-
-            <div className="arrow">→</div>
-
-            <div className="manufacturingCard">
-              <span>02</span>
-              <b>PRINT</b>
-              <small>PHYSICAL PART</small>
-            </div>
-
-            <div className="arrow">→</div>
-
-            <div className="manufacturingCard">
-              <span>03</span>
-              <b>TEST</b>
-              <small>REAL PROTOTYPE</small>
-            </div>
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-      {/* =====================================================
           PROJECT CTA
       ===================================================== */}
 
@@ -689,14 +640,14 @@ export default function Home() {
           </div>
 
           <h2>
-            What will your
+            What will you
             <br />
-            students <em>build?</em>
+            <em>build next?</em>
           </h2>
 
           <p>
-            Explore robotics, Arduino, IoT, 3D printing and
-            innovation projects designed for hands-on learning.
+            Explore working project ideas in robotics, Arduino,
+            IoT, electronics, 3D printing and STEM.
           </p>
 
         </div>
@@ -713,13 +664,10 @@ export default function Home() {
 
 
       {/* =====================================================
-          WHY US
+          WHY SHIKSHAMDEHI
       ===================================================== */}
 
-      <section
-        className="section"
-        id="about"
-      >
+      <section className="section">
 
         <div className="about">
 
@@ -731,31 +679,29 @@ export default function Home() {
             </div>
 
             <h2>
-              Education
+              Learn technology.
               <br />
-              that leads to
-              <br />
-              <em>making.</em>
+              <em>Become a maker.</em>
             </h2>
 
           </div>
 
-
           <div className="aboutText">
 
             <p>
-              ShikshamDehi connects
+              ShikshamDehi brings together
               <strong>
-                {' '}design, electronics, coding,
-                fabrication and robotics
+                {' '}design, electronics, coding, fabrication
+                and robotics
               </strong>{' '}
               into practical learning experiences.
             </p>
 
             <p>
-              The focus is simple:
+              Students don't just consume technology.
+              They learn to
               <strong>
-                {' '}understand → build → test → improve.
+                {' '}design it, build it, test it and improve it.
               </strong>
             </p>
 
@@ -795,10 +741,9 @@ export default function Home() {
         </h2>
 
         <p>
-          Explore our programs, see project possibilities or talk
-          to us about a customised institutional program.
+          Choose a module, explore projects or talk to us about
+          training and project requirements.
         </p>
-
 
         <div className="heroActions">
 
@@ -816,18 +761,6 @@ export default function Home() {
           >
             Talk to ShikshamDehi
           </Link>
-
-        </div>
-
-
-        <div className="ctaTags">
-
-          <span>Schools</span>
-          <span>ATL Labs</span>
-          <span>ITI</span>
-          <span>Polytechnic</span>
-          <span>Colleges</span>
-          <span>Educators</span>
 
         </div>
 
