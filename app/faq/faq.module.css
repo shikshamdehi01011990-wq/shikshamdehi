@@ -1,0 +1,317 @@
+.faqPage {
+  min-height: 100vh;
+  background: #080b10;
+  color: #f4f7f8;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.faqNav {
+  width: min(1120px, calc(100% - 40px));
+  margin: auto;
+
+  padding: 25px 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  color: #f4f7f8;
+  text-decoration: none;
+
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.brand > span:last-child > span {
+  color: #c7ff3d;
+}
+
+.brandMark {
+  width: 38px;
+  height: 38px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 10px;
+
+  background: #c7ff3d;
+  color: #080b10;
+
+  font-size: 13px;
+}
+
+.back {
+  color: #9da8af;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.back:hover {
+  color: #c7ff3d;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  color: #c7ff3d;
+
+  font-size: 11px;
+  font-weight: 800;
+
+  letter-spacing: .14em;
+}
+
+.eyebrow span {
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+  background: #c7ff3d;
+}
+
+.faqHero {
+  width: min(900px, calc(100% - 40px));
+  margin: auto;
+
+  padding: 100px 0 70px;
+}
+
+.faqHero h1 {
+  margin: 25px 0;
+
+  font-size: clamp(55px, 8vw, 92px);
+  line-height: .9;
+
+  letter-spacing: -.06em;
+}
+
+.faqHero h1 em,
+.faqCTA h2 em {
+  color: #c7ff3d;
+  font-style: normal;
+}
+
+.faqHero p {
+  max-width: 650px;
+
+  color: #9da8af;
+
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+.faqList {
+  width: min(900px, calc(100% - 40px));
+  margin: auto;
+}
+
+.faqItem {
+  margin-bottom: 10px;
+
+  border: 1px solid #1c2630;
+  border-radius: 14px;
+
+  background: #0e131a;
+
+  overflow: hidden;
+}
+
+.faqItem.active {
+  border-color: #40505d;
+}
+
+.faqQuestion {
+  width: 100%;
+
+  padding: 24px;
+
+  border: none;
+  background: transparent;
+
+  color: #f4f7f8;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  text-align: left;
+
+  cursor: pointer;
+}
+
+.faqQuestion > div {
+  min-width: 0;
+}
+
+.faqCategory {
+  display: block;
+
+  margin-bottom: 9px;
+
+  color: #c7ff3d;
+
+  font-size: 9px;
+  font-weight: 800;
+
+  letter-spacing: .14em;
+}
+
+.faqQuestion h2 {
+  margin: 0;
+
+  font-size: 17px;
+  font-weight: 700;
+}
+
+.faqArrow {
+  flex-shrink: 0;
+
+  width: 36px;
+  height: 36px;
+
+  display: grid;
+  place-items: center;
+
+  margin-left: 20px;
+
+  border: 1px solid #1c2630;
+  border-radius: 50%;
+
+  color: #9da8af;
+
+  transition: transform .2s ease;
+}
+
+.active .faqArrow {
+  transform: rotate(180deg);
+  color: #c7ff3d;
+}
+
+.faqAnswer {
+  padding: 0 24px 25px;
+}
+
+.faqAnswer p {
+  max-width: 750px;
+
+  margin: 0;
+
+  color: #9da8af;
+
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.faqCTA {
+  width: min(900px, calc(100% - 40px));
+  margin: 100px auto;
+
+  padding: 65px 45px;
+
+  border: 1px solid #1c2630;
+  border-radius: 22px;
+
+  background:
+    radial-gradient(
+      circle at 80% 50%,
+      rgba(199, 255, 61, .09),
+      transparent 45%
+    );
+}
+
+.faqCTA h2 {
+  margin: 18px 0;
+
+  font-size: clamp(42px, 5vw, 65px);
+  line-height: .95;
+
+  letter-spacing: -.05em;
+}
+
+.faqCTA p {
+  color: #9da8af;
+  margin-bottom: 25px;
+}
+
+.primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+
+  padding: 14px 20px;
+
+  background: #c7ff3d;
+  color: #080b10;
+
+  border-radius: 9px;
+
+  text-decoration: none;
+
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.faqFooter {
+  width: min(900px, calc(100% - 40px));
+  margin: auto;
+
+  padding: 30px 0;
+
+  border-top: 1px solid #1c2630;
+
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+
+  color: #9da8af;
+}
+
+.faqFooter span {
+  color: #f4f7f8;
+  font-weight: 800;
+}
+
+.faqFooter small {
+  color: #60707c;
+}
+
+@media (max-width: 600px) {
+  .faqNav,
+  .faqHero,
+  .faqList,
+  .faqCTA,
+  .faqFooter {
+    width: calc(100% - 28px);
+  }
+
+  .faqHero {
+    padding: 70px 0 50px;
+  }
+
+  .faqQuestion {
+    padding: 20px;
+  }
+
+  .faqQuestion h2 {
+    font-size: 15px;
+    line-height: 1.4;
+  }
+
+  .faqCTA {
+    padding: 45px 25px;
+    margin: 70px auto;
+  }
+
+  .faqFooter {
+    flex-direction: column;
+  }
+}
