@@ -186,14 +186,7 @@ const audiences = [
   },
 ];
 
-const workflow = [
-  'IDEA',
-  'DESIGN',
-  'MODEL',
-  'BUILD',
-  'TEST',
-  'IMPROVE',
-];
+const workflow = ['IDEA', 'DESIGN', 'MODEL', 'BUILD', 'TEST', 'IMPROVE'];
 
 export default function Home() {
   const [open, setOpen] = useState(false);
@@ -272,116 +265,99 @@ export default function Home() {
 
 
       {/* =====================================================
-          HERO
-      ===================================================== */}
+    HERO
+===================================================== */}
 
-      <section className="hero">
+<section className="hero">
 
-        <div className="gridGlow" aria-hidden="true" />
+  <div className="gridGlow" aria-hidden="true" />
 
-        <div className="heroCopy">
+  <div className="heroCopy">
 
-          <div className="eyebrow">
-            <span />
-            FUTURE SKILLS • REAL PROJECTS
-          </div>
+    <div className="eyebrow">
+      <span />
+      FUTURE SKILLS • REAL PROJECTS
+    </div>
 
-          <h1>
-            Learn.
-            <br />
-            <em>Build.</em>
-            <br />
-            Create the future.
-          </h1>
+    <h1>
+      Learn.
+      <br />
+      <em>Build.</em>
+      <br />
+      Create the future.
+    </h1>
 
-          <p className="heroText">
-            Practical technology education in{' '}
-            <strong>
-              3D Design, 3D Printing, Robotics, Arduino, IoT,
-              Electronics and AI
-            </strong>{' '}
-            for students, educators and institutions.
-          </p>
+    <p className="heroText">
+      Practical technology education in{' '}
+      <strong>
+        3D Design, 3D Printing, Robotics, Arduino, IoT,
+        Electronics and AI
+      </strong>{' '}
+      for students, educators and institutions.
+    </p>
 
-          <div className="heroActions">
+    <div className="heroActions">
 
-            <a href="#modules" className="primary">
-              Explore All Modules
-              <ArrowRight size={18} />
-            </a>
+      <a href="#modules" className="primary">
+        Explore All Modules
+        <ArrowRight size={18} />
+      </a>
 
-            <Link href="/contact" className="secondary">
-              Partner With Us
-            </Link>
+      <Link href="/contact" className="secondary">
+        Partner With Us
+      </Link>
 
-          </div>
+    </div>
 
-          <div className="heroAudience">
-            <span>Schools</span>
-            <i>•</i>
-            <span>ATL Labs</span>
-            <i>•</i>
-            <span>ITI</span>
-            <i>•</i>
-            <span>Polytechnic</span>
-            <i>•</i>
-            <span>Colleges</span>
-          </div>
+    <div className="heroAudience">
+      <span>Schools</span>
+      <i>•</i>
+      <span>ATL Labs</span>
+      <i>•</i>
+      <span>ITI</span>
+      <i>•</i>
+      <span>Polytechnic</span>
+      <i>•</i>
+      <span>Colleges</span>
+    </div>
 
-        </div>
+  </div>
 
 
-        {/* HERO VISUAL */}
+  {/* HERO IMAGE */}
 
-        <div className="heroVisual" aria-hidden="true">
+  <div className="heroVisual">
 
-          <div className="orb orb1" />
-          <div className="orb orb2" />
+    <img
+      src="/home-hero.png"
+      alt="Students learning 3D printing, coding, robotics, design and STEM projects"
+      className="heroImage"
+    />
 
-          <div className="heroCore">
+    {/* CLICKABLE BUTTONS OVER IMAGE */}
 
-            <div className="coreLabel">
-              SHIKSHAMDEHI
-            </div>
+    <div className="heroImageButtons">
 
-            <div className="coreCube">
-              <span />
-              <span />
-              <span />
-            </div>
+      <Link
+        href="/programs"
+        className="heroImageButton primary"
+      >
+        Explore Programs
+        <ArrowRight size={17} />
+      </Link>
 
-            <div className="coreText">
-              <b>IDEA → PROTOTYPE</b>
-              <small>
-                LEARN • BUILD • INNOVATE
-              </small>
-            </div>
+      <Link
+        href="/projects"
+        className="heroImageButton secondary"
+      >
+        View Projects
+      </Link>
 
-          </div>
+    </div>
 
-          <div className="floating f1">
-            <Cuboid size={18} />
-            <span>3D CAD</span>
-          </div>
+  </div>
 
-          <div className="floating f2">
-            <Bot size={18} />
-            <span>Robotics</span>
-          </div>
-
-          <div className="floating f3">
-            <Zap size={18} />
-            <span>Arduino</span>
-          </div>
-
-          <div className="floating f4">
-            <Printer size={18} />
-            <span>3D Print</span>
-          </div>
-
-        </div>
-
-      </section>
+</section>
 
 
       {/* =====================================================
