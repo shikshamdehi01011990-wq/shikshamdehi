@@ -1,56 +1,82 @@
-'use client';
-import { useState } from 'react';
-import { ArrowRight, Box, Bot, Cpu, Cuboid, GraduationCap, Lightbulb, Menu, Printer, School, Sparkles, X, Zap } from 'lucide-react';
+import Link from 'next/link';
+import { ArrowLeft, ArrowRight, Battery, Bot, Box, Check, CircuitBoard, Lightbulb, Printer, Radar, ShieldCheck, Sparkles, Wrench, Zap } from 'lucide-react';
+import styles from './programs.module.css';
 
-const programs = [
-  { icon: Cuboid, tag:'CORE PROGRAM', title:'3D Design & Printing', text:'From imagination to a real, printed product. Students learn CAD, slicing, printer basics and prototyping.' },
-  { icon: Cpu, tag:'ELECTRONICS', title:'Arduino & Electronics', text:'Learn circuits, sensors, inputs, outputs and coding through hands-on projects—not just theory.' },
-  { icon: Bot, tag:'ROBOTICS', title:'Robotics & Automation', text:'Build moving machines using motors, drivers, Arduino and sensors. Progress from simple bots to smart robots.' },
-  { icon: Sparkles, tag:'FUTURE SKILLS', title:'AI, IoT & Innovation', text:'Introduce students to connected devices, AI thinking and real-world problem solving.' },
+const modules = [
+  { n: '01', icon: CircuitBoard, title: 'Basic Electronics', text: 'Components, circuits, breadboards and safe low-voltage making.', active: true },
+  { n: '02', icon: Zap, title: 'Arduino Fundamentals', text: 'Inputs, outputs, coding and interactive electronics.' },
+  { n: '03', icon: Radar, title: 'Sensors & Automation', text: 'Sense the environment and turn data into action.' },
+  { n: '04', icon: Box, title: '3D Design', text: 'Measure, model and convert ideas into digital objects.' },
+  { n: '05', icon: Printer, title: '3D Printing', text: 'Slice, print, test and troubleshoot physical prototypes.' },
+  { n: '06', icon: Bot, title: 'Simple Robotics', text: 'Motors, drivers, chassis and Arduino-controlled robots.' },
+  { n: '07', icon: Wrench, title: 'Integrated Projects', text: 'Combine electronics, sensors, 3D printing and robotics.' },
+  { n: '08', icon: Sparkles, title: 'Innovation Challenge', text: 'Identify a real problem and build a working prototype.' },
 ];
 
-const journey = ['Explore','Design','Build','Print','Program','Innovate'];
+const sessions = [
+  ['01', 'Electricity & Safety', 'Voltage/current ka basic idea, power source, open vs closed circuit aur safe low-voltage practices.', 'Battery + LED observation'],
+  ['02', 'Know Your Components', 'LED, resistor, push button, switch, battery, jumper wire, breadboard aur buzzer ko identify karna.', 'Component identification challenge'],
+  ['03', 'Breadboard Mastery', 'Breadboard ke rows, power rails, component placement aur jumper connections samajhna.', 'LED ON/OFF circuit'],
+  ['04', 'Switch & Control', 'Input aur output ka concept: button press karne par circuit ka response.', 'Push Button LED'],
+  ['05', 'Buzzer & Mini Alarm', 'Simple warning system design aur circuit testing.', 'Mini Door Alarm'],
+  ['06', 'Electronics Challenge', 'Problem → circuit diagram → build → test → improve → explain.', 'School Warning System'],
+];
 
-export default function Home(){
-  const [open,setOpen]=useState(false);
-  return <main>
-    <header className="nav">
-      <a className="brand" href="#top"><span className="brandMark">SD</span><span>Shiksham<span>Dehi</span></span></a>
-      <nav className={open?'mobileOpen':''}>
-        <a href="#programs" onClick={()=>setOpen(false)}>Programs</a><a href="#schools" onClick={()=>setOpen(false)}>For Schools</a><a href="#about" onClick={()=>setOpen(false)}>About</a><a href="#contact" onClick={()=>setOpen(false)}>Contact</a>
-      </nav>
-      <a className="navCta" href="#contact">Partner With Us <ArrowRight size={16}/></a>
-      <button className="menu" onClick={()=>setOpen(!open)} aria-label="Menu">{open?<X/>:<Menu/>}</button>
-    </header>
+const kit = ['Breadboard', 'LEDs', 'Resistors – multiple values', 'Push buttons & switches', 'Jumper wires', 'Buzzer', 'Battery holder / low-voltage DC supply', 'Batteries', 'Shared multimeter', 'Component storage box'];
 
-    <section className="hero" id="top">
-      <div className="gridGlow" />
-      <div className="heroCopy">
-        <div className="eyebrow"><span></span> STEM • MAKER • INNOVATION</div>
-        <h1>Turn curiosity into <em>real-world skills.</em></h1>
-        <p className="heroText">Future-ready learning through <b>3D Design & Printing, Arduino, Robotics, IoT and AI.</b> Students don't just learn technology—they build with it.</p>
-        <div className="heroActions"><a className="primary" href="#programs">Explore Programs <ArrowRight size={18}/></a><a className="secondary" href="#contact">Talk to ShikshamDehi</a></div>
-        <div className="proof"><div><strong>16+</strong><span>Years of 3D<br/>Design Experience</span></div><i></i><div><strong>100%</strong><span>Hands-on<br/>Project Learning</span></div></div>
-      </div>
-      <div className="heroVisual">
-        <div className="orb orb1"></div><div className="orb orb2"></div>
-        <div className="printerCard"><div className="printerTop"><span className="liveDot"></span> MAKER LAB / LIVE</div><div className="printerScene"><div className="printBed"></div><div className="printObject"><span></span><span></span><span></span></div><div className="nozzle"></div></div><div className="printStats"><div><small>PROJECT</small><b>Smart Rover</b></div><div><small>STATUS</small><b className="green">PRINTING</b></div></div></div>
-        <div className="floating f1"><Box size={18}/><span>3D Design</span></div><div className="floating f2"><Bot size={18}/><span>Robotics</span></div><div className="floating f3"><Zap size={18}/><span>Arduino</span></div>
-      </div>
-    </section>
+export default function ProgramsPage() {
+  return (
+    <main className={styles.page}>
+      <header className={styles.nav}>
+        <Link className={styles.brand} href="/"><span className={styles.mark}>SD</span><span>Shiksham<span>Dehi</span></span></Link>
+        <Link className={styles.back} href="/"><ArrowLeft size={16}/> Home</Link>
+      </header>
 
-    <section className="ticker"><div>LEARN</div><span>→</span><div>MAKE</div><span>→</span><div>TEST</div><span>→</span><div>IMPROVE</div><span>→</span><div>INNOVATE</div></section>
+      <section className={styles.hero}>
+        <div className={styles.heroGlow}/>
+        <div className={styles.eyebrow}><span/> CLASS 6–8 • 1-YEAR MAKER PROGRAM</div>
+        <h1>Learn. Design.<br/><em>Build. Innovate.</em></h1>
+        <p>ShikshamDehi Young Maker Program students ko electronics, Arduino, sensors, 3D design, 3D printing aur robotics ke through real-world making skills develop karata hai.</p>
+        <div className={styles.heroMeta}>
+          <span><strong>40–48</strong> Sessions</span><i/><span><strong>60–90</strong> Min / Session</span><i/><span><strong>70%</strong> Hands-on</span>
+        </div>
+      </section>
 
-    <section className="section" id="programs"><div className="sectionHead"><div><div className="eyebrow">WHAT WE TEACH</div><h2>Learning that ends<br/><em>with something real.</em></h2></div><p>Designed for schools, students and educators. Every program is project-led, age-appropriate and built around practical outcomes.</p></div>
-      <div className="programGrid">{programs.map(({icon:Icon,tag,title,text})=><article className="program" key={title}><div className="icon"><Icon size={24}/></div><div className="tag">{tag}</div><h3>{title}</h3><p>{text}</p><a href="#contact">Explore <ArrowRight size={16}/></a></article>)}</div>
-    </section>
+      <section className={styles.section}>
+        <div className={styles.sectionHead}><div><div className={styles.eyebrow}>THE LEARNING JOURNEY</div><h2>8 modules.<br/><em>One maker mindset.</em></h2></div><p>Concepts ko isolated subjects ki tarah nahi, balki ek connected journey ki tarah sikhaya jata hai: electronics se Arduino, sensors se automation, aur 3D design se robotics tak.</p></div>
+        <div className={styles.moduleGrid}>
+          {modules.map(({n, icon: Icon, title, text, active}) => <article className={`${styles.module} ${active ? styles.active : ''}`} key={n}><div className={styles.moduleTop}><span>{n}</span><Icon size={21}/></div><h3>{title}</h3><p>{text}</p></article>)}
+        </div>
+      </section>
 
-    <section className="schoolBand" id="schools"><div className="section schoolInner"><div className="schoolCopy"><div className="eyebrow">FOR SCHOOLS & ATL LABS</div><h2>Build a <em>maker culture</em> inside your school.</h2><p>Don't just set up a lab. Make it active. ShikshamDehi can support your school with structured STEM programs, trainer-led sessions, projects, teacher training and innovation challenges.</p><div className="checkGrid"><span>✓ Curriculum & lesson plans</span><span>✓ 3D printing programs</span><span>✓ Arduino & robotics</span><span>✓ Teacher enablement</span><span>✓ Project & exhibition support</span><span>✓ Annual STEM programs</span></div><a className="primary" href="#contact">Discuss Your School <ArrowRight size={18}/></a></div><div className="schoolCard"><div className="cardLabel">CLASSES 6–8 / FOUNDATION</div><h3>Maker Journey</h3>{journey.map((x,i)=><div className="journey" key={x}><span>{String(i+1).padStart(2,'0')}</span><b>{x}</b><i style={{width:`${45+i*10}%`}}></i></div>)}</div></div></section>
+      <section className={styles.band}>
+        <div className={styles.section}>
+          <div className={styles.sectionHead}><div><div className={styles.eyebrow}>MODULE 01 • BASIC ELECTRONICS</div><h2>Electricity se<br/><em>smart circuit tak.</em></h2></div><p>First module ka goal students ko real components ke saath comfortable banana hai. Har concept immediately practical activity se connect hota hai.</p></div>
+          <div className={styles.sessionGrid}>
+            {sessions.map(([n, title, text, project]) => <article className={styles.session} key={n}><div className={styles.sessionNo}>{n}</div><div><h3>{title}</h3><p>{text}</p><div className={styles.project}><Lightbulb size={15}/><span>{project}</span></div></div></article>)}
+          </div>
+        </div>
+      </section>
 
-    <section className="section" id="about"><div className="about"><div><div className="eyebrow">WHY SHIKSHAMDEHI</div><h2>Experience that<br/><em>builds confidence.</em></h2></div><div className="aboutText"><p>With 16 years of hands-on experience in 3D design and printing, ShikshamDehi brings practical maker knowledge into education.</p><p>Our goal is simple: help students move from consuming technology to <strong>creating technology.</strong></p><div className="quote">“The best STEM lesson is the one where a student says: <b>Can I build one more?</b>”</div></div></div></section>
+      <section className={styles.section}>
+        <div className={styles.twoCol}>
+          <div><div className={styles.eyebrow}>MODULE OUTCOME</div><h2>Student kya<br/><em>kar payega?</em></h2><p className={styles.lead}>Module complete hone ke baad student basic electronic components identify karke breadboard par simple circuit bana, test aur explain kar payega.</p></div>
+          <div className={styles.outcomes}>
+            {['Basic components identify karna', 'Breadboard par simple circuit banana', 'LED, switch aur buzzer use karna', 'Input → Output ka basic concept samajhna', 'Circuit ko test aur troubleshoot karna', 'Apne prototype ko explain karna'].map(x => <div key={x}><Check size={17}/><span>{x}</span></div>)}
+          </div>
+        </div>
+      </section>
 
-    <section className="cta" id="contact"><div className="ctaGlow"></div><div className="eyebrow">LET'S BUILD THE FUTURE</div><h2>Ready to start a<br/><em>maker journey?</em></h2><p>Schools, parents, educators and students—tell us what you want to build.</p><div className="heroActions"><a className="primary" href="mailto:hello@shikshamdehi.com">Start a Conversation <ArrowRight size={18}/></a><a className="secondary light" href="https://wa.me/919999999999" target="_blank">WhatsApp Us</a></div></section>
+      <section className={styles.section + ' ' + styles.kitSection}>
+        <div className={styles.sectionHead}><div><div className={styles.eyebrow}>TRAINER KIT</div><h2>Simple tools.<br/><em>Real making.</em></h2></div><p>School lab ke liye low-voltage, reusable components ka basic kit. Mains electricity students ke practicals se completely separate rahegi.</p></div>
+        <div className={styles.kitGrid}>{kit.map((x, i) => <div className={styles.kitItem} key={x}><span>{String(i + 1).padStart(2,'0')}</span><ShieldCheck size={15}/><b>{x}</b></div>)}</div>
+      </section>
 
-    <footer><div className="brand"><span className="brandMark">SD</span><span>Shiksham<span>Dehi</span></span></div><p>Future skills. Real projects.</p><small>© 2026 ShikshamDehi. All rights reserved.</small></footer>
-  </main>
+      <section className={styles.challenge}>
+        <div className={styles.challengeInner}><div className={styles.eyebrow}>FINAL CHALLENGE</div><h2>Design a warning system<br/><em>for your school.</em></h2><p>Idea → Circuit Diagram → Build → Test → Improve → Present</p><Link className={styles.primary} href="/#contact">Discuss School Program <ArrowRight size={17}/></Link></div>
+      </section>
+
+      <footer className={styles.footer}><Link href="/">Shiksham<span>Dehi</span></Link><span>Future skills. Real projects.</span><small>© 2026 ShikshamDehi</small></footer>
+    </main>
+  );
 }
