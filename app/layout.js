@@ -9,23 +9,24 @@ export const metadata = {
   },
 
   description:
-    'ShikshamDehi provides hands-on STEM education and future-skills training in 3D Design, 3D Printing, Arduino, Robotics, IoT, AI and project-based learning for schools, ATL Labs, ITIs, Polytechnics, colleges and educators.',
+    'ShikshamDehi provides hands-on STEM education, 3D design, 3D printing, Arduino, robotics, IoT, AI and project-based technology training for schools, ATL Labs, ITI, polytechnics, colleges and educators.',
 
   keywords: [
     'ShikshamDehi',
-    'STEM Education',
-    '3D Design Training',
-    '3D Printing Training',
-    'Arduino Training',
-    'Robotics Training',
-    'IoT Training',
-    'AI Education',
-    'Maker Education',
-    'ATL Lab Training',
-    'ITI Training',
-    'Polytechnic Training',
-    'Student Projects',
-    'Future Skills',
+    'STEM education',
+    'future skills',
+    '3D design training',
+    '3D printing training',
+    'Arduino training',
+    'robotics training',
+    'IoT training',
+    'AI education',
+    'ATL Lab training',
+    'ITI training',
+    'polytechnic training',
+    'student projects',
+    'maker education',
+    'technology workshops',
   ],
 
   authors: [
@@ -35,7 +36,27 @@ export const metadata = {
   ],
 
   creator: 'ShikshamDehi',
-  publisher: 'ShikshamDehi',
+
+  alternates: {
+    canonical: '/',
+  },
+
+  openGraph: {
+    title: 'ShikshamDehi | Future Skills. Real Projects.',
+    description:
+      'Hands-on STEM, 3D design, 3D printing, Arduino, robotics, IoT and AI learning programs.',
+    url: 'https://shikshamdehi-cyan.vercel.app',
+    siteName: 'ShikshamDehi',
+    locale: 'en_IN',
+    type: 'website',
+  },
+
+  twitter: {
+    card: 'summary_large_image',
+    title: 'ShikshamDehi | Future Skills. Real Projects.',
+    description:
+      'Hands-on technology education through 3D design, 3D printing, Arduino, robotics, IoT and AI.',
+  },
 
   robots: {
     index: true,
@@ -43,38 +64,60 @@ export const metadata = {
     googleBot: {
       index: true,
       follow: true,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-      'max-video-preview': -1,
     },
   },
+};
 
-  openGraph: {
-    type: 'website',
-    locale: 'en_IN',
-    url: 'https://shikshamdehi-cyan.vercel.app',
-    siteName: 'ShikshamDehi',
-    title: 'ShikshamDehi | Future Skills. Real Projects.',
-    description:
-      'Hands-on STEM education in 3D Design, 3D Printing, Arduino, Robotics, IoT, AI and project-based learning.',
-  },
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'EducationalOrganization',
+  name: 'ShikshamDehi',
+  url: 'https://shikshamdehi-cyan.vercel.app',
+  description:
+    'Future-skills education platform focused on STEM education, 3D design, 3D printing, Arduino, robotics, IoT, AI and project-based learning.',
+  knowsAbout: [
+    'STEM Education',
+    '3D Design',
+    '3D Printing',
+    'Arduino',
+    'Robotics',
+    'IoT',
+    'Artificial Intelligence',
+    'Maker Education',
+    'Digital Manufacturing',
+    'Project-Based Learning',
+  ],
+};
 
-  twitter: {
-    card: 'summary_large_image',
-    title: 'ShikshamDehi | Future Skills. Real Projects.',
-    description:
-      'Hands-on STEM education, digital manufacturing and future-skills training.',
-  },
-
-  alternates: {
-    canonical: 'https://shikshamdehi-cyan.vercel.app',
-  },
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'ShikshamDehi',
+  url: 'https://shikshamdehi-cyan.vercel.app',
+  description:
+    'Future-skills education and practical technology learning platform.',
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        {children}
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema),
+          }}
+        />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(websiteSchema),
+          }}
+        />
+      </body>
     </html>
   );
 }
