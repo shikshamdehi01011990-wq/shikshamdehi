@@ -1,609 +1,527 @@
+'use client';
+
 import Link from 'next/link';
+import { useState } from 'react';
 import {
-  ArrowLeft,
   ArrowRight,
   Bot,
-  Box,
-  Check,
-  CircuitBoard,
+  Building2,
+  Cpu,
   Cuboid,
   GraduationCap,
   Lightbulb,
+  Menu,
   Printer,
   School,
-  Settings,
   Sparkles,
   Wrench,
+  X,
   Zap,
 } from 'lucide-react';
 
-import styles from './programs.module.css';
-
-const categories = [
-  {
-    icon: School,
-    tag: 'SCHOOLS • CLASSES 6–8',
-    title: 'Young Maker Program',
-    text: 'A foundation program where students learn electronics, Arduino, sensors, 3D design, 3D printing and simple robotics through hands-on projects.',
-    points: [
-      'Basic Electronics',
-      'Arduino Fundamentals',
-      'Sensors & Automation',
-      '3D Design & Printing',
-      'Simple Robotics',
-      'Innovation Projects',
-    ],
-    href: '/programs#schools',
-  },
-  {
-    icon: GraduationCap,
-    tag: 'SCHOOLS • CLASSES 9–12',
-    title: 'Advanced STEM & Innovation',
-    text: 'Build deeper technical skills through electronics, robotics, IoT, 3D design, prototyping and real-world problem solving.',
-    points: [
-      'Advanced Arduino',
-      'Robotics & Automation',
-      'IoT Projects',
-      '3D CAD & Prototyping',
-      'Engineering Projects',
-      'Innovation Challenges',
-    ],
-    href: '/programs#schools',
-  },
+const programs = [
   {
     icon: Cuboid,
-    tag: 'ITI • POLYTECHNIC',
-    title: '3D Design & Printing',
-    text: 'Industry-oriented training in CAD, 3D modelling, slicing, printing, prototyping and digital fabrication.',
+    number: '01',
+    tag: 'DESIGN',
+    title: '3D Design & CAD',
+    text: 'Learn professional 3D modelling and CAD from basic concepts to product-ready designs.',
     points: [
-      '3D CAD Modelling',
-      'Design Fundamentals',
-      '3D Printer Operation',
-      'Slicing & Print Settings',
-      'Troubleshooting',
-      'Prototype Development',
+      '3D modelling fundamentals',
+      'CAD & product design',
+      'Design thinking',
+      'Design for manufacturing',
     ],
-    href: '/iti-polytechnic',
-  },
-  {
-    icon: Wrench,
-    tag: 'ITI • POLYTECHNIC',
-    title: 'Project & Skill Training',
-    text: 'Practical workshops and project support for students who want to turn technical knowledge into working prototypes.',
-    points: [
-      'Practical Workshops',
-      'Final Year Projects',
-      'Product Prototyping',
-      'Electronics Integration',
-      'Design Documentation',
-      'Project Mentoring',
-    ],
-    href: '/iti-polytechnic',
-  },
-  {
-    icon: Settings,
-    tag: 'INSTITUTES • TRAINERS',
-    title: 'Faculty & Trainer Training',
-    text: 'Enable teachers and trainers to confidently conduct maker, 3D printing, electronics and robotics activities.',
-    points: [
-      '3D Printing Basics',
-      'CAD Workflow',
-      'Arduino & Electronics',
-      'Robotics Activities',
-      'Lab Practices',
-      'Project-Based Teaching',
-    ],
-    href: '/#contact',
+    audience: 'Schools • ITI • Polytechnic • College',
   },
   {
     icon: Printer,
-    tag: 'SCHOOLS • COLLEGES',
-    title: '3D Printing Lab Support',
-    text: 'Support for institutions that want to start, improve or actively operate a 3D printing and maker lab.',
+    number: '02',
+    tag: 'MANUFACTURING',
+    title: '3D Printing',
+    text: 'Understand the complete workflow from digital model to physical prototype.',
     points: [
-      'Lab Planning',
-      'Printer Orientation',
-      'Software Workflow',
-      'Student Training',
-      'Trainer Support',
-      'Project Activities',
+      '3D printer fundamentals',
+      'Slicing & print settings',
+      'Printer operation',
+      'Troubleshooting & maintenance',
     ],
-    href: '/#contact',
+    audience: 'Schools • ATL Labs • ITI • Polytechnic • College',
+  },
+  {
+    icon: Cpu,
+    number: '03',
+    tag: 'ELECTRONICS',
+    title: 'Arduino & Electronics',
+    text: 'Build practical electronics projects using Arduino, sensors and actuators.',
+    points: [
+      'Basic electronics',
+      'Arduino programming',
+      'Sensors & actuators',
+      'Hands-on project building',
+    ],
+    audience: 'Schools • ATL Labs • ITI • Polytechnic • College',
+  },
+  {
+    icon: Bot,
+    number: '04',
+    tag: 'AUTOMATION',
+    title: 'Robotics & Automation',
+    text: 'Design and build robots while learning motors, sensors, controllers and automation.',
+    points: [
+      'Robot fundamentals',
+      'Motors & motor drivers',
+      'Sensors & control',
+      'Autonomous systems',
+    ],
+    audience: 'Schools • ATL Labs • ITI • Polytechnic • College',
+  },
+  {
+    icon: Zap,
+    number: '05',
+    tag: 'CONNECTED TECHNOLOGY',
+    title: 'IoT & Smart Devices',
+    text: 'Explore connected devices and create smart systems using sensors and controllers.',
+    points: [
+      'IoT fundamentals',
+      'Connected sensors',
+      'Smart devices',
+      'Real-world automation',
+    ],
+    audience: 'ATL Labs • ITI • Polytechnic • College',
+  },
+  {
+    icon: Sparkles,
+    number: '06',
+    tag: 'FUTURE SKILLS',
+    title: 'AI + Hardware',
+    text: 'Introduce learners to the combination of artificial intelligence, hardware and automation.',
+    points: [
+      'AI concepts',
+      'Smart hardware',
+      'Automation ideas',
+      'AI-enabled prototypes',
+    ],
+    audience: 'Polytechnic • College • Advanced Students',
+  },
+  {
+    icon: School,
+    number: '07',
+    tag: 'SCHOOL STEM',
+    title: 'School STEM Programs',
+    text: 'Project-based STEM learning designed for school students with age-appropriate activities.',
+    points: [
+      'STEM workshops',
+      'Maker projects',
+      '3D design & printing',
+      'Robotics & electronics',
+    ],
+    audience: 'Classes 6–12',
+  },
+  {
+    icon: Lightbulb,
+    number: '08',
+    tag: 'ATL LAB',
+    title: 'ATL Lab Programs',
+    text: 'Activate your ATL Lab with structured projects, mentoring, workshops and innovation challenges.',
+    points: [
+      'ATL lab activation',
+      'Student projects',
+      'Mentoring',
+      'Exhibition preparation',
+    ],
+    audience: 'Atal Tinkering Labs',
+  },
+  {
+    icon: Wrench,
+    number: '09',
+    tag: 'TECHNICAL TRAINING',
+    title: 'ITI & Polytechnic Training',
+    text: 'Technical skill development focused on CAD, 3D printing, prototyping and digital manufacturing.',
+    points: [
+      'Technical CAD training',
+      '3D printing',
+      'Rapid prototyping',
+      'Industry-oriented projects',
+    ],
+    audience: 'ITI • Polytechnic',
+  },
+  {
+    icon: GraduationCap,
+    number: '10',
+    tag: 'HIGHER EDUCATION',
+    title: 'College & Engineering Projects',
+    text: 'Support students in developing functional prototypes for academic and engineering projects.',
+    points: [
+      'Project ideation',
+      'CAD & modelling',
+      'Prototype development',
+      'Testing & improvement',
+    ],
+    audience: 'Colleges • Engineering Students',
+  },
+  {
+    icon: Building2,
+    number: '11',
+    tag: 'INSTITUTIONAL',
+    title: 'Workshops & Bootcamps',
+    text: 'Short-term intensive programs designed around specific technologies and project outcomes.',
+    points: [
+      'Technology workshops',
+      'Bootcamps',
+      'Faculty training',
+      'Custom institutional programs',
+    ],
+    audience: 'Schools • Colleges • Institutions',
   },
 ];
 
-const journey = [
-  ['01', 'Explore', 'Understand the concept and discover how technology works.'],
-  ['02', 'Design', 'Convert an idea into a digital design or project plan.'],
-  ['03', 'Build', 'Use real components, tools and machines to create.'],
-  ['04', 'Test', 'Check the prototype and identify what needs improvement.'],
-  ['05', 'Improve', 'Iterate, troubleshoot and make the solution better.'],
-  ['06', 'Innovate', 'Present the final project and think beyond the first idea.'],
-];
-
-const technologies = [
-  { icon: Cuboid, title: '3D Design', text: 'CAD, modelling and digital product design.' },
-  { icon: Printer, title: '3D Printing', text: 'Slicing, printing, calibration and prototyping.' },
-  { icon: CircuitBoard, title: 'Electronics', text: 'Components, circuits, sensors and controls.' },
-  { icon: Zap, title: 'Arduino', text: 'Programming inputs, outputs and interactive systems.' },
-  { icon: Bot, title: 'Robotics', text: 'Motors, sensors, mechanisms and automation.' },
-  { icon: Sparkles, title: 'AI & IoT', text: 'Connected devices and future-ready thinking.' },
+const audiences = [
+  'Schools',
+  'ATL Labs',
+  'ITI',
+  'Polytechnics',
+  'Colleges',
+  'Educators',
 ];
 
 export default function ProgramsPage() {
-  return (
-    <main className={styles.page}>
+  const [open, setOpen] = useState(false);
 
-      {/* NAV */}
-      <header className={styles.nav}>
-        <Link className={styles.brand} href="/">
-          <span className={styles.mark}>SD</span>
+  const closeMenu = () => setOpen(false);
+
+  return (
+    <main className="page">
+      {/* NAVBAR */}
+
+      <header className="nav">
+        <Link href="/" className="brand" onClick={closeMenu}>
+          <span className="mark">SD</span>
           <span>
             Shiksham<span>Dehi</span>
           </span>
         </Link>
 
-        <Link className={styles.back} href="/">
-          <ArrowLeft size={16} />
-          Home
+        <nav className={open ? 'mobileOpen' : ''}>
+          <Link href="/" onClick={closeMenu}>
+            Home
+          </Link>
+
+          <Link href="/programs" className="active" onClick={closeMenu}>
+            Programs
+          </Link>
+
+          <Link href="/iti-polytechnic" onClick={closeMenu}>
+            ITI & Polytechnic
+          </Link>
+
+          <Link href="/contact" onClick={closeMenu}>
+            Contact
+          </Link>
+        </nav>
+
+        <Link href="/contact" className="navCta">
+          Partner With Us <ArrowRight size={16} />
         </Link>
+
+        <button
+          className="menu"
+          onClick={() => setOpen(!open)}
+          aria-label="Toggle navigation"
+          aria-expanded={open}
+        >
+          {open ? <X /> : <Menu />}
+        </button>
       </header>
 
-
       {/* HERO */}
-      <section className={styles.hero}>
-        <div className={styles.heroGlow} />
 
-        <div className={styles.eyebrow}>
+      <section className="hero">
+        <div className="heroGlow" />
+
+        <div className="eyebrow">
           <span />
-          STEM • MAKER • SKILL DEVELOPMENT
+          SHIKSHAMDEHI PROGRAMS
         </div>
 
         <h1>
-          Programs that turn
+          Learn.
           <br />
-          <em>learning into making.</em>
+          <em>Build.</em>
+          <br />
+          Innovate.
         </h1>
 
         <p>
-          Practical technology education for schools, students,
-          ITI and Polytechnic colleges, educators and institutions.
-          Learn 3D Design, 3D Printing, Arduino, Electronics,
-          Robotics, IoT and innovation through real projects.
+          Practical technology programs that connect{' '}
+          <strong>3D Design, 3D Printing, Electronics, Robotics,
+          IoT and AI</strong> with real-world projects.
         </p>
 
-        <div className={styles.heroActions}>
-          <Link className={styles.primary} href="#programs">
-            Explore Programs
-            <ArrowRight size={17} />
-          </Link>
-
-          <Link className={styles.secondary} href="/#contact">
-            Talk to ShikshamDehi
-          </Link>
+        <div className="heroTags">
+          {audiences.map((item) => (
+            <span key={item}>{item}</span>
+          ))}
         </div>
 
-        <div className={styles.heroStats}>
-          <div>
-            <strong>3D</strong>
-            <span>
-              Design & Printing
-              <br />
-              Training
-            </span>
+        <div className="heroActions">
+          <a href="#programs" className="primary">
+            Explore Programs <ArrowRight size={18} />
+          </a>
+
+          <Link href="/contact" className="secondary">
+            Talk to Us
+          </Link>
+        </div>
+      </section>
+
+      {/* INTRO */}
+
+      <section className="intro section">
+        <div>
+          <div className="eyebrow">
+            <span />
+            WHAT WE TEACH
           </div>
 
-          <i />
+          <h2>
+            Technology should be
+            <br />
+            <em>built, not just studied.</em>
+          </h2>
+        </div>
 
+        <p>
+          Our programs are designed around hands-on learning. Learners
+          move from understanding a technology to designing, building,
+          testing and improving something real.
+        </p>
+      </section>
+
+      {/* PROGRAMS */}
+
+      <section className="programSection section" id="programs">
+        <div className="sectionHead">
           <div>
-            <strong>STEM</strong>
-            <span>
-              Hands-on Project
+            <div className="eyebrow">
+              <span />
+              OUR PROGRAMS
+            </div>
+
+            <h2>
+              Choose a skill.
               <br />
-              Learning
-            </span>
+              <em>Build a future.</em>
+            </h2>
           </div>
 
-          <i />
+          <p>
+            From beginner maker education to advanced technical training,
+            programs can be customised according to age, curriculum,
+            technical level and institutional requirements.
+          </p>
+        </div>
 
-          <div>
-            <strong>16+</strong>
-            <span>
-              Years of 3D Design
-              <br />
-              Experience
-            </span>
+        <div className="programGrid">
+          {programs.map(
+            ({
+              icon: Icon,
+              number,
+              tag,
+              title,
+              text,
+              points,
+              audience,
+            }) => (
+              <article className="programCard" key={title}>
+                <div className="programTop">
+                  <div className="icon">
+                    <Icon size={23} />
+                  </div>
+
+                  <span>{number}</span>
+                </div>
+
+                <div className="tag">{tag}</div>
+
+                <h3>{title}</h3>
+
+                <p className="description">{text}</p>
+
+                <div className="points">
+                  {points.map((point) => (
+                    <div key={point}>
+                      <span>✓</span>
+                      {point}
+                    </div>
+                  ))}
+                </div>
+
+                <div className="audience">
+                  <small>SUITABLE FOR</small>
+                  <b>{audience}</b>
+                </div>
+
+                <Link href="/contact" className="cardLink">
+                  Enquire About Program <ArrowRight size={16} />
+                </Link>
+              </article>
+            )
+          )}
+        </div>
+      </section>
+
+      {/* WORKFLOW */}
+
+      <section className="workflowBand">
+        <div className="section workflowSection">
+          <div className="eyebrow">
+            <span />
+            OUR LEARNING APPROACH
+          </div>
+
+          <h2>
+            From <em>idea</em>
+            <br />
+            to real-world output.
+          </h2>
+
+          <div className="workflow">
+            {[
+              'EXPLORE',
+              'DESIGN',
+              'MODEL',
+              'BUILD',
+              'PRINT',
+              'PROGRAM',
+              'TEST',
+              'INNOVATE',
+            ].map((item, index) => (
+              <div className="workflowItem" key={item}>
+                <span>
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+                <b>{item}</b>
+                {index < 7 && <i>→</i>}
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
+      {/* INSTITUTIONS */}
 
-      {/* PROGRAMS */}
-      <section className={styles.section} id="programs">
-
-        <div className={styles.sectionHead}>
+      <section className="section institutions">
+        <div className="sectionHead">
           <div>
-            <div className={styles.eyebrow}>
-              OUR PROGRAMS
+            <div className="eyebrow">
+              <span />
+              FOR INSTITUTIONS
             </div>
 
             <h2>
               One platform.
               <br />
-              <em>Multiple learning paths.</em>
+              <em>Different learning needs.</em>
             </h2>
           </div>
 
           <p>
-            Choose a program according to the learner, institution
-            and desired outcome. Every program can be customised
-            according to age, duration, equipment and project goals.
+            We work with institutions to create structured technology
+            learning experiences—from single-day workshops to long-term
+            skill development programs.
           </p>
         </div>
 
-        <div className={styles.programGrid}>
-          {categories.map(
-            ({ icon: Icon, tag, title, text, points, href }) => (
-              <article className={styles.programCard} key={title}>
-
-                <div className={styles.programTop}>
-                  <div className={styles.programIcon}>
-                    <Icon size={23} />
-                  </div>
-
-                  <span>{tag}</span>
-                </div>
-
-                <h3>{title}</h3>
-
-                <p>{text}</p>
-
-                <div className={styles.points}>
-                  {points.map((point) => (
-                    <div key={point}>
-                      <Check size={14} />
-                      <span>{point}</span>
-                    </div>
-                  ))}
-                </div>
-
-                <Link href={href} className={styles.programLink}>
-                  Explore Program
-                  <ArrowRight size={15} />
-                </Link>
-
-              </article>
-            )
-          )}
-        </div>
-
-      </section>
-
-
-      {/* TECHNOLOGY BAND */}
-      <section className={styles.techBand}>
-
-        <div className={styles.section}>
-
-          <div className={styles.sectionHead}>
-            <div>
-              <div className={styles.eyebrow}>
-                WHAT STUDENTS WORK WITH
-              </div>
-
-              <h2>
-                From first circuit
-                <br />
-                to <em>working prototype.</em>
-              </h2>
-            </div>
-
-            <p>
-              Students progressively move from basic concepts
-              to designing, building, testing and presenting
-              their own technology projects.
-            </p>
-          </div>
-
-          <div className={styles.techGrid}>
-            {technologies.map(
-              ({ icon: Icon, title, text }) => (
-                <div className={styles.techCard} key={title}>
-                  <Icon size={22} />
-                  <h3>{title}</h3>
-                  <p>{text}</p>
-                </div>
-              )
-            )}
-          </div>
-
-        </div>
-
-      </section>
-
-
-      {/* JOURNEY */}
-      <section className={styles.section}>
-
-        <div className={styles.sectionHead}>
+        <div className="institutionGrid">
           <div>
-            <div className={styles.eyebrow}>
-              OUR LEARNING METHOD
-            </div>
-
-            <h2>
-              Learn.
-              <br />
-              <em>Make. Improve.</em>
-            </h2>
+            <School size={24} />
+            <h3>Schools</h3>
+            <p>STEM, maker education, robotics, electronics and project-based learning.</p>
           </div>
-
-          <p>
-            We focus on project-based learning rather than
-            technology demonstrations alone. Students learn
-            by actually making and improving things.
-          </p>
-        </div>
-
-        <div className={styles.journeyGrid}>
-          {journey.map(([number, title, text]) => (
-            <article className={styles.journeyCard} key={number}>
-              <span>{number}</span>
-              <h3>{title}</h3>
-              <p>{text}</p>
-            </article>
-          ))}
-        </div>
-
-      </section>
-
-
-      {/* SCHOOL */}
-      <section className={styles.audienceBand} id="schools">
-
-        <div className={styles.audienceInner}>
 
           <div>
-            <div className={styles.eyebrow}>
-              FOR SCHOOLS & ATL LABS
-            </div>
-
-            <h2>
-              Build a
-              <br />
-              <em>maker culture.</em>
-            </h2>
-
-            <p>
-              Structured STEM programs for schools that want
-              students to actively use their ATL or maker lab
-              instead of simply having the equipment.
-            </p>
+            <Lightbulb size={24} />
+            <h3>ATL Labs</h3>
+            <p>Lab activation, mentoring, innovation challenges and project support.</p>
           </div>
-
-          <div className={styles.audiencePoints}>
-            <div>
-              <Check size={17} />
-              <span>Curriculum & lesson plans</span>
-            </div>
-
-            <div>
-              <Check size={17} />
-              <span>3D printing programs</span>
-            </div>
-
-            <div>
-              <Check size={17} />
-              <span>Arduino & robotics</span>
-            </div>
-
-            <div>
-              <Check size={17} />
-              <span>Teacher enablement</span>
-            </div>
-
-            <div>
-              <Check size={17} />
-              <span>Project & exhibition support</span>
-            </div>
-
-            <div>
-              <Check size={17} />
-              <span>Annual STEM programs</span>
-            </div>
-          </div>
-
-        </div>
-
-      </section>
-
-
-      {/* ITI / POLYTECHNIC */}
-      <section className={styles.section}>
-
-        <div className={styles.twoCol}>
 
           <div>
-            <div className={styles.eyebrow}>
-              FOR ITI & POLYTECHNIC
-            </div>
-
-            <h2>
-              Skills for
-              <br />
-              <em>real applications.</em>
-            </h2>
-
-            <p className={styles.lead}>
-              Give technical students practical exposure to
-              3D CAD, digital fabrication, 3D printing,
-              prototyping and project development.
-            </p>
-
-            <Link
-              href="/iti-polytechnic"
-              className={styles.primary}
-            >
-              View ITI & Polytechnic Program
-              <ArrowRight size={17} />
-            </Link>
+            <Wrench size={24} />
+            <h3>ITI</h3>
+            <p>Technical CAD, 3D printing, prototyping and digital manufacturing.</p>
           </div>
 
-          <div className={styles.collegeCard}>
-
-            <div className={styles.collegeIcon}>
-              <GraduationCap size={24} />
-            </div>
-
-            <div className={styles.collegeLabel}>
-              INSTITUTIONAL TRAINING
-            </div>
-
-            <h3>
-              3D Design + 3D Printing
-            </h3>
-
-            <p>
-              From digital modelling to physical prototypes,
-              students learn the complete workflow used in
-              modern digital fabrication.
-            </p>
-
-            <div className={styles.collegeTags}>
-              <span>CAD</span>
-              <span>3D PRINTING</span>
-              <span>PROTOTYPING</span>
-              <span>PROJECTS</span>
-            </div>
-
+          <div>
+            <Cuboid size={24} />
+            <h3>Polytechnics</h3>
+            <p>Engineering design, rapid prototyping, CAD and technical projects.</p>
           </div>
 
+          <div>
+            <GraduationCap size={24} />
+            <h3>Colleges</h3>
+            <p>Engineering projects, product development, IoT and robotics.</p>
+          </div>
+
+          <div>
+            <Building2 size={24} />
+            <h3>Educators</h3>
+            <p>Faculty development and practical technology training.</p>
+          </div>
         </div>
-
       </section>
-
-
-      {/* INSTITUTIONS */}
-      <section className={styles.institutionBand}>
-
-        <div className={styles.institutionInner}>
-
-          <div className={styles.institutionText}>
-            <div className={styles.eyebrow}>
-              FOR INSTITUTIONS
-            </div>
-
-            <h2>
-              Training that fits
-              <br />
-              your <em>requirements.</em>
-            </h2>
-
-            <p>
-              Schools, colleges, ITIs, Polytechnics, training
-              centres and educational organisations can choose
-              short workshops, structured programs, lab support
-              or customised training.
-            </p>
-          </div>
-
-          <div className={styles.institutionCards}>
-
-            <div>
-              <Lightbulb size={20} />
-              <b>Workshops</b>
-              <span>Short-term intensive practical sessions.</span>
-            </div>
-
-            <div>
-              <Box size={20} />
-              <b>Project Support</b>
-              <span>Prototype and project mentoring.</span>
-            </div>
-
-            <div>
-              <Printer size={20} />
-              <b>Lab Training</b>
-              <span>3D printing and maker lab enablement.</span>
-            </div>
-
-            <div>
-              <GraduationCap size={20} />
-              <b>Faculty Training</b>
-              <span>Trainer and teacher skill development.</span>
-            </div>
-
-          </div>
-
-        </div>
-
-      </section>
-
 
       {/* CTA */}
-      <section className={styles.challenge}>
 
-        <div className={styles.challengeInner}>
+      <section className="cta">
+        <div className="ctaGlow" />
 
-          <div className={styles.eyebrow}>
-            START A PROGRAM
-          </div>
-
-          <h2>
-            Have a school,
-            <br />
-            college or lab?
-            <br />
-            <em>Let's build together.</em>
-          </h2>
-
-          <p>
-            Tell us your institution, learner group,
-            available equipment and training requirement.
-            We can help design the right program.
-          </p>
-
-          <div className={styles.ctaActions}>
-
-            <Link
-              className={styles.primary}
-              href="/#contact"
-            >
-              Discuss Your Requirement
-              <ArrowRight size={17} />
-            </Link>
-
-            <Link
-              className={styles.secondary}
-              href="/iti-polytechnic"
-            >
-              ITI & Polytechnic
-            </Link>
-
-          </div>
-
+        <div className="eyebrow">
+          <span />
+          READY TO START?
         </div>
 
+        <h2>
+          Build a program
+          <br />
+          <em>that fits your institution.</em>
+        </h2>
+
+        <p>
+          Tell us about your students, lab, institution or project.
+          We can create a suitable training plan around your goals.
+        </p>
+
+        <div className="heroActions">
+          <Link href="/contact" className="primary">
+            Discuss Your Program <ArrowRight size={18} />
+          </Link>
+
+          <Link href="/iti-polytechnic" className="secondary light">
+            ITI & Polytechnic Training
+          </Link>
+        </div>
       </section>
 
-
       {/* FOOTER */}
-      <footer className={styles.footer}>
 
-        <Link href="/">
-          Shiksham<span>Dehi</span>
+      <footer className="footer">
+        <Link href="/" className="brand">
+          <span className="mark">SD</span>
+          <span>
+            Shiksham<span>Dehi</span>
+          </span>
         </Link>
 
-        <span>
-          Future skills. Real projects.
-        </span>
+        <p>
+          STEM Education • Digital Manufacturing • Future Skills
+        </p>
 
         <small>
-          © 2026 ShikshamDehi
+          © 2026 ShikshamDehi. All rights reserved.
         </small>
-
       </footer>
-
     </main>
   );
 }
