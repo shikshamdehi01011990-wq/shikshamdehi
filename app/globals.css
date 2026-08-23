@@ -26,7 +26,6 @@ main {
   --bg: #080b10;
   --bg2: #0b1016;
   --card: #0e141b;
-  --card2: #111820;
   --line: #202b35;
   --muted: #9ba7af;
   --muted2: #6e7b84;
@@ -40,7 +39,7 @@ main {
 
 /* =========================================================
    NAVBAR
-   ========================================================= */
+========================================================= */
 
 .nav {
   width: min(1180px, calc(100% - 44px));
@@ -68,6 +67,10 @@ main {
   letter-spacing: -0.02em;
 }
 
+.brand > span:last-child > span {
+  color: var(--lime);
+}
+
 .brandMark {
   width: 38px;
   height: 38px;
@@ -82,10 +85,6 @@ main {
 
   font-size: 12px;
   font-weight: 900;
-}
-
-.brand > span:last-child > span {
-  color: var(--lime);
 }
 
 .nav nav {
@@ -148,7 +147,7 @@ main {
 
 /* =========================================================
    COMMON
-   ========================================================= */
+========================================================= */
 
 .section {
   width: min(1180px, calc(100% - 44px));
@@ -217,7 +216,7 @@ main {
 
 /* =========================================================
    HERO
-   ========================================================= */
+========================================================= */
 
 .hero {
   width: min(1180px, calc(100% - 44px));
@@ -357,10 +356,8 @@ main {
 }
 
 /* =========================================================
-   HERO IMAGE
-   IMPORTANT:
-   IMAGE IS A REAL <img> IN page.js
-   ========================================================= */
+   HERO IMAGE — DIRECT IMG VERSION
+========================================================= */
 
 .heroVisual {
   min-height: 560px;
@@ -374,12 +371,13 @@ main {
   overflow: visible;
 }
 
-.heroImageGlow {
-  position: absolute;
+.heroVisual::after {
+  content: "";
 
   width: 480px;
   height: 480px;
 
+  position: absolute;
   left: 50%;
   top: 50%;
 
@@ -392,9 +390,14 @@ main {
   filter: blur(95px);
 
   pointer-events: none;
-
   z-index: 0;
 }
+
+/*
+  IMPORTANT:
+  No background-image here.
+  Image is loaded directly by <img src="/home-hero.png">.
+*/
 
 .heroImage {
   position: relative;
@@ -410,23 +413,38 @@ main {
 
   border-radius: 20px;
 
+  opacity: 1;
+  visibility: visible;
+
   filter:
-    drop-shadow(0 30px 55px rgba(0, 0, 0, 0.45))
+    drop-shadow(0 30px 60px rgba(0, 0, 0, 0.45))
     drop-shadow(0 0 45px rgba(199, 255, 61, 0.08));
 
   animation: heroImageFloat 6s ease-in-out infinite;
 
-  transition:
-    transform 0.4s ease,
-    filter 0.4s ease;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
-.heroImage:hover {
-  transform: translateY(-6px);
+.heroImageGlow {
+  position: absolute;
 
-  filter:
-    drop-shadow(0 38px 70px rgba(0, 0, 0, 0.5))
-    drop-shadow(0 0 55px rgba(199, 255, 61, 0.12));
+  width: 430px;
+  height: 430px;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background: rgba(199, 255, 61, 0.04);
+
+  filter: blur(80px);
+
+  pointer-events: none;
+  z-index: 1;
 }
 
 @keyframes heroImageFloat {
@@ -442,7 +460,7 @@ main {
 
 /* =========================================================
    MODULE INTRO
-   ========================================================= */
+========================================================= */
 
 .moduleIntro {
   border-top: 1px solid var(--line);
@@ -490,7 +508,7 @@ main {
 
 /* =========================================================
    MODULES
-   ========================================================= */
+========================================================= */
 
 .modulesSection {
   padding-top: 100px;
@@ -529,7 +547,6 @@ main {
     var(--card);
 
   color: var(--white);
-
   text-decoration: none;
 
   transition:
@@ -564,14 +581,6 @@ main {
 
   border-color: rgba(199, 255, 61, 0.42);
 
-  background:
-    linear-gradient(
-      145deg,
-      rgba(199, 255, 61, 0.055),
-      rgba(255, 255, 255, 0)
-    ),
-    var(--card);
-
   box-shadow:
     0 25px 60px rgba(0, 0, 0, 0.28),
     0 0 40px rgba(199, 255, 61, 0.045);
@@ -579,14 +588,6 @@ main {
 
 .moduleFeatured {
   border-color: rgba(199, 255, 61, 0.32);
-
-  background:
-    linear-gradient(
-      145deg,
-      rgba(199, 255, 61, 0.065),
-      rgba(255, 255, 255, 0)
-    ),
-    var(--card);
 }
 
 .moduleTop {
@@ -607,15 +608,11 @@ main {
   place-items: center;
 
   border: 1px solid rgba(199, 255, 61, 0.22);
-
   border-radius: 11px;
 
   background: rgba(199, 255, 61, 0.065);
 
   color: var(--lime);
-
-  font-size: 9px;
-  font-weight: 900;
 }
 
 .moduleNumber {
@@ -672,7 +669,6 @@ main {
   padding: 5px 7px;
 
   border: 1px solid var(--line);
-
   border-radius: 5px;
 
   background: rgba(255, 255, 255, 0.018);
@@ -702,8 +698,6 @@ main {
   font-weight: 900;
 
   letter-spacing: 0.05em;
-
-  transition: color 0.2s ease;
 }
 
 .moduleCard:hover .moduleLink {
@@ -712,7 +706,7 @@ main {
 
 /* =========================================================
    JOURNEY
-   ========================================================= */
+========================================================= */
 
 .journeyBand {
   border-top: 1px solid var(--line);
@@ -768,7 +762,7 @@ main {
 
 /* =========================================================
    AUDIENCE
-   ========================================================= */
+========================================================= */
 
 .audienceGrid {
   display: grid;
@@ -783,17 +777,14 @@ main {
 
   display: flex;
   align-items: flex-start;
-
   gap: 18px;
 
   border: 1px solid var(--line);
-
   border-radius: 16px;
 
   background: var(--card);
 
   color: var(--white);
-
   text-decoration: none;
 
   transition:
@@ -804,9 +795,7 @@ main {
 
 .audienceCard:hover {
   transform: translateY(-5px);
-
   border-color: rgba(199, 255, 61, 0.38);
-
   background: #101820;
 }
 
@@ -818,7 +807,6 @@ main {
   margin-bottom: 8px;
 
   color: var(--white);
-
   font-size: 18px;
 }
 
@@ -828,27 +816,23 @@ main {
   color: var(--muted);
 
   font-size: 12px;
-
   line-height: 1.65;
 }
 
 .audienceCard > div:last-child > span {
   display: inline-flex;
-
   align-items: center;
-
   gap: 6px;
 
   color: var(--lime);
 
   font-size: 10px;
-
   font-weight: 900;
 }
 
 /* =========================================================
    PROJECT BANNER
-   ========================================================= */
+========================================================= */
 
 .projectBanner {
   width: min(1180px, calc(100% - 44px));
@@ -856,19 +840,14 @@ main {
   min-height: 300px;
 
   margin: 40px auto;
-
   padding: 55px;
 
   display: flex;
-
   align-items: center;
-
   justify-content: space-between;
-
   gap: 40px;
 
   border: 1px solid rgba(199, 255, 61, 0.18);
-
   border-radius: 22px;
 
   background:
@@ -898,7 +877,6 @@ main {
   color: var(--muted);
 
   font-size: 14px;
-
   line-height: 1.75;
 }
 
@@ -906,25 +884,19 @@ main {
   min-width: 220px;
 
   display: inline-flex;
-
   align-items: center;
-
   justify-content: space-between;
-
   gap: 20px;
 
   padding: 18px 20px;
 
   border: 1px solid var(--line);
-
   border-radius: 10px;
 
   color: var(--white);
-
   text-decoration: none;
 
   font-size: 12px;
-
   font-weight: 900;
 
   transition:
@@ -934,15 +906,13 @@ main {
 
 .largeArrow:hover {
   border-color: var(--lime);
-
   transform: translateY(-3px);
-
   color: var(--lime);
 }
 
 /* =========================================================
    SCHOOL
-   ========================================================= */
+========================================================= */
 
 .schoolBand {
   border-top: 1px solid var(--line);
@@ -964,11 +934,8 @@ main {
 
 .schoolInner {
   display: grid;
-
   grid-template-columns: 1.05fr 0.75fr;
-
   gap: 90px;
-
   align-items: center;
 }
 
@@ -994,15 +961,12 @@ main {
   color: var(--muted);
 
   font-size: 15px;
-
   line-height: 1.8;
 }
 
 .checkGrid {
   display: grid;
-
   grid-template-columns: 1fr 1fr;
-
   gap: 12px 20px;
 
   margin-bottom: 30px;
@@ -1012,7 +976,6 @@ main {
   color: #c2cbd0;
 
   font-size: 12px;
-
   font-weight: 700;
 }
 
@@ -1020,7 +983,6 @@ main {
   padding: 28px;
 
   border: 1px solid #29353e;
-
   border-radius: 18px;
 
   background: #0c1218;
@@ -1034,9 +996,7 @@ main {
   color: var(--lime);
 
   font-size: 9px;
-
   font-weight: 900;
-
   letter-spacing: 0.15em;
 }
 
@@ -1046,7 +1006,6 @@ main {
   color: var(--white);
 
   font-size: 25px;
-
   letter-spacing: -0.03em;
 }
 
@@ -1054,11 +1013,9 @@ main {
   min-height: 47px;
 
   display: grid;
-
   grid-template-columns: 35px 90px 1fr;
 
   align-items: center;
-
   gap: 10px;
 }
 
@@ -1066,7 +1023,6 @@ main {
   color: var(--muted2);
 
   font-size: 9px;
-
   font-weight: 800;
 }
 
@@ -1090,15 +1046,12 @@ main {
 
 /* =========================================================
    ABOUT
-   ========================================================= */
+========================================================= */
 
 .about {
   display: grid;
-
   grid-template-columns: 0.8fr 1fr;
-
   gap: 100px;
-
   align-items: start;
 }
 
@@ -1122,7 +1075,6 @@ main {
   color: var(--muted);
 
   font-size: 15px;
-
   line-height: 1.8;
 }
 
@@ -1132,7 +1084,6 @@ main {
 
 .quote {
   margin-top: 30px;
-
   padding: 22px;
 
   border-left: 2px solid var(--lime);
@@ -1142,7 +1093,6 @@ main {
   color: #b7c1c6;
 
   font-size: 14px;
-
   line-height: 1.7;
 }
 
@@ -1152,7 +1102,7 @@ main {
 
 /* =========================================================
    CTA
-   ========================================================= */
+========================================================= */
 
 .cta {
   min-height: 570px;
@@ -1162,11 +1112,8 @@ main {
   position: relative;
 
   display: flex;
-
   flex-direction: column;
-
   align-items: center;
-
   justify-content: center;
 
   text-align: center;
@@ -1180,11 +1127,9 @@ main {
   position: absolute;
 
   width: 650px;
-
   height: 650px;
 
   left: 50%;
-
   top: 50%;
 
   transform: translate(-50%, -50%);
@@ -1200,7 +1145,6 @@ main {
 
 .cta > *:not(.ctaGlow) {
   position: relative;
-
   z-index: 2;
 }
 
@@ -1222,7 +1166,6 @@ main {
   color: var(--muted);
 
   font-size: 15px;
-
   line-height: 1.7;
 }
 
@@ -1232,11 +1175,8 @@ main {
 
 .ctaTags {
   display: flex;
-
   justify-content: center;
-
   flex-wrap: wrap;
-
   gap: 9px;
 
   margin-top: 38px;
@@ -1246,33 +1186,28 @@ main {
   padding: 8px 11px;
 
   border: 1px solid var(--line);
-
   border-radius: 7px;
 
   color: var(--muted);
 
   font-size: 9px;
-
   font-weight: 800;
 
   text-transform: uppercase;
-
   letter-spacing: 0.08em;
 }
 
 /* =========================================================
    FOOTER
-   ========================================================= */
+========================================================= */
 
 footer {
   width: min(1180px, calc(100% - 44px));
-
   min-height: 90px;
 
   margin: auto;
 
   display: grid;
-
   grid-template-columns: 1fr auto 1fr;
 
   align-items: center;
@@ -1288,10 +1223,17 @@ footer .brand {
 
 footer .brandMark {
   width: 32px;
-
   height: 32px;
-
   border-radius: 8px;
+}
+
+footer p {
+  color: var(--muted2);
+
+  font-size: 10px;
+  font-weight: 700;
+
+  text-align: center;
 }
 
 footer small {
@@ -1306,7 +1248,6 @@ footer small {
   display: flex;
 
   align-items: center;
-
   justify-content: center;
 
   gap: 16px;
@@ -1320,7 +1261,6 @@ footer small {
   text-decoration: none;
 
   font-size: 9px;
-
   font-weight: 700;
 }
 
@@ -1330,7 +1270,7 @@ footer small {
 
 /* =========================================================
    TABLET
-   ========================================================= */
+========================================================= */
 
 @media (max-width: 1000px) {
   .hero {
@@ -1351,14 +1291,13 @@ footer small {
     width: min(560px, 90vw);
   }
 
-  .heroImageGlow {
+  .heroVisual::after {
     width: 390px;
     height: 390px;
   }
 
   .sectionHead {
     grid-template-columns: 1fr;
-
     gap: 25px;
   }
 
@@ -1373,7 +1312,6 @@ footer small {
   .schoolInner,
   .about {
     grid-template-columns: 1fr;
-
     gap: 55px;
   }
 
@@ -1388,12 +1326,11 @@ footer small {
 
 /* =========================================================
    MOBILE
-   ========================================================= */
+========================================================= */
 
 @media (max-width: 700px) {
   .nav {
     width: calc(100% - 28px);
-
     height: 72px;
   }
 
@@ -1403,7 +1340,6 @@ footer small {
 
   .menu {
     display: grid;
-
     place-items: center;
   }
 
@@ -1413,21 +1349,17 @@ footer small {
     position: absolute;
 
     top: 67px;
-
     left: 0;
-
     right: 0;
 
     padding: 14px;
 
     flex-direction: column;
-
     align-items: stretch;
 
     gap: 4px;
 
     border: 1px solid var(--line);
-
     border-radius: 12px;
 
     background: #0b1016;
@@ -1445,10 +1377,6 @@ footer small {
     border-radius: 7px;
 
     font-size: 13px;
-  }
-
-  .nav nav a:hover {
-    background: rgba(199, 255, 61, 0.05);
   }
 
   .hero {
@@ -1469,13 +1397,11 @@ footer small {
 
   .heroAudience {
     gap: 7px;
-
     line-height: 1.8;
   }
 
   .heroActions {
     align-items: stretch;
-
     flex-direction: column;
   }
 
@@ -1486,27 +1412,28 @@ footer small {
 
   .heroVisual {
     min-height: 410px;
-
     margin-top: 10px;
   }
 
   .heroImage {
-    width: min(100%, 430px);
-
+    width: min(430px, 94vw);
     max-width: 430px;
   }
 
-  .heroImageGlow {
+  .heroVisual::after {
     width: 290px;
-
     height: 290px;
 
     filter: blur(70px);
   }
 
+  .heroImageGlow {
+    width: 280px;
+    height: 280px;
+  }
+
   .moduleIntro .section {
     padding-top: 72px;
-
     padding-bottom: 72px;
   }
 
@@ -1516,19 +1443,16 @@ footer small {
 
   .modulesSection {
     padding-top: 72px;
-
     padding-bottom: 72px;
   }
 
   .moduleGrid {
     grid-template-columns: 1fr;
-
     gap: 12px;
   }
 
   .moduleCard {
     min-height: 290px;
-
     padding: 21px;
   }
 
@@ -1542,7 +1466,6 @@ footer small {
 
   .section {
     width: calc(100% - 28px);
-
     padding: 72px 0;
   }
 
@@ -1558,7 +1481,6 @@ footer small {
 
   .schoolBand .section {
     padding-top: 72px;
-
     padding-bottom: 72px;
   }
 
@@ -1580,13 +1502,11 @@ footer small {
 
   .workflow {
     align-items: stretch;
-
     flex-direction: column;
   }
 
   .workflowItem {
     width: 100%;
-
     justify-content: space-between;
   }
 
@@ -1602,7 +1522,6 @@ footer small {
     padding: 30px 23px;
 
     flex-direction: column;
-
     align-items: flex-start;
   }
 
@@ -1616,7 +1535,6 @@ footer small {
 
   .cta {
     min-height: 500px;
-
     padding: 90px 20px;
   }
 
@@ -1630,12 +1548,14 @@ footer small {
     padding: 28px 0;
 
     display: flex;
-
     flex-direction: column;
-
     align-items: flex-start;
 
     gap: 16px;
+  }
+
+  footer p {
+    text-align: left;
   }
 
   footer small {
@@ -1649,7 +1569,7 @@ footer small {
 
 /* =========================================================
    SMALL MOBILE
-   ========================================================= */
+========================================================= */
 
 @media (max-width: 420px) {
   .brand {
@@ -1658,7 +1578,6 @@ footer small {
 
   .brandMark {
     width: 34px;
-
     height: 34px;
   }
 
@@ -1677,14 +1596,12 @@ footer small {
   }
 
   .heroImage {
-    width: min(100%, 360px);
-
+    width: min(360px, 96vw);
     max-width: 360px;
   }
 
-  .heroImageGlow {
+  .heroVisual::after {
     width: 230px;
-
     height: 230px;
   }
 
@@ -1703,14 +1620,11 @@ footer small {
 
 /* =========================================================
    ACCESSIBILITY
-   ========================================================= */
+========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
   .heroImage {
     animation: none;
   }
-
-  html {
-    scroll-behavior: auto;
-  }
 }
+```
