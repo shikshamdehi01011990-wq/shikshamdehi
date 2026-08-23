@@ -1455,3 +1455,767 @@ footer small {
     left: 0;
   }
 }
+/* =========================================================
+   SHIKSHAMDEHI NEW HOME PAGE
+   MODULE CARDS + AUDIENCE CARDS + HERO VISUAL
+   ========================================================= */
+
+/* ================= HERO CORE ================= */
+
+.heroCore {
+  width: min(390px, 78vw);
+  min-height: 390px;
+
+  position: relative;
+  z-index: 3;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid #293640;
+  border-radius: 24px;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(199, 255, 61, 0.08),
+      rgba(11, 16, 21, 0.96) 58%
+    );
+
+  box-shadow:
+    0 35px 80px rgba(0, 0, 0, 0.45),
+    0 0 80px rgba(199, 255, 61, 0.05);
+}
+
+.coreLabel {
+  margin-bottom: 28px;
+
+  color: var(--lime);
+
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+}
+
+.coreCube {
+  width: 150px;
+  height: 150px;
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transform: rotate(30deg) skewY(-8deg);
+}
+
+.coreCube span {
+  position: absolute;
+
+  display: block;
+
+  width: 105px;
+  height: 105px;
+
+  border: 1px solid rgba(199, 255, 61, 0.42);
+
+  background: rgba(199, 255, 61, 0.055);
+
+  box-shadow:
+    0 0 30px rgba(199, 255, 61, 0.06),
+    inset 0 0 25px rgba(199, 255, 61, 0.035);
+}
+
+.coreCube span:nth-child(1) {
+  transform: translateZ(35px);
+}
+
+.coreCube span:nth-child(2) {
+  transform: rotateY(90deg) translateZ(35px);
+}
+
+.coreCube span:nth-child(3) {
+  transform: rotateX(90deg) translateZ(35px);
+}
+
+.coreText {
+  margin-top: 28px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 9px;
+
+  text-align: center;
+}
+
+.coreText b {
+  color: var(--white);
+
+  font-size: 12px;
+  letter-spacing: 0.08em;
+}
+
+.coreText small {
+  color: var(--muted2);
+
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+}
+
+
+/* ================= EXTRA FLOATING CARD ================= */
+
+.f4 {
+  right: 7%;
+  bottom: 13%;
+}
+
+
+/* =========================================================
+   MODULE INTRO
+   ========================================================= */
+
+.moduleIntro {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+
+  background:
+    radial-gradient(
+      circle at 15% 50%,
+      rgba(199, 255, 61, 0.045),
+      transparent 35%
+    ),
+    var(--bg2);
+}
+
+.moduleIntro .section {
+  padding-top: 95px;
+  padding-bottom: 95px;
+}
+
+.moduleIntro h2 {
+  max-width: 850px;
+
+  margin: 18px 0;
+
+  color: var(--white);
+
+  font-size: clamp(45px, 6vw, 76px);
+  line-height: 0.94;
+  letter-spacing: -0.06em;
+}
+
+.moduleIntro h2 em {
+  color: var(--lime);
+  font-style: normal;
+}
+
+.moduleIntro p {
+  max-width: 650px;
+
+  color: var(--muted);
+
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+
+/* =========================================================
+   MODULE CARDS
+   ========================================================= */
+
+.modulesSection {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.moduleGrid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 16px;
+}
+
+.moduleCard {
+  min-height: 355px;
+
+  padding: 26px;
+
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  overflow: hidden;
+
+  border: 1px solid var(--line);
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.035),
+      rgba(255, 255, 255, 0)
+    ),
+    var(--card);
+
+  color: var(--white);
+
+  text-decoration: none;
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+.moduleCard::before {
+  content: "";
+
+  position: absolute;
+
+  width: 180px;
+  height: 180px;
+
+  right: -80px;
+  top: -80px;
+
+  border-radius: 50%;
+
+  background: rgba(199, 255, 61, 0.045);
+
+  filter: blur(25px);
+
+  pointer-events: none;
+}
+
+.moduleCard:hover {
+  transform: translateY(-7px);
+
+  border-color: rgba(199, 255, 61, 0.42);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(199, 255, 61, 0.055),
+      rgba(255, 255, 255, 0)
+    ),
+    var(--card);
+
+  box-shadow:
+    0 25px 60px rgba(0, 0, 0, 0.28),
+    0 0 40px rgba(199, 255, 61, 0.045);
+}
+
+.moduleFeatured {
+  border-color: rgba(199, 255, 61, 0.32);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(199, 255, 61, 0.065),
+      rgba(255, 255, 255, 0)
+    ),
+    var(--card);
+}
+
+.moduleTop {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 25px;
+}
+
+.moduleIcon {
+  width: 52px;
+  height: 52px;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid rgba(199, 255, 61, 0.22);
+
+  border-radius: 13px;
+
+  background: rgba(199, 255, 61, 0.065);
+
+  color: var(--lime);
+}
+
+.moduleNumber {
+  color: var(--muted2);
+
+  font-size: 10px;
+  font-weight: 900;
+
+  letter-spacing: 0.12em;
+}
+
+.moduleCategory {
+  margin-bottom: 9px;
+
+  color: var(--lime);
+
+  font-size: 9px;
+  font-weight: 900;
+
+  letter-spacing: 0.14em;
+}
+
+.moduleCard h3 {
+  margin-bottom: 12px;
+
+  color: var(--white);
+
+  font-size: 22px;
+  line-height: 1.15;
+
+  letter-spacing: -0.025em;
+}
+
+.moduleCard p {
+  margin-bottom: 22px;
+
+  color: var(--muted);
+
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.moduleSkills {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 7px;
+
+  margin-top: auto;
+  margin-bottom: 22px;
+}
+
+.moduleSkills span {
+  padding: 6px 8px;
+
+  border: 1px solid var(--line);
+
+  border-radius: 6px;
+
+  background: rgba(255, 255, 255, 0.018);
+
+  color: #aeb9bf;
+
+  font-size: 8px;
+  font-weight: 800;
+
+  letter-spacing: 0.04em;
+}
+
+.moduleLink {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding-top: 14px;
+
+  border-top: 1px solid var(--line);
+
+  color: var(--white);
+
+  font-size: 10px;
+  font-weight: 900;
+
+  letter-spacing: 0.05em;
+
+  transition: color 0.2s ease;
+}
+
+.moduleCard:hover .moduleLink {
+  color: var(--lime);
+}
+
+
+/* =========================================================
+   LEARNING JOURNEY
+   ========================================================= */
+
+.journeyBand {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+
+  background:
+    radial-gradient(
+      circle at 80% 50%,
+      rgba(199, 255, 61, 0.045),
+      transparent 35%
+    ),
+    var(--bg2);
+}
+
+
+/* =========================================================
+   AUDIENCE CARDS
+   ========================================================= */
+
+.audienceGrid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 14px;
+}
+
+.audienceCard {
+  min-height: 190px;
+
+  padding: 24px;
+
+  display: flex;
+  align-items: flex-start;
+
+  gap: 18px;
+
+  border: 1px solid var(--line);
+
+  border-radius: 16px;
+
+  background: var(--card);
+
+  color: var(--white);
+
+  text-decoration: none;
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease;
+}
+
+.audienceCard:hover {
+  transform: translateY(-5px);
+
+  border-color: rgba(199, 255, 61, 0.38);
+
+  background: #101820;
+}
+
+.audienceCard .icon {
+  flex-shrink: 0;
+
+  margin-bottom: 0;
+}
+
+.audienceCard h3 {
+  margin-bottom: 8px;
+
+  color: var(--white);
+
+  font-size: 18px;
+}
+
+.audienceCard p {
+  margin-bottom: 16px;
+
+  color: var(--muted);
+
+  font-size: 12px;
+
+  line-height: 1.65;
+}
+
+.audienceCard > div:last-child > span {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  color: var(--lime);
+
+  font-size: 10px;
+
+  font-weight: 900;
+}
+
+
+/* =========================================================
+   PROJECT BANNER
+   ========================================================= */
+
+.projectBanner {
+  width: min(1180px, calc(100% - 44px));
+
+  min-height: 300px;
+
+  margin: 40px auto;
+
+  padding: 55px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 40px;
+
+  border: 1px solid rgba(199, 255, 61, 0.18);
+
+  border-radius: 22px;
+
+  background:
+    radial-gradient(
+      circle at 85% 50%,
+      rgba(199, 255, 61, 0.09),
+      transparent 35%
+    ),
+    #0c1319;
+}
+
+.projectBanner h2 {
+  margin: 18px 0;
+
+  color: var(--white);
+
+  font-size: clamp(42px, 5vw, 68px);
+
+  line-height: 0.95;
+
+  letter-spacing: -0.055em;
+}
+
+.projectBanner h2 em {
+  color: var(--lime);
+
+  font-style: normal;
+}
+
+.projectBanner p {
+  max-width: 600px;
+
+  color: var(--muted);
+
+  font-size: 14px;
+
+  line-height: 1.75;
+}
+
+.largeArrow {
+  min-width: 220px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding: 18px 20px;
+
+  border: 1px solid var(--line);
+
+  border-radius: 10px;
+
+  color: var(--white);
+
+  text-decoration: none;
+
+  font-size: 12px;
+
+  font-weight: 900;
+
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.largeArrow:hover {
+  border-color: var(--lime);
+
+  transform: translateY(-3px);
+
+  color: var(--lime);
+}
+
+
+/* =========================================================
+   FOOTER LINKS
+   ========================================================= */
+
+.footerLinks {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 16px;
+
+  flex-wrap: wrap;
+}
+
+.footerLinks a {
+  color: var(--muted2);
+
+  text-decoration: none;
+
+  font-size: 9px;
+
+  font-weight: 700;
+}
+
+.footerLinks a:hover {
+  color: var(--lime);
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) {
+
+  .moduleGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .audienceGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .projectBanner {
+    padding: 42px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+  .heroCore {
+    width: min(350px, 82vw);
+
+    min-height: 340px;
+  }
+
+  .coreCube {
+    width: 125px;
+    height: 125px;
+  }
+
+  .coreCube span {
+    width: 85px;
+    height: 85px;
+  }
+
+  .moduleIntro .section {
+    padding-top: 72px;
+    padding-bottom: 72px;
+  }
+
+  .moduleIntro h2 {
+    font-size: 44px;
+  }
+
+  .modulesSection {
+    padding-top: 72px;
+    padding-bottom: 72px;
+  }
+
+  .moduleGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .moduleCard {
+    min-height: 330px;
+
+    padding: 23px;
+  }
+
+  .audienceGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .audienceCard {
+    min-height: auto;
+  }
+
+  .projectBanner {
+    width: calc(100% - 28px);
+
+    margin: 20px auto;
+
+    padding: 30px 23px;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+  .projectBanner h2 {
+    font-size: 44px;
+  }
+
+  .largeArrow {
+    width: 100%;
+  }
+
+  .footerLinks {
+    justify-content: flex-start;
+  }
+
+  .f4 {
+    right: 0;
+    bottom: 8%;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 420px) {
+
+  .heroCore {
+    min-height: 310px;
+  }
+
+  .moduleIntro h2 {
+    font-size: 39px;
+  }
+
+  .moduleCard h3 {
+    font-size: 20px;
+  }
+
+  .projectBanner h2 {
+    font-size: 39px;
+  }
+
+  .coreText b {
+    font-size: 10px;
+  }
+
+  .coreText small {
+    font-size: 7px;
+  }
+
+}
