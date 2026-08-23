@@ -22,7 +22,9 @@ button {
   font: inherit;
 }
 
-/* ================= ROOT ================= */
+/* =========================================================
+   ROOT
+   ========================================================= */
 
 main {
   --bg: #080b10;
@@ -40,7 +42,9 @@ main {
   background: var(--bg);
 }
 
-/* ================= NAV ================= */
+/* =========================================================
+   NAVBAR
+   ========================================================= */
 
 .nav {
   width: min(1180px, calc(100% - 44px));
@@ -144,7 +148,9 @@ main {
   cursor: pointer;
 }
 
-/* ================= COMMON ================= */
+/* =========================================================
+   COMMON
+   ========================================================= */
 
 .section {
   width: min(1180px, calc(100% - 44px));
@@ -198,7 +204,8 @@ main {
 .sectionHead h2 em,
 .about h2 em,
 .schoolCopy h2 em,
-.cta h2 em {
+.cta h2 em,
+.projectBanner h2 em {
   color: var(--lime);
   font-style: normal;
 }
@@ -210,7 +217,9 @@ main {
   line-height: 1.8;
 }
 
-/* ================= HERO ================= */
+/* =========================================================
+   HERO
+   ========================================================= */
 
 .hero {
   width: min(1180px, calc(100% - 44px));
@@ -274,7 +283,7 @@ main {
   line-height: 1.7;
 }
 
-.heroText b {
+.heroText strong {
   color: var(--white);
 }
 
@@ -349,441 +358,593 @@ main {
   transform: translateY(-3px);
 }
 
-.proof {
-  display: flex;
-  align-items: center;
-  gap: 25px;
-
-  margin-top: 48px;
-}
-
-.proof > div {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.proof strong {
-  color: var(--lime);
-
-  font-size: 27px;
-  letter-spacing: -0.04em;
-}
-
-.proof span {
-  color: var(--muted);
-
-  font-size: 10px;
-  line-height: 1.4;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-
-.proof > i {
-  width: 1px;
-  height: 34px;
-
-  background: var(--line);
-}
-
-/* ================= HERO VISUAL ================= */
+/* =========================================================
+   HERO IMAGE
+   ========================================================= */
 
 .heroVisual {
   min-height: 560px;
 
   position: relative;
 
-  display: grid;
-  place-items: center;
-}
-
-.orb {
-  position: absolute;
-
-  border-radius: 50%;
-
-  pointer-events: none;
-}
-
-.orb1 {
-  width: 390px;
-  height: 390px;
-
-  background: rgba(199, 255, 61, 0.045);
-
-  border: 1px solid rgba(199, 255, 61, 0.08);
-
-  box-shadow:
-    0 0 100px rgba(199, 255, 61, 0.06),
-    inset 0 0 70px rgba(199, 255, 61, 0.04);
-}
-
-.orb2 {
-  width: 270px;
-  height: 270px;
-
-  border: 1px dashed rgba(199, 255, 61, 0.16);
-}
-
-.printerCard {
-  width: min(390px, 78vw);
-
-  position: relative;
-  z-index: 3;
-
-  overflow: hidden;
-
-  border: 1px solid #293640;
-  border-radius: 20px;
-
-  background: linear-gradient(
-    145deg,
-    #131a21,
-    #0b1015
-  );
-
-  box-shadow:
-    0 35px 80px rgba(0, 0, 0, 0.45),
-    0 0 80px rgba(199, 255, 61, 0.05);
-}
-
-.printerTop {
-  height: 54px;
-
-  display: flex;
-  align-items: center;
-  gap: 9px;
-
-  padding: 0 18px;
-
-  border-bottom: 1px solid var(--line);
-
-  color: var(--muted);
-
-  font-size: 9px;
-  font-weight: 800;
-  letter-spacing: 0.13em;
-}
-
-.liveDot {
-  width: 7px;
-  height: 7px;
-
-  border-radius: 50%;
-  background: var(--lime);
-
-  box-shadow: 0 0 12px var(--lime);
-}
-
-.printerScene {
-  height: 330px;
-
-  position: relative;
-
-  overflow: hidden;
-
-  background:
-    linear-gradient(
-      rgba(255, 255, 255, 0.025) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0.025) 1px,
-      transparent 1px
-    );
-
-  background-size: 30px 30px;
-}
-
-.printBed {
-  width: 280px;
-  height: 70px;
-
-  position: absolute;
-
-  left: 50%;
-  bottom: 45px;
-
-  transform: translateX(-50%) perspective(400px) rotateX(55deg);
-
-  border: 1px solid #34414a;
-
-  background: rgba(255, 255, 255, 0.025);
-}
-
-.printObject {
-  width: 125px;
-  height: 120px;
-
-  position: absolute;
-
-  left: 50%;
-  bottom: 83px;
-
-  transform: translateX(-50%);
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-}
-
-.printObject span {
-  display: block;
-
-  width: 90px;
-  height: 27px;
-
-  border: 1px solid rgba(199, 255, 61, 0.5);
-
-  background: rgba(199, 255, 61, 0.09);
-
-  transform: perspective(200px) rotateX(35deg);
-
-  box-shadow: 0 0 16px rgba(199, 255, 61, 0.05);
-}
-
-.printObject span:nth-child(2) {
-  width: 70px;
-}
-
-.printObject span:nth-child(3) {
-  width: 50px;
-}
-
-.nozzle {
-  width: 8px;
-  height: 45px;
-
-  position: absolute;
-
-  left: 50%;
-  top: 45px;
-
-  transform: translateX(-50%);
-
-  border-radius: 0 0 4px 4px;
-
-  background: #aab5ba;
-
-  box-shadow: 0 20px 15px rgba(199, 255, 61, 0.14);
-}
-
-.printStats {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-
-  border-top: 1px solid var(--line);
-}
-
-.printStats > div {
-  padding: 16px 18px;
-}
-
-.printStats > div + div {
-  border-left: 1px solid var(--line);
-}
-
-.printStats small {
-  display: block;
-
-  margin-bottom: 6px;
-
-  color: var(--muted2);
-
-  font-size: 8px;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-}
-
-.printStats b {
-  color: var(--white);
-  font-size: 12px;
-}
-
-.printStats .green {
-  color: var(--lime);
-}
-
-.floating {
-  position: absolute;
-  z-index: 5;
-
-  display: flex;
-  align-items: center;
-  gap: 9px;
-
-  padding: 12px 15px;
-
-  border: 1px solid #2a3740;
-  border-radius: 10px;
-
-  background: rgba(13, 18, 23, 0.92);
-
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
-
-  color: var(--white);
-
-  font-size: 11px;
-  font-weight: 800;
-}
-
-.floating svg {
-  color: var(--lime);
-}
-
-.f1 {
-  left: 4%;
-  top: 19%;
-}
-
-.f2 {
-  right: 0;
-  top: 40%;
-}
-
-.f3 {
-  left: 12%;
-  bottom: 15%;
-}
-
-/* ================= TICKER ================= */
-
-.ticker {
-  min-height: 76px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
-  gap: 28px;
 
+  overflow: visible;
+}
+
+/* Hide old generated visual */
+.heroVisual .orb,
+.heroVisual .heroCore,
+.heroVisual .floating {
+  display: none;
+}
+
+/* Soft glow behind image */
+.heroVisual::after {
+  content: "";
+
+  width: 480px;
+  height: 480px;
+
+  position: absolute;
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background: rgba(199, 255, 61, 0.07);
+
+  filter: blur(95px);
+
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Actual image */
+.heroVisual::before {
+  content: "";
+
+  width: min(560px, 100%);
+  aspect-ratio: 1180 / 720;
+
+  position: relative;
+  z-index: 2;
+
+  display: block;
+
+  background-image: url("/home-hero.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  filter:
+    drop-shadow(0 30px 55px rgba(0, 0, 0, 0.45))
+    drop-shadow(0 0 45px rgba(199, 255, 61, 0.08));
+
+  animation: heroImageFloat 6s ease-in-out infinite;
+}
+
+@keyframes heroImageFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* =========================================================
+   MODULE INTRO
+   ========================================================= */
+
+.moduleIntro {
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
 
-  background: #0a0f14;
-
-  color: #66747e;
-
-  font-size: 12px;
-  font-weight: 900;
-  letter-spacing: 0.18em;
+  background:
+    radial-gradient(
+      circle at 15% 50%,
+      rgba(199, 255, 61, 0.045),
+      transparent 35%
+    ),
+    var(--bg2);
 }
 
-.ticker span {
+.moduleIntro .section {
+  padding-top: 95px;
+  padding-bottom: 95px;
+}
+
+.moduleIntro h2 {
+  max-width: 850px;
+
+  margin: 18px 0;
+
+  color: var(--white);
+
+  font-size: clamp(45px, 6vw, 76px);
+  line-height: 0.94;
+  letter-spacing: -0.06em;
+}
+
+.moduleIntro h2 em {
   color: var(--lime);
+  font-style: normal;
 }
 
-/* ================= CARDS ================= */
+.moduleIntro p {
+  max-width: 650px;
 
-.programGrid {
+  color: var(--muted);
+
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+/* =========================================================
+   12 MODULE CARDS — 4 × 3
+   ========================================================= */
+
+.modulesSection {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.moduleGrid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
   gap: 14px;
 }
 
-.program {
-  min-height: 270px;
+.moduleCard {
+  min-height: 285px;
+  height: 100%;
 
-  padding: 27px;
+  padding: 21px;
+
+  position: relative;
 
   display: flex;
   flex-direction: column;
   align-items: flex-start;
 
+  overflow: hidden;
+
   border: 1px solid var(--line);
-  border-radius: 17px;
+  border-radius: 15px;
 
   background:
     linear-gradient(
       145deg,
-      rgba(255, 255, 255, 0.025),
+      rgba(255, 255, 255, 0.035),
       rgba(255, 255, 255, 0)
     ),
     var(--card);
 
+  color: var(--white);
+
+  text-decoration: none;
+
   transition:
     transform 0.25s ease,
     border-color 0.25s ease,
-    box-shadow 0.25s ease;
+    box-shadow 0.25s ease,
+    background 0.25s ease;
 }
 
-.program:hover {
-  transform: translateY(-5px);
+.moduleCard::before {
+  content: "";
 
-  border-color: rgba(199, 255, 61, 0.45);
+  position: absolute;
+
+  width: 180px;
+  height: 180px;
+
+  right: -80px;
+  top: -80px;
+
+  border-radius: 50%;
+
+  background: rgba(199, 255, 61, 0.045);
+
+  filter: blur(25px);
+
+  pointer-events: none;
+}
+
+.moduleCard:hover {
+  transform: translateY(-7px);
+
+  border-color: rgba(199, 255, 61, 0.42);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(199, 255, 61, 0.055),
+      rgba(255, 255, 255, 0)
+    ),
+    var(--card);
 
   box-shadow:
-    0 20px 50px rgba(0, 0, 0, 0.22),
-    0 0 35px rgba(199, 255, 61, 0.035);
+    0 25px 60px rgba(0, 0, 0, 0.28),
+    0 0 40px rgba(199, 255, 61, 0.045);
 }
 
-.icon {
-  width: 48px;
-  height: 48px;
+.moduleFeatured {
+  border-color: rgba(199, 255, 61, 0.32);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(199, 255, 61, 0.065),
+      rgba(255, 255, 255, 0)
+    ),
+    var(--card);
+}
+
+.moduleTop {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 18px;
+}
+
+.moduleIcon {
+  width: 44px;
+  height: 44px;
 
   display: grid;
   place-items: center;
 
-  margin-bottom: 23px;
+  border: 1px solid rgba(199, 255, 61, 0.22);
 
-  border: 1px solid rgba(199, 255, 61, 0.17);
-  border-radius: 12px;
+  border-radius: 11px;
 
-  background: rgba(199, 255, 61, 0.06);
+  background: rgba(199, 255, 61, 0.065);
 
   color: var(--lime);
 }
 
-.tag {
-  margin-bottom: 10px;
-
-  color: var(--lime);
+.moduleNumber {
+  color: var(--muted2);
 
   font-size: 9px;
   font-weight: 900;
+
+  letter-spacing: 0.12em;
+}
+
+.moduleCategory {
+  margin-bottom: 7px;
+
+  color: var(--lime);
+
+  font-size: 8px;
+  font-weight: 900;
+
   letter-spacing: 0.14em;
 }
 
-.program h3 {
-  margin-bottom: 11px;
+.moduleCard h3 {
+  margin-bottom: 9px;
 
   color: var(--white);
 
-  font-size: 19px;
-  line-height: 1.2;
+  font-size: 18px;
+  line-height: 1.15;
+
+  letter-spacing: -0.025em;
 }
 
-.program p {
-  margin-bottom: 22px;
+.moduleCard p {
+  margin-bottom: 15px;
 
   color: var(--muted);
 
-  font-size: 13px;
-  line-height: 1.7;
+  font-size: 11px;
+  line-height: 1.6;
 }
 
-.program a {
-  margin-top: auto;
+.moduleSkills {
+  display: flex;
+  flex-wrap: wrap;
 
-  display: inline-flex;
+  gap: 5px;
+
+  margin-top: auto;
+  margin-bottom: 16px;
+}
+
+.moduleSkills span {
+  padding: 5px 7px;
+
+  border: 1px solid var(--line);
+
+  border-radius: 5px;
+
+  background: rgba(255, 255, 255, 0.018);
+
+  color: #aeb9bf;
+
+  font-size: 7px;
+  font-weight: 800;
+
+  letter-spacing: 0.04em;
+}
+
+.moduleLink {
+  width: 100%;
+
+  display: flex;
   align-items: center;
-  gap: 7px;
+  justify-content: space-between;
+
+  padding-top: 11px;
+
+  border-top: 1px solid var(--line);
 
   color: var(--white);
-  text-decoration: none;
 
-  font-size: 11px;
-  font-weight: 800;
+  font-size: 9px;
+  font-weight: 900;
+
+  letter-spacing: 0.05em;
+
+  transition: color 0.2s ease;
 }
 
-.program a:hover {
+.moduleCard:hover .moduleLink {
   color: var(--lime);
 }
 
-/* ================= SCHOOL BAND ================= */
+/* =========================================================
+   LEARNING JOURNEY
+   ========================================================= */
+
+.journeyBand {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+
+  background:
+    radial-gradient(
+      circle at 80% 50%,
+      rgba(199, 255, 61, 0.045),
+      transparent 35%
+    ),
+    var(--bg2);
+}
+
+.workflow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 9px;
+
+  margin: 28px 0;
+}
+
+.workflowItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 9px 11px;
+
+  border: 1px solid var(--line);
+  border-radius: 8px;
+
+  background: var(--card);
+
+  color: var(--white);
+
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.workflowItem span {
+  color: var(--lime);
+  font-size: 8px;
+}
+
+.workflowItem i {
+  margin-left: 3px;
+
+  color: var(--lime);
+  font-style: normal;
+}
+
+/* =========================================================
+   AUDIENCE CARDS
+   ========================================================= */
+
+.audienceGrid {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 14px;
+}
+
+.audienceCard {
+  min-height: 190px;
+
+  padding: 24px;
+
+  display: flex;
+  align-items: flex-start;
+
+  gap: 18px;
+
+  border: 1px solid var(--line);
+
+  border-radius: 16px;
+
+  background: var(--card);
+
+  color: var(--white);
+
+  text-decoration: none;
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    background 0.25s ease;
+}
+
+.audienceCard:hover {
+  transform: translateY(-5px);
+
+  border-color: rgba(199, 255, 61, 0.38);
+
+  background: #101820;
+}
+
+.audienceCard .icon {
+  flex-shrink: 0;
+
+  margin-bottom: 0;
+}
+
+.audienceCard h3 {
+  margin-bottom: 8px;
+
+  color: var(--white);
+
+  font-size: 18px;
+}
+
+.audienceCard p {
+  margin-bottom: 16px;
+
+  color: var(--muted);
+
+  font-size: 12px;
+
+  line-height: 1.65;
+}
+
+.audienceCard > div:last-child > span {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 6px;
+
+  color: var(--lime);
+
+  font-size: 10px;
+
+  font-weight: 900;
+}
+
+/* =========================================================
+   PROJECT BANNER
+   ========================================================= */
+
+.projectBanner {
+  width: min(1180px, calc(100% - 44px));
+
+  min-height: 300px;
+
+  margin: 40px auto;
+
+  padding: 55px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 40px;
+
+  border: 1px solid rgba(199, 255, 61, 0.18);
+
+  border-radius: 22px;
+
+  background:
+    radial-gradient(
+      circle at 85% 50%,
+      rgba(199, 255, 61, 0.09),
+      transparent 35%
+    ),
+    #0c1319;
+}
+
+.projectBanner h2 {
+  margin: 18px 0;
+
+  color: var(--white);
+
+  font-size: clamp(42px, 5vw, 68px);
+
+  line-height: 0.95;
+
+  letter-spacing: -0.055em;
+}
+
+.projectBanner p {
+  max-width: 600px;
+
+  color: var(--muted);
+
+  font-size: 14px;
+
+  line-height: 1.75;
+}
+
+.largeArrow {
+  min-width: 220px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  padding: 18px 20px;
+
+  border: 1px solid var(--line);
+
+  border-radius: 10px;
+
+  color: var(--white);
+
+  text-decoration: none;
+
+  font-size: 12px;
+
+  font-weight: 900;
+
+  transition:
+    border-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.largeArrow:hover {
+  border-color: var(--lime);
+
+  transform: translateY(-3px);
+
+  color: var(--lime);
+}
+
+/* =========================================================
+   SCHOOL / ABOUT
+   ========================================================= */
 
 .schoolBand {
   border-top: 1px solid var(--line);
@@ -846,10 +1007,6 @@ main {
 
   font-size: 12px;
   font-weight: 700;
-}
-
-.checkGrid span::first-letter {
-  color: var(--lime);
 }
 
 .schoolCard {
@@ -916,8 +1073,6 @@ main {
   opacity: 0.65;
 }
 
-/* ================= ABOUT / WORKFLOW ================= */
-
 .about {
   display: grid;
   grid-template-columns: 0.8fr 1fr;
@@ -950,45 +1105,6 @@ main {
   color: var(--white);
 }
 
-.workflow {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 9px;
-
-  margin: 28px 0;
-}
-
-.workflowItem {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-
-  padding: 9px 11px;
-
-  border: 1px solid var(--line);
-  border-radius: 8px;
-
-  background: var(--card);
-
-  color: var(--white);
-
-  font-size: 10px;
-  font-weight: 800;
-}
-
-.workflowItem span {
-  color: var(--lime);
-  font-size: 8px;
-}
-
-.workflowItem i {
-  margin-left: 3px;
-
-  color: var(--lime);
-  font-style: normal;
-}
-
 .quote {
   margin-top: 30px;
   padding: 22px;
@@ -1007,7 +1123,9 @@ main {
   color: var(--lime);
 }
 
-/* ================= CTA ================= */
+/* =========================================================
+   CTA
+   ========================================================= */
 
 .cta {
   min-height: 570px;
@@ -1099,7 +1217,9 @@ main {
   letter-spacing: 0.08em;
 }
 
-/* ================= FOOTER ================= */
+/* =========================================================
+   FOOTER
+   ========================================================= */
 
 footer {
   width: min(1180px, calc(100% - 44px));
@@ -1140,11 +1260,40 @@ footer small {
   text-align: right;
 }
 
-/* ================= TABLET ================= */
+.footerLinks {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 16px;
+
+  flex-wrap: wrap;
+}
+
+.footerLinks a {
+  color: var(--muted2);
+
+  text-decoration: none;
+
+  font-size: 9px;
+
+  font-weight: 700;
+}
+
+.footerLinks a:hover {
+  color: var(--lime);
+}
+
+/* =========================================================
+   TABLET
+   ========================================================= */
 
 @media (max-width: 1000px) {
   .hero {
     grid-template-columns: 1fr;
+
     padding: 70px 0 90px;
   }
 
@@ -1153,34 +1302,56 @@ footer small {
   }
 
   .heroVisual {
-    min-height: 500px;
+    min-height: 520px;
+  }
+
+  .heroVisual::before {
+    width: min(560px, 90vw);
+  }
+
+  .heroVisual::after {
+    width: 390px;
+    height: 390px;
   }
 
   .sectionHead {
     grid-template-columns: 1fr;
+
     gap: 25px;
   }
 
-  .programGrid {
+  .moduleGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .audienceGrid {
     grid-template-columns: repeat(2, 1fr);
   }
 
   .schoolInner,
   .about {
     grid-template-columns: 1fr;
+
     gap: 55px;
   }
 
   .schoolCard {
     max-width: 600px;
   }
+
+  .projectBanner {
+    padding: 42px;
+  }
 }
 
-/* ================= MOBILE ================= */
+/* =========================================================
+   MOBILE
+   ========================================================= */
 
 @media (max-width: 700px) {
   .nav {
     width: calc(100% - 28px);
+
     height: 72px;
   }
 
@@ -1234,6 +1405,7 @@ footer small {
 
   .hero {
     width: calc(100% - 28px);
+
     padding: 60px 0 70px;
 
     min-height: auto;
@@ -1249,11 +1421,13 @@ footer small {
 
   .heroAudience {
     gap: 7px;
+
     line-height: 1.8;
   }
 
   .heroActions {
     align-items: stretch;
+
     flex-direction: column;
   }
 
@@ -1262,68 +1436,64 @@ footer small {
     width: 100%;
   }
 
-  .proof {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 15px;
-  }
-
-  .proof > i {
-    display: none;
-  }
-
   .heroVisual {
-    min-height: 430px;
+    min-height: 410px;
+
+    margin-top: 10px;
   }
 
-  .orb1 {
-    width: 300px;
-    height: 300px;
+  .heroVisual::before {
+    width: min(430px, 94vw);
+
+    animation-duration: 7s;
   }
 
-  .orb2 {
-    width: 220px;
-    height: 220px;
+  .heroVisual::after {
+    width: 290px;
+    height: 290px;
+
+    filter: blur(70px);
   }
 
-  .printerCard {
-    width: min(350px, 82vw);
+  .moduleIntro .section {
+    padding-top: 72px;
+
+    padding-bottom: 72px;
   }
 
-  .printerScene {
-    height: 270px;
+  .moduleIntro h2 {
+    font-size: 44px;
   }
 
-  .floating {
-    padding: 9px 11px;
-    font-size: 9px;
+  .modulesSection {
+    padding-top: 72px;
+
+    padding-bottom: 72px;
   }
 
-  .f1 {
-    left: 0;
-    top: 16%;
+  .moduleGrid {
+    grid-template-columns: 1fr;
+
+    gap: 12px;
   }
 
-  .f2 {
-    right: 0;
-    top: 43%;
+  .moduleCard {
+    min-height: 290px;
+
+    padding: 21px;
   }
 
-  .f3 {
-    left: 4%;
-    bottom: 11%;
+  .audienceGrid {
+    grid-template-columns: 1fr;
   }
 
-  .ticker {
-    gap: 14px;
-
-    padding: 18px 12px;
-
-    font-size: 9px;
+  .audienceCard {
+    min-height: auto;
   }
 
   .section {
     width: calc(100% - 28px);
+
     padding: 72px 0;
   }
 
@@ -1337,16 +1507,9 @@ footer small {
     font-size: 44px;
   }
 
-  .programGrid {
-    grid-template-columns: 1fr;
-  }
-
-  .program {
-    min-height: auto;
-  }
-
   .schoolBand .section {
     padding-top: 72px;
+
     padding-bottom: 72px;
   }
 
@@ -1368,792 +1531,18 @@ footer small {
 
   .workflow {
     align-items: stretch;
+
     flex-direction: column;
   }
 
   .workflowItem {
     width: 100%;
+
     justify-content: space-between;
   }
 
   .workflowItem i {
     display: none;
-  }
-
-  .cta {
-    min-height: 500px;
-    padding: 90px 20px;
-  }
-
-  .cta h2 {
-    font-size: 47px;
-  }
-
-  footer {
-    width: calc(100% - 28px);
-
-    padding: 28px 0;
-
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
-  }
-
-  footer p {
-    text-align: left;
-  }
-
-  footer small {
-    text-align: left;
-  }
-}
-
-/* ================= SMALL MOBILE ================= */
-
-@media (max-width: 420px) {
-  .brand {
-    font-size: 17px;
-  }
-
-  .brandMark {
-    width: 34px;
-    height: 34px;
-  }
-
-  .hero h1 {
-    font-size: 47px;
-  }
-
-  .sectionHead h2,
-  .about h2,
-  .schoolCopy h2 {
-    font-size: 39px;
-  }
-
-  .heroVisual {
-    min-height: 390px;
-  }
-
-  .printerScene {
-    height: 245px;
-  }
-
-  .floating {
-    transform: scale(0.9);
-  }
-
-  .f1 {
-    left: -7px;
-  }
-
-  .f2 {
-    right: -7px;
-  }
-
-  .f3 {
-    left: 0;
-  }
-}
-/* =========================================================
-   SHIKSHAMDEHI NEW HOME PAGE
-   MODULE CARDS + AUDIENCE CARDS + HERO VISUAL
-   ========================================================= */
-
-/* ================= HERO CORE ================= */
-
-.heroCore {
-  width: min(390px, 78vw);
-  min-height: 390px;
-
-  position: relative;
-  z-index: 3;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  border: 1px solid #293640;
-  border-radius: 24px;
-
-  background:
-    radial-gradient(
-      circle at center,
-      rgba(199, 255, 61, 0.08),
-      rgba(11, 16, 21, 0.96) 58%
-    );
-
-  box-shadow:
-    0 35px 80px rgba(0, 0, 0, 0.45),
-    0 0 80px rgba(199, 255, 61, 0.05);
-}
-
-.coreLabel {
-  margin-bottom: 28px;
-
-  color: var(--lime);
-
-  font-size: 9px;
-  font-weight: 900;
-  letter-spacing: 0.18em;
-}
-
-.coreCube {
-  width: 150px;
-  height: 150px;
-
-  position: relative;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  transform: rotate(30deg) skewY(-8deg);
-}
-
-.coreCube span {
-  position: absolute;
-
-  display: block;
-
-  width: 105px;
-  height: 105px;
-
-  border: 1px solid rgba(199, 255, 61, 0.42);
-
-  background: rgba(199, 255, 61, 0.055);
-
-  box-shadow:
-    0 0 30px rgba(199, 255, 61, 0.06),
-    inset 0 0 25px rgba(199, 255, 61, 0.035);
-}
-
-.coreCube span:nth-child(1) {
-  transform: translateZ(35px);
-}
-
-.coreCube span:nth-child(2) {
-  transform: rotateY(90deg) translateZ(35px);
-}
-
-.coreCube span:nth-child(3) {
-  transform: rotateX(90deg) translateZ(35px);
-}
-
-.coreText {
-  margin-top: 28px;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 9px;
-
-  text-align: center;
-}
-
-.coreText b {
-  color: var(--white);
-
-  font-size: 12px;
-  letter-spacing: 0.08em;
-}
-
-.coreText small {
-  color: var(--muted2);
-
-  font-size: 8px;
-  font-weight: 800;
-  letter-spacing: 0.13em;
-}
-
-
-/* ================= EXTRA FLOATING CARD ================= */
-
-.f4 {
-  right: 7%;
-  bottom: 13%;
-}
-
-
-/* =========================================================
-   MODULE INTRO
-   ========================================================= */
-
-.moduleIntro {
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-
-  background:
-    radial-gradient(
-      circle at 15% 50%,
-      rgba(199, 255, 61, 0.045),
-      transparent 35%
-    ),
-    var(--bg2);
-}
-
-.moduleIntro .section {
-  padding-top: 95px;
-  padding-bottom: 95px;
-}
-
-.moduleIntro h2 {
-  max-width: 850px;
-
-  margin: 18px 0;
-
-  color: var(--white);
-
-  font-size: clamp(45px, 6vw, 76px);
-  line-height: 0.94;
-  letter-spacing: -0.06em;
-}
-
-.moduleIntro h2 em {
-  color: var(--lime);
-  font-style: normal;
-}
-
-.moduleIntro p {
-  max-width: 650px;
-
-  color: var(--muted);
-
-  font-size: 15px;
-  line-height: 1.8;
-}
-
-
-/* =========================================================
-   MODULE CARDS
-   ========================================================= */
-
-.modulesSection {
-  padding-top: 100px;
-  padding-bottom: 100px;
-}
-
-.moduleGrid {
-  display: grid;
-
-  grid-template-columns: repeat(3, 1fr);
-
-  gap: 16px;
-}
-
-.moduleCard {
-  min-height: 355px;
-
-  padding: 26px;
-
-  position: relative;
-
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-
-  overflow: hidden;
-
-  border: 1px solid var(--line);
-  border-radius: 18px;
-
-  background:
-    linear-gradient(
-      145deg,
-      rgba(255, 255, 255, 0.035),
-      rgba(255, 255, 255, 0)
-    ),
-    var(--card);
-
-  color: var(--white);
-
-  text-decoration: none;
-
-  transition:
-    transform 0.25s ease,
-    border-color 0.25s ease,
-    box-shadow 0.25s ease,
-    background 0.25s ease;
-}
-
-.moduleCard::before {
-  content: "";
-
-  position: absolute;
-
-  width: 180px;
-  height: 180px;
-
-  right: -80px;
-  top: -80px;
-
-  border-radius: 50%;
-
-  background: rgba(199, 255, 61, 0.045);
-
-  filter: blur(25px);
-
-  pointer-events: none;
-}
-
-.moduleCard:hover {
-  transform: translateY(-7px);
-
-  border-color: rgba(199, 255, 61, 0.42);
-
-  background:
-    linear-gradient(
-      145deg,
-      rgba(199, 255, 61, 0.055),
-      rgba(255, 255, 255, 0)
-    ),
-    var(--card);
-
-  box-shadow:
-    0 25px 60px rgba(0, 0, 0, 0.28),
-    0 0 40px rgba(199, 255, 61, 0.045);
-}
-
-.moduleFeatured {
-  border-color: rgba(199, 255, 61, 0.32);
-
-  background:
-    linear-gradient(
-      145deg,
-      rgba(199, 255, 61, 0.065),
-      rgba(255, 255, 255, 0)
-    ),
-    var(--card);
-}
-
-.moduleTop {
-  width: 100%;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  margin-bottom: 25px;
-}
-
-.moduleIcon {
-  width: 52px;
-  height: 52px;
-
-  display: grid;
-  place-items: center;
-
-  border: 1px solid rgba(199, 255, 61, 0.22);
-
-  border-radius: 13px;
-
-  background: rgba(199, 255, 61, 0.065);
-
-  color: var(--lime);
-}
-
-.moduleNumber {
-  color: var(--muted2);
-
-  font-size: 10px;
-  font-weight: 900;
-
-  letter-spacing: 0.12em;
-}
-
-.moduleCategory {
-  margin-bottom: 9px;
-
-  color: var(--lime);
-
-  font-size: 9px;
-  font-weight: 900;
-
-  letter-spacing: 0.14em;
-}
-
-.moduleCard h3 {
-  margin-bottom: 12px;
-
-  color: var(--white);
-
-  font-size: 22px;
-  line-height: 1.15;
-
-  letter-spacing: -0.025em;
-}
-
-.moduleCard p {
-  margin-bottom: 22px;
-
-  color: var(--muted);
-
-  font-size: 13px;
-  line-height: 1.7;
-}
-
-.moduleSkills {
-  display: flex;
-  flex-wrap: wrap;
-
-  gap: 7px;
-
-  margin-top: auto;
-  margin-bottom: 22px;
-}
-
-.moduleSkills span {
-  padding: 6px 8px;
-
-  border: 1px solid var(--line);
-
-  border-radius: 6px;
-
-  background: rgba(255, 255, 255, 0.018);
-
-  color: #aeb9bf;
-
-  font-size: 8px;
-  font-weight: 800;
-
-  letter-spacing: 0.04em;
-}
-
-.moduleLink {
-  width: 100%;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  padding-top: 14px;
-
-  border-top: 1px solid var(--line);
-
-  color: var(--white);
-
-  font-size: 10px;
-  font-weight: 900;
-
-  letter-spacing: 0.05em;
-
-  transition: color 0.2s ease;
-}
-
-.moduleCard:hover .moduleLink {
-  color: var(--lime);
-}
-
-
-/* =========================================================
-   LEARNING JOURNEY
-   ========================================================= */
-
-.journeyBand {
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-
-  background:
-    radial-gradient(
-      circle at 80% 50%,
-      rgba(199, 255, 61, 0.045),
-      transparent 35%
-    ),
-    var(--bg2);
-}
-
-
-/* =========================================================
-   AUDIENCE CARDS
-   ========================================================= */
-
-.audienceGrid {
-  display: grid;
-
-  grid-template-columns: repeat(4, 1fr);
-
-  gap: 14px;
-}
-
-.audienceCard {
-  min-height: 190px;
-
-  padding: 24px;
-
-  display: flex;
-  align-items: flex-start;
-
-  gap: 18px;
-
-  border: 1px solid var(--line);
-
-  border-radius: 16px;
-
-  background: var(--card);
-
-  color: var(--white);
-
-  text-decoration: none;
-
-  transition:
-    transform 0.25s ease,
-    border-color 0.25s ease,
-    background 0.25s ease;
-}
-
-.audienceCard:hover {
-  transform: translateY(-5px);
-
-  border-color: rgba(199, 255, 61, 0.38);
-
-  background: #101820;
-}
-
-.audienceCard .icon {
-  flex-shrink: 0;
-
-  margin-bottom: 0;
-}
-
-.audienceCard h3 {
-  margin-bottom: 8px;
-
-  color: var(--white);
-
-  font-size: 18px;
-}
-
-.audienceCard p {
-  margin-bottom: 16px;
-
-  color: var(--muted);
-
-  font-size: 12px;
-
-  line-height: 1.65;
-}
-
-.audienceCard > div:last-child > span {
-  display: inline-flex;
-
-  align-items: center;
-
-  gap: 6px;
-
-  color: var(--lime);
-
-  font-size: 10px;
-
-  font-weight: 900;
-}
-
-
-/* =========================================================
-   PROJECT BANNER
-   ========================================================= */
-
-.projectBanner {
-  width: min(1180px, calc(100% - 44px));
-
-  min-height: 300px;
-
-  margin: 40px auto;
-
-  padding: 55px;
-
-  display: flex;
-
-  align-items: center;
-
-  justify-content: space-between;
-
-  gap: 40px;
-
-  border: 1px solid rgba(199, 255, 61, 0.18);
-
-  border-radius: 22px;
-
-  background:
-    radial-gradient(
-      circle at 85% 50%,
-      rgba(199, 255, 61, 0.09),
-      transparent 35%
-    ),
-    #0c1319;
-}
-
-.projectBanner h2 {
-  margin: 18px 0;
-
-  color: var(--white);
-
-  font-size: clamp(42px, 5vw, 68px);
-
-  line-height: 0.95;
-
-  letter-spacing: -0.055em;
-}
-
-.projectBanner h2 em {
-  color: var(--lime);
-
-  font-style: normal;
-}
-
-.projectBanner p {
-  max-width: 600px;
-
-  color: var(--muted);
-
-  font-size: 14px;
-
-  line-height: 1.75;
-}
-
-.largeArrow {
-  min-width: 220px;
-
-  display: inline-flex;
-
-  align-items: center;
-
-  justify-content: space-between;
-
-  gap: 20px;
-
-  padding: 18px 20px;
-
-  border: 1px solid var(--line);
-
-  border-radius: 10px;
-
-  color: var(--white);
-
-  text-decoration: none;
-
-  font-size: 12px;
-
-  font-weight: 900;
-
-  transition:
-    border-color 0.2s ease,
-    transform 0.2s ease;
-}
-
-.largeArrow:hover {
-  border-color: var(--lime);
-
-  transform: translateY(-3px);
-
-  color: var(--lime);
-}
-
-
-/* =========================================================
-   FOOTER LINKS
-   ========================================================= */
-
-.footerLinks {
-  display: flex;
-
-  align-items: center;
-
-  justify-content: center;
-
-  gap: 16px;
-
-  flex-wrap: wrap;
-}
-
-.footerLinks a {
-  color: var(--muted2);
-
-  text-decoration: none;
-
-  font-size: 9px;
-
-  font-weight: 700;
-}
-
-.footerLinks a:hover {
-  color: var(--lime);
-}
-
-
-/* =========================================================
-   TABLET
-   ========================================================= */
-
-@media (max-width: 1000px) {
-
-  .moduleGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .audienceGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .projectBanner {
-    padding: 42px;
-  }
-
-}
-
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
-@media (max-width: 700px) {
-
-  .heroCore {
-    width: min(350px, 82vw);
-
-    min-height: 340px;
-  }
-
-  .coreCube {
-    width: 125px;
-    height: 125px;
-  }
-
-  .coreCube span {
-    width: 85px;
-    height: 85px;
-  }
-
-  .moduleIntro .section {
-    padding-top: 72px;
-    padding-bottom: 72px;
-  }
-
-  .moduleIntro h2 {
-    font-size: 44px;
-  }
-
-  .modulesSection {
-    padding-top: 72px;
-    padding-bottom: 72px;
-  }
-
-  .moduleGrid {
-    grid-template-columns: 1fr;
-  }
-
-  .moduleCard {
-    min-height: 330px;
-
-    padding: 23px;
-  }
-
-  .audienceGrid {
-    grid-template-columns: 1fr;
-  }
-
-  .audienceCard {
-    min-height: auto;
   }
 
   .projectBanner {
@@ -2176,26 +1565,79 @@ footer small {
     width: 100%;
   }
 
+  .cta {
+    min-height: 500px;
+
+    padding: 90px 20px;
+  }
+
+  .cta h2 {
+    font-size: 47px;
+  }
+
+  footer {
+    width: calc(100% - 28px);
+
+    padding: 28px 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 16px;
+  }
+
+  footer p {
+    text-align: left;
+  }
+
+  footer small {
+    text-align: left;
+  }
+
   .footerLinks {
     justify-content: flex-start;
   }
-
-  .f4 {
-    right: 0;
-    bottom: 8%;
-  }
-
 }
-
 
 /* =========================================================
    SMALL MOBILE
    ========================================================= */
 
 @media (max-width: 420px) {
+  .brand {
+    font-size: 17px;
+  }
 
-  .heroCore {
-    min-height: 310px;
+  .brandMark {
+    width: 34px;
+
+    height: 34px;
+  }
+
+  .hero h1 {
+    font-size: 47px;
+  }
+
+  .sectionHead h2,
+  .about h2,
+  .schoolCopy h2 {
+    font-size: 39px;
+  }
+
+  .heroVisual {
+    min-height: 340px;
+  }
+
+  .heroVisual::before {
+    width: min(360px, 96vw);
+  }
+
+  .heroVisual::after {
+    width: 230px;
+    height: 230px;
   }
 
   .moduleIntro h2 {
@@ -2203,187 +1645,20 @@ footer small {
   }
 
   .moduleCard h3 {
-    font-size: 20px;
+    font-size: 19px;
   }
 
   .projectBanner h2 {
     font-size: 39px;
   }
-
-  .coreText b {
-    font-size: 10px;
-  }
-
-  .coreText small {
-    font-size: 7px;
-  }
-
 }
-/* =========================================================
-   SHIKSHAMDEHI — 4 x 3 MODULE CARD GRID
-   ========================================================= */
-
-/* ================= DESKTOP ================= */
-
-.moduleGrid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 14px;
-}
-
-.moduleCard {
-  min-height: 285px;
-  height: 100%;
-  padding: 21px;
-
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-
-  overflow: hidden;
-
-  border: 1px solid var(--line);
-  border-radius: 15px;
-
-  background:
-    linear-gradient(
-      145deg,
-      rgba(255, 255, 255, 0.035),
-      rgba(255, 255, 255, 0)
-    ),
-    var(--card);
-
-  color: var(--white);
-}
-
-/* Smaller icon */
-.moduleTop {
-  margin-bottom: 18px;
-}
-
-.moduleIcon {
-  width: 44px;
-  height: 44px;
-  border-radius: 11px;
-}
-
-/* Smaller number */
-.moduleNumber {
-  font-size: 9px;
-}
-
-/* Smaller heading */
-.moduleCategory {
-  margin-bottom: 7px;
-  font-size: 8px;
-}
-
-.moduleCard h3 {
-  margin-bottom: 9px;
-  font-size: 18px;
-  line-height: 1.15;
-}
-
-.moduleCard p {
-  margin-bottom: 15px;
-  font-size: 11px;
-  line-height: 1.6;
-}
-
-/* Smaller skill tags */
-.moduleSkills {
-  gap: 5px;
-  margin-bottom: 16px;
-}
-
-.moduleSkills span {
-  padding: 5px 7px;
-  font-size: 7px;
-  border-radius: 5px;
-}
-
-/* Smaller bottom link */
-.moduleLink {
-  padding-top: 11px;
-  font-size: 9px;
-}
-
 
 /* =========================================================
-   LARGE DESKTOP
+   ACCESSIBILITY
    ========================================================= */
 
-@media (min-width: 1201px) {
-
-  .moduleGrid {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 16px;
+@media (prefers-reduced-motion: reduce) {
+  .heroVisual::before {
+    animation: none;
   }
-
-  .moduleCard {
-    min-height: 285px;
-    padding: 22px;
-  }
-
-}
-
-
-/* =========================================================
-   TABLET
-   ========================================================= */
-
-@media (max-width: 1000px) {
-
-  .moduleGrid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 14px;
-  }
-
-  .moduleCard {
-    min-height: 280px;
-    padding: 21px;
-  }
-
-}
-
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
-@media (max-width: 700px) {
-
-  .moduleGrid {
-    grid-template-columns: 1fr;
-    gap: 12px;
-  }
-
-  .moduleCard {
-    min-height: 290px;
-    padding: 21px;
-  }
-
-}
-
-
-/* =========================================================
-   SMALL MOBILE
-   ========================================================= */
-
-@media (max-width: 420px) {
-
-  .moduleGrid {
-    grid-template-columns: 1fr;
-  }
-
-  .moduleCard {
-    min-height: 275px;
-    padding: 19px;
-  }
-
-  .moduleCard h3 {
-    font-size: 19px;
-  }
-
 }
