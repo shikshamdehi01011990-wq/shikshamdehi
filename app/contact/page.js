@@ -12,6 +12,7 @@ import {
   Send,
   Sparkles,
 } from 'lucide-react';
+import styles from './contact.module.css';
 
 const institutionTypes = [
   'School',
