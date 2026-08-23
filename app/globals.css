@@ -22,10 +22,6 @@ button {
   font: inherit;
 }
 
-/* =========================================================
-   ROOT
-   ========================================================= */
-
 main {
   --bg: #080b10;
   --bg2: #0b1016;
@@ -359,7 +355,7 @@ main {
 }
 
 /* =========================================================
-   HERO VISUAL
+   HERO IMAGE — FIXED
    ========================================================= */
 
 .heroVisual {
@@ -375,14 +371,14 @@ main {
 }
 
 /* Glow behind image */
-
 .heroVisual::after {
   content: "";
 
-  width: 480px;
-  height: 480px;
-
   position: absolute;
+
+  width: 500px;
+  height: 500px;
+
   left: 50%;
   top: 50%;
 
@@ -390,44 +386,60 @@ main {
 
   border-radius: 50%;
 
-  background: rgba(199, 255, 61, 0.07);
+  background: rgba(199, 255, 61, 0.08);
 
-  filter: blur(95px);
+  filter: blur(100px);
 
   pointer-events: none;
+
   z-index: 0;
 }
 
-/* =========================================================
-   ACTUAL HERO IMAGE
-   ========================================================= */
+/*
+   IMPORTANT:
+   The image is loaded through <img src="/home-hero.png">
+   in page.js.
 
-.heroImage {
+   Therefore no CSS background-image is used here.
+*/
+
+.heroVisual::before {
+  display: none !important;
+}
+
+/* Actual image */
+.heroVisual .heroImage {
   position: relative;
-  z-index: 3;
+
+  z-index: 5;
 
   display: block;
 
-  width: min(560px, 100%);
+  width: 100%;
   max-width: 560px;
+
   height: auto;
 
   object-fit: contain;
 
-  border-radius: 20px;
+  opacity: 1;
+  visibility: visible;
+
+  border: 0;
+  outline: 0;
 
   filter:
     drop-shadow(0 30px 60px rgba(0, 0, 0, 0.45))
     drop-shadow(0 0 45px rgba(199, 255, 61, 0.08));
 
+  animation: heroImageFloat 6s ease-in-out infinite;
+
   transition:
     transform 0.4s ease,
     filter 0.4s ease;
-
-  animation: heroImageFloat 6s ease-in-out infinite;
 }
 
-.heroImage:hover {
+.heroVisual .heroImage:hover {
   transform: translateY(-6px);
 
   filter:
@@ -446,12 +458,11 @@ main {
   }
 }
 
-/* Hide any old generated visual */
-
+/* Remove old generated visuals */
 .heroVisual .orb,
 .heroVisual .heroCore,
 .heroVisual .floating {
-  display: none;
+  display: none !important;
 }
 
 /* =========================================================
@@ -503,7 +514,7 @@ main {
 }
 
 /* =========================================================
-   12 MODULE CARDS — 4 × 3
+   MODULE CARDS
    ========================================================= */
 
 .modulesSection {
@@ -629,6 +640,9 @@ main {
   background: rgba(199, 255, 61, 0.065);
 
   color: var(--lime);
+
+  font-size: 12px;
+  font-weight: 900;
 }
 
 .moduleNumber {
@@ -715,8 +729,6 @@ main {
   font-weight: 900;
 
   letter-spacing: 0.05em;
-
-  transition: color 0.2s ease;
 }
 
 .moduleCard:hover .moduleLink {
@@ -780,7 +792,7 @@ main {
 }
 
 /* =========================================================
-   AUDIENCE CARDS
+   AUDIENCE
    ========================================================= */
 
 .audienceGrid {
@@ -827,8 +839,6 @@ main {
 
 .audienceCard .icon {
   flex-shrink: 0;
-
-  margin-bottom: 0;
 }
 
 .audienceCard h3 {
@@ -909,12 +919,6 @@ main {
   letter-spacing: -0.055em;
 }
 
-.projectBanner h2 em {
-  color: var(--lime);
-
-  font-style: normal;
-}
-
 .projectBanner p {
   max-width: 600px;
 
@@ -964,12 +968,11 @@ main {
 }
 
 /* =========================================================
-   SCHOOL / ABOUT
+   SCHOOL
    ========================================================= */
 
 .schoolBand {
   border-top: 1px solid var(--line);
-
   border-bottom: 1px solid var(--line);
 
   background:
@@ -983,7 +986,6 @@ main {
 
 .schoolBand .section {
   padding-top: 105px;
-
   padding-bottom: 105px;
 }
 
@@ -1009,12 +1011,6 @@ main {
   line-height: 0.96;
 
   letter-spacing: -0.055em;
-}
-
-.schoolCopy h2 em {
-  color: var(--lime);
-
-  font-style: normal;
 }
 
 .schoolCopy > p {
@@ -1119,6 +1115,10 @@ main {
   opacity: 0.65;
 }
 
+/* =========================================================
+   ABOUT
+   ========================================================= */
+
 .about {
   display: grid;
 
@@ -1139,12 +1139,6 @@ main {
   line-height: 0.95;
 
   letter-spacing: -0.055em;
-}
-
-.about h2 em {
-  color: var(--lime);
-
-  font-style: normal;
 }
 
 .aboutText > p {
@@ -1249,12 +1243,6 @@ main {
   letter-spacing: -0.06em;
 }
 
-.cta h2 em {
-  color: var(--lime);
-
-  font-style: normal;
-}
-
 .cta > p {
   max-width: 650px;
 
@@ -1263,10 +1251,6 @@ main {
   font-size: 15px;
 
   line-height: 1.7;
-}
-
-.light {
-  border-color: #36434c;
 }
 
 .ctaTags {
@@ -1333,16 +1317,6 @@ footer .brandMark {
   border-radius: 8px;
 }
 
-footer p {
-  color: var(--muted2);
-
-  font-size: 10px;
-
-  font-weight: 700;
-
-  text-align: center;
-}
-
 footer small {
   color: var(--muted2);
 
@@ -1396,7 +1370,7 @@ footer small {
     min-height: 520px;
   }
 
-  .heroImage {
+  .heroVisual .heroImage {
     width: min(560px, 90vw);
 
     max-width: 560px;
@@ -1542,20 +1516,18 @@ footer small {
     margin-top: 10px;
   }
 
+  .heroVisual .heroImage {
+    width: min(100%, 390px);
+
+    max-width: 390px;
+  }
+
   .heroVisual::after {
     width: 290px;
 
     height: 290px;
 
     filter: blur(70px);
-  }
-
-  .heroImage {
-    width: min(430px, 94vw);
-
-    max-width: 430px;
-
-    animation-duration: 7s;
   }
 
   .moduleIntro .section {
@@ -1692,10 +1664,6 @@ footer small {
     gap: 16px;
   }
 
-  footer p {
-    text-align: left;
-  }
-
   footer small {
     text-align: left;
   }
@@ -1734,16 +1702,16 @@ footer small {
     min-height: 350px;
   }
 
+  .heroVisual .heroImage {
+    width: min(100%, 340px);
+
+    max-width: 340px;
+  }
+
   .heroVisual::after {
     width: 230px;
 
     height: 230px;
-  }
-
-  .heroImage {
-    width: min(360px, 96vw);
-
-    max-width: 360px;
   }
 
   .moduleIntro h2 {
@@ -1764,7 +1732,7 @@ footer small {
    ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
-  .heroImage {
+  .heroVisual .heroImage {
     animation: none;
   }
 }
