@@ -4,81 +4,104 @@ import Link from 'next/link';
 import { useState } from 'react';
 import {
   ArrowRight,
-  Bot,
   Box,
+  Bot,
+  Building2,
   Cpu,
   Cuboid,
   GraduationCap,
+  Layers3,
   Lightbulb,
   Menu,
   Printer,
   School,
+  Settings2,
   Sparkles,
+  Wrench,
   X,
   Zap,
 } from 'lucide-react';
 
-const programs = [
+const services = [
   {
     icon: Cuboid,
-    tag: 'FLAGSHIP PROGRAM',
-    title: '3D Design & Printing',
-    text: 'From imagination to a real, printed product. Students learn 3D design, CAD thinking, slicing, printer basics and rapid prototyping.',
-    link: '/programs',
+    tag: 'FLAGSHIP',
+    title: '3D Design & CAD',
+    text: 'Learn professional 3D modelling, CAD thinking, product design and design-for-manufacturing concepts.',
+  },
+  {
+    icon: Printer,
+    tag: 'DIGITAL FABRICATION',
+    title: '3D Printing',
+    text: 'From STL and slicing to printer setup, troubleshooting, prototyping and functional parts.',
   },
   {
     icon: Cpu,
     tag: 'ELECTRONICS',
-    title: 'Arduino & Electronics',
-    text: 'Learn circuits, sensors, inputs, outputs and coding through hands-on projects—not just theory.',
-    link: '/programs',
+    title: 'Arduino & IoT',
+    text: 'Build practical electronics projects using Arduino, sensors, actuators and connected devices.',
   },
   {
     icon: Bot,
-    tag: 'ROBOTICS',
-    title: 'Robotics & Automation',
-    text: 'Build moving machines using motors, drivers, Arduino and sensors. Progress from simple bots to smart robots.',
-    link: '/programs',
+    tag: 'AUTOMATION',
+    title: 'Robotics',
+    text: 'Learn motors, drivers, sensors, controllers and robotic systems through real projects.',
   },
   {
     icon: Sparkles,
     tag: 'FUTURE SKILLS',
-    title: 'AI, IoT & Innovation',
-    text: 'Explore connected devices, AI thinking, automation and real-world problem solving through projects.',
-    link: '/programs',
+    title: 'AI + Hardware',
+    text: 'Explore AI thinking, smart devices, automation and hardware-based innovation.',
   },
-];
-
-const journey = [
-  'Explore',
-  'Design',
-  'Build',
-  'Print',
-  'Program',
-  'Innovate',
+  {
+    icon: Lightbulb,
+    tag: 'INNOVATION',
+    title: 'Project Development',
+    text: 'Turn ideas into prototypes for exhibitions, competitions, academic projects and startups.',
+  },
 ];
 
 const audiences = [
   {
-    icon: GraduationCap,
-    title: 'For Students',
-    text: 'Age-appropriate hands-on programs where students learn by building real projects.',
-  },
-  {
     icon: School,
-    title: 'For Schools',
-    text: 'Structured STEM programs, workshops, annual plans and maker-learning support.',
+    title: 'Schools',
+    text: 'Classes 6–12 STEM, maker programs, workshops and project-based learning.',
   },
   {
-    icon: Printer,
-    title: 'For ATL Labs',
-    text: '3D printing, robotics, electronics and project mentoring for active ATL labs.',
+    icon: Layers3,
+    title: 'ATL Labs',
+    text: 'Lab activation, robotics, 3D printing, project mentoring and innovation challenges.',
   },
   {
-    icon: Lightbulb,
-    title: 'For Educators',
-    text: 'Teacher enablement, practical training and project-based STEM teaching support.',
+    icon: Wrench,
+    title: 'ITI',
+    text: 'Technical skill training in 3D CAD, printing, prototyping and digital manufacturing.',
   },
+  {
+    icon: Settings2,
+    title: 'Polytechnics',
+    text: 'CAD, rapid prototyping, 3D printing, robotics and engineering project training.',
+  },
+  {
+    icon: GraduationCap,
+    title: 'Colleges',
+    text: 'Product development, engineering prototypes, IoT, robotics and innovation programs.',
+  },
+  {
+    icon: Building2,
+    title: 'Educators',
+    text: 'Faculty development and practical training in modern maker technologies.',
+  },
+];
+
+const workflow = [
+  'IDEA',
+  'DESIGN',
+  'MODEL',
+  'PRINT',
+  'BUILD',
+  'TEST',
+  'IMPROVE',
 ];
 
 export default function Home() {
@@ -88,10 +111,10 @@ export default function Home() {
 
   return (
     <main>
-      {/* ================= NAVIGATION ================= */}
+      {/* ================= NAVBAR ================= */}
 
       <header className="nav">
-        <Link className="brand" href="/" onClick={closeMenu}>
+        <Link href="/" className="brand" onClick={closeMenu}>
           <span className="brandMark">SD</span>
           <span>
             Shiksham<span>Dehi</span>
@@ -99,12 +122,12 @@ export default function Home() {
         </Link>
 
         <nav className={open ? 'mobileOpen' : ''}>
-          <a href="#programs" onClick={closeMenu}>
-            Programs
+          <a href="#services" onClick={closeMenu}>
+            Services
           </a>
 
-          <a href="#schools" onClick={closeMenu}>
-            For Schools
+          <a href="#institutions" onClick={closeMenu}>
+            For Institutions
           </a>
 
           <a href="#about" onClick={closeMenu}>
@@ -116,14 +139,14 @@ export default function Home() {
           </a>
         </nav>
 
-        <a className="navCta" href="#contact">
+        <a href="#contact" className="navCta">
           Partner With Us <ArrowRight size={16} />
         </a>
 
         <button
           className="menu"
           onClick={() => setOpen(!open)}
-          aria-label="Toggle navigation menu"
+          aria-label="Toggle navigation"
           aria-expanded={open}
         >
           {open ? <X /> : <Menu />}
@@ -137,29 +160,43 @@ export default function Home() {
 
         <div className="heroCopy">
           <div className="eyebrow">
-            <span></span> STEM • MAKER • INNOVATION
+            <span></span>
+            STEM EDUCATION • DIGITAL MANUFACTURING
           </div>
 
           <h1>
-            Turn curiosity into{' '}
-            <em>real-world skills.</em>
+            Learn technology.
+            <br />
+            <em>Build the real world.</em>
           </h1>
 
           <p className="heroText">
-            Future-ready learning through{' '}
+            Hands-on training in{' '}
             <b>
-              3D Design & Printing, Arduino, Robotics, IoT and AI.
+              3D Design, 3D Printing, Arduino, Robotics, IoT and AI
             </b>{' '}
-            Students don&apos;t just learn technology—they build with it.
+            for students and institutions.
           </p>
 
+          <div className="heroAudience">
+            <span>Schools</span>
+            <i>•</i>
+            <span>ATL Labs</span>
+            <i>•</i>
+            <span>ITI</span>
+            <i>•</i>
+            <span>Polytechnics</span>
+            <i>•</i>
+            <span>Colleges</span>
+          </div>
+
           <div className="heroActions">
-            <Link className="primary" href="/programs">
+            <Link href="/programs" className="primary">
               Explore Programs <ArrowRight size={18} />
             </Link>
 
-            <a className="secondary" href="#contact">
-              Talk to ShikshamDehi
+            <a href="#contact" className="secondary">
+              Partner With Us
             </a>
           </div>
 
@@ -167,29 +204,29 @@ export default function Home() {
             <div>
               <strong>16+</strong>
               <span>
-                Years of 3D
+                Years of
                 <br />
-                Design Experience
+                3D Experience
               </span>
             </div>
 
-            <i></i>
+            <i />
 
             <div>
               <strong>100%</strong>
               <span>
                 Hands-on
                 <br />
-                Project Learning
+                Learning
               </span>
             </div>
 
-            <i></i>
+            <i />
 
             <div>
-              <strong>4+</strong>
+              <strong>7</strong>
               <span>
-                Future Skill
+                Technology
                 <br />
                 Domains
               </span>
@@ -200,43 +237,43 @@ export default function Home() {
         {/* HERO VISUAL */}
 
         <div className="heroVisual">
-          <div className="orb orb1"></div>
-          <div className="orb orb2"></div>
+          <div className="orb orb1" />
+          <div className="orb orb2" />
 
           <div className="printerCard">
             <div className="printerTop">
-              <span className="liveDot"></span>
-              MAKER LAB / LIVE
+              <span className="liveDot" />
+              SHIKSHAMDEHI / MAKER LAB
             </div>
 
             <div className="printerScene">
-              <div className="printBed"></div>
+              <div className="printBed" />
 
               <div className="printObject">
-                <span></span>
-                <span></span>
-                <span></span>
+                <span />
+                <span />
+                <span />
               </div>
 
-              <div className="nozzle"></div>
+              <div className="nozzle" />
             </div>
 
             <div className="printStats">
               <div>
-                <small>PROJECT</small>
-                <b>Smart Rover</b>
+                <small>WORKFLOW</small>
+                <b>Design → Print</b>
               </div>
 
               <div>
-                <small>STATUS</small>
-                <b className="green">PRINTING</b>
+                <small>MODE</small>
+                <b className="green">BUILDING</b>
               </div>
             </div>
           </div>
 
           <div className="floating f1">
-            <Box size={18} />
-            <span>3D Design</span>
+            <Cuboid size={18} />
+            <span>3D CAD</span>
           </div>
 
           <div className="floating f2">
@@ -251,10 +288,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ================= JOURNEY TICKER ================= */}
+      {/* ================= STATEMENT BAR ================= */}
 
       <section className="ticker">
-        <div>LEARN</div>
+        <div>DESIGN</div>
         <span>→</span>
         <div>MAKE</div>
         <span>→</span>
@@ -265,29 +302,30 @@ export default function Home() {
         <div>INNOVATE</div>
       </section>
 
-      {/* ================= PROGRAMS ================= */}
+      {/* ================= SERVICES ================= */}
 
-      <section className="section" id="programs">
+      <section className="section" id="services">
         <div className="sectionHead">
           <div>
-            <div className="eyebrow">WHAT WE TEACH</div>
+            <div className="eyebrow">WHAT WE DO</div>
 
             <h2>
-              Learning that ends
+              From digital ideas
               <br />
-              <em>with something real.</em>
+              <em>to physical products.</em>
             </h2>
           </div>
 
           <p>
-            Designed for students, schools and educators. Every program is
-            project-led, age-appropriate and built around practical outcomes.
+            ShikshamDehi combines education, digital design, electronics and
+            fabrication to help learners move from concepts to working
+            prototypes.
           </p>
         </div>
 
         <div className="programGrid">
-          {programs.map(
-            ({ icon: Icon, tag, title, text, link }) => (
+          {services.map(
+            ({ icon: Icon, tag, title, text }) => (
               <article className="program" key={title}>
                 <div className="icon">
                   <Icon size={24} />
@@ -299,60 +337,8 @@ export default function Home() {
 
                 <p>{text}</p>
 
-                <Link href={link}>
-                  Explore Program <ArrowRight size={16} />
-                </Link>
-              </article>
-            )
-          )}
-        </div>
-
-        <div
-          style={{
-            marginTop: '36px',
-            textAlign: 'center',
-          }}
-        >
-          <Link className="secondary" href="/programs">
-            View Complete Programs <ArrowRight size={17} />
-          </Link>
-        </div>
-      </section>
-
-      {/* ================= AUDIENCE ================= */}
-
-      <section className="section" id="audience">
-        <div className="sectionHead">
-          <div>
-            <div className="eyebrow">WHO WE WORK WITH</div>
-
-            <h2>
-              One platform.
-              <br />
-              <em>Multiple learning journeys.</em>
-            </h2>
-          </div>
-
-          <p>
-            ShikshamDehi brings practical maker education to the people who
-            matter most in the learning ecosystem.
-          </p>
-        </div>
-
-        <div className="programGrid">
-          {audiences.map(
-            ({ icon: Icon, title, text }) => (
-              <article className="program" key={title}>
-                <div className="icon">
-                  <Icon size={24} />
-                </div>
-
-                <h3>{title}</h3>
-
-                <p>{text}</p>
-
                 <a href="#contact">
-                  Know More <ArrowRight size={16} />
+                  Enquire <ArrowRight size={16} />
                 </a>
               </article>
             )
@@ -360,59 +346,161 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ================= SCHOOL SECTION ================= */}
+      {/* ================= WHO WE SERVE ================= */}
 
-      <section className="schoolBand" id="schools">
-        <div className="section schoolInner">
-          <div className="schoolCopy">
+      <section
+        className="schoolBand"
+        id="institutions"
+      >
+        <div className="section">
+          <div className="sectionHead">
+            <div>
+              <div className="eyebrow">
+                WHO WE WORK WITH
+              </div>
+
+              <h2>
+                One technology platform.
+                <br />
+                <em>Multiple learning environments.</em>
+              </h2>
+            </div>
+
+            <p>
+              Programs can be customised according to age, curriculum,
+              technical level, lab infrastructure and institutional goals.
+            </p>
+          </div>
+
+          <div className="programGrid">
+            {audiences.map(
+              ({ icon: Icon, title, text }) => (
+                <article className="program" key={title}>
+                  <div className="icon">
+                    <Icon size={24} />
+                  </div>
+
+                  <h3>{title}</h3>
+
+                  <p>{text}</p>
+
+                  <a href="#contact">
+                    Discuss Program <ArrowRight size={16} />
+                  </a>
+                </article>
+              )
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* ================= 3D DESIGN / MANUFACTURING ================= */}
+
+      <section className="section">
+        <div className="about">
+          <div>
             <div className="eyebrow">
-              FOR SCHOOLS & ATL LABS
+              3D DESIGN → 3D PRINTING
             </div>
 
             <h2>
-              Build a <em>maker culture</em> inside your school.
+              From CAD
+              <br />
+              <em>to prototype.</em>
+            </h2>
+          </div>
+
+          <div className="aboutText">
+            <p>
+              Learn the complete digital manufacturing workflow—from
+              designing a part to producing a physical prototype.
+            </p>
+
+            <div className="workflow">
+              {workflow.map((item, index) => (
+                <div className="workflowItem" key={item}>
+                  <span>
+                    {String(index + 1).padStart(2, '0')}
+                  </span>
+
+                  <b>{item}</b>
+
+                  {index < workflow.length - 1 && (
+                    <i>→</i>
+                  )}
+                </div>
+              ))}
+            </div>
+
+            <p>
+              Ideal for{' '}
+              <strong>
+                ITI, Polytechnic, Engineering College and
+                professional skill programs.
+              </strong>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ================= SCHOOL / TECHNICAL PROGRAM ================= */}
+
+      <section className="schoolBand">
+        <div className="section schoolInner">
+          <div className="schoolCopy">
+            <div className="eyebrow">
+              INSTITUTIONAL TRAINING
+            </div>
+
+            <h2>
+              Build skills that
+              <br />
+              <em>students can use.</em>
             </h2>
 
             <p>
-              Don&apos;t just set up a lab. Make it active. ShikshamDehi can
-              support your school with structured STEM programs, trainer-led
-              sessions, projects, teacher training and innovation challenges.
+              We design practical training programs for educational
+              institutions—from foundation-level maker education to
+              technical 3D design, printing, robotics and prototyping.
             </p>
 
             <div className="checkGrid">
-              <span>✓ Curriculum & lesson plans</span>
-              <span>✓ 3D printing programs</span>
+              <span>✓ Student training</span>
+              <span>✓ Faculty development</span>
+              <span>✓ 3D CAD & design</span>
+              <span>✓ 3D printing</span>
               <span>✓ Arduino & robotics</span>
-              <span>✓ Teacher enablement</span>
-              <span>✓ Project & exhibition support</span>
-              <span>✓ Annual STEM programs</span>
+              <span>✓ Project mentoring</span>
+              <span>✓ Workshop & bootcamp</span>
+              <span>✓ Innovation challenges</span>
             </div>
 
-            <a className="primary" href="#contact">
-              Discuss Your School <ArrowRight size={18} />
+            <a href="#contact" className="primary">
+              Request Institutional Program{' '}
+              <ArrowRight size={18} />
             </a>
           </div>
 
           <div className="schoolCard">
             <div className="cardLabel">
-              CLASSES 6–8 / FOUNDATION
+              LEARNING PATH
             </div>
 
-            <h3>Young Maker Journey</h3>
+            <h3>Idea → Product</h3>
 
-            {journey.map((x, i) => (
-              <div className="journey" key={x}>
+            {workflow.slice(0, 6).map((item, index) => (
+              <div className="journey" key={item}>
                 <span>
-                  {String(i + 1).padStart(2, '0')}
+                  {String(index + 1).padStart(2, '0')}
                 </span>
 
-                <b>{x}</b>
+                <b>{item}</b>
 
                 <i
                   style={{
-                    width: `${45 + i * 10}%`,
+                    width: `${45 + index * 9}%`,
                   }}
-                ></i>
+                />
               </div>
             ))}
 
@@ -425,7 +513,7 @@ export default function Home() {
                 marginTop: '22px',
               }}
             >
-              View Young Maker Program
+              Explore Programs
               <ArrowRight size={16} />
             </Link>
           </div>
@@ -442,36 +530,42 @@ export default function Home() {
             </div>
 
             <h2>
-              Experience that
+              16+ years of
               <br />
-              <em>builds confidence.</em>
+              <em>real making experience.</em>
             </h2>
           </div>
 
           <div className="aboutText">
             <p>
-              With <strong>16+ years of hands-on experience</strong> in 3D
-              design and printing, ShikshamDehi brings practical maker
-              knowledge into education.
-            </p>
-
-            <p>
-              We believe students should not only consume technology. They
-              should understand it, design it, build it, test it and improve
-              it.
+              ShikshamDehi brings{' '}
+              <strong>
+                16+ years of 3D design and printing experience
+              </strong>{' '}
+              into education and technical skill development.
             </p>
 
             <p>
               Our approach connects{' '}
               <strong>
-                design + electronics + coding + fabrication + robotics
+                design + electronics + coding + fabrication +
+                robotics
               </strong>{' '}
-              into one practical learning experience.
+              into practical learning experiences.
+            </p>
+
+            <p>
+              Students don&apos;t just consume technology. They
+              learn to{' '}
+              <strong>
+                design it, build it, test it and improve it.
+              </strong>
             </p>
 
             <div className="quote">
-              “The best STEM lesson is the one where a student says:{' '}
-              <b>Can I build one more?</b>”
+              “The goal is not just to teach technology.
+              <br />
+              <b>The goal is to create makers.</b>”
             </div>
           </div>
         </div>
@@ -480,21 +574,21 @@ export default function Home() {
       {/* ================= CTA ================= */}
 
       <section className="cta" id="contact">
-        <div className="ctaGlow"></div>
+        <div className="ctaGlow" />
 
         <div className="eyebrow">
-          LET&apos;S BUILD THE FUTURE
+          START A PARTNERSHIP
         </div>
 
         <h2>
-          Ready to start a
+          Let&apos;s build the
           <br />
-          <em>maker journey?</em>
+          <em>next generation of makers.</em>
         </h2>
 
         <p>
-          Schools, parents, educators and students—tell us what you want
-          to build.
+          Schools, ATL Labs, ITIs, Polytechnics, Colleges and
+          educators—tell us what you want to build.
         </p>
 
         <div className="heroActions">
@@ -505,10 +599,10 @@ export default function Home() {
             Start a Conversation <ArrowRight size={18} />
           </a>
 
-          {/* IMPORTANT: Replace this number with your real WhatsApp number */}
+          {/* Replace with your real WhatsApp number */}
           <a
             className="secondary light"
-            href="https://wa.me/918796289333"
+            href="https://wa.me/919999999999"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -516,23 +610,13 @@ export default function Home() {
           </a>
         </div>
 
-        <div
-          style={{
-            marginTop: '42px',
-            display: 'flex',
-            justifyContent: 'center',
-            flexWrap: 'wrap',
-            gap: '14px',
-            opacity: 0.75,
-          }}
-        >
-          <span>School Programs</span>
-          <span>•</span>
-          <span>Student Workshops</span>
-          <span>•</span>
-          <span>ATL Training</span>
-          <span>•</span>
-          <span>3D Printing</span>
+        <div className="ctaTags">
+          <span>Schools</span>
+          <span>ATL Labs</span>
+          <span>ITI</span>
+          <span>Polytechnic</span>
+          <span>College</span>
+          <span>Educators</span>
         </div>
       </section>
 
@@ -547,7 +631,9 @@ export default function Home() {
           </span>
         </div>
 
-        <p>Future skills. Real projects.</p>
+        <p>
+          STEM Education • Digital Manufacturing • Future Skills
+        </p>
 
         <small>
           © 2026 ShikshamDehi. All rights reserved.
