@@ -13,11 +13,55 @@ import {
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
 
-  function handleSubmit(e) {
-    e.preventDefault();
+  async function handleSubmit(e) {
+  e.preventDefault();
+
+  const form = e.currentTarget;
+  const formData = new FormData(form);
+
+  const data = Object.fromEntries(formData.entries());
+
+  setSubmitting(true);
+  setError("");
+
+  // Your form uses "domain" for Learning Areas.
+  // Google Apps Script expects "learningAreas".
+  data.learningAreas = data.domain || "";
+
+  try {
+    const response = await fetch("/api/enquiry", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    const result = await response.json();
+
+    if (!response.ok || !result.success) {
+      throw new Error(
+        result.error || "Unable to submit enquiry."
+      );
+    }
+
+    form.reset();
     setSubmitted(true);
+
+  } catch (err) {
+    console.error("Enquiry submission error:", err);
+
+    setError(
+      "Something went wrong while submitting your enquiry. Please try again or contact us directly on WhatsApp."
+    );
+
+  } finally {
+    setSubmitting(false);
   }
+}
 
   return (
     <main className="contact-page">
@@ -438,12 +482,25 @@ export default function ContactPage() {
 
                 </div>
 
+                {error && (
+                  <div className="form-error">
+                    {error}
+                  </div>
+                )}
+
                 <button
                   type="submit"
                   className="contact-submit-btn"
+                  disabled={submitting}
                 >
-                  Submit School Enquiry
-                  <ArrowRight size={18} />
+                  {submitting ? (
+                    "Submitting..."
+                  ) : (
+                    <>
+                      Submit School Enquiry
+                      <ArrowRight size={18} />
+                    </>
+                  )}
                 </button>
 
                 <p className="form-note">
