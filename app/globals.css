@@ -2348,3 +2348,541 @@ h2 span {
   }
 
 }
+
+/* =========================================================
+   PROJECT LIBRARY
+========================================================= */
+
+.projects-page {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.projects-page .container {
+  max-width: var(--max);
+  margin: auto;
+  padding: 0 24px;
+}
+
+/* HERO */
+
+.projects-hero {
+  padding: 150px 0 90px;
+  border-bottom: 1px solid var(--line);
+}
+
+.projects-hero h1 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(52px, 7vw, 90px);
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+  margin: 22px 0;
+}
+
+.projects-hero h1 em {
+  color: var(--lime);
+  font-style: normal;
+}
+
+.projects-hero p {
+  max-width: 650px;
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+.project-stats {
+  display: flex;
+  gap: 55px;
+  margin-top: 50px;
+}
+
+.project-stats div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.project-stats strong {
+  font-family: "Space Grotesk", sans-serif;
+  color: var(--lime);
+  font-size: 30px;
+}
+
+.project-stats span {
+  color: var(--muted);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+/* LIBRARY */
+
+.project-library {
+  padding: 90px 0 110px;
+}
+
+.project-filter-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 35px;
+}
+
+.filter-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.filter-title svg {
+  color: var(--lime);
+}
+
+.project-search {
+  width: 280px;
+  height: 44px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 0 14px;
+  background: var(--card);
+}
+
+.project-search svg {
+  color: var(--muted);
+  flex-shrink: 0;
+}
+
+.project-search input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-size: 13px;
+}
+
+.project-search input::placeholder {
+  color: var(--muted);
+}
+
+.filter-section {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 18px 0;
+  border-top: 1px solid var(--line);
+}
+
+.filter-label {
+  min-width: 80px;
+  color: var(--muted);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+}
+
+.filter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filter-buttons button {
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--muted);
+  border-radius: 100px;
+  padding: 8px 13px;
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.filter-buttons button:hover {
+  color: var(--text);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.filter-buttons button.selected {
+  background: var(--lime);
+  color: #10130d;
+  border-color: var(--lime);
+  font-weight: 700;
+}
+
+.project-results-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 35px 0 22px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.project-results-head strong {
+  color: var(--text);
+}
+
+.project-results-head button {
+  background: none;
+  border: none;
+  color: var(--lime);
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* PROJECT CARDS */
+
+.project-library-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.library-project-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  overflow: hidden;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.library-project-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.library-project-image {
+  position: relative;
+  height: 230px;
+  overflow: hidden;
+}
+
+.library-project-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.library-project-card:hover .library-project-image img {
+  transform: scale(1.04);
+}
+
+.library-project-image > span {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  padding: 7px 10px;
+  border-radius: 100px;
+  background: rgba(10, 12, 15, 0.82);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: var(--lime);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.library-project-content {
+  padding: 24px;
+}
+
+.library-project-meta {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+
+.library-project-meta span {
+  padding: 6px 9px;
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.library-project-content h3 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 22px;
+  margin: 0 0 10px;
+}
+
+.library-project-content p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.7;
+  margin: 0 0 18px;
+}
+
+.project-duration {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--muted);
+  font-size: 11px;
+  margin-bottom: 20px;
+}
+
+.project-duration svg {
+  color: var(--lime);
+}
+
+.project-explore {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.project-explore:hover {
+  color: var(--lime);
+}
+
+.no-projects {
+  padding: 100px 20px;
+  text-align: center;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  color: var(--muted);
+}
+
+.no-projects svg {
+  color: var(--lime);
+}
+
+.no-projects h3 {
+  color: var(--text);
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 25px;
+}
+
+/* PHILOSOPHY */
+
+.project-philosophy {
+  padding: 0 0 110px;
+}
+
+.philosophy-box {
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: 55px;
+  background: var(--card);
+}
+
+.philosophy-box h2 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(38px, 5vw, 58px);
+  line-height: 1;
+  letter-spacing: -0.045em;
+  margin: 20px 0 50px;
+}
+
+.philosophy-box h2 em {
+  color: var(--lime);
+  font-style: normal;
+}
+
+.philosophy-flow {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.philosophy-flow div {
+  min-height: 100px;
+  padding: 18px;
+  border-right: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.philosophy-flow div:last-child {
+  border-right: none;
+}
+
+.philosophy-flow strong {
+  color: var(--lime);
+  font-size: 11px;
+}
+
+.philosophy-flow span {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* CTA */
+
+.projects-cta {
+  padding-bottom: 100px;
+}
+
+.projects-cta-box {
+  padding: 60px;
+  border-radius: 25px;
+  background: var(--lime);
+  color: #10130d;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+}
+
+.projects-cta-box .section-eyebrow {
+  color: #30372a;
+}
+
+.projects-cta-box .section-eyebrow span {
+  background: #10130d;
+}
+
+.projects-cta-box h2 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(38px, 5vw, 58px);
+  line-height: 1;
+  letter-spacing: -0.045em;
+  margin: 20px 0;
+}
+
+.projects-cta-box h2 em {
+  color: #10130d;
+  font-style: normal;
+}
+
+.projects-cta-box p {
+  max-width: 600px;
+  color: #30372a;
+  line-height: 1.7;
+}
+
+.project-cta-button {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  padding: 15px 22px;
+  border-radius: 10px;
+  background: #10130d;
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1000px) {
+
+  .project-library-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .philosophy-flow {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .philosophy-flow div:nth-child(4) {
+    border-right: none;
+  }
+
+  .philosophy-flow div:nth-child(-n + 4) {
+    border-bottom: 1px solid var(--line);
+  }
+
+}
+
+@media (max-width: 750px) {
+
+  .projects-hero {
+    padding: 120px 0 70px;
+  }
+
+  .project-stats {
+    gap: 25px;
+  }
+
+  .project-filter-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .project-search {
+    width: 100%;
+  }
+
+  .filter-section {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .project-library-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .philosophy-box {
+    padding: 30px 22px;
+  }
+
+  .philosophy-flow {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .philosophy-flow div:nth-child(odd) {
+    border-right: 1px solid var(--line);
+  }
+
+  .philosophy-flow div:nth-child(even) {
+    border-right: none;
+  }
+
+  .philosophy-flow div {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .projects-cta-box {
+    padding: 35px 25px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  .projects-hero h1 {
+    font-size: 43px;
+  }
+
+  .project-stats {
+    flex-wrap: wrap;
+  }
+
+  .project-stats strong {
+    font-size: 25px;
+  }
+
+}
