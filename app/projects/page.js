@@ -1,544 +1,549 @@
-'use client';
+"use client";
 
-import Link from 'next/link';
+import { useState } from "react";
+import Link from "next/link";
 import {
   ArrowRight,
-  Bot,
-  Cpu,
-  Cuboid,
-  Lightbulb,
-  Printer,
-  Radio,
-  Settings2,
-  Zap,
-} from 'lucide-react';
-
-import styles from './projects.module.css';
+  CheckCircle2,
+  Clock3,
+  Filter,
+  Search,
+} from "lucide-react";
 
 const projects = [
   {
-    icon: Bot,
-    number: '01',
-    category: 'ROBOTICS',
-    title: 'Line Following Robot',
+    slug: "smart-plant-monitor",
+    title: "Smart Plant Monitor",
+    category: "Arduino",
+    age: "Classes 6–8",
+    difficulty: "Beginner",
+    duration: "2–3 Hours",
+    image: "/images/shikshamdehiarduino-projects.jpeg",
     description:
-      'Build a working autonomous robot using sensors, motors, motor drivers and a microcontroller.',
-    skills: ['Arduino', 'Sensors', 'Motors', 'Robotics'],
-    level: 'BEGINNER',
+      "Build a sensor-based system that monitors soil conditions and helps understand how plants can be monitored using technology.",
   },
   {
-    icon: Cpu,
-    number: '02',
-    category: 'ARDUINO',
-    title: 'Smart Dustbin',
+    slug: "line-following-robot",
+    title: "Line Following Robot",
+    category: "Robotics",
+    age: "Classes 6–10",
+    difficulty: "Intermediate",
+    duration: "4–6 Hours",
+    image: "/images/shikshamdehi-robotics-projects.jpeg",
     description:
-      'Create an automatic dustbin using an ultrasonic sensor, servo motor and Arduino.',
-    skills: [
-      'Arduino',
-      'Ultrasonic Sensor',
-      'Servo',
-      'Automation',
-    ],
-    level: 'BEGINNER',
+      "Design and program a robot that detects a path and follows it automatically using sensors and motors.",
   },
   {
-    icon: Radio,
-    number: '03',
-    category: 'IoT',
-    title: 'Smart Plant Monitoring',
+    slug: "automatic-night-lamp",
+    title: "Automatic Night Lamp",
+    category: "Electronics",
+    age: "Classes 3–6",
+    difficulty: "Beginner",
+    duration: "1–2 Hours",
+    image: "/images/shikshamdehi-electronics-sessions.jpeg",
     description:
-      'Build a smart plant monitoring system that measures environmental conditions and enables automated watering.',
-    skills: ['IoT', 'Sensors', 'Arduino', 'Automation'],
-    level: 'INTERMEDIATE',
+      "Understand light sensing and build a simple circuit that automatically responds to changing light conditions.",
   },
   {
-    icon: Cuboid,
-    number: '04',
-    category: '3D DESIGN',
-    title: '3D Printed Product',
+    slug: "mini-weather-station",
+    title: "Mini Weather Station",
+    category: "IoT",
+    age: "Classes 7–10",
+    difficulty: "Intermediate",
+    duration: "4–6 Hours",
+    image: "/images/shikshamdehiarduino-projects.jpeg",
     description:
-      'Design a useful product in CAD and transform the digital model into a physical prototype using 3D printing.',
-    skills: ['3D CAD', 'Modelling', 'STL', '3D Printing'],
-    level: 'BEGINNER',
+      "Use sensors to collect environmental data and understand how real-world information can be measured.",
   },
   {
-    icon: Printer,
-    number: '05',
-    category: '3D PRINTING',
-    title: 'Functional Prototype',
+    slug: "smart-dustbin",
+    title: "Smart Dustbin",
+    category: "Arduino",
+    age: "Classes 6–9",
+    difficulty: "Beginner",
+    duration: "3–4 Hours",
+    image: "/images/shikshamdehiarduino-projects.jpeg",
     description:
-      'Learn the complete digital manufacturing workflow from CAD model to slicing, printing and testing.',
-    skills: ['CAD', 'Slicing', '3D Printer', 'Prototype'],
-    level: 'INTERMEDIATE',
+      "Create an automatic dustbin using a distance sensor, servo motor and Arduino.",
   },
   {
-    icon: Settings2,
-    number: '06',
-    category: 'AUTOMATION',
-    title: 'Obstacle Avoiding Robot',
+    slug: "solar-tracker",
+    title: "Solar Tracker",
+    category: "Electronics",
+    age: "Classes 8–12",
+    difficulty: "Advanced",
+    duration: "5–8 Hours",
+    image: "/images/shikshamdehi-electronics-sessions.jpeg",
     description:
-      'Design and build a robot that detects obstacles and automatically changes its direction.',
-    skills: ['Robotics', 'Sensors', 'Arduino', 'Programming'],
-    level: 'INTERMEDIATE',
+      "Build a mechanism that responds to light direction and explores the engineering behind solar tracking.",
   },
   {
-    icon: Zap,
-    number: '07',
-    category: 'ELECTRONICS',
-    title: 'Automatic Lighting System',
+    slug: "3d-printed-prototype",
+    title: "3D Printed Prototype",
+    category: "3D Printing",
+    age: "Classes 7–12",
+    difficulty: "Intermediate",
+    duration: "4–6 Hours",
+    image: "/images/shikshamdehi-3d-printing.jpeg",
     description:
-      'Build an intelligent lighting system using sensors and a microcontroller to control lights automatically.',
-    skills: ['Electronics', 'Sensors', 'Arduino', 'Automation'],
-    level: 'BEGINNER',
+      "Take an idea from digital 3D design to a physical prototype using 3D printing.",
   },
   {
-    icon: Lightbulb,
-    number: '08',
-    category: 'INNOVATION',
-    title: 'Student Innovation Prototype',
+    slug: "paper-bridge",
+    title: "Engineering Paper Bridge",
+    category: "Mechanical",
+    age: "Classes 3–8",
+    difficulty: "Beginner",
+    duration: "1–2 Hours",
+    image: "/images/shikshamdehi-mechanicals.jpeg",
     description:
-      'Take an original problem-solving idea through research, design, prototyping, testing and improvement.',
-    skills: ['Ideation', 'Design', 'Prototype', 'Testing'],
-    level: 'ADVANCED',
+      "Explore structure, load and strength by designing and testing a paper bridge.",
   },
 ];
 
-const learningSteps = [
-  {
-    number: '01',
-    title: 'Identify',
-    text: 'Find a real-world problem worth solving.',
-  },
-  {
-    number: '02',
-    title: 'Design',
-    text: 'Plan the solution and create the design.',
-  },
-  {
-    number: '03',
-    title: 'Build',
-    text: 'Use electronics, code, CAD and fabrication.',
-  },
-  {
-    number: '04',
-    title: 'Test',
-    text: 'Test the prototype and identify improvements.',
-  },
-  {
-    number: '05',
-    title: 'Improve',
-    text: 'Iterate until the solution works better.',
-  },
+const categories = [
+  "All",
+  "Arduino",
+  "Robotics",
+  "Electronics",
+  "IoT",
+  "3D Printing",
+  "Mechanical",
 ];
 
-const suitableFor = [
-  'School STEM Programs',
-  'ATL Labs',
-  'ITI Students',
-  'Polytechnic Students',
-  'Engineering Colleges',
-  'Workshops & Bootcamps',
-];
+const difficulties = ["All", "Beginner", "Intermediate", "Advanced"];
 
 export default function ProjectsPage() {
+  const [category, setCategory] = useState("All");
+  const [difficulty, setDifficulty] = useState("All");
+  const [search, setSearch] = useState("");
+
+  const filteredProjects = projects.filter((project) => {
+    const categoryMatch =
+      category === "All" || project.category === category;
+
+    const difficultyMatch =
+      difficulty === "All" || project.difficulty === difficulty;
+
+    const searchMatch =
+      project.title.toLowerCase().includes(search.toLowerCase()) ||
+      project.description.toLowerCase().includes(search.toLowerCase()) ||
+      project.category.toLowerCase().includes(search.toLowerCase());
+
+    return categoryMatch && difficultyMatch && searchMatch;
+  });
+
   return (
-    <main className={styles.projectsPage}>
-      {/* ================= NAVBAR ================= */}
+    <main className="projects-page">
 
-      <header className={styles.nav}>
-        <Link href="/" className={styles.brand}>
-          <span className={styles.brandMark}>SD</span>
+      {/* NAVBAR */}
 
-          <span>
-            Shiksham<span>Dehi</span>
-          </span>
-        </Link>
+      <nav className="site-nav">
+        <div className="nav-inner">
 
-        <nav className={styles.navLinks}>
-          <Link href="/programs">Programs</Link>
-          <Link href="/projects">Projects</Link>
-          <Link href="/iti-polytechnic">
-            ITI & Polytechnic
-          </Link>
-          <Link href="/about">About</Link>
-          <Link href="/blog">Journal</Link>
-          <Link href="/faq">FAQ</Link>
-          <Link href="/contact">Contact</Link>
-        </nav>
-
-        <Link href="/contact" className={styles.navCta}>
-          Partner With Us
-          <ArrowRight size={16} />
-        </Link>
-      </header>
-
-      {/* ================= HERO ================= */}
-
-      <section className={styles.hero}>
-        <div className={styles.heroGlow} />
-
-        <div className={styles.eyebrow}>
-          <span />
-          PROJECT-BASED LEARNING
-        </div>
-
-        <h1>
-          Learn by
-          <br />
-          <em>building real projects.</em>
-        </h1>
-
-        <p>
-          Real projects turn technology concepts into practical
-          skills. Students learn to design, build, test and improve
-          working prototypes using modern technologies.
-        </p>
-
-        <div className={styles.heroActions}>
-          <Link
-            href="#projects"
-            className={styles.primary}
-          >
-            Explore Projects
-            <ArrowRight size={18} />
+          <Link href="/" className="logo">
+            SHIKSHAM<span>DEHI</span>
           </Link>
 
-          <Link
-            href="/contact"
-            className={styles.secondary}
-          >
-            Build a Custom Project
+          <div className="nav-links">
+            <Link href="/">Home</Link>
+            <Link href="/programs">Programs</Link>
+            <Link href="/projects" className="active">
+              Projects
+            </Link>
+            <Link href="/#schools">For Schools</Link>
+            <Link href="/#about">About Us</Link>
+            <Link href="/#contact">Contact</Link>
+          </div>
+
+          <Link href="/#contact" className="nav-cta">
+            Partner With Us
           </Link>
+
         </div>
+      </nav>
 
-        <div className={styles.heroStats}>
-          <div>
-            <strong>3D</strong>
-            <span>
-              Design &
-              <br />
-              Printing
-            </span>
+      {/* HERO */}
+
+      <section className="projects-hero">
+
+        <div className="container">
+
+          <div className="section-eyebrow">
+            <span></span>
+            PROJECT LIBRARY
           </div>
 
-          <i />
-
-          <div>
-            <strong>IoT</strong>
-            <span>
-              Smart
-              <br />
-              Devices
-            </span>
-          </div>
-
-          <i />
-
-          <div>
-            <strong>AI</strong>
-            <span>
-              Smart
-              <br />
-              Hardware
-            </span>
-          </div>
-
-          <i />
-
-          <div>
-            <strong>Robotics</strong>
-            <span>
-              Automation
-              <br />
-              Systems
-            </span>
-          </div>
-        </div>
-      </section>
-
-      {/* ================= PROJECTS ================= */}
-
-      <section
-        className={styles.section}
-        id="projects"
-      >
-        <div className={styles.sectionHead}>
-          <div>
-            <div className={styles.eyebrow}>
-              <span />
-              WHAT CAN STUDENTS BUILD?
-            </div>
-
-            <h2>
-              From simple ideas
-              <br />
-              <em>to working prototypes.</em>
-            </h2>
-          </div>
+          <h1>
+            Don't just learn.
+            <br />
+            <em>Build something.</em>
+          </h1>
 
           <p>
-            Projects can be adapted according to student age,
-            technical level, curriculum, available equipment and
-            institutional objectives.
+            Explore hands-on STEM projects designed around real concepts,
+            practical skills and working prototypes.
           </p>
-        </div>
 
-        <div className={styles.projectGrid}>
-          {projects.map((project) => {
-            const Icon = project.icon;
-
-            return (
-              <article
-                className={styles.projectCard}
-                key={project.number}
-              >
-                <div className={styles.projectTop}>
-                  <div className={styles.projectIcon}>
-                    <Icon size={23} />
-                  </div>
-
-                  <span>{project.number}</span>
-                </div>
-
-                <div className={styles.projectCategory}>
-                  {project.category}
-                </div>
-
-                <h3>{project.title}</h3>
-
-                <p>{project.description}</p>
-
-                <div className={styles.skills}>
-                  {project.skills.map((skill) => (
-                    <span key={skill}>{skill}</span>
-                  ))}
-                </div>
-
-                <div className={styles.projectBottom}>
-                  <span className={styles.level}>
-                    {project.level}
-                  </span>
-
-                  <Link href="/contact">
-                    Build This
-                    <ArrowRight size={15} />
-                  </Link>
-                </div>
-              </article>
-            );
-          })}
-        </div>
-      </section>
-
-      {/* ================= WORKFLOW ================= */}
-
-      <section className={styles.workflowSection}>
-        <div className={styles.section}>
-          <div className={styles.workflowIntro}>
-            <div>
-              <div className={styles.eyebrow}>
-                <span />
-                THE MAKER WORKFLOW
-              </div>
-
-              <h2>
-                Idea
-                <br />
-                <em>to product.</em>
-              </h2>
-            </div>
-
-            <p>
-              Every project follows a practical learning cycle.
-              Students are encouraged to experiment, make mistakes,
-              test their ideas and improve their prototypes.
-            </p>
-          </div>
-
-          <div className={styles.steps}>
-            {learningSteps.map((step) => (
-              <div
-                className={styles.step}
-                key={step.number}
-              >
-                <span>{step.number}</span>
-
-                <div>
-                  <h3>{step.title}</h3>
-                  <p>{step.text}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ================= SKILLS ================= */}
-
-      <section className={styles.section}>
-        <div className={styles.skillsBlock}>
-          <div>
-            <div className={styles.eyebrow}>
-              <span />
-              SKILLS STUDENTS DEVELOP
-            </div>
-
-            <h2>
-              Technology is the tool.
-              <br />
-              <em>Problem solving is the skill.</em>
-            </h2>
-
-            <p>
-              Project-based learning helps students connect
-              multiple technology domains while developing
-              creativity, logical thinking and practical
-              problem-solving ability.
-            </p>
-          </div>
-
-          <div className={styles.skillList}>
-            <div>
-              <strong>01</strong>
-              <span>Design Thinking</span>
-            </div>
+          <div className="project-stats">
 
             <div>
-              <strong>02</strong>
-              <span>CAD & 3D Modelling</span>
-            </div>
-
-            <div>
-              <strong>03</strong>
-              <span>Electronics</span>
-            </div>
-
-            <div>
-              <strong>04</strong>
-              <span>Coding & Programming</span>
-            </div>
-
-            <div>
-              <strong>05</strong>
-              <span>Robotics & Automation</span>
+              <strong>08+</strong>
+              <span>Project Ideas</span>
             </div>
 
             <div>
               <strong>06</strong>
-              <span>Testing & Iteration</span>
+              <span>Technology Areas</span>
             </div>
+
+            <div>
+              <strong>03</strong>
+              <span>Difficulty Levels</span>
+            </div>
+
           </div>
+
         </div>
+
       </section>
 
-      {/* ================= INSTITUTIONS ================= */}
+      {/* LIBRARY */}
 
-      <section className={styles.institutionSection}>
-        <div className={styles.section}>
-          <div className={styles.institutionGrid}>
+      <section className="project-library">
+
+        <div className="container">
+
+          {/* FILTER BAR */}
+
+          <div className="project-filter-bar">
+
+            <div className="filter-title">
+              <Filter size={18} />
+              <span>Explore Projects</span>
+            </div>
+
+            <div className="project-search">
+              <Search size={17} />
+
+              <input
+                type="text"
+                placeholder="Search projects..."
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+              />
+            </div>
+
+          </div>
+
+          {/* CATEGORY */}
+
+          <div className="filter-section">
+
+            <span className="filter-label">
+              Technology
+            </span>
+
+            <div className="filter-buttons">
+
+              {categories.map((item) => (
+                <button
+                  key={item}
+                  className={category === item ? "selected" : ""}
+                  onClick={() => setCategory(item)}
+                >
+                  {item}
+                </button>
+              ))}
+
+            </div>
+
+          </div>
+
+          {/* DIFFICULTY */}
+
+          <div className="filter-section difficulty-filter">
+
+            <span className="filter-label">
+              Difficulty
+            </span>
+
+            <div className="filter-buttons">
+
+              {difficulties.map((item) => (
+                <button
+                  key={item}
+                  className={difficulty === item ? "selected" : ""}
+                  onClick={() => setDifficulty(item)}
+                >
+                  {item}
+                </button>
+              ))}
+
+            </div>
+
+          </div>
+
+          {/* RESULTS */}
+
+          <div className="project-results-head">
+
+            <span>
+              Showing <strong>{filteredProjects.length}</strong> projects
+            </span>
+
+            {(category !== "All" ||
+              difficulty !== "All" ||
+              search) && (
+              <button
+                onClick={() => {
+                  setCategory("All");
+                  setDifficulty("All");
+                  setSearch("");
+                }}
+              >
+                Clear filters
+              </button>
+            )}
+
+          </div>
+
+          {/* CARDS */}
+
+          {filteredProjects.length > 0 ? (
+
+            <div className="project-library-grid">
+
+              {filteredProjects.map((project) => (
+
+                <article
+                  className="library-project-card"
+                  key={project.slug}
+                >
+
+                  <div className="library-project-image">
+
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                    />
+
+                    <span>
+                      {project.category}
+                    </span>
+
+                  </div>
+
+                  <div className="library-project-content">
+
+                    <div className="library-project-meta">
+
+                      <span>
+                        {project.age}
+                      </span>
+
+                      <span>
+                        {project.difficulty}
+                      </span>
+
+                    </div>
+
+                    <h3>{project.title}</h3>
+
+                    <p>{project.description}</p>
+
+                    <div className="project-duration">
+                      <Clock3 size={15} />
+                      {project.duration}
+                    </div>
+
+                    <Link
+                      href={`/projects/${project.slug}`}
+                      className="project-explore"
+                    >
+                      Explore Project
+                      <ArrowRight size={17} />
+                    </Link>
+
+                  </div>
+
+                </article>
+
+              ))}
+
+            </div>
+
+          ) : (
+
+            <div className="no-projects">
+
+              <Search size={30} />
+
+              <h3>No projects found</h3>
+
+              <p>
+                Try changing your filters or search term.
+              </p>
+
+            </div>
+
+          )}
+
+        </div>
+
+      </section>
+
+      {/* LEARNING PHILOSOPHY */}
+
+      <section className="project-philosophy">
+
+        <div className="container">
+
+          <div className="philosophy-box">
+
             <div>
-              <div className={styles.eyebrow}>
-                <span />
-                FOR INSTITUTIONS
+
+              <div className="section-eyebrow">
+                <span></span>
+                OUR APPROACH
               </div>
 
               <h2>
-                Projects designed
+                Every project follows
                 <br />
-                <em>for your learners.</em>
+                <em>a maker journey.</em>
+              </h2>
+
+            </div>
+
+            <div className="philosophy-flow">
+
+              <div>
+                <strong>01</strong>
+                <span>Problem</span>
+              </div>
+
+              <div>
+                <strong>02</strong>
+                <span>Concept</span>
+              </div>
+
+              <div>
+                <strong>03</strong>
+                <span>Design</span>
+              </div>
+
+              <div>
+                <strong>04</strong>
+                <span>Build</span>
+              </div>
+
+              <div>
+                <strong>05</strong>
+                <span>Test</span>
+              </div>
+
+              <div>
+                <strong>06</strong>
+                <span>Improve</span>
+              </div>
+
+              <div>
+                <strong>07</strong>
+                <span>Demonstrate</span>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* CTA */}
+
+      <section className="projects-cta">
+
+        <div className="container">
+
+          <div className="projects-cta-box">
+
+            <div>
+
+              <div className="section-eyebrow">
+                <span></span>
+                FOR SCHOOLS
+              </div>
+
+              <h2>
+                Want students to build
+                <br />
+                <em>projects like these?</em>
               </h2>
 
               <p>
-                We can customise projects according to your
-                students, curriculum, lab infrastructure and
-                learning objectives.
+                Bring project-based STEM learning to your school through
+                workshops, bootcamps or long-term programs.
               </p>
 
-              <Link
-                href="/contact"
-                className={styles.primary}
-              >
-                Discuss Your Project
-                <ArrowRight size={18} />
-              </Link>
             </div>
 
-            <div className={styles.suitableCard}>
-              <span>SUITABLE FOR</span>
+            <Link
+              href="/#contact"
+              className="project-cta-button"
+            >
+              Talk to Us
+              <ArrowRight size={18} />
+            </Link>
 
-              {suitableFor.map((item, index) => (
-                <div key={item}>
-                  <strong>
-                    {String(index + 1).padStart(2, '0')}
-                  </strong>
-
-                  <b>{item}</b>
-                </div>
-              ))}
-            </div>
           </div>
+
         </div>
+
       </section>
 
-      {/* ================= CTA ================= */}
+      {/* FOOTER */}
 
-      <section className={styles.cta}>
-        <div className={styles.ctaGlow} />
+      <footer className="site-footer">
 
-        <div className={styles.eyebrow}>
-          <span />
-          HAVE AN IDEA?
+        <div className="container">
+
+          <div className="footer-inner">
+
+            <Link href="/" className="logo">
+              SHIKSHAM<span>DEHI</span>
+            </Link>
+
+            <p>
+              Learn it. Build it. Make it real.
+            </p>
+
+            <div className="footer-links">
+              <Link href="/">Home</Link>
+              <Link href="/programs">Programs</Link>
+              <Link href="/projects">Projects</Link>
+              <Link href="/#schools">For Schools</Link>
+              <Link href="/#about">About</Link>
+              <Link href="/#contact">Contact</Link>
+            </div>
+
+          </div>
+
+          <div className="footer-bottom">
+            <span>
+              © {new Date().getFullYear()} ShikshamDehi. All rights reserved.
+            </span>
+
+            <span>
+              Practical Learning • STEM • Innovation
+            </span>
+          </div>
+
         </div>
 
-        <h2>
-          Let&apos;s turn your
-          <br />
-          <em>idea into a prototype.</em>
-        </h2>
-
-        <p>
-          Tell us what you want your students to build and we can
-          design a practical project-based learning program around
-          it.
-        </p>
-
-        <div className={styles.heroActions}>
-          <Link
-            href="/contact"
-            className={styles.primary}
-          >
-            Start a Project
-            <ArrowRight size={18} />
-          </Link>
-
-          <Link
-            href="/programs"
-            className={styles.secondary}
-          >
-            Explore Programs
-          </Link>
-        </div>
-      </section>
-
-      {/* ================= FOOTER ================= */}
-
-      <footer className={styles.footer}>
-        <div className={styles.footerBrand}>
-          <span className={styles.brandMark}>SD</span>
-
-          <span>
-            Shiksham<span>Dehi</span>
-          </span>
-        </div>
-
-        <p>
-          STEM Education • Digital Manufacturing • Future Skills
-        </p>
-
-        <small>
-          © 2026 ShikshamDehi. All rights reserved.
-        </small>
       </footer>
+
     </main>
   );
 }
