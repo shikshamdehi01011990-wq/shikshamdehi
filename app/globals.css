@@ -4597,3 +4597,923 @@ h2 span {
     font-size: 34px;
   }
 }
+
+/* =========================================================
+   ABOUT PAGE
+   ========================================================= */
+
+.about-page {
+  --about-bg: #07100d;
+  --about-bg-soft: #0b1511;
+  --about-card: #101b16;
+  --about-line: rgba(255, 255, 255, 0.09);
+  --about-text: #f4f7f4;
+  --about-muted: #9aa8a0;
+  --about-lime: #b7ff45;
+
+  min-height: 100vh;
+  background: var(--about-bg);
+  color: var(--about-text);
+}
+
+.about-container {
+  width: min(1180px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+/* NAVBAR */
+
+.about-nav {
+  position: relative;
+  z-index: 20;
+  border-bottom: 1px solid var(--about-line);
+  background: rgba(7, 16, 13, 0.95);
+}
+
+.about-nav-inner {
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.about-logo {
+  color: #ffffff;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 23px;
+  font-weight: 700;
+  letter-spacing: -0.7px;
+  text-decoration: none;
+}
+
+.about-logo span {
+  color: var(--about-lime);
+}
+
+.about-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.about-nav-links a {
+  color: var(--about-muted);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+
+.about-nav-links a:hover,
+.about-nav-links a.active {
+  color: #ffffff;
+}
+
+.about-nav-links a.active {
+  position: relative;
+}
+
+.about-nav-links a.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -29px;
+  height: 2px;
+  background: var(--about-lime);
+}
+
+.about-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 17px;
+  border-radius: 8px;
+  background: var(--about-lime);
+  color: #091008;
+  font-size: 13px;
+  font-weight: 800;
+  text-decoration: none;
+  transition: 0.25s ease;
+}
+
+.about-nav-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* HERO */
+
+.about-hero {
+  position: relative;
+  overflow: hidden;
+  padding: 110px 0 105px;
+  background:
+    radial-gradient(
+      circle at 78% 25%,
+      rgba(183, 255, 69, 0.09),
+      transparent 30%
+    ),
+    var(--about-bg);
+}
+
+.about-hero::before {
+  content: "";
+  position: absolute;
+  right: -180px;
+  top: -180px;
+  width: 480px;
+  height: 480px;
+  border: 1px solid rgba(183, 255, 69, 0.08);
+  border-radius: 50%;
+}
+
+.about-eyebrow,
+.about-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--about-lime);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.7px;
+}
+
+.about-hero h1 {
+  max-width: 930px;
+  margin: 20px 0 27px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(50px, 7vw, 88px);
+  line-height: 0.98;
+  letter-spacing: -4px;
+}
+
+.about-hero h1 span,
+.about-section-heading h2 span,
+.story-content span,
+.project-belief-content h2 span,
+.student-section h2 span,
+.school-belief-card h2 span,
+.mission-grid h2 span,
+.about-cta h2 span {
+  color: var(--about-lime);
+}
+
+.about-hero-text {
+  max-width: 720px;
+  margin: 0;
+  color: var(--about-muted);
+  font-size: 19px;
+  line-height: 1.7;
+}
+
+.about-hero-line {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 45px;
+}
+
+.about-hero-line span {
+  width: 55px;
+  height: 1px;
+  background: var(--about-lime);
+}
+
+.about-hero-line p {
+  margin: 0;
+  color: #c5cec8;
+  font-size: 13px;
+}
+
+/* COMMON SECTION */
+
+.about-section {
+  padding: 105px 0;
+  border-top: 1px solid var(--about-line);
+}
+
+.about-section-heading {
+  max-width: 620px;
+}
+
+.about-section-heading.centered {
+  max-width: 750px;
+  margin: 0 auto 55px;
+  text-align: center;
+}
+
+.about-section-heading.centered .about-label {
+  justify-content: center;
+}
+
+.about-section-heading h2,
+.project-belief-content h2,
+.student-section h2,
+.school-belief-card h2,
+.mission-grid h2 {
+  margin: 15px 0 18px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(36px, 4.5vw, 57px);
+  line-height: 1.04;
+  letter-spacing: -2.4px;
+}
+
+.about-section-heading p {
+  color: var(--about-muted);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* STORY */
+
+.story-section {
+  background: var(--about-bg-soft);
+}
+
+.story-grid {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 100px;
+  align-items: start;
+}
+
+.story-content {
+  max-width: 680px;
+}
+
+.story-content p {
+  margin: 0 0 23px;
+  color: var(--about-muted);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.story-content .story-large {
+  color: #e7ede9;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 23px;
+  line-height: 1.55;
+  letter-spacing: -0.5px;
+}
+
+/* PHILOSOPHY */
+
+.philosophy-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.philosophy-card {
+  min-height: 205px;
+  padding: 27px;
+  border: 1px solid var(--about-line);
+  border-radius: 13px;
+  background: var(--about-card);
+  transition: 0.25s ease;
+}
+
+.philosophy-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(183, 255, 69, 0.28);
+}
+
+.philosophy-number {
+  display: block;
+  margin-bottom: 35px;
+  color: rgba(183, 255, 69, 0.65);
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.philosophy-card h3 {
+  margin: 0 0 9px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 20px;
+}
+
+.philosophy-card p {
+  margin: 0;
+  color: var(--about-muted);
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+/* PROJECT BELIEF */
+
+.project-belief-section {
+  background: var(--about-bg-soft);
+}
+
+.project-belief-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  align-items: center;
+  gap: 75px;
+}
+
+.project-belief-image {
+  position: relative;
+}
+
+.project-belief-image img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border: 1px solid var(--about-line);
+  border-radius: 16px;
+}
+
+.project-image-tag {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 14px;
+  border: 1px solid var(--about-line);
+  border-radius: 8px;
+  background: rgba(7, 16, 13, 0.92);
+  color: var(--about-lime);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.project-belief-content p {
+  max-width: 650px;
+  color: var(--about-muted);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.belief-list {
+  margin-top: 28px;
+  border-top: 1px solid var(--about-line);
+}
+
+.belief-list div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--about-line);
+  color: #dbe4de;
+  font-size: 13px;
+}
+
+.belief-list svg {
+  color: var(--about-lime);
+}
+
+/* VALUES */
+
+.values-section {
+  background: var(--about-bg);
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+}
+
+.value-card {
+  min-height: 250px;
+  padding: 28px;
+  border: 1px solid var(--about-line);
+  border-radius: 13px;
+  background: var(--about-card);
+}
+
+.value-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  margin-bottom: 25px;
+  border-radius: 10px;
+  background: rgba(183, 255, 69, 0.08);
+  color: var(--about-lime);
+}
+
+.value-card h3 {
+  margin: 0 0 11px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 18px;
+}
+
+.value-card p {
+  margin: 0;
+  color: var(--about-muted);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+/* STUDENT JOURNEY */
+
+.student-section {
+  background: var(--about-bg-soft);
+}
+
+.student-grid {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  gap: 70px;
+  align-items: center;
+}
+
+.student-section p {
+  max-width: 540px;
+  color: var(--about-muted);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.student-journey {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  flex-wrap: wrap;
+}
+
+.journey-box {
+  min-width: 125px;
+  padding: 17px;
+  border: 1px solid var(--about-line);
+  border-radius: 10px;
+  background: var(--about-card);
+}
+
+.journey-box span,
+.journey-box strong,
+.journey-box small {
+  display: block;
+}
+
+.journey-box span {
+  margin-bottom: 18px;
+  color: var(--about-lime);
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 10px;
+}
+
+.journey-box strong {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 14px;
+}
+
+.journey-box small {
+  margin-top: 5px;
+  color: var(--about-muted);
+  font-size: 10px;
+  line-height: 1.4;
+}
+
+.journey-arrow {
+  flex: 0 0 auto;
+  color: #59675e;
+}
+
+/* AREAS */
+
+.areas-section {
+  background: var(--about-bg);
+}
+
+.areas-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid var(--about-line);
+  border-left: 1px solid var(--about-line);
+}
+
+.area-item {
+  min-height: 82px;
+  padding: 0 23px;
+  display: grid;
+  grid-template-columns: 45px 1fr auto;
+  align-items: center;
+  gap: 14px;
+  border-right: 1px solid var(--about-line);
+  border-bottom: 1px solid var(--about-line);
+  transition: 0.2s ease;
+}
+
+.area-item:hover {
+  background: rgba(183, 255, 69, 0.035);
+}
+
+.area-item > span {
+  color: var(--about-lime);
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 11px;
+}
+
+.area-item strong {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 15px;
+}
+
+.area-item svg {
+  color: #647168;
+}
+
+/* SCHOOL BELIEF */
+
+.school-belief-section {
+  padding-top: 75px;
+  padding-bottom: 75px;
+  background: var(--about-bg-soft);
+}
+
+.school-belief-card {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 28px;
+  padding: 38px;
+  border: 1px solid var(--about-line);
+  border-radius: 16px;
+  background:
+    radial-gradient(
+      circle at 90% 20%,
+      rgba(183, 255, 69, 0.06),
+      transparent 35%
+    ),
+    var(--about-card);
+}
+
+.school-belief-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 62px;
+  height: 62px;
+  border-radius: 13px;
+  background: rgba(183, 255, 69, 0.08);
+  color: var(--about-lime);
+}
+
+.school-belief-card h2 {
+  margin-bottom: 10px;
+  font-size: clamp(29px, 3vw, 42px);
+}
+
+.school-belief-card p {
+  max-width: 680px;
+  margin: 0;
+  color: var(--about-muted);
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+.school-belief-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 47px;
+  padding: 0 18px;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #09100c;
+  font-size: 12px;
+  font-weight: 800;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: 0.25s ease;
+}
+
+.school-belief-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* MISSION */
+
+.mission-section {
+  background: var(--about-bg);
+}
+
+.mission-grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 100px;
+  align-items: start;
+}
+
+.mission-text p {
+  margin: 0 0 20px;
+  color: var(--about-muted);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.mission-statement {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 30px;
+  padding: 17px 19px;
+  border-left: 2px solid var(--about-lime);
+  background: rgba(183, 255, 69, 0.04);
+}
+
+.mission-statement svg {
+  color: var(--about-lime);
+}
+
+.mission-statement strong {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 14px;
+}
+
+/* CTA */
+
+.about-cta {
+  padding: 100px 0;
+  border-top: 1px solid var(--about-line);
+  background:
+    radial-gradient(
+      circle at 20% 50%,
+      rgba(183, 255, 69, 0.08),
+      transparent 35%
+    ),
+    #09130f;
+}
+
+.about-cta-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+}
+
+.about-cta h2 {
+  max-width: 800px;
+  margin: 14px 0 16px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(37px, 4.8vw, 60px);
+  line-height: 1.02;
+  letter-spacing: -2.5px;
+}
+
+.about-cta p {
+  max-width: 680px;
+  margin: 0;
+  color: var(--about-muted);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.about-cta-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 0 0 auto;
+}
+
+.about-primary-btn,
+.about-secondary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 51px;
+  padding: 0 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 800;
+  transition: 0.25s ease;
+}
+
+.about-primary-btn {
+  background: var(--about-lime);
+  color: #081007;
+}
+
+.about-secondary-btn {
+  border: 1px solid var(--about-line);
+  color: #ffffff;
+}
+
+.about-primary-btn:hover,
+.about-secondary-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* FOOTER */
+
+.about-footer {
+  border-top: 1px solid var(--about-line);
+  background: #050b08;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;
+  padding: 55px 0 40px;
+}
+
+.footer-top p {
+  max-width: 390px;
+  margin: 12px 0 0;
+  color: var(--about-muted);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.about-footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.about-footer-links a {
+  color: #9ba69f;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.about-footer-links a:hover {
+  color: #ffffff;
+}
+
+.about-footer .footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 18px 0;
+  border-top: 1px solid var(--about-line);
+  color: #59655e;
+  font-size: 11px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1000px) {
+  .story-grid,
+  .project-belief-grid,
+  .student-grid,
+  .mission-grid {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .values-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .school-belief-card {
+    grid-template-columns: auto 1fr;
+  }
+
+  .school-belief-btn {
+    grid-column: 2;
+    justify-self: start;
+  }
+
+  .about-cta-inner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 760px) {
+  .about-container {
+    width: min(100% - 28px, 1180px);
+  }
+
+  .about-nav-inner {
+    min-height: 68px;
+  }
+
+  .about-nav-links {
+    display: none;
+  }
+
+  .about-nav-btn {
+    padding: 9px 13px;
+    font-size: 12px;
+  }
+
+  .about-hero {
+    padding: 70px 0 75px;
+  }
+
+  .about-hero h1 {
+    font-size: clamp(44px, 12vw, 62px);
+    letter-spacing: -3px;
+  }
+
+  .about-hero-text {
+    font-size: 16px;
+  }
+
+  .about-section {
+    padding: 75px 0;
+  }
+
+  .about-section-heading h2,
+  .project-belief-content h2,
+  .student-section h2,
+  .school-belief-card h2,
+  .mission-grid h2 {
+    font-size: 36px;
+    letter-spacing: -1.7px;
+  }
+
+  .philosophy-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .philosophy-card {
+    min-height: auto;
+  }
+
+  .values-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .areas-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .student-journey {
+    justify-content: flex-start;
+  }
+
+  .journey-arrow {
+    display: none;
+  }
+
+  .journey-box {
+    flex: 1 1 calc(50% - 10px);
+    min-width: 0;
+  }
+
+  .school-belief-card {
+    grid-template-columns: 1fr;
+    padding: 28px;
+  }
+
+  .school-belief-btn {
+    grid-column: auto;
+    width: 100%;
+  }
+
+  .about-cta {
+    padding: 75px 0;
+  }
+
+  .about-cta h2 {
+    font-size: 38px;
+    letter-spacing: -1.8px;
+  }
+
+  .about-cta-actions {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .about-primary-btn,
+  .about-secondary-btn {
+    width: 100%;
+  }
+
+  .footer-top {
+    flex-direction: column;
+    padding: 45px 0 30px;
+  }
+
+  .about-footer .footer-bottom {
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 430px) {
+  .about-hero h1 {
+    font-size: 42px;
+  }
+
+  .about-hero-line {
+    align-items: flex-start;
+  }
+
+  .about-hero-line span {
+    margin-top: 8px;
+    flex: 0 0 35px;
+  }
+
+  .journey-box {
+    flex-basis: 100%;
+  }
+}
