@@ -1728,3 +1728,623 @@ h2 span {
   }
 
 }
+
+/* =========================================================
+   PROGRAM DETAIL PAGES
+========================================================= */
+
+.program-detail-page {
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.program-detail-page .container {
+  max-width: var(--max);
+  margin: auto;
+  padding: 0 24px;
+}
+
+/* HERO */
+
+.program-detail-hero {
+  padding: 130px 0 100px;
+  border-bottom: 1px solid var(--line);
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 45px;
+}
+
+.back-link:hover {
+  color: var(--text);
+}
+
+.program-detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 0.95fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.program-detail-copy {
+  max-width: 650px;
+}
+
+.program-detail-icon {
+  width: 54px;
+  height: 54px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 28px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.program-detail-icon.lime {
+  color: var(--lime);
+}
+
+.program-detail-icon.cyan {
+  color: #67e8f9;
+}
+
+.program-detail-icon.purple {
+  color: #c4b5fd;
+}
+
+.program-detail-icon.orange {
+  color: #fdba74;
+}
+
+.program-detail-copy h1 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(48px, 6vw, 78px);
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+  margin: 20px 0 0;
+}
+
+.program-detail-copy h1 span {
+  display: block;
+  margin-top: 15px;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: 0;
+  color: var(--lime);
+}
+
+.program-detail-description {
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.8;
+  margin: 30px 0;
+}
+
+.program-meta {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 35px 0;
+}
+
+.program-meta > div {
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  padding: 17px;
+  background: rgba(255, 255, 255, 0.025);
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.program-meta svg {
+  color: var(--lime);
+  flex-shrink: 0;
+}
+
+.program-meta small {
+  display: block;
+  color: var(--muted);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 5px;
+}
+
+.program-meta strong {
+  display: block;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.program-primary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 22px;
+  border-radius: 10px;
+  background: var(--lime);
+  color: #10130d;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 800;
+  transition: transform 0.25s ease;
+}
+
+.program-primary-button:hover {
+  transform: translateY(-2px);
+}
+
+.program-detail-image {
+  position: relative;
+  height: 570px;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+}
+
+.program-detail-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.image-label {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  padding: 13px 17px;
+  background: rgba(10, 12, 15, 0.82);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+}
+
+.image-label span {
+  display: block;
+  color: var(--muted);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+}
+
+.image-label strong {
+  display: block;
+  margin-top: 3px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 14px;
+}
+
+/* LEARNING */
+
+.program-learning-section {
+  padding: 110px 0;
+}
+
+.program-section-heading {
+  display: grid;
+  grid-template-columns: 1fr 0.7fr;
+  gap: 80px;
+  align-items: end;
+  margin-bottom: 55px;
+}
+
+.program-section-heading h2,
+.program-projects-section h2,
+.skills-box h2,
+.method-heading h2,
+.detail-cta-box h2 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(38px, 5vw, 62px);
+  line-height: 1.02;
+  letter-spacing: -0.045em;
+  margin: 20px 0 0;
+}
+
+.program-section-heading h2 em,
+.program-projects-section h2 em,
+.skills-box h2 em,
+.method-heading h2 em,
+.detail-cta-box h2 em {
+  color: var(--lime);
+  font-style: normal;
+}
+
+.program-section-heading > p {
+  color: var(--muted);
+  line-height: 1.8;
+  margin: 0;
+}
+
+.learning-points {
+  border-top: 1px solid var(--line);
+}
+
+.learning-point {
+  display: grid;
+  grid-template-columns: 50px 28px 1fr;
+  align-items: center;
+  gap: 15px;
+  min-height: 88px;
+  border-bottom: 1px solid var(--line);
+}
+
+.learning-point-number {
+  color: var(--lime);
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.learning-point svg {
+  color: var(--lime);
+}
+
+.learning-point p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* PROJECTS */
+
+.program-projects-section {
+  padding: 110px 0;
+  background: rgba(255, 255, 255, 0.018);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.detail-project-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+  margin-top: 55px;
+}
+
+.detail-project-card {
+  position: relative;
+  min-height: 250px;
+  padding: 30px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--card);
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.detail-project-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.detail-project-number {
+  color: var(--lime);
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 60px;
+}
+
+.detail-project-card h3 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 25px;
+  margin: 0 0 12px;
+}
+
+.detail-project-card p {
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 560px;
+  margin: 0;
+}
+
+.project-arrow {
+  position: absolute;
+  right: 25px;
+  bottom: 25px;
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--lime);
+}
+
+/* SKILLS */
+
+.program-skills-section {
+  padding: 110px 0;
+}
+
+.skills-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  padding: 55px;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: var(--card);
+}
+
+.detail-skills {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  gap: 10px;
+}
+
+.detail-skills span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  padding: 10px 14px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #e2e4e6;
+}
+
+.detail-skills svg {
+  color: var(--lime);
+}
+
+/* METHOD */
+
+.program-method-section {
+  padding: 110px 0;
+  border-top: 1px solid var(--line);
+}
+
+.method-heading {
+  margin-bottom: 55px;
+}
+
+.method-steps {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.method-steps > div {
+  min-height: 190px;
+  padding: 20px;
+  border-right: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.method-steps > div:last-child {
+  border-right: none;
+}
+
+.method-steps strong {
+  color: var(--lime);
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 12px;
+}
+
+.method-steps span {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.method-steps p {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* CTA */
+
+.program-detail-cta {
+  padding: 0 0 110px;
+}
+
+.detail-cta-box {
+  background: var(--lime);
+  color: #10130d;
+  border-radius: 25px;
+  padding: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+}
+
+.detail-cta-box .section-eyebrow {
+  color: #30372a;
+}
+
+.detail-cta-box .section-eyebrow span {
+  background: #10130d;
+}
+
+.detail-cta-box h2 {
+  color: #10130d;
+}
+
+.detail-cta-box h2 em {
+  color: #10130d;
+}
+
+.detail-cta-box p {
+  max-width: 620px;
+  color: #30372a;
+  line-height: 1.7;
+}
+
+.program-primary-button.dark {
+  background: #10130d;
+  color: white;
+  flex-shrink: 0;
+}
+
+/* NOT FOUND */
+
+.program-not-found {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  color: var(--text);
+  text-align: center;
+}
+
+.program-not-found h1 {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 48px;
+}
+
+.program-not-found p {
+  color: var(--muted);
+  margin-bottom: 30px;
+}
+
+.program-not-found a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--lime);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 950px) {
+
+  .program-detail-grid {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .program-detail-copy {
+    max-width: none;
+  }
+
+  .program-detail-image {
+    height: 500px;
+  }
+
+  .program-section-heading,
+  .skills-box {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .method-steps {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .method-steps > div:nth-child(3) {
+    border-right: none;
+  }
+
+  .method-steps > div:nth-child(-n + 3) {
+    border-bottom: 1px solid var(--line);
+  }
+
+}
+
+@media (max-width: 700px) {
+
+  .program-detail-hero {
+    padding: 110px 0 70px;
+  }
+
+  .program-detail-copy h1 {
+    font-size: 48px;
+  }
+
+  .program-meta {
+    grid-template-columns: 1fr;
+  }
+
+  .program-detail-image {
+    height: 400px;
+  }
+
+  .program-learning-section,
+  .program-projects-section,
+  .program-skills-section,
+  .program-method-section {
+    padding: 75px 0;
+  }
+
+  .detail-project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .skills-box {
+    padding: 30px 22px;
+  }
+
+  .method-steps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .method-steps > div {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .method-steps > div:nth-child(odd) {
+    border-right: 1px solid var(--line);
+  }
+
+  .method-steps > div:nth-child(even) {
+    border-right: none;
+  }
+
+  .detail-cta-box {
+    padding: 35px 25px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  .program-detail-copy h1 {
+    font-size: 41px;
+  }
+
+  .program-detail-description {
+    font-size: 16px;
+  }
+
+  .program-detail-image {
+    height: 330px;
+  }
+
+  .learning-point {
+    grid-template-columns: 35px 25px 1fr;
+    gap: 8px;
+  }
+
+  .learning-point p {
+    font-size: 14px;
+  }
+
+}
