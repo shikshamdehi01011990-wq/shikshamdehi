@@ -8,7 +8,7 @@ export async function POST(request) {
       return Response.json(
         {
           success: false,
-          error: "Google Script URL is not configured."
+          error: "Google Script URL is not configured.",
         },
         { status: 500 }
       );
@@ -29,14 +29,15 @@ export async function POST(request) {
       return Response.json(
         {
           success: false,
-          error: result.error || "Google Sheet submission failed."
+          error:
+            result.error || "Google Sheet submission failed.",
         },
         { status: 500 }
       );
     }
 
     return Response.json({
-      success: true
+      success: true,
     });
 
   } catch (error) {
@@ -45,7 +46,7 @@ export async function POST(request) {
     return Response.json(
       {
         success: false,
-        error: "Unable to submit enquiry. Please try again."
+        error: "Unable to submit enquiry. Please try again.",
       },
       { status: 500 }
     );
