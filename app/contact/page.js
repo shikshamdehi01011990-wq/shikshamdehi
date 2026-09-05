@@ -1,404 +1,536 @@
-'use client';
+"use client";
 
-import { useState } from 'react';
+import { useState } from "react";
+import Link from "next/link";
 import {
-  ArrowLeft,
   ArrowRight,
   CheckCircle2,
   Mail,
-  MapPin,
   MessageCircle,
-  Phone,
-  Send,
-  Sparkles,
-} from 'lucide-react';
-import styles from './contact.module.css';
-
-const institutionTypes = [
-  'School',
-  'ATL / Maker Lab',
-  'ITI',
-  'Polytechnic',
-  'College',
-  'Training Institute',
-  'Other',
-];
-
-const interests = [
-  '3D Design & Printing',
-  'Arduino & Electronics',
-  'Robotics',
-  'IoT',
-  'AI & Future Skills',
-  'STEM / Maker Programs',
-  'Teacher Training',
-  'Project / Exhibition Support',
-];
+  School,
+  Users,
+} from "lucide-react";
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
 
-  async function handleSubmit(e) {
-  e.preventDefault();
-
-  const form = e.currentTarget;
-
-  const formData = new FormData(form);
-
-  const data = {
-    name: formData.get('name'),
-    phone: formData.get('phone'),
-    email: formData.get('email'),
-    institution: formData.get('institution'),
-    interest: formData.get('interest'),
-    message: formData.get('message'),
-  };
-
-  try {
-    await fetch(
-      'https://script.google.com/macros/s/AKfycbzgYWv8POVg2dC25ptIrzCrDl_QhLMOgJdP7-LSWfXZHSETMlBvNEd3BDuMTXxOymgC/exec',
-      {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: {
-          'Content-Type': 'text/plain;charset=utf-8',
-        },
-        body: JSON.stringify(data),
-      }
-    );
-
-    form.reset();
+  function handleSubmit(e) {
+    e.preventDefault();
     setSubmitted(true);
-
-  } catch (error) {
-    console.error('Form submission error:', error);
-
-    alert(
-      'Unable to send your enquiry. Please try again or contact us directly.'
-    );
   }
-}
 
   return (
-    <main className={styles.page}>
+    <main className="contact-page">
 
-      {/* NAV */}
-      <header className={styles.nav}>
-        <a href="/" className={styles.brand}>
-          <span className={styles.mark}>SD</span>
+      {/* NAVBAR */}
+      <nav className="contact-nav">
+        <div className="contact-container contact-nav-inner">
 
-          <span>
+          <Link href="/" className="contact-logo">
             Shiksham<span>Dehi</span>
-          </span>
-        </a>
+          </Link>
 
-        <a href="/" className={styles.back}>
-          <ArrowLeft size={16} />
-          Back to Home
-        </a>
-      </header>
+          <div className="contact-nav-links">
+            <Link href="/">Home</Link>
+            <Link href="/programs">Programs</Link>
+            <Link href="/projects">Projects</Link>
+            <Link href="/schools">For Schools</Link>
+            <Link href="/about">About</Link>
+          </div>
+
+          <Link href="/contact" className="contact-nav-btn">
+            Enquire Now
+            <ArrowRight size={16} />
+          </Link>
+
+        </div>
+      </nav>
 
       {/* HERO */}
-      <section className={styles.hero}>
-        <div className={styles.heroGlow} />
+      <section className="contact-hero">
 
-        <div className={styles.eyebrow}>
-          <span />
-          LET&apos;S BUILD TOGETHER
+        <div className="contact-container contact-hero-grid">
+
+          <div className="contact-hero-content">
+
+            <div className="contact-eyebrow">
+              <MessageCircle size={16} />
+              SCHOOL ENQUIRY
+            </div>
+
+            <h1>
+              Let's bring
+              <span> practical learning</span>
+              to your school.
+            </h1>
+
+            <p>
+              Tell us about your school, students and learning goals.
+              We'll help you explore the right practical learning program.
+            </p>
+
+            <div className="contact-quick-points">
+
+              <div>
+                <CheckCircle2 size={17} />
+                <span>Hands-on student programs</span>
+              </div>
+
+              <div>
+                <CheckCircle2 size={17} />
+                <span>Project-based learning</span>
+              </div>
+
+              <div>
+                <CheckCircle2 size={17} />
+                <span>Teacher & school support</span>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div className="contact-side-card">
+
+            <div className="contact-side-icon">
+              <School size={25} />
+            </div>
+
+            <h3>Planning a program for your school?</h3>
+
+            <p>
+              Whether you need a one-day workshop, bootcamp, monthly
+              program or annual innovation initiative, tell us what you're
+              looking for.
+            </p>
+
+            <div className="contact-side-divider"></div>
+
+            <div className="contact-side-info">
+              <Users size={18} />
+              <div>
+                <strong>For</strong>
+                <span>Schools • Teachers • Coordinators</span>
+              </div>
+            </div>
+
+          </div>
+
         </div>
 
-        <h1>
-          Let&apos;s build the
-          <br />
-          <em>future.</em>
-        </h1>
-
-        <p>
-          Tell us about your school, institution, training centre or
-          project. We&apos;ll help you design the right STEM, 3D
-          printing, robotics and future-skills program.
-        </p>
       </section>
 
-      {/* CONTACT */}
-      <section className={styles.section}>
-        <div className={styles.contactGrid}>
+      {/* FORM SECTION */}
+      <section className="contact-section">
 
-          {/* LEFT */}
-          <div className={styles.info}>
+        <div className="contact-container contact-form-grid">
 
-            <div className={styles.eyebrow}>
-              <span />
-              TALK TO SHIKSHAMDEHI
+          {/* LEFT INFO */}
+          <div className="contact-info">
+
+            <div className="contact-label">
+              TELL US ABOUT YOUR REQUIREMENT
             </div>
 
             <h2>
-              Tell us what
-              <br />
-              you want to <em>build.</em>
+              Start with a
+              <span> conversation.</span>
             </h2>
 
-            <p className={styles.lead}>
-              Whether you are a school, ATL lab, ITI, Polytechnic,
-              college, educator or training institute, we can help
-              create practical technology learning experiences.
+            <p>
+              Share a few details and we'll understand your requirement
+              before suggesting a suitable program.
             </p>
 
-            <div className={styles.infoCards}>
+            <div className="contact-info-list">
 
-              <div className={styles.infoCard}>
-                <div className={styles.infoIcon}>
-                  <Mail size={19} />
+              <div className="contact-info-item">
+                <div className="contact-info-icon">
+                  <School size={19} />
                 </div>
 
                 <div>
-                  <b>Email</b>
-                  <span>hello@shikshamdehi.com</span>
+                  <strong>School Programs</strong>
+                  <span>
+                    Workshops, bootcamps, monthly and annual programs
+                  </span>
                 </div>
               </div>
 
-              <div className={styles.infoCard}>
-                <div className={styles.infoIcon}>
-                  <Phone size={19} />
+              <div className="contact-info-item">
+                <div className="contact-info-icon">
+                  <Users size={19} />
                 </div>
 
                 <div>
-                  <b>Phone / WhatsApp</b>
-                  <span>Available for program enquiries</span>
+                  <strong>Student Programs</strong>
+                  <span>
+                    Programs based on age, class and learning level
+                  </span>
                 </div>
               </div>
 
-              <div className={styles.infoCard}>
-                <div className={styles.infoIcon}>
-                  <MapPin size={19} />
+              <div className="contact-info-item">
+                <div className="contact-info-icon">
+                  <MessageCircle size={19} />
                 </div>
 
                 <div>
-                  <b>India</b>
-                  <span>STEM & Maker Education Programs</span>
+                  <strong>Discuss Your Requirement</strong>
+                  <span>
+                    Tell us what you want students to learn and build
+                  </span>
                 </div>
               </div>
 
             </div>
 
-            <div className={styles.experience}>
-              <strong>16+</strong>
+            <div className="contact-direct">
 
-              <div>
-                <b>Years of 3D Design Experience</b>
-                <span>
-                  Practical experience brought into
-                  education, prototyping and maker learning.
-                </span>
-              </div>
+              <span>Prefer to talk directly?</span>
+
+              <a
+                href="https://wa.me/919999999999"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <MessageCircle size={17} />
+                WhatsApp Us
+              </a>
+
+              <a href="mailto:hello@shikshamdehi.com">
+                <Mail size={17} />
+                Email Us
+              </a>
+
             </div>
 
           </div>
 
           {/* FORM */}
-          {!submitted ? (
-            <div className={styles.formCard}>
+          <div className="contact-form-card">
 
-              <div className={styles.formHeader}>
-                <span>START A CONVERSATION</span>
-                <Sparkles size={16} />
-              </div>
+            {submitted ? (
 
-              <form onSubmit={handleSubmit}>
+              <div className="contact-success">
 
-                <div className={styles.formRow}>
-
-                  <label>
-                    Name
-                    <input
-                      type="text"
-                      name="name"
-                      placeholder="Your name"
-                      required
-                    />
-                  </label>
-
-                  <label>
-                    Phone
-                    <input
-                      type="tel"
-                      name="phone"
-                      placeholder="+91 XXXXX XXXXX"
-                      required
-                    />
-                  </label>
-
+                <div className="success-icon">
+                  <CheckCircle2 size={34} />
                 </div>
 
-                <label>
-                  Email
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="you@example.com"
-                    required
-                  />
-                </label>
-
-                <label>
-                  Institution Type
-
-                  <select name="institution" required>
-                    <option value="">
-                      Select institution type
-                    </option>
-
-                    {institutionTypes.map((type) => (
-                      <option key={type} value={type}>
-                        {type}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-
-                <label>
-                  What are you interested in?
-
-                  <select name="interest" required>
-                    <option value="">
-                      Select a program
-                    </option>
-
-                    {interests.map((interest) => (
-                      <option key={interest} value={interest}>
-                        {interest}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-
-                <label>
-                  Tell us about your requirement
-
-                  <textarea
-                    name="message"
-                    placeholder="For example: We want to start a 3D printing and robotics program for Classes 8–10..."
-                    required
-                  />
-                </label>
-
-                <button type="submit" className={styles.submit}>
-                  Send Enquiry
-                  <Send size={17} />
-                </button>
-
-                <div className={styles.formNote}>
-                  We&apos;ll get back to you regarding your requirement.
-                </div>
-
-              </form>
-            </div>
-          ) : (
-
-            /* SUCCESS */
-            <div className={styles.formCard}>
-              <div className={styles.success}>
-
-                <CheckCircle2 size={58} />
-
-                <div className={styles.successTag}>
-                  MESSAGE RECEIVED
-                </div>
-
-                <h2>
-                  Let&apos;s make something
-                  <br />
-                  <em>real.</em>
-                </h2>
+                <h2>Thank you!</h2>
 
                 <p>
-                  Thank you for contacting ShikshamDehi.
-                  We&apos;ll review your requirement and get
-                  back to you soon.
+                  Your enquiry has been recorded on this page.
+                  We'll connect with you regarding your school program.
                 </p>
 
                 <button
-                  className={styles.submit}
                   onClick={() => setSubmitted(false)}
+                  className="success-again-btn"
                 >
-                  Send Another Enquiry
-                  <ArrowRight size={17} />
+                  Submit Another Enquiry
                 </button>
 
               </div>
-            </div>
 
-          )}
+            ) : (
+
+              <form onSubmit={handleSubmit}>
+
+                <div className="form-title">
+                  <span>01</span>
+                  <div>
+                    <strong>School Details</strong>
+                    <small>Tell us about your institution</small>
+                  </div>
+                </div>
+
+                <div className="form-row">
+
+                  <div className="form-group">
+                    <label>
+                      Your Name <span>*</span>
+                    </label>
+
+                    <input
+                      type="text"
+                      name="name"
+                      placeholder="Enter your name"
+                      required
+                    />
+                  </div>
+
+                  <div className="form-group">
+                    <label>
+                      Designation
+                    </label>
+
+                    <select name="designation">
+                      <option value="">Select designation</option>
+                      <option>Principal</option>
+                      <option>Vice Principal</option>
+                      <option>School Coordinator</option>
+                      <option>ATL In-charge</option>
+                      <option>Teacher</option>
+                      <option>School Management</option>
+                      <option>Other</option>
+                    </select>
+                  </div>
+
+                </div>
+
+                <div className="form-row">
+
+                  <div className="form-group">
+                    <label>
+                      School Name <span>*</span>
+                    </label>
+
+                    <input
+                      type="text"
+                      name="school"
+                      placeholder="Enter school name"
+                      required
+                    />
+                  </div>
+
+                  <div className="form-group">
+                    <label>
+                      City
+                    </label>
+
+                    <input
+                      type="text"
+                      name="city"
+                      placeholder="Enter city"
+                    />
+                  </div>
+
+                </div>
+
+                <div className="form-row">
+
+                  <div className="form-group">
+                    <label>
+                      Phone / WhatsApp <span>*</span>
+                    </label>
+
+                    <input
+                      type="tel"
+                      name="phone"
+                      placeholder="Enter contact number"
+                      required
+                    />
+                  </div>
+
+                  <div className="form-group">
+                    <label>
+                      Email
+                    </label>
+
+                    <input
+                      type="email"
+                      name="email"
+                      placeholder="school@example.com"
+                    />
+                  </div>
+
+                </div>
+
+                <div className="form-divider"></div>
+
+                <div className="form-title">
+                  <span>02</span>
+                  <div>
+                    <strong>Program Requirement</strong>
+                    <small>Help us understand what you need</small>
+                  </div>
+                </div>
+
+                <div className="form-row">
+
+                  <div className="form-group">
+                    <label>
+                      Classes / Age Group
+                    </label>
+
+                    <select name="classes">
+                      <option value="">Select</option>
+                      <option>Classes 3–5</option>
+                      <option>Classes 6–8</option>
+                      <option>Classes 9–12</option>
+                      <option>ITI / Polytechnic</option>
+                      <option>College Students</option>
+                      <option>Multiple Classes</option>
+                    </select>
+                  </div>
+
+                  <div className="form-group">
+                    <label>
+                      Approx. Students
+                    </label>
+
+                    <select name="students">
+                      <option value="">Select</option>
+                      <option>Under 30</option>
+                      <option>30–60</option>
+                      <option>60–100</option>
+                      <option>100–200</option>
+                      <option>200+</option>
+                    </select>
+                  </div>
+
+                </div>
+
+                <div className="form-group">
+
+                  <label>
+                    Program Format
+                  </label>
+
+                  <select name="format">
+                    <option value="">Select preferred format</option>
+                    <option>1-Day Practical Workshop</option>
+                    <option>2-Day Bootcamp</option>
+                    <option>3-Day Bootcamp</option>
+                    <option>5-Day Bootcamp</option>
+                    <option>Monthly School Program</option>
+                    <option>Annual Innovation Program</option>
+                    <option>Teacher Training</option>
+                    <option>Not Sure — Need Guidance</option>
+                  </select>
+
+                </div>
+
+                <div className="form-group">
+
+                  <label>
+                    Learning Areas
+                  </label>
+
+                  <select name="domain">
+                    <option value="">Select area</option>
+                    <option>Robotics</option>
+                    <option>Arduino & Electronics</option>
+                    <option>3D Design & Printing</option>
+                    <option>Mechanical Systems</option>
+                    <option>Design Thinking</option>
+                    <option>IoT & Smart Projects</option>
+                    <option>STEM Experiments</option>
+                    <option>Multiple Areas</option>
+                    <option>Need Guidance</option>
+                  </select>
+
+                </div>
+
+                <div className="form-group">
+
+                  <label>
+                    Tell us about your requirement
+                  </label>
+
+                  <textarea
+                    name="message"
+                    rows="5"
+                    placeholder="Example: We want a practical robotics workshop for Classes 6–8..."
+                  ></textarea>
+
+                </div>
+
+                <button
+                  type="submit"
+                  className="contact-submit-btn"
+                >
+                  Submit School Enquiry
+                  <ArrowRight size={18} />
+                </button>
+
+                <p className="form-note">
+                  Your details will only be used to understand and respond
+                  to your enquiry.
+                </p>
+
+              </form>
+
+            )}
+
+          </div>
 
         </div>
+
       </section>
 
-      {/* DIRECT CONTACT */}
-      <section className={styles.direct}>
+      {/* BOTTOM CTA */}
+      <section className="contact-bottom-cta">
 
-        <div className={styles.directInner}>
+        <div className="contact-container contact-bottom-inner">
 
           <div>
-            <div className={styles.eyebrow}>
-              <span />
-              PREFER A DIRECT CHAT?
+            <div className="contact-label">
+              EXPLORE BEFORE YOU ENQUIRE
             </div>
 
             <h2>
-              Let&apos;s talk about
-              <br />
-              your <em>next project.</em>
+              See what students can
+              <span> actually build.</span>
             </h2>
           </div>
 
-          <div className={styles.directLinks}>
-
-            <a href="mailto:hello@shikshamdehi.com">
-              <Mail size={20} />
-
-              <span>
-                <small>Email us</small>
-                hello@shikshamdehi.com
-              </span>
-
-              <ArrowRight size={17} />
-            </a>
-
-            <a
-              href="https://wa.me/918796289333"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <MessageCircle size={20} />
-
-              <span>
-                <small>WhatsApp</small>
-                Start a conversation
-              </span>
-
-              <ArrowRight size={17} />
-            </a>
-
-          </div>
+          <Link
+            href="/projects"
+            className="contact-project-btn"
+          >
+            Explore Project Library
+            <ArrowRight size={18} />
+          </Link>
 
         </div>
 
       </section>
 
       {/* FOOTER */}
-      <footer className={styles.footer}>
+      <footer className="contact-footer">
 
-        <a href="/">
-          Shiksham<span>Dehi</span>
-        </a>
+        <div className="contact-container contact-footer-top">
 
-        <small>
-          Future skills. Real projects.
-        </small>
+          <div>
 
-        <small>
-          © 2026 ShikshamDehi. All rights reserved.
-        </small>
+            <Link href="/" className="contact-logo">
+              Shiksham<span>Dehi</span>
+            </Link>
+
+            <p>
+              Practical learning through projects, technology and
+              real-world problem solving.
+            </p>
+
+          </div>
+
+          <div className="contact-footer-links">
+
+            <Link href="/">Home</Link>
+            <Link href="/programs">Programs</Link>
+            <Link href="/projects">Projects</Link>
+            <Link href="/schools">For Schools</Link>
+            <Link href="/about">About</Link>
+            <Link href="/contact">Contact</Link>
+
+          </div>
+
+        </div>
+
+        <div className="contact-container contact-footer-bottom">
+
+          <span>
+            © {new Date().getFullYear()} ShikshamDehi
+          </span>
+
+          <span>
+            Learn. Build. Make it real.
+          </span>
+
+        </div>
 
       </footer>
 
