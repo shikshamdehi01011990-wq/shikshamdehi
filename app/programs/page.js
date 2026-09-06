@@ -1,5 +1,3 @@
-"use client";
-
 import Link from "next/link";
 import {
   ArrowRight,
@@ -9,6 +7,8 @@ import {
   Rocket,
   Settings,
 } from "lucide-react";
+
+import Navbar from "../../components/navbar";
 
 const programs = [
   {
@@ -28,6 +28,7 @@ const programs = [
       "Hands-on experiments",
     ],
   },
+
   {
     title: "Maker Classes",
     subtitle: "Classes 6–8",
@@ -45,6 +46,7 @@ const programs = [
       "3D Printing",
     ],
   },
+
   {
     title: "Innovator Program",
     subtitle: "Classes 9–12",
@@ -62,6 +64,7 @@ const programs = [
       "Design thinking",
     ],
   },
+
   {
     title: "Technical Programs",
     subtitle: "ITI • Polytechnic • College",
@@ -85,30 +88,14 @@ export default function ProgramsPage() {
   return (
     <main className="programs-page">
 
-      {/* NAVBAR */}
-      <nav className="site-nav">
-        <div className="nav-inner">
-          <Link href="/" className="logo">
-            SHIKSHAM<span>DEHI</span>
-          </Link>
+      {/* =========================
+          NAVBAR
+      ========================= */}
+      <Navbar />
 
-          <div className="nav-links">
-            <Link href="/">Home</Link>
-            <Link href="/programs" className="active">
-              Programs
-            </Link>
-            <Link href="/#schools">For Schools</Link>
-            <Link href="/#about">About Us</Link>
-            <Link href="/#contact">Contact</Link>
-          </div>
-
-          <Link href="/#contact" className="nav-cta">
-            Partner With Us
-          </Link>
-        </div>
-      </nav>
-
-      {/* HERO */}
+      {/* =========================
+          HERO
+      ========================= */}
       <section className="programs-hero">
         <div className="container">
 
@@ -129,6 +116,7 @@ export default function ProgramsPage() {
           </p>
 
           <div className="programs-hero-points">
+
             <div>
               <CheckCircle2 size={18} />
               Age-based learning
@@ -143,16 +131,20 @@ export default function ProgramsPage() {
               <CheckCircle2 size={18} />
               Real-world projects
             </div>
+
           </div>
 
         </div>
       </section>
 
-      {/* PROGRAMS */}
+      {/* =========================
+          PROGRAMS
+      ========================= */}
       <section className="programs-list">
         <div className="container">
 
           <div className="programs-heading">
+
             <div>
               <div className="section-eyebrow">
                 <span></span>
@@ -169,8 +161,10 @@ export default function ProgramsPage() {
             <p>
               Every program combines concepts, activities, tools and projects
               so students understand not only <strong>what</strong> something
-              is, but also <strong>how it works</strong> and <strong>how to build it.</strong>
+              is, but also <strong>how it works</strong> and{" "}
+              <strong>how to build it.</strong>
             </p>
+
           </div>
 
           <div className="program-cards">
@@ -179,29 +173,42 @@ export default function ProgramsPage() {
               const Icon = program.icon;
 
               return (
-                <article className="program-card" key={program.title}>
+                <article
+                  className="program-card"
+                  key={program.title}
+                >
 
+                  {/* IMAGE */}
                   <div className="program-card-image">
+
                     <img
                       src={program.image}
                       alt={program.title}
                     />
 
-                    <div className={`program-number ${program.color}`}>
+                    <div
+                      className={`program-number ${program.color}`}
+                    >
                       0{index + 1}
                     </div>
+
                   </div>
 
+                  {/* CONTENT */}
                   <div className="program-card-content">
 
                     <div className="program-card-top">
-                      <div className={`program-icon ${program.color}`}>
+
+                      <div
+                        className={`program-icon ${program.color}`}
+                      >
                         <Icon size={21} />
                       </div>
 
                       <span className="program-age">
                         {program.subtitle}
                       </span>
+
                     </div>
 
                     <h3>{program.title}</h3>
@@ -209,11 +216,13 @@ export default function ProgramsPage() {
                     <p>{program.description}</p>
 
                     <div className="program-skills">
+
                       {program.skills.map((skill) => (
                         <span key={skill}>
                           {skill}
                         </span>
                       ))}
+
                     </div>
 
                     <Link
@@ -231,10 +240,13 @@ export default function ProgramsPage() {
             })}
 
           </div>
+
         </div>
       </section>
 
-      {/* LEARNING MODEL */}
+      {/* =========================
+          LEARNING MODEL
+      ========================= */}
       <section className="program-learning-model">
         <div className="container">
 
@@ -305,13 +317,16 @@ export default function ProgramsPage() {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* =========================
+          CTA
+      ========================= */}
       <section className="programs-cta">
         <div className="container">
 
           <div className="programs-cta-box">
 
             <div>
+
               <div className="section-eyebrow">
                 <span></span>
                 FOR SCHOOLS & INSTITUTIONS
@@ -327,9 +342,13 @@ export default function ProgramsPage() {
                 We can design workshops, bootcamps and long-term programs
                 according to your students, curriculum and infrastructure.
               </p>
+
             </div>
 
-            <Link href="/#contact" className="primary-button">
+            <Link
+              href="/contact"
+              className="primary-button"
+            >
               Discuss a Program
               <ArrowRight size={18} />
             </Link>
@@ -339,7 +358,9 @@ export default function ProgramsPage() {
         </div>
       </section>
 
-      {/* FOOTER */}
+      {/* =========================
+          FOOTER
+      ========================= */}
       <footer className="site-footer">
         <div className="container">
 
@@ -354,23 +375,42 @@ export default function ProgramsPage() {
             </p>
 
             <div className="footer-links">
-              <Link href="/">Home</Link>
-              <Link href="/programs">Programs</Link>
-              <Link href="/#schools">For Schools</Link>
-              <Link href="/#about">About</Link>
-              <Link href="/#contact">Contact</Link>
+
+              <Link href="/">
+                Home
+              </Link>
+
+              <Link href="/programs">
+                Programs
+              </Link>
+
+              <Link href="/schools">
+                For Schools
+              </Link>
+
+              <Link href="/about">
+                About
+              </Link>
+
+              <Link href="/contact">
+                Contact
+              </Link>
+
             </div>
 
           </div>
 
           <div className="footer-bottom">
+
             <span>
-              © {new Date().getFullYear()} ShikshamDehi. All rights reserved.
+              © {new Date().getFullYear()} ShikshamDehi.
+              All rights reserved.
             </span>
 
             <span>
               Practical Learning • STEM • Innovation
             </span>
+
           </div>
 
         </div>
