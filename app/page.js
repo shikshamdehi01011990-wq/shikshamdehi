@@ -1,17 +1,16 @@
 "use client";
 
-import { useState } from "react";
 import {
   ArrowRight,
   CheckCircle2,
   Cpu,
   Lightbulb,
-  Menu,
   Rocket,
   School,
   Settings,
-  X,
 } from "lucide-react";
+
+import Navbar from "@/components/navbar";
 
 const programs = [
   {
@@ -131,60 +130,6 @@ const journey = [
     text: "Present the final working solution.",
   },
 ];
-
-function Navbar() {
-  const [open, setOpen] = useState(false);
-
-  const links = [
-    ["Home", "#home"],
-    ["Programs", "#programs"],
-    ["Projects", "#projects"],
-    ["For Schools", "#schools"],
-    ["About Us", "#about"],
-    ["Contact", "/contact"],
-  ];
-
-  return (
-    <header className="navbar">
-      <div className="navInner">
-        <a href="#home" className="logo">
-          <span className="logoMark">S</span>
-          <span>
-            Shiksham<span>Dehi</span>
-          </span>
-        </a>
-
-        <nav className={`navLinks ${open ? "mobileOpen" : ""}`}>
-          {links.map(([label, href]) => (
-            <a
-              key={label}
-              href={href}
-              onClick={() => setOpen(false)}
-            >
-              {label}
-            </a>
-          ))}
-
-          <a
-            href="/contact"
-            className="navButton"
-            onClick={() => setOpen(false)}
-          >
-            Partner With Us
-          </a>
-        </nav>
-
-        <button
-          className="menuButton"
-          onClick={() => setOpen(!open)}
-          aria-label="Toggle navigation"
-        >
-          {open ? <X size={24} /> : <Menu size={24} />}
-        </button>
-      </div>
-    </header>
-  );
-}
 
 export default function Home() {
   return (
@@ -387,7 +332,7 @@ export default function Home() {
                   </ul>
 
                   <a
-                    href="#contact"
+                    href="/contact"
                     className="textLink"
                   >
                     Enquire about program
@@ -444,7 +389,7 @@ export default function Home() {
                 <p>{project.description}</p>
 
                 <a
-                  href="#contact"
+                  href="/contact"
                   className="textLink"
                 >
                   Build something like this
@@ -563,7 +508,10 @@ export default function Home() {
               </div>
             </div>
 
-            <a href="#contact" className="primaryButton">
+            <a
+              href="/contact"
+              className="primaryButton"
+            >
               Discuss Your School
               <ArrowRight size={18} />
             </a>
@@ -671,7 +619,7 @@ export default function Home() {
       </section>
 
       {/* CTA */}
-      <section className="ctaSection" id="contact">
+      <section className="ctaSection">
         <div className="ctaGlow" />
 
         <div className="ctaContent">
@@ -692,7 +640,7 @@ export default function Home() {
 
           <div className="ctaButtons">
             <a
-              href="mailto:hello@shikshamdehi.com"
+              href="/contact"
               className="primaryButton"
             >
               Start a Conversation
@@ -715,7 +663,7 @@ export default function Home() {
       <footer className="footer">
         <div className="footerGrid">
           <div>
-            <a href="#home" className="logo footerLogo">
+            <a href="/" className="logo footerLogo">
               <span className="logoMark">S</span>
 
               <span>
@@ -731,18 +679,19 @@ export default function Home() {
 
           <div>
             <h4>Explore</h4>
-            <a href="#programs">Programs</a>
-            <a href="#projects">Projects</a>
-            <a href="#schools">For Schools</a>
-            <a href="#about">About Us</a>
+            <a href="/programs">Programs</a>
+            <a href="/projects">Projects</a>
+            <a href="/schools">For Schools</a>
+            <a href="/about">About Us</a>
+            <a href="/contact">Contact</a>
           </div>
 
           <div>
             <h4>Learning</h4>
-            <a href="#programs">Foundation</a>
-            <a href="#programs">Maker Classes</a>
-            <a href="#programs">Innovator Program</a>
-            <a href="#programs">Technical Programs</a>
+            <a href="/programs/foundation">Foundation</a>
+            <a href="/programs/maker">Maker Classes</a>
+            <a href="/programs/innovator">Innovator Program</a>
+            <a href="/programs/technical">Technical Programs</a>
           </div>
 
           <div>
