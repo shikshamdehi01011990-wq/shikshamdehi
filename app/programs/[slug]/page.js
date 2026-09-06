@@ -248,6 +248,70 @@ const programData = {
   },
 };
 
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+
+  const seoData = {
+    foundation: {
+      title: "STEM Learning Program for Classes 3–5",
+      description:
+        "Hands-on STEM learning for Classes 3–5 through experiments, simple electronics, creative activities and working projects at ShikshamDehi.",
+    },
+
+    maker: {
+      title: "Maker Program for Classes 6–8 | Arduino & Robotics",
+      description:
+        "Practical maker education for Classes 6–8 covering Arduino, electronics, robotics, sensors, coding, 3D design and 3D printing through real projects.",
+    },
+
+    innovator: {
+      title: "Innovation Program for Classes 9–12 | STEM & Robotics",
+      description:
+        "Project-driven STEM and innovation program for Classes 9–12 covering Arduino, IoT, robotics, programming, design thinking and prototyping.",
+    },
+
+    technical: {
+      title: "Technical Training for ITI, Polytechnic & College",
+      description:
+        "Industry-oriented practical training in 3D CAD, 3D printing, electronics, embedded systems, fabrication and prototype development.",
+    },
+  };
+
+  const seo = seoData[slug];
+
+  if (!seo) {
+    return {
+      title: "Program Not Found",
+      description:
+        "The requested ShikshamDehi learning program could not be found.",
+    };
+  }
+
+  return {
+    title: seo.title,
+    description: seo.description,
+
+    alternates: {
+      canonical: `/programs/${slug}`,
+    },
+
+    openGraph: {
+      title: seo.title,
+      description: seo.description,
+      url: `/programs/${slug}`,
+      siteName: "ShikshamDehi",
+      locale: "en_IN",
+      type: "website",
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: seo.title,
+      description: seo.description,
+    },
+  };
+}
+
 export default async function ProgramDetailPage({ params }) {
   const { slug } = await params;
   const program = programData[slug];
