@@ -10,6 +10,8 @@ import {
   Users,
 } from "lucide-react";
 
+import Navbar from "../../../components/navbar";
+
 const programData = {
   foundation: {
     title: "Foundation Learning",
@@ -255,6 +257,7 @@ export default async function ProgramDetailPage({ params }) {
       <main className="program-not-found">
         <div>
           <h1>Program not found</h1>
+
           <p>
             The program you are looking for does not exist.
           </p>
@@ -274,33 +277,10 @@ export default async function ProgramDetailPage({ params }) {
     <main className="program-detail-page">
 
       {/* NAVBAR */}
-      <nav className="site-nav">
-        <div className="nav-inner">
-
-          <Link href="/" className="logo">
-            SHIKSHAM<span>DEHI</span>
-          </Link>
-
-          <div className="nav-links">
-            <Link href="/">Home</Link>
-            <Link href="/programs" className="active">
-              Programs
-            </Link>
-            <Link href="/#schools">For Schools</Link>
-            <Link href="/#about">About Us</Link>
-            <Link href="/#contact">Contact</Link>
-          </div>
-
-          <Link href="/#contact" className="nav-cta">
-            Partner With Us
-          </Link>
-
-        </div>
-      </nav>
+      <Navbar />
 
       {/* HERO */}
       <section className="program-detail-hero">
-
         <div className="container">
 
           <Link href="/programs" className="back-link">
@@ -334,6 +314,7 @@ export default async function ProgramDetailPage({ params }) {
 
                 <div>
                   <Clock3 size={18} />
+
                   <div>
                     <small>Duration</small>
                     <strong>{program.duration}</strong>
@@ -342,6 +323,7 @@ export default async function ProgramDetailPage({ params }) {
 
                 <div>
                   <Users size={18} />
+
                   <div>
                     <small>For</small>
                     <strong>{program.students}</strong>
@@ -350,6 +332,7 @@ export default async function ProgramDetailPage({ params }) {
 
                 <div>
                   <Settings size={18} />
+
                   <div>
                     <small>Format</small>
                     <strong>{program.format}</strong>
@@ -358,7 +341,10 @@ export default async function ProgramDetailPage({ params }) {
 
               </div>
 
-              <Link href="/#contact" className="program-primary-button">
+              <Link
+                href="/contact"
+                className="program-primary-button"
+              >
                 Enquire About This Program
                 <ArrowRight size={18} />
               </Link>
@@ -382,12 +368,10 @@ export default async function ProgramDetailPage({ params }) {
           </div>
 
         </div>
-
       </section>
 
       {/* WHAT STUDENTS LEARN */}
       <section className="program-learning-section">
-
         <div className="container">
 
           <div className="program-section-heading">
@@ -415,7 +399,10 @@ export default async function ProgramDetailPage({ params }) {
           <div className="learning-points">
 
             {program.learning.map((item, index) => (
-              <div className="learning-point" key={item}>
+              <div
+                className="learning-point"
+                key={item}
+              >
 
                 <span className="learning-point-number">
                   0{index + 1}
@@ -431,12 +418,10 @@ export default async function ProgramDetailPage({ params }) {
           </div>
 
         </div>
-
       </section>
 
       {/* PROJECTS */}
       <section className="program-projects-section">
-
         <div className="container">
 
           <div className="section-eyebrow">
@@ -476,12 +461,10 @@ export default async function ProgramDetailPage({ params }) {
           </div>
 
         </div>
-
       </section>
 
       {/* SKILLS */}
       <section className="program-skills-section">
-
         <div className="container">
 
           <div className="skills-box">
@@ -515,12 +498,10 @@ export default async function ProgramDetailPage({ params }) {
           </div>
 
         </div>
-
       </section>
 
       {/* METHOD */}
       <section className="program-method-section">
-
         <div className="container">
 
           <div className="method-heading">
@@ -579,12 +560,10 @@ export default async function ProgramDetailPage({ params }) {
           </div>
 
         </div>
-
       </section>
 
       {/* CTA */}
       <section className="program-detail-cta">
-
         <div className="container">
 
           <div className="detail-cta-box">
@@ -609,7 +588,10 @@ export default async function ProgramDetailPage({ params }) {
 
             </div>
 
-            <Link href="/#contact" className="program-primary-button dark">
+            <Link
+              href="/contact"
+              className="program-primary-button dark"
+            >
               Start a Conversation
               <ArrowRight size={18} />
             </Link>
@@ -617,12 +599,10 @@ export default async function ProgramDetailPage({ params }) {
           </div>
 
         </div>
-
       </section>
 
       {/* FOOTER */}
       <footer className="site-footer">
-
         <div className="container">
 
           <div className="footer-inner">
@@ -638,14 +618,15 @@ export default async function ProgramDetailPage({ params }) {
             <div className="footer-links">
               <Link href="/">Home</Link>
               <Link href="/programs">Programs</Link>
-              <Link href="/#schools">For Schools</Link>
-              <Link href="/#about">About</Link>
-              <Link href="/#contact">Contact</Link>
+              <Link href="/schools">For Schools</Link>
+              <Link href="/about">About</Link>
+              <Link href="/contact">Contact</Link>
             </div>
 
           </div>
 
           <div className="footer-bottom">
+
             <span>
               © {new Date().getFullYear()} ShikshamDehi. All rights reserved.
             </span>
@@ -653,10 +634,10 @@ export default async function ProgramDetailPage({ params }) {
             <span>
               Practical Learning • STEM • Innovation
             </span>
+
           </div>
 
         </div>
-
       </footer>
 
     </main>
