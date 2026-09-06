@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ArrowRight, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
@@ -51,10 +51,8 @@ export default function Navbar() {
           </span>
         </Link>
 
-
         {/* NAVIGATION */}
         <nav className={`navLinks ${open ? "mobileOpen" : ""}`}>
-
           {links.map((link) => (
             <Link
               key={link.label}
@@ -65,8 +63,7 @@ export default function Navbar() {
             </Link>
           ))}
 
-
-          {/* PARTNER BUTTON */}
+          {/* PARTNER WITH US */}
           <Link
             href="/contact"
             className="navButton"
@@ -74,22 +71,16 @@ export default function Navbar() {
           >
             Partner With Us
           </Link>
-
         </nav>
 
-
-        {/* MOBILE MENU BUTTON */}
+        {/* MOBILE MENU */}
         <button
           className="menuButton"
           onClick={() => setOpen(!open)}
           aria-label="Toggle navigation"
           aria-expanded={open}
         >
-          {open ? (
-            <X size={24} />
-          ) : (
-            <Menu size={24} />
-          )}
+          {open ? <X size={24} /> : <Menu size={24} />}
         </button>
 
       </div>
