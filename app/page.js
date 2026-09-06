@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 
 import Navbar from "../components/navbar";
+
 const programs = [
   {
     icon: Lightbulb,
@@ -298,7 +299,10 @@ export default function Home() {
             const Icon = program.icon;
 
             return (
-              <article className="programCard" key={program.title}>
+              <article
+                className="programCard"
+                key={program.title}
+              >
                 <div className="programImage">
                   <img
                     src={program.image}
@@ -345,7 +349,10 @@ export default function Home() {
       </section>
 
       {/* PROJECTS */}
-      <section className="section projectsSection" id="projects">
+      <section
+        className="section projectsSection"
+        id="projects"
+      >
         <div className="sectionTop">
           <div>
             <div className="sectionLabel">
@@ -439,7 +446,10 @@ export default function Home() {
       </section>
 
       {/* SCHOOLS */}
-      <section className="section schoolsSection" id="schools">
+      <section
+        className="section schoolsSection"
+        id="schools"
+      >
         <div className="schoolGrid">
           <div className="schoolImage">
             <img
@@ -569,7 +579,10 @@ export default function Home() {
       </section>
 
       {/* ABOUT */}
-      <section className="section aboutSection" id="about">
+      <section
+        className="section aboutSection"
+        id="about"
+      >
         <div className="aboutGrid">
           <div>
             <div className="sectionLabel">
@@ -662,7 +675,10 @@ export default function Home() {
       <footer className="footer">
         <div className="footerGrid">
           <div>
-            <a href="/" className="logo footerLogo">
+            <a
+              href="/"
+              className="logo footerLogo"
+            >
               <span className="logoMark">S</span>
 
               <span>
@@ -689,8 +705,12 @@ export default function Home() {
             <h4>Learning</h4>
             <a href="/programs/foundation">Foundation</a>
             <a href="/programs/maker">Maker Classes</a>
-            <a href="/programs/innovator">Innovator Program</a>
-            <a href="/programs/technical">Technical Programs</a>
+            <a href="/programs/innovator">
+              Innovator Program
+            </a>
+            <a href="/programs/technical">
+              Technical Programs
+            </a>
           </div>
 
           <div>
