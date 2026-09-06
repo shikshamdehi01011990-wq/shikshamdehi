@@ -10,8 +10,7 @@ import {
   Settings,
 } from "lucide-react";
 
-import Navbar from "@/components/navbar";
-
+import Navbar from "../components/navbar";
 const programs = [
   {
     icon: Lightbulb,
