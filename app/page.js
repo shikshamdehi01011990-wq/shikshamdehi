@@ -141,7 +141,7 @@ function Navbar() {
     ["Projects", "#projects"],
     ["For Schools", "#schools"],
     ["About Us", "#about"],
-    ["Contact", "#contact"],
+    ["Contact", "/contact"],
   ];
 
   return (
@@ -166,7 +166,7 @@ function Navbar() {
           ))}
 
           <a
-            href="#contact"
+            href="/contact"
             className="navButton"
             onClick={() => setOpen(false)}
           >
