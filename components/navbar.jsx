@@ -2,36 +2,17 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   const links = [
-    {
-      label: "Home",
-      href: "/",
-    },
-    {
-      label: "Programs",
-      href: "/programs",
-    },
-    {
-      label: "Projects",
-      href: "/projects",
-    },
-    {
-      label: "For Schools",
-      href: "/schools",
-    },
-    {
-      label: "About Us",
-      href: "/about",
-    },
-    {
-      label: "Contact",
-      href: "/contact",
-    },
+    { label: "Home", href: "/" },
+    { label: "Programs", href: "/programs" },
+    { label: "Projects", href: "/projects" },
+    { label: "For Schools", href: "/schools" },
+    { label: "About Us", href: "/about" },
+    { label: "Contact", href: "/contact" },
   ];
 
   return (
@@ -51,11 +32,11 @@ export default function Navbar() {
           </span>
         </Link>
 
-        {/* NAVIGATION */}
+        {/* DESKTOP + MOBILE NAVIGATION */}
         <nav className={`navLinks ${open ? "mobileOpen" : ""}`}>
           {links.map((link) => (
             <Link
-              key={link.label}
+              key={link.href}
               href={link.href}
               onClick={() => setOpen(false)}
             >
@@ -63,7 +44,6 @@ export default function Navbar() {
             </Link>
           ))}
 
-          {/* PARTNER WITH US */}
           <Link
             href="/contact"
             className="navButton"
@@ -73,14 +53,19 @@ export default function Navbar() {
           </Link>
         </nav>
 
-        {/* MOBILE MENU */}
+        {/* MOBILE MENU BUTTON */}
         <button
+          type="button"
           className="menuButton"
-          onClick={() => setOpen(!open)}
-          aria-label="Toggle navigation"
+          onClick={() => setOpen((value) => !value)}
+          aria-label={open ? "Close navigation" : "Open navigation"}
           aria-expanded={open}
         >
-          {open ? <X size={24} /> : <Menu size={24} />}
+          {open ? (
+            <span className="menuIcon">×</span>
+          ) : (
+            <span className="menuIcon">☰</span>
+          )}
         </button>
 
       </div>
