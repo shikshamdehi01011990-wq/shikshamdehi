@@ -4,11 +4,12 @@ import { useState } from "react";
 import Link from "next/link";
 import {
   ArrowRight,
-  CheckCircle2,
   Clock3,
   Filter,
   Search,
 } from "lucide-react";
+
+import Navbar from "../../components/navbar";
 
 const projects = [
   {
@@ -137,36 +138,10 @@ export default function ProjectsPage() {
     <main className="projects-page">
 
       {/* NAVBAR */}
-
-      <nav className="site-nav">
-        <div className="nav-inner">
-
-          <Link href="/" className="logo">
-            SHIKSHAM<span>DEHI</span>
-          </Link>
-
-          <div className="nav-links">
-            <Link href="/">Home</Link>
-            <Link href="/programs">Programs</Link>
-            <Link href="/projects" className="active">
-              Projects
-            </Link>
-            <Link href="/#schools">For Schools</Link>
-            <Link href="/#about">About Us</Link>
-            <Link href="/#contact">Contact</Link>
-          </div>
-
-          <Link href="/#contact" className="nav-cta">
-            Partner With Us
-          </Link>
-
-        </div>
-      </nav>
+      <Navbar />
 
       {/* HERO */}
-
       <section className="projects-hero">
-
         <div className="container">
 
           <div className="section-eyebrow">
@@ -205,17 +180,13 @@ export default function ProjectsPage() {
           </div>
 
         </div>
-
       </section>
 
-      {/* LIBRARY */}
-
+      {/* PROJECT LIBRARY */}
       <section className="project-library">
-
         <div className="container">
 
           {/* FILTER BAR */}
-
           <div className="project-filter-bar">
 
             <div className="filter-title">
@@ -237,7 +208,6 @@ export default function ProjectsPage() {
           </div>
 
           {/* CATEGORY */}
-
           <div className="filter-section">
 
             <span className="filter-label">
@@ -261,7 +231,6 @@ export default function ProjectsPage() {
           </div>
 
           {/* DIFFICULTY */}
-
           <div className="filter-section difficulty-filter">
 
             <span className="filter-label">
@@ -285,7 +254,6 @@ export default function ProjectsPage() {
           </div>
 
           {/* RESULTS */}
-
           <div className="project-results-head">
 
             <span>
@@ -308,8 +276,7 @@ export default function ProjectsPage() {
 
           </div>
 
-          {/* CARDS */}
-
+          {/* PROJECT CARDS */}
           {filteredProjects.length > 0 ? (
 
             <div className="project-library-grid">
@@ -348,9 +315,13 @@ export default function ProjectsPage() {
 
                     </div>
 
-                    <h3>{project.title}</h3>
+                    <h3>
+                      {project.title}
+                    </h3>
 
-                    <p>{project.description}</p>
+                    <p>
+                      {project.description}
+                    </p>
 
                     <div className="project-duration">
                       <Clock3 size={15} />
@@ -379,7 +350,9 @@ export default function ProjectsPage() {
 
               <Search size={30} />
 
-              <h3>No projects found</h3>
+              <h3>
+                No projects found
+              </h3>
 
               <p>
                 Try changing your filters or search term.
@@ -390,13 +363,10 @@ export default function ProjectsPage() {
           )}
 
         </div>
-
       </section>
 
       {/* LEARNING PHILOSOPHY */}
-
       <section className="project-philosophy">
-
         <div className="container">
 
           <div className="philosophy-box">
@@ -458,13 +428,10 @@ export default function ProjectsPage() {
           </div>
 
         </div>
-
       </section>
 
       {/* CTA */}
-
       <section className="projects-cta">
-
         <div className="container">
 
           <div className="projects-cta-box">
@@ -490,7 +457,7 @@ export default function ProjectsPage() {
             </div>
 
             <Link
-              href="/#contact"
+              href="/contact"
               className="project-cta-button"
             >
               Talk to Us
@@ -500,13 +467,10 @@ export default function ProjectsPage() {
           </div>
 
         </div>
-
       </section>
 
       {/* FOOTER */}
-
       <footer className="site-footer">
-
         <div className="container">
 
           <div className="footer-inner">
@@ -523,14 +487,15 @@ export default function ProjectsPage() {
               <Link href="/">Home</Link>
               <Link href="/programs">Programs</Link>
               <Link href="/projects">Projects</Link>
-              <Link href="/#schools">For Schools</Link>
-              <Link href="/#about">About</Link>
-              <Link href="/#contact">Contact</Link>
+              <Link href="/schools">For Schools</Link>
+              <Link href="/about">About</Link>
+              <Link href="/contact">Contact</Link>
             </div>
 
           </div>
 
           <div className="footer-bottom">
+
             <span>
               © {new Date().getFullYear()} ShikshamDehi. All rights reserved.
             </span>
@@ -538,10 +503,10 @@ export default function ProjectsPage() {
             <span>
               Practical Learning • STEM • Innovation
             </span>
+
           </div>
 
         </div>
-
       </footer>
 
     </main>
