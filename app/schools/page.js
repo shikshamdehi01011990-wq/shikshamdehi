@@ -13,6 +13,8 @@ import {
   Rocket,
 } from "lucide-react";
 
+import Navbar from "../../components/navbar";
+
 const formats = [
   {
     title: "1-Day Practical Workshop",
@@ -116,34 +118,14 @@ export default function SchoolsPage() {
     <main className="schools-page">
 
       {/* NAVBAR */}
-      <nav className="schools-nav">
-        <div className="schools-container nav-inner">
-          <Link href="/" className="school-logo">
-            Shiksham<span>Dehi</span>
-          </Link>
-
-          <div className="school-nav-links">
-            <Link href="/">Home</Link>
-            <Link href="/programs">Programs</Link>
-            <Link href="/projects">Projects</Link>
-            <Link href="/schools" className="active">
-              For Schools
-            </Link>
-            <Link href="/about">About</Link>
-          </div>
-
-          <Link href="/contact" className="school-nav-btn">
-            Enquire Now
-            <ArrowRight size={16} />
-          </Link>
-        </div>
-      </nav>
+      <Navbar />
 
       {/* HERO */}
       <section className="schools-hero">
         <div className="schools-container schools-hero-grid">
 
           <div className="schools-hero-content">
+
             <div className="schools-eyebrow">
               <School size={16} />
               PRACTICAL LEARNING FOR SCHOOLS
@@ -161,29 +143,42 @@ export default function SchoolsPage() {
             </p>
 
             <div className="schools-hero-actions">
-              <Link href="/contact" className="primary-school-btn">
+
+              <Link
+                href="/contact"
+                className="primary-school-btn"
+              >
                 Discuss Your School Program
                 <ArrowRight size={18} />
               </Link>
 
-              <Link href="/programs" className="secondary-school-btn">
+              <Link
+                href="/programs"
+                className="secondary-school-btn"
+              >
                 Explore Programs
               </Link>
+
             </div>
 
             <div className="schools-hero-note">
               <CheckCircle2 size={17} />
-              <span>Hands-on • Project-based • Student-focused</span>
+              <span>
+                Hands-on • Project-based • Student-focused
+              </span>
             </div>
+
           </div>
 
           <div className="schools-hero-image">
+
             <img
               src="/images/shikshamdehi-practical-sessions.jpeg"
               alt="Students participating in practical STEM learning"
             />
 
             <div className="hero-floating-card">
+
               <div className="floating-icon">
                 <Wrench size={19} />
               </div>
@@ -192,7 +187,9 @@ export default function SchoolsPage() {
                 <strong>Learn by Building</strong>
                 <small>Concept → Project → Prototype</small>
               </div>
+
             </div>
+
           </div>
 
         </div>
@@ -203,7 +200,10 @@ export default function SchoolsPage() {
         <div className="schools-container">
 
           <div className="section-heading centered">
-            <div className="section-label">WHY PRACTICAL LEARNING?</div>
+
+            <div className="section-label">
+              WHY PRACTICAL LEARNING?
+            </div>
 
             <h2>
               Learning becomes powerful
@@ -215,9 +215,11 @@ export default function SchoolsPage() {
               apply classroom concepts through experiments, projects and
               working prototypes.
             </p>
+
           </div>
 
           <div className="learning-flow">
+
             <div className="flow-item">
               <span>01</span>
               <strong>Learn</strong>
@@ -263,6 +265,7 @@ export default function SchoolsPage() {
               <strong>Demonstrate</strong>
               <p>Show what you built</p>
             </div>
+
           </div>
 
         </div>
@@ -273,7 +276,10 @@ export default function SchoolsPage() {
         <div className="schools-container">
 
           <div className="section-heading">
-            <div className="section-label">WHAT WE PROVIDE</div>
+
+            <div className="section-label">
+              WHAT WE PROVIDE
+            </div>
 
             <h2>
               A practical learning ecosystem
@@ -284,14 +290,19 @@ export default function SchoolsPage() {
               Schools can choose individual workshops or build a long-term
               practical learning program around their students' needs.
             </p>
+
           </div>
 
           <div className="services-grid">
+
             {services.map((service) => {
               const Icon = service.icon;
 
               return (
-                <div className="service-card" key={service.title}>
+                <div
+                  className="service-card"
+                  key={service.title}
+                >
                   <div className="service-icon">
                     <Icon size={22} />
                   </div>
@@ -302,6 +313,7 @@ export default function SchoolsPage() {
                 </div>
               );
             })}
+
           </div>
 
         </div>
@@ -312,7 +324,10 @@ export default function SchoolsPage() {
         <div className="schools-container">
 
           <div className="section-heading centered">
-            <div className="section-label">PROGRAM FORMATS</div>
+
+            <div className="section-label">
+              PROGRAM FORMATS
+            </div>
 
             <h2>
               Choose the format that
@@ -323,11 +338,16 @@ export default function SchoolsPage() {
               From a single practical workshop to a complete annual
               innovation program.
             </p>
+
           </div>
 
           <div className="formats-grid">
+
             {formats.map((format, index) => (
-              <div className="format-card" key={format.title}>
+              <div
+                className="format-card"
+                key={format.title}
+              >
 
                 <div className="format-number">
                   0{index + 1}
@@ -338,16 +358,22 @@ export default function SchoolsPage() {
                 <p>{format.text}</p>
 
                 <div className="format-points">
+
                   {format.points.map((point) => (
-                    <div className="format-point" key={point}>
+                    <div
+                      className="format-point"
+                      key={point}
+                    >
                       <CheckCircle2 size={16} />
                       <span>{point}</span>
                     </div>
                   ))}
+
                 </div>
 
               </div>
             ))}
+
           </div>
 
         </div>
@@ -358,10 +384,12 @@ export default function SchoolsPage() {
         <div className="schools-container implementation-grid">
 
           <div className="implementation-image">
+
             <img
               src="/images/shikshamdehi-group-projects.png"
               alt="Students working together on a project"
             />
+
           </div>
 
           <div className="implementation-content">
@@ -384,47 +412,63 @@ export default function SchoolsPage() {
             <div className="implementation-steps">
 
               <div className="implementation-step">
+
                 <span>01</span>
+
                 <div>
                   <h3>Understand the Requirement</h3>
+
                   <p>
                     We understand the school's students, grade levels,
                     objectives and available infrastructure.
                   </p>
                 </div>
+
               </div>
 
               <div className="implementation-step">
+
                 <span>02</span>
+
                 <div>
                   <h3>Select the Learning Program</h3>
+
                   <p>
                     Choose workshops, bootcamps or a structured long-term
                     program according to your requirement.
                   </p>
                 </div>
+
               </div>
 
               <div className="implementation-step">
+
                 <span>03</span>
+
                 <div>
                   <h3>Students Learn & Build</h3>
+
                   <p>
                     Students work through concepts, activities and
                     project-building exercises.
                   </p>
                 </div>
+
               </div>
 
               <div className="implementation-step">
+
                 <span>04</span>
+
                 <div>
                   <h3>Test, Improve & Demonstrate</h3>
+
                   <p>
                     Students test their projects, solve problems, improve
                     designs and demonstrate their final work.
                   </p>
                 </div>
+
               </div>
 
             </div>
@@ -439,7 +483,10 @@ export default function SchoolsPage() {
         <div className="schools-container outcomes-grid">
 
           <div>
-            <div className="section-label">STUDENT OUTCOMES</div>
+
+            <div className="section-label">
+              STUDENT OUTCOMES
+            </div>
 
             <h2>
               What students take
@@ -452,24 +499,34 @@ export default function SchoolsPage() {
             </p>
 
             <div className="outcome-highlight">
+
               <Lightbulb size={22} />
+
               <div>
                 <strong>From consumer to maker.</strong>
+
                 <span>
                   Students start seeing technology as something they can
                   understand, modify and build.
                 </span>
               </div>
+
             </div>
+
           </div>
 
           <div className="outcomes-list">
+
             {outcomes.map((outcome) => (
-              <div className="outcome-item" key={outcome}>
+              <div
+                className="outcome-item"
+                key={outcome}
+              >
                 <CheckCircle2 size={19} />
                 <span>{outcome}</span>
               </div>
             ))}
+
           </div>
 
         </div>
@@ -480,22 +537,35 @@ export default function SchoolsPage() {
         <div className="schools-container">
 
           <div className="section-heading centered">
-            <div className="section-label">LEARNING DOMAINS</div>
+
+            <div className="section-label">
+              LEARNING DOMAINS
+            </div>
 
             <h2>
               Explore technology
               <span> through projects.</span>
             </h2>
+
           </div>
 
           <div className="school-domains">
+
             {domains.map((domain, index) => (
-              <div className="school-domain" key={domain}>
-                <span>{String(index + 1).padStart(2, "0")}</span>
+              <div
+                className="school-domain"
+                key={domain}
+              >
+                <span>
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+
                 <strong>{domain}</strong>
+
                 <ArrowRight size={17} />
               </div>
             ))}
+
           </div>
 
         </div>
@@ -510,6 +580,7 @@ export default function SchoolsPage() {
           </div>
 
           <div className="teacher-content">
+
             <div className="section-label">
               TEACHER MAKER TRAINING
             </div>
@@ -526,6 +597,7 @@ export default function SchoolsPage() {
             </p>
 
             <div className="teacher-points">
+
               <span>
                 <CheckCircle2 size={16} />
                 Activity facilitation
@@ -545,10 +617,15 @@ export default function SchoolsPage() {
                 <CheckCircle2 size={16} />
                 Maker methodology
               </span>
+
             </div>
+
           </div>
 
-          <Link href="/contact" className="teacher-btn">
+          <Link
+            href="/contact"
+            className="teacher-btn"
+          >
             Talk to Us
             <ArrowRight size={17} />
           </Link>
@@ -561,7 +638,10 @@ export default function SchoolsPage() {
         <div className="schools-container schools-cta-inner">
 
           <div>
-            <div className="section-label">START PRACTICAL LEARNING</div>
+
+            <div className="section-label">
+              START PRACTICAL LEARNING
+            </div>
 
             <h2>
               Ready to build a stronger
@@ -572,9 +652,13 @@ export default function SchoolsPage() {
               Tell us about your school, students and learning goals.
               We'll help you choose the right practical learning format.
             </p>
+
           </div>
 
-          <Link href="/contact" className="cta-school-btn">
+          <Link
+            href="/contact"
+            className="cta-school-btn"
+          >
             Discuss Your School Program
             <ArrowRight size={18} />
           </Link>
@@ -584,10 +668,15 @@ export default function SchoolsPage() {
 
       {/* FOOTER */}
       <footer className="schools-footer">
+
         <div className="schools-container footer-inner">
 
           <div>
-            <Link href="/" className="school-logo">
+
+            <Link
+              href="/"
+              className="school-logo"
+            >
               Shiksham<span>Dehi</span>
             </Link>
 
@@ -595,23 +684,49 @@ export default function SchoolsPage() {
               Practical learning through projects, technology and
               real-world problem solving.
             </p>
+
           </div>
 
           <div className="footer-links">
+
             <Link href="/">Home</Link>
-            <Link href="/programs">Programs</Link>
-            <Link href="/projects">Projects</Link>
-            <Link href="/schools">For Schools</Link>
-            <Link href="/about">About</Link>
-            <Link href="/contact">Contact</Link>
+
+            <Link href="/programs">
+              Programs
+            </Link>
+
+            <Link href="/projects">
+              Projects
+            </Link>
+
+            <Link href="/schools">
+              For Schools
+            </Link>
+
+            <Link href="/about">
+              About
+            </Link>
+
+            <Link href="/contact">
+              Contact
+            </Link>
+
           </div>
 
         </div>
 
         <div className="schools-container footer-bottom">
-          <span>© {new Date().getFullYear()} ShikshamDehi</span>
-          <span>Learn. Build. Make it real.</span>
+
+          <span>
+            © {new Date().getFullYear()} ShikshamDehi
+          </span>
+
+          <span>
+            Learn. Build. Make it real.
+          </span>
+
         </div>
+
       </footer>
 
     </main>
