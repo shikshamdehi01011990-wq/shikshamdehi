@@ -10,6 +10,8 @@ import {
   Wrench,
 } from "lucide-react";
 
+import Navbar from "../../../components/navbar";
+
 const projectData = {
   "smart-plant-monitor": {
     title: "Smart Plant Monitor",
@@ -518,7 +520,10 @@ export default async function ProjectDetailPage({ params }) {
       <main className="project-not-found">
         <div>
           <h1>Project not found</h1>
-          <p>This project is not available yet.</p>
+
+          <p>
+            This project is not available yet.
+          </p>
 
           <Link href="/projects">
             <ArrowLeft size={17} />
@@ -533,39 +538,16 @@ export default async function ProjectDetailPage({ params }) {
     <main className="project-detail-page">
 
       {/* NAVBAR */}
-
-      <nav className="site-nav">
-        <div className="nav-inner">
-
-          <Link href="/" className="logo">
-            SHIKSHAM<span>DEHI</span>
-          </Link>
-
-          <div className="nav-links">
-            <Link href="/">Home</Link>
-            <Link href="/programs">Programs</Link>
-            <Link href="/projects" className="active">
-              Projects
-            </Link>
-            <Link href="/#schools">For Schools</Link>
-            <Link href="/#about">About Us</Link>
-            <Link href="/#contact">Contact</Link>
-          </div>
-
-          <Link href="/#contact" className="nav-cta">
-            Partner With Us
-          </Link>
-
-        </div>
-      </nav>
+      <Navbar />
 
       {/* HERO */}
-
       <section className="project-detail-hero">
-
         <div className="container">
 
-          <Link href="/projects" className="project-back-link">
+          <Link
+            href="/projects"
+            className="project-back-link"
+          >
             <ArrowLeft size={17} />
             Project Library
           </Link>
@@ -578,7 +560,9 @@ export default async function ProjectDetailPage({ params }) {
                 {project.category}
               </div>
 
-              <h1>{project.title}</h1>
+              <h1>
+                {project.title}
+              </h1>
 
               <p className="project-hero-description">
                 {project.concept}
@@ -624,13 +608,10 @@ export default async function ProjectDetailPage({ params }) {
           </div>
 
         </div>
-
       </section>
 
       {/* PROBLEM */}
-
       <section className="project-problem-section">
-
         <div className="container">
 
           <div className="problem-box">
@@ -640,29 +621,31 @@ export default async function ProjectDetailPage({ params }) {
             </div>
 
             <div>
+
               <div className="section-eyebrow">
                 <span></span>
                 REAL-WORLD PROBLEM
               </div>
 
-              <h2>{project.problem}</h2>
+              <h2>
+                {project.problem}
+              </h2>
+
             </div>
 
           </div>
 
         </div>
-
       </section>
 
       {/* LEARNING */}
-
       <section className="project-detail-section">
-
         <div className="container">
 
           <div className="project-section-heading">
 
             <div>
+
               <div className="section-eyebrow">
                 <span></span>
                 WHAT STUDENTS LEARN
@@ -673,6 +656,7 @@ export default async function ProjectDetailPage({ params }) {
                 <br />
                 <em>practical skill.</em>
               </h2>
+
             </div>
 
             <p>
@@ -687,11 +671,15 @@ export default async function ProjectDetailPage({ params }) {
             {project.learn.map((item, index) => (
               <div key={item}>
 
-                <span>0{index + 1}</span>
+                <span>
+                  {String(index + 1).padStart(2, "0")}
+                </span>
 
                 <CheckCircle2 size={19} />
 
-                <p>{item}</p>
+                <p>
+                  {item}
+                </p>
 
               </div>
             ))}
@@ -699,18 +687,16 @@ export default async function ProjectDetailPage({ params }) {
           </div>
 
         </div>
-
       </section>
 
       {/* COMPONENTS */}
-
       <section className="project-components-section">
-
         <div className="container">
 
           <div className="components-box">
 
             <div>
+
               <div className="section-eyebrow">
                 <span></span>
                 COMPONENTS & TOOLS
@@ -721,6 +707,7 @@ export default async function ProjectDetailPage({ params }) {
                 <br />
                 <em>need?</em>
               </h2>
+
             </div>
 
             <div className="components-list">
@@ -737,13 +724,10 @@ export default async function ProjectDetailPage({ params }) {
           </div>
 
         </div>
-
       </section>
 
       {/* BUILD STEPS */}
-
       <section className="project-build-section">
-
         <div className="container">
 
           <div className="section-eyebrow">
@@ -760,16 +744,24 @@ export default async function ProjectDetailPage({ params }) {
           <div className="build-steps">
 
             {project.build.map((step, index) => (
-              <div className="build-step" key={step}>
+              <div
+                className="build-step"
+                key={step}
+              >
 
                 <div className="build-number">
                   {String(index + 1).padStart(2, "0")}
                 </div>
 
-                <p>{step}</p>
+                <p>
+                  {step}
+                </p>
 
                 {index !== project.build.length - 1 && (
-                  <ArrowRight className="build-arrow" size={17} />
+                  <ArrowRight
+                    className="build-arrow"
+                    size={17}
+                  />
                 )}
 
               </div>
@@ -778,13 +770,10 @@ export default async function ProjectDetailPage({ params }) {
           </div>
 
         </div>
-
       </section>
 
       {/* CHALLENGE */}
-
       <section className="project-challenge-section">
-
         <div className="container">
 
           <div className="challenge-box">
@@ -800,23 +789,23 @@ export default async function ProjectDetailPage({ params }) {
               <em>better.</em>
             </h2>
 
-            <p>{project.challenge}</p>
+            <p>
+              {project.challenge}
+            </p>
 
           </div>
 
         </div>
-
       </section>
 
       {/* UPGRADES */}
-
       <section className="project-upgrades-section">
-
         <div className="container">
 
           <div className="project-section-heading">
 
             <div>
+
               <div className="section-eyebrow">
                 <span></span>
                 POSSIBLE UPGRADES
@@ -827,6 +816,7 @@ export default async function ProjectDetailPage({ params }) {
                 <br />
                 <em>the first version.</em>
               </h2>
+
             </div>
 
             <p>
@@ -841,9 +831,13 @@ export default async function ProjectDetailPage({ params }) {
             {project.upgrades.map((upgrade, index) => (
               <div key={upgrade}>
 
-                <strong>0{index + 1}</strong>
+                <strong>
+                  {String(index + 1).padStart(2, "0")}
+                </strong>
 
-                <h3>{upgrade}</h3>
+                <h3>
+                  {upgrade}
+                </h3>
 
                 <ArrowRight size={18} />
 
@@ -853,18 +847,16 @@ export default async function ProjectDetailPage({ params }) {
           </div>
 
         </div>
-
       </section>
 
       {/* OUTCOMES */}
-
       <section className="project-outcomes-section">
-
         <div className="container">
 
           <div className="outcomes-box">
 
             <div>
+
               <div className="section-eyebrow">
                 <span></span>
                 LEARNING OUTCOMES
@@ -875,6 +867,7 @@ export default async function ProjectDetailPage({ params }) {
                 <br />
                 <em>something they built.</em>
               </h2>
+
             </div>
 
             <div className="outcome-list">
@@ -891,18 +884,16 @@ export default async function ProjectDetailPage({ params }) {
           </div>
 
         </div>
-
       </section>
 
       {/* CTA */}
-
       <section className="project-detail-cta">
-
         <div className="container">
 
           <div className="project-detail-cta-box">
 
             <div>
+
               <div className="section-eyebrow">
                 <span></span>
                 BUILD WITH SHIKSHAMDEHI
@@ -918,10 +909,11 @@ export default async function ProjectDetailPage({ params }) {
                 We can conduct this project as a workshop, bootcamp or
                 part of a long-term school program.
               </p>
+
             </div>
 
             <Link
-              href="/#contact"
+              href="/contact"
               className="project-cta-button"
             >
               Enquire Now
@@ -931,13 +923,10 @@ export default async function ProjectDetailPage({ params }) {
           </div>
 
         </div>
-
       </section>
 
       {/* FOOTER */}
-
       <footer className="site-footer">
-
         <div className="container">
 
           <div className="footer-inner">
@@ -954,14 +943,15 @@ export default async function ProjectDetailPage({ params }) {
               <Link href="/">Home</Link>
               <Link href="/programs">Programs</Link>
               <Link href="/projects">Projects</Link>
-              <Link href="/#schools">For Schools</Link>
-              <Link href="/#about">About</Link>
-              <Link href="/#contact">Contact</Link>
+              <Link href="/schools">For Schools</Link>
+              <Link href="/about">About</Link>
+              <Link href="/contact">Contact</Link>
             </div>
 
           </div>
 
           <div className="footer-bottom">
+
             <span>
               © {new Date().getFullYear()} ShikshamDehi. All rights reserved.
             </span>
@@ -969,10 +959,10 @@ export default async function ProjectDetailPage({ params }) {
             <span>
               Practical Learning • STEM • Innovation
             </span>
+
           </div>
 
         </div>
-
       </footer>
 
     </main>
