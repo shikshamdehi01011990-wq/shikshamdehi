@@ -10,6 +10,22 @@ import {
 
 import Navbar from "../../components/navbar";
 
+export const metadata = {
+  title: 'STEM & Technology Programs for Students',
+  description:
+    'Explore ShikshamDehi practical learning programs for students from Classes 3–12, ITI, Polytechnic and College. Learn STEM, Arduino, robotics, 3D design, 3D printing, IoT and AI through hands-on projects.',
+  alternates: {
+    canonical: '/programs',
+  },
+  openGraph: {
+    title: 'STEM & Technology Programs for Students | ShikshamDehi',
+    description:
+      'Hands-on STEM, robotics, Arduino, 3D design, 3D printing, IoT and AI programs built around real projects.',
+    url: '/programs',
+    type: 'website',
+  },
+};
+
 const programs = [
   {
     title: "Foundation Learning",
