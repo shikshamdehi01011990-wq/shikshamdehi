@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import {
   ArrowRight,
@@ -9,6 +11,8 @@ import {
   Rocket,
   School,
 } from "lucide-react";
+
+import Navbar from "../../components/navbar";
 
 const philosophy = [
   {
@@ -82,34 +86,10 @@ export default function AboutPage() {
     <main className="about-page">
 
       {/* NAVBAR */}
-      <nav className="about-nav">
-        <div className="about-container about-nav-inner">
-
-          <Link href="/" className="about-logo">
-            Shiksham<span>Dehi</span>
-          </Link>
-
-          <div className="about-nav-links">
-            <Link href="/">Home</Link>
-            <Link href="/programs">Programs</Link>
-            <Link href="/projects">Projects</Link>
-            <Link href="/schools">For Schools</Link>
-            <Link href="/about" className="active">
-              About
-            </Link>
-          </div>
-
-          <Link href="/contact" className="about-nav-btn">
-            Enquire Now
-            <ArrowRight size={16} />
-          </Link>
-
-        </div>
-      </nav>
+      <Navbar />
 
       {/* HERO */}
       <section className="about-hero">
-
         <div className="about-container">
 
           <div className="about-eyebrow">
@@ -130,6 +110,7 @@ export default function AboutPage() {
 
           <div className="about-hero-line">
             <span></span>
+
             <p>
               We turn classroom concepts into small, practical and
               real-world projects.
@@ -137,12 +118,10 @@ export default function AboutPage() {
           </div>
 
         </div>
-
       </section>
 
       {/* OUR STORY */}
       <section className="about-section story-section">
-
         <div className="about-container story-grid">
 
           <div className="about-section-heading">
@@ -182,12 +161,10 @@ export default function AboutPage() {
           </div>
 
         </div>
-
       </section>
 
       {/* PHILOSOPHY */}
       <section className="about-section philosophy-section">
-
         <div className="about-container">
 
           <div className="about-section-heading centered">
@@ -210,7 +187,10 @@ export default function AboutPage() {
           <div className="philosophy-grid">
 
             {philosophy.map((item) => (
-              <div className="philosophy-card" key={item.number}>
+              <div
+                className="philosophy-card"
+                key={item.number}
+              >
 
                 <span className="philosophy-number">
                   {item.number}
@@ -226,12 +206,10 @@ export default function AboutPage() {
           </div>
 
         </div>
-
       </section>
 
       {/* REAL PROJECTS */}
       <section className="about-section project-belief-section">
-
         <div className="about-container project-belief-grid">
 
           <div className="project-belief-image">
@@ -289,7 +267,9 @@ export default function AboutPage() {
 
               <div>
                 <CheckCircle2 size={18} />
-                <span>Students gain confidence by demonstrating their work</span>
+                <span>
+                  Students gain confidence by demonstrating their work
+                </span>
               </div>
 
             </div>
@@ -297,12 +277,10 @@ export default function AboutPage() {
           </div>
 
         </div>
-
       </section>
 
       {/* VALUES */}
       <section className="about-section values-section">
-
         <div className="about-container">
 
           <div className="about-section-heading centered">
@@ -324,7 +302,10 @@ export default function AboutPage() {
               const Icon = value.icon;
 
               return (
-                <div className="value-card" key={value.title}>
+                <div
+                  className="value-card"
+                  key={value.title}
+                >
 
                   <div className="value-icon">
                     <Icon size={22} />
@@ -341,12 +322,10 @@ export default function AboutPage() {
           </div>
 
         </div>
-
       </section>
 
       {/* FOR STUDENTS */}
       <section className="about-section student-section">
-
         <div className="about-container student-grid">
 
           <div>
@@ -376,7 +355,10 @@ export default function AboutPage() {
               <small>Uses technology</small>
             </div>
 
-            <ArrowRight className="journey-arrow" size={20} />
+            <ArrowRight
+              className="journey-arrow"
+              size={20}
+            />
 
             <div className="journey-box">
               <span>02</span>
@@ -384,7 +366,10 @@ export default function AboutPage() {
               <small>Understands technology</small>
             </div>
 
-            <ArrowRight className="journey-arrow" size={20} />
+            <ArrowRight
+              className="journey-arrow"
+              size={20}
+            />
 
             <div className="journey-box">
               <span>03</span>
@@ -392,7 +377,10 @@ export default function AboutPage() {
               <small>Builds with technology</small>
             </div>
 
-            <ArrowRight className="journey-arrow" size={20} />
+            <ArrowRight
+              className="journey-arrow"
+              size={20}
+            />
 
             <div className="journey-box">
               <span>04</span>
@@ -403,12 +391,10 @@ export default function AboutPage() {
           </div>
 
         </div>
-
       </section>
 
       {/* LEARNING AREAS */}
       <section className="about-section areas-section">
-
         <div className="about-container">
 
           <div className="about-section-heading centered">
@@ -427,7 +413,10 @@ export default function AboutPage() {
           <div className="areas-grid">
 
             {areas.map((area, index) => (
-              <div className="area-item" key={area}>
+              <div
+                className="area-item"
+                key={area}
+              >
 
                 <span>
                   {String(index + 1).padStart(2, "0")}
@@ -443,12 +432,10 @@ export default function AboutPage() {
           </div>
 
         </div>
-
       </section>
 
       {/* SCHOOLS */}
       <section className="about-section school-belief-section">
-
         <div className="about-container school-belief-card">
 
           <div className="school-belief-icon">
@@ -474,21 +461,23 @@ export default function AboutPage() {
 
           </div>
 
-          <Link href="/schools" className="school-belief-btn">
+          <Link
+            href="/schools"
+            className="school-belief-btn"
+          >
             Explore School Programs
             <ArrowRight size={17} />
           </Link>
 
         </div>
-
       </section>
 
       {/* MISSION */}
       <section className="about-section mission-section">
-
         <div className="about-container mission-grid">
 
           <div>
+
             <div className="about-label">
               OUR MISSION
             </div>
@@ -497,6 +486,7 @@ export default function AboutPage() {
               Make practical learning
               <span> a natural part of education.</span>
             </h2>
+
           </div>
 
           <div className="mission-text">
@@ -515,6 +505,7 @@ export default function AboutPage() {
 
             <div className="mission-statement">
               <Rocket size={22} />
+
               <strong>
                 Learn. Build. Solve. Improve.
               </strong>
@@ -523,12 +514,10 @@ export default function AboutPage() {
           </div>
 
         </div>
-
       </section>
 
       {/* CTA */}
       <section className="about-cta">
-
         <div className="about-container about-cta-inner">
 
           <div>
@@ -551,19 +540,24 @@ export default function AboutPage() {
 
           <div className="about-cta-actions">
 
-            <Link href="/programs" className="about-primary-btn">
+            <Link
+              href="/programs"
+              className="about-primary-btn"
+            >
               Explore Programs
               <ArrowRight size={18} />
             </Link>
 
-            <Link href="/contact" className="about-secondary-btn">
+            <Link
+              href="/contact"
+              className="about-secondary-btn"
+            >
               Contact Us
             </Link>
 
           </div>
 
         </div>
-
       </section>
 
       {/* FOOTER */}
@@ -573,7 +567,10 @@ export default function AboutPage() {
 
           <div>
 
-            <Link href="/" className="about-logo">
+            <Link
+              href="/"
+              className="about-logo"
+            >
               Shiksham<span>Dehi</span>
             </Link>
 
@@ -587,11 +584,26 @@ export default function AboutPage() {
           <div className="about-footer-links">
 
             <Link href="/">Home</Link>
-            <Link href="/programs">Programs</Link>
-            <Link href="/projects">Projects</Link>
-            <Link href="/schools">For Schools</Link>
-            <Link href="/about">About</Link>
-            <Link href="/contact">Contact</Link>
+
+            <Link href="/programs">
+              Programs
+            </Link>
+
+            <Link href="/projects">
+              Projects
+            </Link>
+
+            <Link href="/schools">
+              For Schools
+            </Link>
+
+            <Link href="/about">
+              About
+            </Link>
+
+            <Link href="/contact">
+              Contact
+            </Link>
 
           </div>
 
