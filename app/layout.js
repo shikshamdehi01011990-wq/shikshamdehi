@@ -1,7 +1,7 @@
 import './globals.css';
 
 export const metadata = {
-  metadataBase: new URL('https://shikshamdehi-cyan.vercel.app'),
+  metadataBase: new URL('https://shikshamdehi.com'),
 
   title: {
     default: 'ShikshamDehi | Future Skills. Real Projects.',
@@ -14,18 +14,25 @@ export const metadata = {
   keywords: [
     'ShikshamDehi',
     'STEM education',
-    'future skills',
+    'STEM education India',
+    'practical STEM education',
+    'future skills education',
     '3D design training',
     '3D printing training',
     'Arduino training',
     'robotics training',
     'IoT training',
     'AI education',
+    'AI training for students',
     'ATL Lab training',
+    'school technology workshops',
     'ITI training',
     'polytechnic training',
+    'college technology training',
     'student projects',
     'maker education',
+    'project based learning',
+    'hands-on learning',
     'technology workshops',
   ],
 
@@ -44,8 +51,8 @@ export const metadata = {
   openGraph: {
     title: 'ShikshamDehi | Future Skills. Real Projects.',
     description:
-      'Hands-on STEM, 3D design, 3D printing, Arduino, robotics, IoT and AI learning programs.',
-    url: 'https://shikshamdehi-cyan.vercel.app',
+      'Hands-on STEM, 3D design, 3D printing, Arduino, robotics, IoT and AI learning programs for students, schools and educators.',
+    url: 'https://shikshamdehi.com',
     siteName: 'ShikshamDehi',
     locale: 'en_IN',
     type: 'website',
@@ -64,6 +71,9 @@ export const metadata = {
     googleBot: {
       index: true,
       follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+      'max-video-preview': -1,
     },
   },
 };
@@ -72,7 +82,7 @@ const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'EducationalOrganization',
   name: 'ShikshamDehi',
-  url: 'https://shikshamdehi-cyan.vercel.app',
+  url: 'https://shikshamdehi.com',
   description:
     'Future-skills education platform focused on STEM education, 3D design, 3D printing, Arduino, robotics, IoT, AI and project-based learning.',
   knowsAbout: [
@@ -93,7 +103,7 @@ const websiteSchema = {
   '@context': 'https://schema.org',
   '@type': 'WebSite',
   name: 'ShikshamDehi',
-  url: 'https://shikshamdehi-cyan.vercel.app',
+  url: 'https://shikshamdehi.com',
   description:
     'Future-skills education and practical technology learning platform.',
 };
