@@ -511,6 +511,201 @@ const projectData = {
   },
 };
 
+
+/* =========================================================
+   DYNAMIC SEO METADATA
+   ========================================================= */
+
+export async function generateMetadata({ params }) {
+  const { slug } = await params;
+  const project = projectData[slug];
+
+  if (!project) {
+    return {
+      title: "Project Not Found",
+      description:
+        "The requested ShikshamDehi STEM project could not be found.",
+      robots: {
+        index: false,
+        follow: false,
+      },
+    };
+  }
+
+  const seoData = {
+    "smart-plant-monitor": {
+      title: "Smart Plant Monitor Project for Students",
+      description:
+        "Build a Smart Plant Monitor using Arduino and a soil moisture sensor. A hands-on STEM project for Classes 6–8 covering sensors, coding, automation and testing.",
+      keywords: [
+        "smart plant monitor project",
+        "Arduino plant monitoring project",
+        "Arduino projects for students",
+        "STEM projects for Classes 6 8",
+        "soil moisture sensor project",
+        "student electronics projects",
+      ],
+    },
+
+    "line-following-robot": {
+      title: "Line Following Robot Project for Students",
+      description:
+        "Build a Line Following Robot using Arduino, IR sensors and motors. A practical robotics project for students covering sensors, programming, motor control and debugging.",
+      keywords: [
+        "line following robot project",
+        "line follower robot Arduino",
+        "robotics projects for students",
+        "Arduino robotics project",
+        "school robotics project",
+        "STEM robotics project",
+      ],
+    },
+
+    "automatic-night-lamp": {
+      title: "Automatic Night Lamp Project for Students",
+      description:
+        "Build an Automatic Night Lamp using an LDR, LED and simple electronics. A beginner-friendly STEM project for students to learn sensors, circuits and automation.",
+      keywords: [
+        "automatic night lamp project",
+        "LDR automatic night lamp",
+        "electronics projects for students",
+        "STEM electronics project",
+        "school electronics project",
+        "LDR sensor project",
+      ],
+    },
+
+    "mini-weather-station": {
+      title: "Mini Weather Station Project for Students",
+      description:
+        "Build a Mini Weather Station using sensors and a microcontroller. Learn temperature, humidity, data collection, programming and IoT concepts through a practical project.",
+      keywords: [
+        "mini weather station project",
+        "weather station Arduino project",
+        "IoT projects for students",
+        "Arduino weather station",
+        "STEM IoT project",
+        "school weather station project",
+      ],
+    },
+
+    "smart-dustbin": {
+      title: "Smart Dustbin Arduino Project for Students",
+      description:
+        "Build a Smart Dustbin using Arduino, an ultrasonic sensor and servo motor. Learn distance sensing, automation, programming logic and mechanical control.",
+      keywords: [
+        "smart dustbin Arduino project",
+        "smart dustbin project for students",
+        "Arduino automation project",
+        "ultrasonic sensor project",
+        "robotics projects for students",
+        "school STEM project",
+      ],
+    },
+
+    "solar-tracker": {
+      title: "Solar Tracker Project for Students",
+      description:
+        "Build a Solar Tracker using light sensors, a microcontroller and motor control. Explore renewable energy, feedback systems, mechanical design and optimisation.",
+      keywords: [
+        "solar tracker project",
+        "solar tracker Arduino project",
+        "solar energy project for students",
+        "STEM renewable energy project",
+        "electronics project for students",
+        "school solar tracker project",
+      ],
+    },
+
+    "3d-printed-prototype": {
+      title: "3D Printing Prototype Project for Students",
+      description:
+        "Create a 3D printed prototype from a digital design. Learn 3D CAD, dimensions, tolerances, digital fabrication, 3D printing and prototype improvement.",
+      keywords: [
+        "3D printing project for students",
+        "3D design project",
+        "3D CAD project for students",
+        "3D printed prototype",
+        "3D printing education",
+        "digital fabrication project",
+        "STEM 3D printing project",
+      ],
+    },
+
+    "paper-bridge": {
+      title: "Engineering Paper Bridge Project for Students",
+      description:
+        "Build and test an engineering paper bridge while exploring structural strength, load distribution, measurement, design and problem solving through hands-on learning.",
+      keywords: [
+        "paper bridge engineering project",
+        "paper bridge STEM project",
+        "engineering projects for students",
+        "STEM projects for Classes 3 8",
+        "school engineering challenge",
+        "hands-on engineering project",
+      ],
+    },
+  };
+
+  const seo = seoData[slug];
+
+  return {
+    title: seo?.title || `${project.title} Project`,
+    description: seo?.description || project.concept,
+
+    keywords: seo?.keywords || [
+      `${project.title} project`,
+      `${project.category} projects for students`,
+      "STEM projects for students",
+      "hands-on STEM projects",
+      "project based learning",
+      "ShikshamDehi",
+    ],
+
+    alternates: {
+      canonical: `/projects/${slug}`,
+    },
+
+    openGraph: {
+      title: seo?.title || `${project.title} Project`,
+      description: seo?.description || project.concept,
+      url: `/projects/${slug}`,
+      siteName: "ShikshamDehi",
+      locale: "en_IN",
+      type: "website",
+      images: [
+        {
+          url: project.image,
+          width: 1200,
+          height: 630,
+          alt: `${project.title} - ShikshamDehi STEM Project`,
+        },
+      ],
+    },
+
+    twitter: {
+      card: "summary_large_image",
+      title: seo?.title || `${project.title} Project`,
+      description: seo?.description || project.concept,
+      images: [project.image],
+    },
+
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+      },
+    },
+  };
+}
+
+
+/* =========================================================
+   PROJECT DETAIL PAGE
+   ========================================================= */
+
 export default async function ProjectDetailPage({ params }) {
   const { slug } = await params;
   const project = projectData[slug];
@@ -596,7 +791,7 @@ export default async function ProjectDetailPage({ params }) {
 
               <img
                 src={project.image}
-                alt={project.title}
+                alt={`${project.title} - hands-on ${project.category} STEM project for students`}
               />
 
               <div className="project-image-badge">
